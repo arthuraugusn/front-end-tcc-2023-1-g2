@@ -19,35 +19,38 @@ export const MenuBurguer = ({ props }) => {
         <i className="menu-burguer"></i>
       </Link>
       <ul className={"text-container"}>
-        <li
-          className={"nav-itens " + props}
-          onClick={() => {
-            navigate("/localize-se");
-          }}
-        >
-          Localize-se
-        </li>
-        <li
-        /* onClick={() => {
-            navigate("/motoristas");
-          }}
-          className={"nav-itens " + props} */
-        >
-          Motoristas
-        </li>
-
-        <li
-          onClick={() => {
-            navigate("/contract");
-          }}
-          className={"nav-itens " + props}
-        >
-          Seus Contratos
-        </li>
+        <nav className="nav-container">
+          <li
+            className={"nav-itens " + props}
+            onClick={() => {
+              navigate("/localize-se");
+            }}
+          >
+            Localize-se
+          </li>
+          <li
+            onClick={() => {
+              navigate("/motoristas");
+            }}
+            className={"nav-itens " + props}
+          >
+            Motoristas
+          </li>
+  
+          <li
+            onClick={() => {
+              navigate("/contract");
+            }}
+            className={"nav-itens " + props}
+          >
+            Seus Contratos
+          </li>
+        </nav>
         <button
           onClick={() => {
             navigate("/login");
           }}
+          className={"button-login " + props}
         >
           Entrar / Registrar
         </button>
