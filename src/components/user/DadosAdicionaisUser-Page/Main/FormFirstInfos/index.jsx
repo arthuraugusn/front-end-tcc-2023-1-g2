@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
+import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 
 export const FormFirstInfos = () => {
+  const propsSalvarUsuario = {
+    key: "button-save-client",
+    label: "Salvar",
+    nav: "#",
+  };
+
+  const [value, setValue] = useState({});
+
   return (
     <>
       <div className="container-inputs-more-infos">
@@ -39,7 +49,7 @@ export const FormFirstInfos = () => {
             />
           </div>
         </div>
-        <div className="containter-telefone">
+        <div className="container-telefone">
           <InputContainer
             props={{
               classNameLabel: "placeholder",
@@ -48,6 +58,14 @@ export const FormFirstInfos = () => {
             }}
           />
         </div>
+      </div>
+      <div
+        className="button-save-client"
+        onClick={() => {
+          console.log(value);
+        }}
+      >
+        <ButtonSalvarUsuario props={propsSalvarUsuario}></ButtonSalvarUsuario>
       </div>
     </>
   );
