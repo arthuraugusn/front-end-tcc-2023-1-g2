@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faG } from '@fortawesome/free-solid-svg-icons'
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +19,6 @@ export const LeftSide = () => {
     set(userInfos.email);
   }, [userInfos]);
 
-  console.log(final);
-
   return (
     <div className="left-side-register">
       <span className="entry-text">
@@ -31,18 +32,14 @@ export const LeftSide = () => {
           getInfosUser(userInfos, setUserInfos);
         }}
       >
+        <FontAwesomeIcon icon={faG} />
         Continuar com Google
       </button>
       <div className="bottom-text">
         <span className="thin-text">Já tem uma conta?</span>
-        <span
-          onClick={() => {
-            navigation("/home");
-          }}
-          className="bold-text"
-        >
-          Entrar
-        </span>
+        <Link to="/login">
+          <span className="bold-text">Entre</span>
+        </Link>
       </div>
     </div>
   );

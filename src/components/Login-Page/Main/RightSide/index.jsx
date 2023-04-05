@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faG } from '@fortawesome/free-solid-svg-icons'
 import "./style.css";
 
 export const RightSide = () => {
@@ -8,7 +10,7 @@ export const RightSide = () => {
         Faça o login e conheça a nossa plataforma
       </span>
       <button type="button" className="google-register">
-        <i className="fa-regular fa-g"></i>
+        <FontAwesomeIcon icon={faG} />
         Continuar com Google
       </button>
       <div className="bottom-text">
