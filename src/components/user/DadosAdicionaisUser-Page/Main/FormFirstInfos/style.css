@@ -17,6 +17,11 @@
   gap: 130px;
 }
 
+.placeholder {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 .container-rg-cpf,
 .container-datanasc-cep {
   display: flex;

@@ -20,14 +20,14 @@ export const FormFirstInfos = () => {
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
-                nameInput: "RG",
+                nameInput: "RG:",
                 classNameInput: "inputs-more-infos",
               }}
             />
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
-                nameInput: "CPF",
+                nameInput: "CPF:",
                 classNameInput: "inputs-more-infos",
               }}
             />
@@ -43,7 +43,7 @@ export const FormFirstInfos = () => {
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
-                nameInput: "CEP",
+                nameInput: "CEP:",
                 classNameInput: "inputs-more-infos",
               }}
             />
@@ -62,7 +62,6 @@ export const FormFirstInfos = () => {
       <div
         className="button-save-client"
         onClick={() => {
-          console.log(value);
         }}
       >
         <ButtonSalvarUsuario props={propsSalvarUsuario}></ButtonSalvarUsuario>

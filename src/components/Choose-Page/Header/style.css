@@ -1,7 +1,16 @@
 .header-choose-page {
   display: flex;
-  padding: 25px;
+  align-items: center;
+  padding: 3rem;
   justify-content: space-between;
   width: 100%;
   height: auto;
+}
+
+.container-button-voltar {
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }

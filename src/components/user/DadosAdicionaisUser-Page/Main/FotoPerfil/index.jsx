@@ -12,7 +12,6 @@ export const FotoPerfilRegistro = () => {
   const [imgFirebase, setImageFirebase] = useState("");
 
   useEffect(() => {
-    console.log(imgFirebase);
   }, [imgFirebase]);
 
   return (
@@ -28,8 +27,7 @@ export const FotoPerfilRegistro = () => {
               setClassIcon,
               setImageFirebase
             );
-
-            console.log(imgFirebase);
+            
           }}
           className="input-picture"
           type="file"
@@ -77,6 +75,4 @@ const OnChangeFunction = async (
     photo: namePicture,
     url: urlImage,
   };
-
-  console.log(photo.url);
 };
