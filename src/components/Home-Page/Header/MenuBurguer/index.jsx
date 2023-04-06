@@ -1,5 +1,7 @@
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell } from '@fortawesome/free-solid-svg-icons'
 
 export const MenuBurguer = ({ props }) => {
   const navigate = useNavigate();

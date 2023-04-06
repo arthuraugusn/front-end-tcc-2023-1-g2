@@ -45,13 +45,14 @@
 
 .input-casa-complemento {
   display: flex;
-  width: 50%;
   height: 100%;
   gap: 30px;
 }
 
-.cep {
+.input {
+  padding: 1.5rem 4rem;
   flex-grow: 1;
+  border-radius: 1.5rem;
 }
 
 .map-container {
@@ -66,4 +67,5 @@
 .map {
   border-radius: 20px;
   flex-grow: 1;
+  border: none;
 }

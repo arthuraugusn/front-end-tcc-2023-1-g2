@@ -4,9 +4,6 @@ import "./Inputs/style.css";
 import { InputSearch } from "./Inputs";
 
 export const MainLocalizesePage = () => {
-  const props = {
-    placeHolder: "Insira seu cep...",
-  };
   return (
     <main className="box-all-main">
       <div className="local-cep">
@@ -14,30 +11,22 @@ export const MainLocalizesePage = () => {
           <h1>Localize-se</h1>
         </div>
         <div className="inputs-search">
-          <InputSearch props={props}></InputSearch>
+          <InputSearch props={{
+            placeholder: "Insira seu cep...",
+            name: "cep",
+            id: "input-cep"
+          }} />
           <div className="input-casa-complemento">
-            <div className="inputs">
-              <p className="material-symbols-outlined search-number">search</p>
-              <input
-                placeholder="Nº da casa"
-                type="text"
-                className="input"
-                name="numero-casa"
-                id="input-home-number"
-              />
-            </div>
-            <div className="inputs">
-              <span className="material-symbols-outlined search-complement">
-                search
-              </span>
-              <input
-                placeholder="Complemento"
-                type="text"
-                className="input"
-                name="complemento"
-                id="input-complement"
-              />
-            </div>
+            <InputSearch props={{
+              placeholder: "Nº da casa",
+              name: "numero-casa",
+              id: "input-home-number"
+            }} />
+            <InputSearch props={{
+              placeholder: "Complemento",
+              name: "complemento",
+              id: "input-complement"
+            }} />
           </div>
         </div>
       </div>
