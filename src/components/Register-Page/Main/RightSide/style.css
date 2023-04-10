@@ -51,6 +51,20 @@
   transform: translateY(5px);
 }
 
+.button-register {
+  display: flex;
+  width: 100%;
+}
+
+.container-button-register {
+  display: flex;
+  width: 100%;
+}
+.container-button-register button {
+  display: flex;
+  width: 100%;
+}
+
 @media (max-width: 1700px) {
   .register-form {
     width: 80%;

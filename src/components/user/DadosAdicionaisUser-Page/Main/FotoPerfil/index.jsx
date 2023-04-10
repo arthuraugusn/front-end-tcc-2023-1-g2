@@ -50,9 +50,12 @@ const OnChangeFunction = async (
   setImageFirebase
 ) => {
   var file = new FileReader();
+
+  const previewPhoto = document.querySelector(".img-preview");
+
   file.onload = (e) => {
     setClassForIcon("none");
-    document.querySelector(".img-preview").src = e.target.result;
+    previewPhoto.src = e.target.result;
   };
 
   const product = e.target.files[0];
@@ -73,4 +76,6 @@ const OnChangeFunction = async (
     photo: namePicture,
     url: urlImage,
   };
+
+  previewPhoto.id = photo.url;
 };

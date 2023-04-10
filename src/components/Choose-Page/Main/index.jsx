@@ -1,17 +1,19 @@
+import { useLocation } from "react-router-dom";
 import { ButtonChoose } from "./Button";
 import "./style.css";
 
 export const MainChoosePage = () => {
   const propsButtonCliente = {
-    nav: "/dados-adicionais-user",
     key: "usuario",
     label: "Cliente",
   };
   const propsButtonMotorista = {
-    nav: "/",
     key: "motorista",
     label: "Motorista",
   };
+
+  const location = useLocation();
+  console.log(location);
   return (
     <main className="container-main-choose-page">
       <div className="text-container-choose-page">

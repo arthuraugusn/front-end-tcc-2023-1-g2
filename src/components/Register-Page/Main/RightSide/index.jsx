@@ -3,13 +3,12 @@ import { ButtonProximoRegister } from "./Button";
 import "./style.css";
 
 export const RightSide = () => {
-  const navigation = useNavigate();
-
+  const navigate = useNavigate();
   const propsProximo = {
     key: "button-form",
     label: "Próximo",
-    nav: "/choose-page",
   };
+
   return (
     <div className="right-side-register">
       <form className="register-form">
@@ -18,20 +17,52 @@ export const RightSide = () => {
           <label htmlFor="name" className="placeHolder">
             Nome:
           </label>
-          <input type="text" id="name" className="input" />
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => {
+              propsProximo.jsonParam = {
+                name: e.target.value,
+              };
+            }}
+            className="input"
+          />
         </div>
         <div className="input-container">
           <label htmlFor="email" className="placeHolder">
             Email:
           </label>
-          <input type="email" id="email" className="input" />
+          <input
+            onChange={(e) => {
+              propsProximo.jsonParam.email = e.target.value;
+            }}
+            type="email"
+            id="email"
+            className="input"
+          />
         </div>
         <div className="input-container">
           <label htmlFor="password" className="placeHolder">
             Senha:
           </label>
-          <input type="password" id="password" className="input" />
-          <ButtonProximoRegister props={propsProximo}></ButtonProximoRegister>
+          <input
+            onChange={(e) => {
+              propsProximo.jsonParam.uid = e.target.value;
+            }}
+            type="password"
+            id="password"
+            className="input"
+          />
+          <div
+            onClick={() => {
+              navigate("/choose-page", {
+                jsonParam: propsProximo.jsonParam,
+              });
+            }}
+            className="container-button-register"
+          >
+            <ButtonProximoRegister props={propsProximo}></ButtonProximoRegister>
+          </div>
         </div>
       </form>
     </div>
