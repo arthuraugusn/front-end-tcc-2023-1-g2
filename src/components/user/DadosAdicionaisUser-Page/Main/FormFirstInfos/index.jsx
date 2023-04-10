@@ -1,4 +1,3 @@
-import { registerUserClient } from "../../../../../api/client/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
@@ -47,7 +46,7 @@ export const FormFirstInfos = () => {
           <div className="container-datanasc-cep">
             <div
               onChange={(e) => {
-                userJson.data_nasc = e.target.value;
+                userJson.data_nascimento = e.target.value;
               }}
             >
               <InputContainer
@@ -91,6 +90,8 @@ export const FormFirstInfos = () => {
       <div
         className="button-save-client"
         onClick={() => {
+          userJson.photo = document.querySelector(".img-preview").id;
+          userJson.status_usuario = 1;
           console.log(userJson);
         }}
       >

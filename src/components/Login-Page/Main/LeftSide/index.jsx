@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ButtonEntrar } from "./Button";
 import "./style.css";
 
@@ -14,9 +15,10 @@ export const LeftSide = () => {
     setProps({ email: email, senha: value });
   };
 
+  const navigate = useNavigate();
+
   const propsButtonEntrar = {
     key: "button-form",
-    nav: "/",
     label: "Entrar",
   };
 
@@ -56,7 +58,14 @@ export const LeftSide = () => {
             required
           />
         </div>
-        <ButtonEntrar props={propsButtonEntrar}></ButtonEntrar>
+        <div
+          onClick={() => {
+            navigate("/", { email: props.email, senha: props.senha });
+          }}
+          className="container-button-entrar"
+        >
+          <ButtonEntrar props={propsButtonEntrar}></ButtonEntrar>
+        </div>
       </form>
     </div>
   );
