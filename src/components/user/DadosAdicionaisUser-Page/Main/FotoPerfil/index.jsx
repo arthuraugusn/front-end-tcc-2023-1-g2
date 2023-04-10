@@ -11,8 +11,7 @@ export const FotoPerfilRegistro = () => {
   const [classIcon, setClassIcon] = useState("true");
   const [imgFirebase, setImageFirebase] = useState("");
 
-  useEffect(() => {
-  }, [imgFirebase]);
+  useEffect(() => {}, [imgFirebase]);
 
   return (
     <div className="container-foto-perfil">
@@ -27,7 +26,6 @@ export const FotoPerfilRegistro = () => {
               setClassIcon,
               setImageFirebase
             );
-            
           }}
           className="input-picture"
           type="file"
