@@ -22,6 +22,8 @@
 
 .nav-itens {
   cursor: pointer;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .button-login {
