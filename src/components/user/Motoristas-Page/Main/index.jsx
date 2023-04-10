@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { carregarMotoristas } from "../../../../api/driver/loadDrivers";
+import { carregarMotoristas } from "../../../../api/client/loadDrivers.js";
 import { InputSearch } from "../../LocalizeSe-Page/Main/Inputs";
 import { Card } from "./Card";
 import "./style.css";

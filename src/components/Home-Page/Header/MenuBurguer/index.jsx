@@ -1,7 +1,7 @@
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 
 export const MenuBurguer = ({ props }) => {
   const navigate = useNavigate();
@@ -46,6 +46,24 @@ export const MenuBurguer = ({ props }) => {
             className={"nav-itens " + props}
           >
             Seus Contratos
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/");
+            }}
+            className={"nav-itens " + props}
+          >
+            <FontAwesomeIcon icon={faBell} />
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/");
+            }}
+            className={"nav-itens " + props}
+          >
+            <FontAwesomeIcon icon={faUser} />
           </li>
         </nav>
         <button

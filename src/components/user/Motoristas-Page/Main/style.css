@@ -22,7 +22,7 @@
   gap: 15px;
   height: 50vh;
   width: 60vw;
-
+  padding: 1.5rem;
   overflow: scroll;
   overflow-x: hidden;
 }
