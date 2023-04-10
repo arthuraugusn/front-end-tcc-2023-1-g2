@@ -1,6 +1,8 @@
 import { ButtonNextContract } from "../Button";
 import { InputContainer } from "./InputContainter";
+import { loadSchools } from "../../../api/client/loadSchools.js";
 import "./style.css";
+import { useEffect, useState } from "react";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -8,6 +10,12 @@ export const MainContractPage = ({ props }) => {
     label: "Próximo",
     nav: "/",
   };
+
+  const [school, setSchool] = useState([]);
+
+  useEffect(() => {
+    loadSchools(setSchool);
+  }, []);
 
   return (
     <main className="container-all-main-contract">
@@ -25,10 +33,12 @@ export const MainContractPage = ({ props }) => {
                 className="selects"
                 name="filtros"
                 id="select-filter-container-contract-type"
+                onClick={() => {}}
               >
-                <option value="">a</option>
-                <option value="">b</option>
-                <option value="">c</option>
+                <option value="">Escolha a escola</option>
+                {school.map((school) => {
+                  return <option value={school.nome}>{school.nome}</option>;
+                })}
               </select>
             </div>
             <div className="dropdown-content">
@@ -40,7 +50,7 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                <option value="">a</option>
+                <option value="">Escolha o tipo de transporte</option>
                 <option value="">b</option>
                 <option value="">c</option>
               </select>
@@ -81,9 +91,7 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                <option value="">a</option>
-                <option value="">b</option>
-                <option value="">c</option>
+                <option value="">Escolha um tipo de pagamento</option>
               </select>
             </div>
           </div>
