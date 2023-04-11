@@ -100,7 +100,6 @@ export const FormFirstInfos = () => {
           userJson.foto = document.querySelector(".img-preview").id;
           userJson.status_usuario = 1;
           if (userJson) {
-            console.log(userJson);
             registerUserClient(userJson);
           }
         }}
