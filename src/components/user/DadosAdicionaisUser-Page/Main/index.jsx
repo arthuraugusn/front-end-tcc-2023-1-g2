@@ -7,7 +7,9 @@ export const MainDadosAdicionaisUser = () => {
     <>
       <main className="container-main-da-user">
         <form className="container-form-register">
-          <FotoPerfilRegistro></FotoPerfilRegistro>
+          <FotoPerfilRegistro
+            props={{ folder: "users-profile-picture" }}
+          ></FotoPerfilRegistro>
           <FormFirstInfos></FormFirstInfos>
         </form>
       </main>

@@ -24,7 +24,7 @@ export const MainChoosePage = () => {
       <div className="buttons-container">
         <div
           onClick={() => {
-            navigate("/", { state: location.state });
+            navigate("/dados-adicionais-driver", { state: location.state });
           }}
         >
           <ButtonChoose props={propsButtonMotorista}></ButtonChoose>
