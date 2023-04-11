@@ -15,6 +15,7 @@ export const MainChoosePage = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
+
   return (
     <main className="container-main-choose-page">
       <div className="text-container-choose-page">

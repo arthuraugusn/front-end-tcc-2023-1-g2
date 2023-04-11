@@ -1,27 +1,21 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../firebaseApp";
 
-const getInfosUser = async (userInfos, setUserInfos) => {
+export const getInfosUser = (setInfosUser, setRedirect) => {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth(app);
-  await signInWithPopup(auth, provider).then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
+  signInWithPopup(auth, provider).then((result) => {
+    /* const credential = GoogleAuthProvider.credentialFromResult(result); */
     const user = result.user;
+    if (user) {
+      setInfosUser({
+        state: { email: user.email, uid: user.uid, name: user.displayName },
+      });
 
-    /* userInfos = {
-      email: user.email,
-      nome: user.displayName,
-      uid: user.uid,
-    }; */
-
-    setUserInfos({
-      ...userInfos,
-      email: user.email,
-      nome: user.displayName,
-      uid: user.uid,
-    });
+      setRedirect(1);
+    } else {
+      setRedirect(2);
+    }
   });
 };
-
-export { getInfosUser };
