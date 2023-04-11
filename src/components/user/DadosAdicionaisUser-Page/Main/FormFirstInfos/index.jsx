@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+import { registerUserClient } from "../../../../../api/client/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
@@ -10,6 +12,8 @@ export const FormFirstInfos = () => {
   };
 
   let userJson = {};
+
+  const location = useLocation();
 
   return (
     <>
@@ -90,9 +94,15 @@ export const FormFirstInfos = () => {
       <div
         className="button-save-client"
         onClick={() => {
-          userJson.photo = document.querySelector(".img-preview").id;
+          userJson.nome = location.state.name;
+          userJson.email = location.state.email;
+          userJson.senha = location.state.uid;
+          userJson.foto = document.querySelector(".img-preview").id;
           userJson.status_usuario = 1;
-          console.log(userJson);
+          if (userJson) {
+            console.log(userJson);
+            registerUserClient(userJson);
+          }
         }}
       >
         <ButtonSalvarUsuario props={propsSalvarUsuario}></ButtonSalvarUsuario>

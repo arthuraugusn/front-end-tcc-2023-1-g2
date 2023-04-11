@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ButtonChoose } from "./Button";
 import "./style.css";
 
@@ -12,16 +12,29 @@ export const MainChoosePage = () => {
     label: "Motorista",
   };
 
+  const navigate = useNavigate();
+
   const location = useLocation();
-  console.log(location);
   return (
     <main className="container-main-choose-page">
       <div className="text-container-choose-page">
         <span className="choose-text">Selecione uma opção para registrar</span>
       </div>
       <div className="buttons-container">
-        <ButtonChoose props={propsButtonMotorista}></ButtonChoose>
-        <ButtonChoose props={propsButtonCliente}></ButtonChoose>
+        <div
+          onClick={() => {
+            navigate("/", { state: location.state });
+          }}
+        >
+          <ButtonChoose props={propsButtonMotorista}></ButtonChoose>
+        </div>
+        <div
+          onClick={() => {
+            navigate("/dados-adicionais-user", { state: location.state });
+          }}
+        >
+          <ButtonChoose props={propsButtonCliente}></ButtonChoose>
+        </div>
       </div>
     </main>
   );

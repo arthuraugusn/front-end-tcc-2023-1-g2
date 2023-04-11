@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ButtonProximoRegister } from "./Button";
 import "./style.css";
 
@@ -55,13 +55,15 @@ export const RightSide = () => {
           />
           <div
             onClick={() => {
-              navigate("/choose-page", {
-                jsonParam: propsProximo.jsonParam,
-              });
+              navigate("/choose-page", { state: propsProximo.jsonParam });
             }}
             className="container-button-register"
           >
-            <ButtonProximoRegister props={propsProximo}></ButtonProximoRegister>
+            <Link to="/choose-page" state={propsProximo.jsonParam}>
+              <ButtonProximoRegister
+                props={propsProximo}
+              ></ButtonProximoRegister>
+            </Link>
           </div>
         </div>
       </form>
