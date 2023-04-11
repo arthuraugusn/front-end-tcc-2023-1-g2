@@ -22,7 +22,7 @@
   font-weight: 500;
 }
 
-.input {
+.input-register {
   border: none;
   border-radius: 10px;
   padding: 1.5rem 1.5rem;
@@ -75,7 +75,7 @@
     width: 80%;
     height: auto;
   }
-  .input {
+  .input-register {
     width: auto;
     height: auto;
   }
@@ -85,7 +85,7 @@
   .right-side {
     flex-grow: 1;
   }
-  .input {
+  .input-register {
     width: 100%;
   }
 }

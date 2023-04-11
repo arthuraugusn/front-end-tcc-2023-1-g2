@@ -25,7 +25,7 @@ export const RightSide = () => {
                 name: e.target.value,
               };
             }}
-            className="input"
+            className="input-register"
           />
         </div>
         <div className="input-container">
@@ -38,7 +38,7 @@ export const RightSide = () => {
             }}
             type="email"
             id="email"
-            className="input"
+            className="input-register"
           />
         </div>
         <div className="input-container">
@@ -51,7 +51,7 @@ export const RightSide = () => {
             }}
             type="password"
             id="password"
-            className="input"
+            className="input-register"
           />
           <div
             onClick={() => {

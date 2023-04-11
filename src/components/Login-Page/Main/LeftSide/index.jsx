@@ -36,7 +36,7 @@ export const LeftSide = () => {
               getEmail(e);
             }}
             value={props.email}
-            className="input"
+            className="input-login"
             type="email"
             id="email"
             required
@@ -52,7 +52,7 @@ export const LeftSide = () => {
               getPassword(e, props.email);
             }}
             value={props.senha}
-            className="input"
+            className="input-login"
             type="password"
             id="password"
             required

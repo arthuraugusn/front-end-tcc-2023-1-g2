@@ -3,14 +3,19 @@ import "./style.css";
 export const InputSearch = ({ props }) => {
   return (
     <div className="inputs">
-      <label htmlFor={props.id} className="material-symbols-outlined search-number">search</label>
+      <label
+        htmlFor={props.id}
+        className="material-symbols-outlined search-number"
+      >
+        search
+      </label>
       <input
         placeholder={props.placeholder}
         type="text"
         className="input"
         name={props.name}
-        id = {props.id}
-        key = {props.id}
+        id={props.id}
+        key={props.id}
       />
     </div>
   );

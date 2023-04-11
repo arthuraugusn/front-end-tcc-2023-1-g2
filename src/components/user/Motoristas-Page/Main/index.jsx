@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { carregarMotoristas } from "../../../../api/client/loadDrivers.js";
-import { InputSearch } from "../../LocalizeSe-Page/Main/Inputs";
 import { Card } from "./Card";
+import { InputSearch } from "./Input/index.jsx";
 import "./style.css";
 
 export const MainMotoristasPage = ({ props }) => {

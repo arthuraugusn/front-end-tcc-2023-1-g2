@@ -1,7 +1,7 @@
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const MenuBurguer = ({ props }) => {
   const navigate = useNavigate();
@@ -23,14 +23,6 @@ export const MenuBurguer = ({ props }) => {
       <ul className={"text-container"}>
         <nav className="nav-container">
           <li
-            className={"nav-itens " + props}
-            onClick={() => {
-              navigate("/localize-se");
-            }}
-          >
-            Localize-se
-          </li>
-          <li
             onClick={() => {
               navigate("/motoristas");
             }}
@@ -38,7 +30,7 @@ export const MenuBurguer = ({ props }) => {
           >
             Motoristas
           </li>
-  
+
           <li
             onClick={() => {
               navigate("/contract");

@@ -2,7 +2,6 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import MotoristasPage from "../templates/user/MotoristasPage";
 import { LoginPage } from "../templates/LoginPage";
 import { RegisterPage } from "../templates/RegisterPage";
-import LocalizeSe from "../templates/user/LocalizeSePage";
 import ChoosePage from "../templates/ChoosePage";
 import { DadosAdicionaisUserPage } from "../templates/user/DadosAdicionaisUserPage";
 import HomePage from "../templates/HomePage";
@@ -21,7 +20,6 @@ function RoutesApp() {
         />
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
-        <Route element={<LocalizeSe />} path="/localize-se" />
         <Route Component={ContractPage} path="/contract" />
       </Routes>
     </HashRouter>
