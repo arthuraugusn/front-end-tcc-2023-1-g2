@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { carregarMotoristas } from "../../../../api/client/loadDrivers.js";
 import { Card } from "./Card";
-import { InputSearch } from "./Input/index.jsx";
+import InputSearchItens from "./Input/index.jsx";
 import "./style.css";
 
 export const MainMotoristasPage = ({ props }) => {
@@ -23,7 +23,8 @@ export const MainMotoristasPage = ({ props }) => {
         <h1>Motoristas</h1>
       </div>
       <div className="box-input-filter">
-        <InputSearch props={itensInput}></InputSearch>
+        <InputSearchItens props={itensInput}></InputSearchItens>
+        {/* <InputSearch props={itensInput}></InputSearch> */}
         <select name="filtros" id="select-filter-container">
           <option value="">a</option>
           <option value="">b</option>

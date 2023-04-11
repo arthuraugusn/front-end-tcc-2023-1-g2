@@ -1,6 +1,6 @@
 import "./style.css";
 
-export const InputSearch = ({ props }) => {
+const InputSearchItens = ({ props }) => {
   return (
     <div className="inputs">
       <label
@@ -20,3 +20,5 @@ export const InputSearch = ({ props }) => {
     </div>
   );
 };
+
+export default InputSearchItens;
