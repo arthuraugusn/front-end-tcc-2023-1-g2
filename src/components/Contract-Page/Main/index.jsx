@@ -1,6 +1,8 @@
 import { ButtonNextContract } from "../Button";
 import { InputContainer } from "./InputContainter";
 import { loadSchools } from "../../../api/client/loadSchools.js";
+import { loadTypetransport } from "../../../api/client/loadTypetransport.js";
+import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
 import "./style.css";
 import { useEffect, useState } from "react";
 
@@ -15,6 +17,18 @@ export const MainContractPage = ({ props }) => {
 
   useEffect(() => {
     loadSchools(setSchool);
+  }, []);
+
+  const [typesContracts, setTypesTransport] = useState([]);
+
+  useEffect(() => {
+    loadTypetransport(setTypesTransport);
+  }, []);
+
+  const [typesPayment, setTypeofPay] = useState([]);
+
+  useEffect(() => {
+    loadTypeofPay(setTypeofPay);
   }, []);
 
   return (
@@ -35,7 +49,6 @@ export const MainContractPage = ({ props }) => {
                 id="select-filter-container-contract-type"
                 onClick={() => {}}
               >
-                <option value="">Escolha a escola</option>
                 {school.map((school) => {
                   return <option value={school.nome}>{school.nome}</option>;
                 })}
@@ -50,9 +63,13 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                <option value="">Escolha o tipo de transporte</option>
-                <option value="">b</option>
-                <option value="">c</option>
+                {typesPayment.map((typeTrip) => {
+                  return (
+                    <option value={typeTrip.tipo_contrato}>
+                      {typeTrip.tipo_contrato}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -92,6 +109,9 @@ export const MainContractPage = ({ props }) => {
                 id="select-filter-container-school"
               >
                 <option value="">Escolha um tipo de pagamento</option>
+                {typesContracts.map((typeOfthePay) => {
+                  return <option value="">{typeOfthePay.tipo_contrato}</option>;
+                })}
               </select>
             </div>
           </div>
