@@ -31,7 +31,7 @@ export const FormsInfosDriver = () => {
   return (
     <>
       <div className="container-inputs-more-infos">
-        <div className="container-all-infos-user">
+        <div className="container-all-infos-driver">
           <div className="container-register-infos-driver">
             <div className="container-rg-cpf-telefone-driver">
               <div
@@ -73,47 +73,46 @@ export const FormsInfosDriver = () => {
                   }}
                 />
               </div>
-
-              <div className="container-datanasc-cnh-datainic-driver">
-                <div
-                  onChange={(e) => {
-                    driverJson.data_nascimento = e.target.value;
+            </div>
+            <div className="container-datanasc-cnh-datainic-driver">
+              <div
+                onChange={(e) => {
+                  driverJson.data_nascimento = e.target.value;
+                }}
+              >
+                <InputContainer
+                  props={{
+                    classNameLabel: "placeholder",
+                    nameInput: "Data de nascimento:",
+                    classNameInput: "inputs-more-infos",
                   }}
-                >
-                  <InputContainer
-                    props={{
-                      classNameLabel: "placeholder",
-                      nameInput: "Data de nascimento:",
-                      classNameInput: "inputs-more-infos",
-                    }}
-                  />
-                </div>
-                <div
-                  onChange={(e) => {
-                    driverJson.cnh = e.target.value;
+                />
+              </div>
+              <div
+                onChange={(e) => {
+                  driverJson.cnh = e.target.value;
+                }}
+              >
+                <InputContainer
+                  props={{
+                    classNameLabel: "placeholder",
+                    nameInput: "CNH:",
+                    classNameInput: "inputs-more-infos",
                   }}
-                >
-                  <InputContainer
-                    props={{
-                      classNameLabel: "placeholder",
-                      nameInput: "CNH:",
-                      classNameInput: "inputs-more-infos",
-                    }}
-                  />
-                </div>
-                <div
-                  onChange={(e) => {
-                    driverJson.inicio_carreira = e.target.value;
+                />
+              </div>
+              <div
+                onChange={(e) => {
+                  driverJson.inicio_carreira = e.target.value;
+                }}
+              >
+                <InputContainer
+                  props={{
+                    classNameLabel: "placeholder",
+                    nameInput: "Data de início de carreira",
+                    classNameInput: "inputs-more-infos",
                   }}
-                >
-                  <InputContainer
-                    props={{
-                      classNameLabel: "placeholder",
-                      nameInput: "Data de início de carreira",
-                      classNameInput: "inputs-more-infos",
-                    }}
-                  />
-                </div>
+                />
               </div>
             </div>
           </div>

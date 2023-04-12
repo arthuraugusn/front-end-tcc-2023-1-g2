@@ -8,13 +8,13 @@
   width: 100%;
 }
 
-.container-all-infos-user {
+.container-all-infos-driver {
   display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
-  gap: 130px;
+  flex-direction: column;
 }
 
 .placeholder {
@@ -22,16 +22,18 @@
   font-size: 1.2rem;
 }
 
-.container-rg-cpf-telefone,
-.container-datanasc-cep {
+.container-register-infos-driver {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.button-save-client {
-  display: flex;
+  height: 100%;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+.container-datanasc-cnh-datainic-driver,
+.container-rg-cpf-telefone-driver {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
