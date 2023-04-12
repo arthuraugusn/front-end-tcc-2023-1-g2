@@ -1,11 +1,10 @@
 import { ButtonNextContract } from "../Button";
 import { InputContainer } from "./InputContainter";
 import { loadSchools } from "../../../api/client/loadSchools.js";
-import {loadTypetransport} from "../../../api/client/loadTypetransport.js"
+import { loadTypetransport } from "../../../api/client/loadTypetransport.js";
 import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
 import "./style.css";
 import { useEffect, useState } from "react";
-
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -18,19 +17,19 @@ export const MainContractPage = ({ props }) => {
 
   useEffect(() => {
     loadSchools(setSchool);
-  },[]);
+  }, []);
 
-  const [typesContracts, setTypesTransport] = useState ([])
+  const [typesContracts, setTypesTransport] = useState([]);
 
-   useEffect(() =>{
-     loadTypetransport(setTypesTransport)
-   },[]);
+  useEffect(() => {
+    loadTypetransport(setTypesTransport);
+  }, []);
 
-   const [typesPayment, setTypeofPay] = useState ([])
+  const [typesPayment, setTypeofPay] = useState([]);
 
-   useEffect(() =>{
-    loadTypeofPay(setTypeofPay)
-   },[])
+  useEffect(() => {
+    loadTypeofPay(setTypeofPay);
+  }, []);
 
   return (
     <main className="container-all-main-contract">
@@ -64,8 +63,12 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                {typesPayment.map((typeOftheTrip)=>{
-                  return <option value={typeOftheTrip.tipo_contrato}>{typeOftheTrip.tipo_contrato}</option>
+                {typesPayment.map((typeTrip) => {
+                  return (
+                    <option value={typeTrip.tipo_contrato}>
+                      {typeTrip.tipo_contrato}
+                    </option>
+                  );
                 })}
               </select>
             </div>
@@ -106,8 +109,8 @@ export const MainContractPage = ({ props }) => {
                 id="select-filter-container-school"
               >
                 <option value="">Escolha um tipo de pagamento</option>
-                {typesContracts.map((typeOfthePay)=>{
-                  return <option value={typeOfthePay.tipo_pagamento}>{typeOfthePay.tipo_pagamento}</option>
+                {typesContracts.map((typeOfthePay) => {
+                  return <option value="">{typeOfthePay.tipo_contrato}</option>;
                 })}
               </select>
             </div>
