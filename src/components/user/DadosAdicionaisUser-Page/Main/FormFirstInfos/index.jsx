@@ -1,4 +1,5 @@
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { registerUserClient } from "../../../../../api/client/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
@@ -12,6 +13,18 @@ export const FormFirstInfos = () => {
   };
 
   let userJson = {};
+
+  const [responseError, setResponseError] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(responseError);
+
+    if (responseError.status == 201) {
+      navigate("/login");
+    }
+  }, [responseError]);
 
   const location = useLocation();
 
@@ -100,7 +113,7 @@ export const FormFirstInfos = () => {
           userJson.foto = document.querySelector(".img-preview").id;
           userJson.status_usuario = 1;
           if (userJson) {
-            registerUserClient(userJson);
+            registerUserClient(userJson, setResponseError);
           }
         }}
       >

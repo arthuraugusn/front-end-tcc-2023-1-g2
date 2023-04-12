@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faG } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faG } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,15 +8,13 @@ import { getInfosUser } from "../../../../firebase/LoginRegisterGoogle/firebaseG
 import "./style.css";
 
 export const LeftSide = () => {
-  /* const [driverGoogle, setDriverGoogle] = useState([]); */
-  /* useEffect(() => {
-    getInfosUser(setDriverGoogle);
-  }, []); */
   const [userInfos, setUserInfos] = useState([]);
-  const [final, set] = useState([]);
+  const [changePage, setChangePage] = useState(0);
   const navigation = useNavigate();
   useEffect(() => {
-    set(userInfos.email);
+    if (changePage == 1) {
+      navigation("/choose-page", userInfos);
+    }
   }, [userInfos]);
 
   return (
@@ -29,12 +27,13 @@ export const LeftSide = () => {
         className="google-register"
         id="button-register-google"
         onClick={() => {
-          getInfosUser(userInfos, setUserInfos);
+          getInfosUser(setUserInfos, setChangePage);
         }}
       >
         <FontAwesomeIcon icon={faG} />
         Continuar com Google
       </button>
+
       <div className="bottom-text">
         <span className="thin-text">Já tem uma conta?</span>
         <Link to="/login">

@@ -1,6 +1,6 @@
 import api from "../api";
 
-export const registerUserClient = (user) => {
+export const registerUserClient = (user, setResponseError) => {
   api
     .post("user", {
       email: `${user.email}`,
@@ -15,9 +15,9 @@ export const registerUserClient = (user) => {
       status_usuario: user.status_usuario,
     })
     .then((response) => {
-      console.log(response.data);
+      setResponseError(response);
     })
     .catch((err) => {
-      console.log(err);
+      setResponseError(err);
     });
 };

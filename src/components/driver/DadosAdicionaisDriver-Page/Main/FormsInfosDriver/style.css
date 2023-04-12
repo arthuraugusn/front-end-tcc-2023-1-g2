@@ -22,9 +22,16 @@
   font-size: 1.2rem;
 }
 
-.container-rg-cpf,
-.container-datanasc-cnh-inicarreira {
+.container-rg-cpf-telefone,
+.container-datanasc-cep {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.button-save-client {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

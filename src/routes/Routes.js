@@ -6,6 +6,7 @@ import ChoosePage from "../templates/ChoosePage";
 import { DadosAdicionaisUserPage } from "../templates/user/DadosAdicionaisUserPage";
 import HomePage from "../templates/HomePage";
 import ContractPage from "../templates/user/Contract-page";
+import { DadosAdicionaisDriverPage } from "../templates/driver/DadosAdicionaisDriver";
 
 function RoutesApp() {
   return (
@@ -17,6 +18,10 @@ function RoutesApp() {
         <Route
           Component={DadosAdicionaisUserPage}
           path="/dados-adicionais-user"
+        />
+        <Route
+          Component={DadosAdicionaisDriverPage}
+          path="/dados-adicionais-driver"
         />
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />

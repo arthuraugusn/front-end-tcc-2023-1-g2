@@ -1,7 +1,8 @@
 .container-main-da-user {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .container-form-register {

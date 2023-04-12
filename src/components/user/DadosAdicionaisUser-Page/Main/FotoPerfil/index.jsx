@@ -5,7 +5,7 @@ import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { uploadImage } from "../../../../../firebase/UploadProfilePictures/firebaseUploadProfilePictures";
 
-export const FotoPerfilRegistro = () => {
+export const FotoPerfilRegistro = ({ props }) => {
   const [card, setCardFile] = useState();
   const [classImg, setClassImg] = useState("none");
   const [classIcon, setClassIcon] = useState("true");
@@ -24,7 +24,8 @@ export const FotoPerfilRegistro = () => {
               setCardFile,
               setClassImg,
               setClassIcon,
-              setImageFirebase
+              setImageFirebase,
+              props.folder
             );
           }}
           className="input-picture"
@@ -47,7 +48,8 @@ const OnChangeFunction = async (
   setCardFile,
   setClassForImage,
   setClassForIcon,
-  setImageFirebase
+  setImageFirebase,
+  nameDirectFolder
 ) => {
   var file = new FileReader();
 
@@ -66,11 +68,7 @@ const OnChangeFunction = async (
   setImageFirebase(namePicture);
   setCardFile(file.readAsDataURL(product));
 
-  const urlImage = await uploadImage(
-    "users-profile-picture",
-    product,
-    namePicture
-  );
+  const urlImage = await uploadImage(nameDirectFolder, product, namePicture);
 
   const photo = {
     photo: namePicture,

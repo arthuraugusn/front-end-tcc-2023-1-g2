@@ -15,6 +15,7 @@ export const MainChoosePage = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
+
   return (
     <main className="container-main-choose-page">
       <div className="text-container-choose-page">
@@ -23,7 +24,7 @@ export const MainChoosePage = () => {
       <div className="buttons-container">
         <div
           onClick={() => {
-            navigate("/", { state: location.state });
+            navigate("/dados-adicionais-driver", { state: location.state });
           }}
         >
           <ButtonChoose props={propsButtonMotorista}></ButtonChoose>
