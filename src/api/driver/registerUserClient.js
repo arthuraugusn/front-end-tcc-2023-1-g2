@@ -14,7 +14,7 @@ export const registerDriverClient = (driver, setResponseError) => {
       inicio_carreira: `${driver.inicio_carreira}`,
       senha: `${driver.senha}`,
       foto: `${driver.foto}`,
-      avaliacao: `${driver.avaliacao}`,
+      avaliacao: driver.avaliacao,
       descricao: `${driver.descricao}`,
       status_motorista: driver.status_motorista,
     })
