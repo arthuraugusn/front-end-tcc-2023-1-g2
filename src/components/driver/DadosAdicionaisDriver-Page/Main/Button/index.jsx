@@ -1,5 +1,5 @@
 import { ButtonChoose } from "../../../../Choose-Page/Main/Button";
 
-export const ButtonSalvarUsuario = ({ props }) => {
+export const ButtonSalvarMotorista = ({ props }) => {
   return <ButtonChoose props={props}></ButtonChoose>;
 };

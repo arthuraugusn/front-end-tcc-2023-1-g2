@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { registerDriverClient } from "../../../../../api/driver/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
-import { ButtonSalvarUsuario } from "../Button";
+import { ButtonSalvarMotorista, ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 
 export const FormsInfosDriver = () => {
   const propsSalvarMotorista = {
     key: "button-save-client",
-    label: "Salvar",
-    nav: "#",
+    label: "Avançar",
   };
 
   let driverJson = {};
@@ -22,7 +21,7 @@ export const FormsInfosDriver = () => {
     console.log(responseError);
 
     if (responseError.status == 201) {
-      navigate("/login");
+      navigate("/cadastro-van", { state: driverJson.cpf });
     }
   }, [responseError]);
 
@@ -132,9 +131,7 @@ export const FormsInfosDriver = () => {
               }
             }}
           >
-            <ButtonSalvarUsuario
-              props={propsSalvarMotorista}
-            ></ButtonSalvarUsuario>
+            <ButtonSalvarMotorista props={propsSalvarMotorista} />
           </div>
         </div>
       </div>
