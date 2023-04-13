@@ -20,6 +20,7 @@ export const FormsInfosDriver = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(responseError);
     if (responseError.status == 201) {
       navigate("/cadastro-van", { state: cpfNavigate });
     }
