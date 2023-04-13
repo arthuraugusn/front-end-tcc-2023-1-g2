@@ -13,6 +13,8 @@ export const MainContractPage = ({ props }) => {
     nav: "/",
   };
 
+  let contractJson = {};
+
   const [school, setSchool] = useState([]);
 
   useEffect(() => {
@@ -63,11 +65,9 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                {typesPayment.map((typeTrip) => {
+                {typesContracts.map((typeOftheContract) => {
                   return (
-                    <option value={typeTrip.tipo_contrato}>
-                      {typeTrip.tipo_contrato}
-                    </option>
+                    <option value="">{typeOftheContract.tipo_contrato}</option>
                   );
                 })}
               </select>
@@ -75,27 +75,33 @@ export const MainContractPage = ({ props }) => {
           </div>
 
           <div className="input-container-geral">
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Nome do responsável",
-                classNameInput: "input-contract",
-              }}
-            />
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Nome do passageiro",
-                classNameInput: "input-contract",
-              }}
-            />
-            <InputContainer
-              props={{
-                classNameLabel: "placeHolder",
-                nameInput: "Idade do passageiro:",
-                classNameInput: "input-contract",
-              }}
-            />
+            <div onChange={(e) => {}}>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Nome do responsável",
+                  classNameInput: "input-contract",
+                }}
+              />
+            </div>
+            <div>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Nome do passageiro",
+                  classNameInput: "input-contract",
+                }}
+              />
+            </div>
+            <div>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeHolder",
+                  nameInput: "Idade do passageiro:",
+                  classNameInput: "input-contract",
+                }}
+              />
+            </div>
           </div>
 
           <div className="dropdown-container">
@@ -108,9 +114,8 @@ export const MainContractPage = ({ props }) => {
                 name="filtros"
                 id="select-filter-container-school"
               >
-                <option value="">Escolha um tipo de pagamento</option>
-                {typesContracts.map((typeOfthePay) => {
-                  return <option value="">{typeOfthePay.tipo_contrato}</option>;
+                {typesPayment.map((typePayment) => {
+                  return <option value="">{typePayment.tipo_pagamento}</option>;
                 })}
               </select>
             </div>
