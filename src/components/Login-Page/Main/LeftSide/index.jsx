@@ -25,7 +25,7 @@ export const LeftSide = () => {
   return (
     <div className="left-side">
       <form className="register-form">
-        <span className="form-title">Crie uma Conta</span>
+        <span className="form-title">Entre na sua conta</span>
 
         <div className="input-container">
           <label htmlFor="email" className="placeholder">

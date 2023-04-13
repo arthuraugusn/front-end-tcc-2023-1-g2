@@ -6,7 +6,7 @@ export const InputContainer = ({ props }) => {
       <label htmlFor="password" className={props.classNameLabel}>
         {props.nameInput}
       </label>
-      <input type="text" className={props.classNameInput} required />
+      <input type={props.type} className={props.classNameInput} required />
     </div>
   );
 };

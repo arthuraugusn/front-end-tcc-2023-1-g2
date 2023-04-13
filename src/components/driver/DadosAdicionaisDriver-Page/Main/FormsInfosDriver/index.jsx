@@ -15,13 +15,13 @@ export const FormsInfosDriver = () => {
 
   const [responseError, setResponseError] = useState("");
 
+  const [cpfNavigate, setCpfNavigate] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(responseError);
-
     if (responseError.status == 201) {
-      navigate("/cadastro-van", { state: driverJson.cpf });
+      navigate("/cadastro-van", { state: cpfNavigate });
     }
   }, [responseError]);
 
@@ -126,8 +126,8 @@ export const FormsInfosDriver = () => {
               driverJson.status_motorista = 1;
               driverJson.avaliacao = 10;
               if (driverJson) {
-                console.log(driverJson);
                 registerDriverClient(driverJson, setResponseError);
+                setCpfNavigate(driverJson.cpf);
               }
             }}
           >

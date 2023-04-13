@@ -1,3 +1,9 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { loadDriverByCpf } from "../../../../api/driver/loadDriverByCpf";
+import { loadDriverById } from "../../../../api/driver/loadDriverById";
+import { registerVanDriver } from "../../../../api/driver/van/registerVanDriver";
 import { ButtonSalvarVan } from "./Button";
 import { FotoVan } from "./FotoVan";
 import { InputContainerVan } from "./InputContainerVan";
@@ -13,7 +19,21 @@ export const MainDadosVan = () => {
     label: "Salvar",
   };
 
+  const locate = useLocation();
+
   let vanJson = {};
+
+  const [responseError, setResponseError] = useState("");
+
+  const [idDriver, setIdDriver] = useState(0);
+
+  useEffect(() => {
+    loadDriverByCpf(locate.state, setIdDriver);
+  }, []);
+
+  useEffect(() => {
+    console.log(responseError);
+  }, [responseError]);
 
   return (
     <>
@@ -25,7 +45,7 @@ export const MainDadosVan = () => {
           <div className="container-van-vagas-placa-modelo">
             <div
               onChange={(e) => {
-                vanJson.quantidade_vagas = e.target.value;
+                vanJson.quantidade_vagas = parseInt(e.target.value);
               }}
             >
               <InputContainerVan
@@ -60,7 +80,17 @@ export const MainDadosVan = () => {
             </div>
           </div>
         </div>
-        <div className="container-button-save-van">
+        <div
+          onClick={() => {
+            vanJson.foto = document.querySelector(".img-preview").id;
+            vanJson.id_motorista = parseInt(idDriver);
+
+            if (vanJson) {
+              registerVanDriver(vanJson, setResponseError);
+            }
+          }}
+          className="container-button-save-van"
+        >
           <ButtonSalvarVan props={propsSalvarVan} />
         </div>
       </main>
