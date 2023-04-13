@@ -6,7 +6,12 @@ export const InputContainer = ({ props }) => {
       <label htmlFor="password" className={props.classNameLabel}>
         {props.nameInput}
       </label>
-      <input type={props.type} className={props.classNameInput} required />
+      <input
+        type={props.type}
+        className={props.classNameInput}
+        // required
+        // disabled
+      />
     </div>
   );
 };

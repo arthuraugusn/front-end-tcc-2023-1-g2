@@ -19,7 +19,8 @@
 }
 .container-inputs-contrate {
   display: flex;
-  height: 70%;
+  height: 60%;
+  gap: 30px;
   justify-content: center;
   flex-direction: column;
 }
