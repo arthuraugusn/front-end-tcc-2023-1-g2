@@ -4,7 +4,8 @@ export const loadSchools = (setSchools) => {
   api
     .get("schools")
     .then((response) => {
-      setSchools(response.data.school);
+      const { school } = response.data;
+      setSchools(school);
     })
     .catch((err) => {
       console.log("Erro: " + err);

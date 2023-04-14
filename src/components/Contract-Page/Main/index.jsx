@@ -17,6 +17,7 @@ export const MainContractPage = ({ props }) => {
   let contractJson = {};
 
   const [school, setSchool] = useState([]);
+  loadSchools(setSchool);
 
   useEffect(() => {
     loadSchools(setSchool);
@@ -29,6 +30,7 @@ export const MainContractPage = ({ props }) => {
   }, []);
 
   const [typesPayment, setTypeofPay] = useState([]);
+  loadTypeofPay(setTypeofPay);
 
   useEffect(() => {
     loadTypeofPay(setTypeofPay);
@@ -51,7 +53,7 @@ export const MainContractPage = ({ props }) => {
               id="select-filter-container-contract-type"
             >
               {school.map((school) => {
-                return <option value={school.nome}>{school.nome}</option>;
+                return <option value={school.id}>{school.nome}</option>;
               })}
             </select>
           </div>
@@ -66,7 +68,12 @@ export const MainContractPage = ({ props }) => {
             >
               {typesContracts.map((typeOftheContract) => {
                 return (
-                  <option value="">{typeOftheContract.tipo_contrato}</option>
+                  <option
+                    key={typeOftheContract.id}
+                    value={typeOftheContract.id}
+                  >
+                    {typeOftheContract.tipo_contrato}
+                  </option>
                 );
               })}
             </select>
@@ -74,14 +81,18 @@ export const MainContractPage = ({ props }) => {
         </div>
 
         <div className="input-container-geral">
-          <InputContainer
-            props={{
-              classNameLabel: "placeholder",
-              nameInput: "Nome do responsável",
-              classNameInput: "input-contract",
-            }}
-          />
           <div>
+            {/* {(onChange = (e) => {})} */}
+            <InputContainer
+              props={{
+                classNameLabel: "placeholder",
+                nameInput: "Nome do responsável",
+                classNameInput: "input-contract",
+              }}
+            />
+          </div>
+          <div>
+            {/* {(onChange = (e) => {})} */}
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
@@ -91,6 +102,7 @@ export const MainContractPage = ({ props }) => {
             />
           </div>
           <div>
+            {/* {(onChange = (e) => {})} */}
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
@@ -112,7 +124,11 @@ export const MainContractPage = ({ props }) => {
               id="select-filter-container-school"
             >
               {typesPayment.map((typePayment) => {
-                return <option value="">{typePayment.tipo_pagamento}</option>;
+                return (
+                  <option value={typePayment.id}>
+                    {typePayment.tipo_pagamento}
+                  </option>
+                );
               })}
             </select>
           </div>
