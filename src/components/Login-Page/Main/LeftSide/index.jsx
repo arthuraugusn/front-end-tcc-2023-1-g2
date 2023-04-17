@@ -1,19 +1,22 @@
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import { pink, yellow } from "@mui/material/colors";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginCliente } from "../../../../api/client/loginCliente";
+import { loginDriver } from "../../../../api/driver/loginDriver";
 import { ButtonEntrar } from "./Button";
+import { InputContainerLogin } from "./Input";
 import "./style.css";
 
-export const LeftSide = () => {
-  const [props, setProps] = useState([]);
-
-  const getEmail = (e) => {
-    const value = e.target.value;
-    setProps({ email: value });
-  };
-  const getPassword = (e, email) => {
-    const value = e.target.value;
-    setProps({ email: email, senha: value });
-  };
+export const LeftSide = ({ prop }) => {
+  const [userDriverInfosLogin, setInfosLoginUserDriver] = useState([]);
 
   const navigate = useNavigate();
 
@@ -22,45 +25,113 @@ export const LeftSide = () => {
     label: "Entrar",
   };
 
+  const [colorMot, setColorMot] = useState("black");
+
+  const [colorCli, setColorCli] = useState("black");
+
+  const [valueRadioGroup, setValueRadioGroup] = useState("");
+
+  const [user, setUser] = useState({ email: "", uid: "" });
+
+  useEffect(() => {
+    prop(userDriverInfosLogin);
+  }, [userDriverInfosLogin]);
+
   return (
     <div className="left-side">
       <form className="register-form">
         <span className="form-title">Entre na sua conta</span>
 
-        <div className="input-container">
-          <label htmlFor="email" className="placeholder">
-            Email:
-          </label>
-          <input
-            onChange={(e) => {
-              getEmail(e);
+        <div
+          onChange={(e) => {
+            setUser({ email: e.target.value, uid: user.uid });
+          }}
+        >
+          <InputContainerLogin
+            props={{
+              classNameLabel: "placeholder",
+              nameInput: "Email:",
+              classNameInput: "input-login",
             }}
-            value={props.email}
-            className="input-login"
-            type="email"
-            id="email"
-            required
-          />
-        </div>
-
-        <div className="input-container">
-          <label htmlFor="password" className="placeholder">
-            Senha:
-          </label>
-          <input
-            onChange={(e) => {
-              getPassword(e, props.email);
-            }}
-            value={props.senha}
-            className="input-login"
-            type="password"
-            id="password"
-            required
           />
         </div>
         <div
+          onChange={(e) => {
+            setUser({ email: user.email, uid: e.target.value });
+          }}
+        >
+          <InputContainerLogin
+            props={{
+              classNameLabel: "placeholder",
+              nameInput: "Senha:",
+              classNameInput: "input-login",
+            }}
+          />
+        </div>
+
+        <div className="radio-group-login">
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">
+              <RadioGroup
+                row
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="radio-buttons-group"
+                className="radio-group"
+                onClick={() => {}}
+              >
+                <FormControlLabel
+                  onClick={(e) => {
+                    setColorMot("gray");
+                    setColorCli("black");
+                    setValueRadioGroup(e.target.value);
+                  }}
+                  value="motorista"
+                  control={<Radio />}
+                  label="Motorista"
+                  sx={{
+                    color: colorMot,
+                    "& .MuiSvgIcon-root": {
+                      color: colorMot,
+                    },
+                  }}
+                />
+                <FormControlLabel
+                  onClick={(e) => {
+                    setColorCli("gray");
+                    setColorMot("black");
+                    setValueRadioGroup(e.target.value);
+                  }}
+                  value="cliente"
+                  control={<Radio />}
+                  label="Cliente"
+                  sx={{
+                    color: colorCli,
+                    "& .MuiSvgIcon-root": {
+                      color: colorCli,
+                    },
+                  }}
+                />
+              </RadioGroup>
+            </FormLabel>
+          </FormControl>
+        </div>
+
+        <div
           onClick={() => {
-            navigate("/", { email: props.email, senha: props.senha });
+            if (
+              user.email != undefined ||
+              user.email != "" ||
+              user.uid != undefined ||
+              user.uid != "" ||
+              user != "{}"
+            ) {
+              if (valueRadioGroup == "motorista") {
+                loginDriver(setInfosLoginUserDriver, user);
+              } else if (valueRadioGroup == "cliente") {
+                loginCliente(setInfosLoginUserDriver, user);
+              }
+            }
           }}
           className="container-button-entrar"
         >

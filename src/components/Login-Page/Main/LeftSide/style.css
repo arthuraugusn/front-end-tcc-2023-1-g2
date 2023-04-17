@@ -33,6 +33,14 @@
   outline: none;
 }
 
+.radio-group-login {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .button-next {
   display: flex;
   align-items: center;
