@@ -3,7 +3,7 @@ import { InputContainer } from "./InputContainter";
 import { loadSchools } from "../../../api/client/loadSchools.js";
 import { loadTypetransport } from "../../../api/client/loadTypetransport.js";
 import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
-import { loadUserbyId } from "../../../api/client/loadUserbyId";
+// import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import "./style.css";
 import { useEffect, useState } from "react";
 
@@ -19,22 +19,16 @@ export const MainContractPage = ({ props }) => {
   const [school, setSchool] = useState([]);
   loadSchools(setSchool);
 
-  useEffect(() => {
-    loadSchools(setSchool);
-  }, []);
+  const [typesPayment, setTypeofPay] = useState([]);
+  loadTypeofPay(setTypeofPay);
 
   const [typesContracts, setTypesContracts] = useState([]);
 
   useEffect(() => {
+    loadSchools(setSchool);
     loadTypetransport(setTypesContracts);
-  }, []);
-
-  const [typesPayment, setTypeofPay] = useState([]);
-  loadTypeofPay(setTypeofPay);
-
-  useEffect(() => {
     loadTypeofPay(setTypeofPay);
-  }, []);
+  }, [school, typesPayment, typesContracts]);
 
   return (
     <main className="container-all-main-contract">
