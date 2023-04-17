@@ -1,12 +1,12 @@
 import api from "../api";
 
-export const loadTypetransport = (setTypesContracts) => {
+export const loadTypetransport = (setTypesTransport) => {
   api
     .get("typeContracts")
     .then((response) => {
-      setTypesContracts(response.data.typesContracts);
+      setTypesTransport(response.data.typesContracts);
     })
     .catch((err) => {
-      console.log("Erro: " + err);
+      console.log("Err" + err);
     });
 };

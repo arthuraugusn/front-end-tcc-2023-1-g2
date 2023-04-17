@@ -68,10 +68,7 @@ export const MainContractPage = ({ props }) => {
             >
               {typesContracts.map((typeOftheContract) => {
                 return (
-                  <option
-                    key={typeOftheContract.id}
-                    value={typeOftheContract.id}
-                  >
+                  <option value={typeOftheContract.id}>
                     {typeOftheContract.tipo_contrato}
                   </option>
                 );
