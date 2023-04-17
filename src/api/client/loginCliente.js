@@ -1,13 +1,13 @@
 import api from "../api";
 
-export const loadDriverByLogin = (setDriver, email, password) => {
+export const loginCliente = (setClient, cliente) => {
   api
     .post("user/login", {
-      email: email,
-      senha: password,
+      email: cliente.email,
+      senha: cliente.uid,
     })
     .then((response) => {
-      setDriver(response.data);
+      setClient(response.data);
     })
     .catch((err) => {
       console.log("Erro: " + err);

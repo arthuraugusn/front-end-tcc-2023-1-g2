@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faG } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faG } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
+import { loadDriverByLogin } from "../../../../api/driver/loginDriver";
+import { useState } from "react";
 
-export const RightSide = () => {
+export const RightSide = ({ props }) => {
   return (
     <div className="right-side">
       <span className="entry-text">
         Faça o login e conheça a nossa plataforma
       </span>
-      <button type="button" className="google-register">
+      <button
+        onClick={() => {
+          console.log(props);
+        }}
+        type="button"
+        className="google-register"
+      >
         <FontAwesomeIcon icon={faG} />
         Continuar com Google
       </button>
