@@ -7,7 +7,7 @@ export const loginCliente = (setClient, cliente) => {
       senha: cliente.uid,
     })
     .then((response) => {
-      setClient(response.data);
+      setClient(response);
     })
     .catch((err) => {
       console.log("Erro: " + err);

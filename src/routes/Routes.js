@@ -27,7 +27,7 @@ function RoutesApp() {
         <Route Component={CadastrarVanPage} path="/cadastro-van" />
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
-        <Route Component={ContractPage} path="/contract" />
+        <Route Component={ContractPage} props={true} path="/contract" />
       </Routes>
     </HashRouter>
   );
