@@ -6,6 +6,7 @@ import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
 // import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import "./style.css";
 import { useEffect, useState } from "react";
+import { loadContracts } from "../../../api/client/loadConcracts";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -17,18 +18,34 @@ export const MainContractPage = ({ props }) => {
   let contractJson = {};
 
   const [school, setSchool] = useState([]);
-  loadSchools(setSchool);
 
   const [typesPayment, setTypeofPay] = useState([]);
-  loadTypeofPay(setTypeofPay);
 
   const [typesContracts, setTypesContracts] = useState([]);
+  const [contracts, setContracts] = useState([]);
 
   useEffect(() => {
     loadSchools(setSchool);
     loadTypetransport(setTypesContracts);
     loadTypeofPay(setTypeofPay);
-  }, [school, typesPayment, typesContracts]);
+    loadContracts(setContracts)
+  }, []);
+
+  console.log(contracts);
+  const modeloVan = contracts.map(contract => {
+    const nomePassageiro =  contract.nome_passageiro
+    const modelo = contract.motorista.van.map(van =>{
+      return van.modelo.map(modelo =>{
+        return modelo.modelo
+      })
+    })
+    
+  })
+
+  const teste = () => {
+    console.log('teste');
+    
+  }  
 
   return (
     <main className="container-all-main-contract">
