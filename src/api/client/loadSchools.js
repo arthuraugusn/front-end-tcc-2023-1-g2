@@ -1,10 +1,10 @@
 import api from "../api";
 
-export const loadSchools = (setSchools) => {
+export const loadSchoolsDrivers = (setSchoolsDriver) => {
   api
     .get("schools")
     .then((response) => {
-      setSchools(response.data.schools);
+      setSchoolsDriver(response.data.schools);
     })
     .catch((err) => {
       console.log("Erro: " + err);

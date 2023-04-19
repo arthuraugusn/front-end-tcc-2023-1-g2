@@ -1,6 +1,6 @@
 import { ButtonNextContract } from "../Button";
 import { InputContainer } from "./InputContainter";
-import { loadSchools } from "../../../api/client/loadSchools.js";
+// import { loadSchools } from "../../../api/client/loadSchools.js";
 import { loadTypetransport } from "../../../api/client/loadTypetransport.js";
 import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
 // import { loadUserbyId } from "../../../api/client/loadUserbyId";
@@ -17,7 +17,7 @@ export const MainContractPage = ({ props }) => {
 
   let contractJson = {};
 
-  const [school, setSchool] = useState([]);
+  const [school, setSchoolDriver] = useState([]);
 
   const [typesPayment, setTypeofPay] = useState([]);
 
@@ -25,15 +25,16 @@ export const MainContractPage = ({ props }) => {
   const [contracts, setContracts] = useState([]);
 
   useEffect(() => {
-    loadSchools(setSchool);
+    // loadSchools(setSchool);
     loadTypetransport(setTypesContracts);
     loadTypeofPay(setTypeofPay);
     loadContracts(setContracts)
   }, []);
 
   console.log(contracts);
-  const modeloVan = contracts.map(contract => {
+  const Nomes = contracts.map(contract => {
     const nomePassageiro =  contract.nome_passageiro
+    const idadePassageiro = contract.idade_passageiro
     const modelo = contract.motorista.van.map(van =>{
       return van.modelo.map(modelo =>{
         return modelo.modelo
@@ -41,6 +42,16 @@ export const MainContractPage = ({ props }) => {
     })
     
   })
+
+  // const modeloVan = contracts.map(contract => {
+  //   const nomePassageiro =  contract.nome_passageiro
+  //   const modelo = contract.motorista.van.map(van =>{
+  //     return van.modelo.map(modelo =>{
+  //       return modelo.modelo
+  //     })
+  //   })
+    
+  // })
 
   const teste = () => {
     console.log('teste');
@@ -149,3 +160,29 @@ export const MainContractPage = ({ props }) => {
     </main>
   );
 };
+
+
+{
+  schools: [
+    {
+      id_escola: 1,
+      nome_motorista: 1,
+      nome_escola: 'teste'
+    },
+    {
+      id_escola: 1,
+      nome_motorista: 1,
+      nome_escola: 'teste'
+    },
+    {
+      id_escola: 1,
+      nome_motorista: 1,
+      nome_escola: 'teste'
+    },
+    {
+      id_escola: 1,
+      nome_motorista: 1,
+      nome_escola: 'teste'
+    },
+  ]
+}
