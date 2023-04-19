@@ -7,7 +7,7 @@ export const loginDriver = (setDriver, driver) => {
       senha: driver.uid,
     })
     .then((response) => {
-      setDriver(response.data);
+      setDriver({ data: response.data, code: response.status });
     })
     .catch((err) => {
       console.log("Erro: " + err);

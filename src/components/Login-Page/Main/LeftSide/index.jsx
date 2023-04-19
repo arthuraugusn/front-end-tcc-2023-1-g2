@@ -34,7 +34,9 @@ export const LeftSide = ({ prop }) => {
   const [user, setUser] = useState({ email: "", uid: "" });
 
   useEffect(() => {
-    prop(userDriverInfosLogin);
+    if (userDriverInfosLogin.code == 200) {
+      navigate("/", { state: userDriverInfosLogin.data });
+    }
   }, [userDriverInfosLogin]);
 
   return (
@@ -70,6 +72,9 @@ export const LeftSide = ({ prop }) => {
         </div>
 
         <div className="radio-group-login">
+          <div className="container-password">
+            <p>Esqueci minha senha</p>
+          </div>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">
               <RadioGroup

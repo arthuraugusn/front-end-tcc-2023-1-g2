@@ -8,7 +8,7 @@ import {
 import { Logo } from "../../Home-Page/Header/Logo";
 import { MenuBurguer } from "../../Home-Page/Header/MenuBurguer";
 
-export const FooterContractPage = () => {
+export const FooterContractPage = ({ props }) => {
   return (
     <>
       <footer>
@@ -29,10 +29,10 @@ export const FooterContractPage = () => {
         </div>
         <div className="footer-localization">
           <div className="menu-burguer-footer">
-            <MenuBurguer />
+            <MenuBurguer props={{ props: props }} />
           </div>
           <div className="logo-footer">
-            <Logo />
+            <Logo props={{ props: props }} />
             <span>©Copyright 2023 - Vanbora</span>
           </div>
         </div>

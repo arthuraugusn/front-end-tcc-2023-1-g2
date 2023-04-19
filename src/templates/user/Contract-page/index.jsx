@@ -3,12 +3,12 @@ import "../../reset/reset.css";
 import { FooterContractPage } from "../../../components/Contract-Page/Footer";
 import "./body.css";
 
-export default function ContractPage() {
+export default function ContractPage({ props }) {
   return (
     <>
       <div className="container-main-footer-contract">
         <MainContractPage></MainContractPage>
-        <FooterContractPage></FooterContractPage>
+        <FooterContractPage props={props}></FooterContractPage>
       </div>
     </>
   );

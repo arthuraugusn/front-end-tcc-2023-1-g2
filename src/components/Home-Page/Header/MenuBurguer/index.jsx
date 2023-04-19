@@ -2,9 +2,21 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 export const MenuBurguer = ({ props }) => {
+  const idUsuario = localStorage.getItem("idUsuario");
+
+  const [itensHeader, setItensHeader] = useState("none");
+
+  useEffect(() => {
+    if (idUsuario != undefined && idUsuario != null && idUsuario != "") {
+      setItensHeader("true");
+    }
+  }, [idUsuario]);
+
   const navigate = useNavigate();
+
   const Menu = () => {
     const menu = document.querySelector(".menu-burguer-container");
 
@@ -24,7 +36,7 @@ export const MenuBurguer = ({ props }) => {
         <nav className="nav-container">
           <li
             onClick={() => {
-              navigate("/motoristas");
+              navigate("/motoristas", { state: props });
             }}
             className={"nav-itens " + props}
           >
@@ -33,7 +45,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/contract");
+              navigate("/contract", { state: props });
             }}
             className={"nav-itens " + props}
           >
@@ -44,7 +56,7 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               navigate("/");
             }}
-            className={"nav-itens " + props}
+            className={`nav-itens ${props} ${itensHeader}`}
           >
             <FontAwesomeIcon icon={faBell} />
           </li>
@@ -53,7 +65,7 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               navigate("/");
             }}
-            className={"nav-itens " + props}
+            className={`nav-itens ${props} ${itensHeader}`}
           >
             <FontAwesomeIcon icon={faUser} />
           </li>
