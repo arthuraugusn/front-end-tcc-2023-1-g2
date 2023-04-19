@@ -20,6 +20,14 @@
   color: white;
 }
 
+.flex {
+  display: flex;
+}
+
+.none {
+  display: none;
+}
+
 .nav-itens {
   cursor: pointer;
   font-weight: 400;
@@ -30,7 +38,9 @@
   cursor: pointer;
   height: 3rem;
   width: 10rem;
-  background-color: #EEB600;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeb600;
   color: black;
   font-weight: bold;
   border-radius: 5px;

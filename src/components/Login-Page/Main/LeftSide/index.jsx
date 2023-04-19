@@ -35,7 +35,9 @@ export const LeftSide = ({ prop }) => {
 
   useEffect(() => {
     if (userDriverInfosLogin.code == 200) {
-      navigate("/", { state: userDriverInfosLogin.data });
+      navigate("/");
+      localStorage.setItem("idUsuario", userDriverInfosLogin.data.id);
+      localStorage.setItem("tokenJwt", userDriverInfosLogin.data.token);
     }
   }, [userDriverInfosLogin]);
 

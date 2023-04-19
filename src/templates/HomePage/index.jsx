@@ -9,27 +9,8 @@ function HomePage({ props }) {
   if (props == true) {
     props = "white";
   }
-  const location = useLocation();
 
   const [state, setState] = useState({});
-
-  const [headerItens, setHeaderItens] = useState({
-    idUsuario: 0,
-    status: false,
-  });
-
-  useEffect(() => {
-    setState(location.state);
-    if (state) {
-      setHeaderItens({
-        idUsuario: state.id,
-        status: true,
-        token: state.token,
-      });
-      localStorage.setItem("idUsuario", state.id);
-      localStorage.setItem("tokenJwt", state.token);
-    }
-  }, [state]);
 
   return (
     <>

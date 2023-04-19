@@ -7,11 +7,18 @@ import { useEffect, useState } from "react";
 export const MenuBurguer = ({ props }) => {
   const idUsuario = localStorage.getItem("idUsuario");
 
-  const [itensHeader, setItensHeader] = useState("none");
+  const [itensHeader, setItensHeader] = useState({
+    statusButton: "flex",
+    statusIcons: "none",
+  });
+
+  const [idIcon, setIdIcon] = useState("");
 
   useEffect(() => {
-    if (idUsuario != undefined && idUsuario != null && idUsuario != "") {
-      setItensHeader("true");
+    if ((idUsuario != undefined && idUsuario != "") || idUsuario != null) {
+      setItensHeader({ statusButton: "none", statusIcons: "true" });
+
+      setIdIcon(idUsuario.toString());
     }
   }, [idUsuario]);
 
@@ -56,16 +63,15 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               navigate("/");
             }}
-            className={`nav-itens ${props} ${itensHeader}`}
+            className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >
             <FontAwesomeIcon icon={faBell} />
           </li>
 
           <li
-            onClick={() => {
-              navigate("/");
-            }}
-            className={`nav-itens ${props} ${itensHeader}`}
+            id={idIcon}
+            onClick={() => {}}
+            className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >
             <FontAwesomeIcon icon={faUser} />
           </li>
@@ -74,7 +80,7 @@ export const MenuBurguer = ({ props }) => {
           onClick={() => {
             navigate("/login");
           }}
-          className={"button-login " + props}
+          className={`button-login ${props} ${itensHeader.statusButton}`}
         >
           Entrar / Registrar
         </button>
