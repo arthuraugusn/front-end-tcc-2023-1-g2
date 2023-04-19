@@ -70,7 +70,9 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             id={idIcon}
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/perfil");
+            }}
             className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >
             <FontAwesomeIcon icon={faUser} />
