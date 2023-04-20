@@ -1,7 +1,12 @@
 h1{
   font-family: "Mansalva", cursive;
-  font-size: 4rem;
-  color: var(--main-yellow);
+  font-size: 7rem;
+  color: var(--main-yellow);;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  width: 40vw;
 }
 
 .container-main-motoristas {
@@ -15,6 +20,7 @@ h1{
   display: flex;
   height: 130px;
   padding: 30px;
+  gap: 20px;
   justify-content: space-evenly;
 }
 
@@ -49,6 +55,7 @@ h1{
   border-radius: 35px;
   border: none;
   text-decoration: none;
+  outline-color: var(--main-yellow);
   width: 300px;
   font-size: 1.5rem;
   justify-content: center;
