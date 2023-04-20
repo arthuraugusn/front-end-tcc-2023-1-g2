@@ -28,20 +28,19 @@ export const MainContractPage = ({ props }) => {
     // loadSchools(setSchool);
     loadTypetransport(setTypesContracts);
     loadTypeofPay(setTypeofPay);
-    loadContracts(setContracts)
+    loadContracts(setContracts);
   }, []);
 
   console.log(contracts);
-  const Nomes = contracts.map(contract => {
-    const nomePassageiro =  contract.nome_passageiro
-    const idadePassageiro = contract.idade_passageiro
-    const modelo = contract.motorista.van.map(van =>{
-      return van.modelo.map(modelo =>{
-        return modelo.modelo
-      })
-    })
-    
-  })
+  const Nomes = contracts.map((contract) => {
+    const nomePassageiro = contract.nome_passageiro;
+    const idadePassageiro = contract.idade_passageiro;
+    const modelo = contract.motorista.van.map((van) => {
+      return van.modelo.map((modelo) => {
+        return modelo.modelo;
+      });
+    });
+  });
 
   // const modeloVan = contracts.map(contract => {
   //   const nomePassageiro =  contract.nome_passageiro
@@ -50,13 +49,12 @@ export const MainContractPage = ({ props }) => {
   //       return modelo.modelo
   //     })
   //   })
-    
+
   // })
 
   const teste = () => {
-    console.log('teste');
-    
-  }  
+    console.log("teste");
+  };
 
   return (
     <main className="container-all-main-contract">
@@ -160,29 +158,3 @@ export const MainContractPage = ({ props }) => {
     </main>
   );
 };
-
-
-{
-  schools: [
-    {
-      id_escola: 1,
-      nome_motorista: 1,
-      nome_escola: 'teste'
-    },
-    {
-      id_escola: 1,
-      nome_motorista: 1,
-      nome_escola: 'teste'
-    },
-    {
-      id_escola: 1,
-      nome_motorista: 1,
-      nome_escola: 'teste'
-    },
-    {
-      id_escola: 1,
-      nome_motorista: 1,
-      nome_escola: 'teste'
-    },
-  ]
-}

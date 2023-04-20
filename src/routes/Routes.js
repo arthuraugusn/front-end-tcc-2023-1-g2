@@ -8,6 +8,7 @@ import HomePage from "../templates/HomePage";
 import ContractPage from "../templates/user/Contract-page";
 import { DadosAdicionaisDriverPage } from "../templates/driver/DadosAdicionaisDriver";
 import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
+import { PerfilPage } from "../templates/PerfilPage";
 
 function RoutesApp() {
   return (
@@ -28,6 +29,7 @@ function RoutesApp() {
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
         <Route Component={ContractPage} props={true} path="/contract" />
+        <Route Component={PerfilPage} path="/perfil" />
       </Routes>
     </HashRouter>
   );
