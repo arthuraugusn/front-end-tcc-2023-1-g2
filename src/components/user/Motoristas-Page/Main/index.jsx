@@ -24,7 +24,6 @@ export const MainMotoristasPage = ({ props }) => {
       </div>
       <div className="box-input-filter">
         <InputSearchItens props={itensInput}></InputSearchItens>
-        {/* <InputSearch props={itensInput}></InputSearch> */}
         <select name="filtros" id="select-filter-container">
           <option value="">a</option>
           <option value="">b</option>
