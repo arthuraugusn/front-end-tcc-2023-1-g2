@@ -16,7 +16,7 @@ export const FotoPerfilRegistro = ({ props }) => {
   return (
     <div className="container-foto-perfil">
       <label className="form-picture-label">
-        <p>Foto de Perfil:</p>
+        <p>Foto de Perfil</p>
         <input
           onChange={async (e) => {
             await OnChangeFunction(

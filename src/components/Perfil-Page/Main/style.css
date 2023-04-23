@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: auto;
   padding-top: 20px;
   padding-bottom: 20px;
   gap: 30px;
@@ -13,14 +13,56 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  height: 90%;
+  height: auto;
   align-items: center;
   background-color: var(--main-yellow);
   border-radius: 20px;
+  padding: 20px;
+}
+
+.container-h1-perfil {
+  font-family: "Mansalva", cursive;
+}
+
+.container-inputs-perfil-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.container-inputs-perfil-first {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.inputs-perfil {
+  padding-bottom: 30px;
+}
+
+.input-perfil-email {
+  padding-bottom: 30px;
+}
+
+.container-inputs-perfil-passwords {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
 }
 
 .container-buttons-perfil {
   display: flex;
   width: 80%;
   justify-content: space-evenly;
+}
+
+.container-picture-perfil div label p {
+  text-align: center;
 }
