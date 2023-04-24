@@ -25,7 +25,8 @@ export const FotoPerfilRegistro = ({ props }) => {
               setClassImg,
               setClassIcon,
               setImageFirebase,
-              props.folder
+              props.folder,
+              props.setUrlImg
             );
           }}
           className="input-picture"
@@ -49,7 +50,8 @@ const OnChangeFunction = async (
   setClassForImage,
   setClassForIcon,
   setImageFirebase,
-  nameDirectFolder
+  nameDirectFolder,
+  setUrlImg
 ) => {
   var file = new FileReader();
 
@@ -76,4 +78,6 @@ const OnChangeFunction = async (
   };
 
   previewPhoto.id = photo.url;
+
+  setUrlImg({ img: photo.url });
 };
