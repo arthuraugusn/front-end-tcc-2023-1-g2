@@ -28,6 +28,7 @@ function RoutesApp() {
         <Route Component={CadastrarVanPage} path="/cadastro-van" />
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
+        {/* <Route Component={contractsPage} props={true} path="/constracts"/> */}
         <Route Component={ContractPage} props={true} path="/contract" />
         <Route Component={PerfilPage} path="/perfil" />
       </Routes>

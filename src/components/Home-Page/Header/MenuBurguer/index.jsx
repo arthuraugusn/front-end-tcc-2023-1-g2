@@ -52,7 +52,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/contract", { state: props });
+              navigate("/allcontractsPage", { state: props });
             }}
             className={"nav-itens " + props}
           >
