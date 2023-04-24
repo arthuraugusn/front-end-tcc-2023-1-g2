@@ -71,11 +71,23 @@ export const MenuBurguer = ({ props }) => {
           <li
             id={idIcon}
             onClick={() => {
-              navigate("/perfil");
+              /* navigate("/perfil"); */
             }}
-            className={`nav-itens ${props} ${itensHeader.statusIcons}`}
+            className={`nav-itens ${props} dropdown ${itensHeader.statusIcons}`}
           >
-            <FontAwesomeIcon icon={faUser} />
+            <div className="dropbtn">
+              <FontAwesomeIcon icon={faUser} />
+            </div>
+            <div class="dropdown-content">
+              <p
+                onClick={() => {
+                  navigate("/perfil");
+                }}
+              >
+                Perfil
+              </p>
+              <p>Logout</p>
+            </div>
           </li>
         </nav>
         <button
