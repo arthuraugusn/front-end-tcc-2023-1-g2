@@ -25,7 +25,9 @@ export const Card = ({ driver }) => {
             <div className="infos-contratar">
               <div className="infos-motorista">
                 <p className="info idade">Idade: 47 anos</p>
-                <p className="info vagas">Vagas disponíveis: 3</p>
+                <p className="info vagas">
+                  Vagas disponíveis: {drivers.van[0].quantidade_vagas}
+                </p>
                 <p className="info tempo-carreira">Tempo de carreira: 3 anos</p>
               </div>
               <div className="button-contratar">

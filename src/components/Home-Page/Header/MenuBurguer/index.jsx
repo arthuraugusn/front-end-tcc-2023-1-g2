@@ -5,7 +5,7 @@ import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 export const MenuBurguer = ({ props }) => {
-  const idUsuario = localStorage.getItem("idUsuario");
+  const idUsuario = localStorage.getItem("id");
 
   const [itensHeader, setItensHeader] = useState({
     statusButton: "flex",

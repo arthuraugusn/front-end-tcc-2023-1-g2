@@ -1,23 +1,20 @@
 import api from "../api";
 
-export const registerUserClient = (user, setResponseError) => {
+export const updateUser = (user, id, setStatusCode) => {
   api
-    .post("user", {
+    .put(`user/${id}`, {
       email: `${user.email}`,
       nome: `${user.nome}`,
       rg: `${user.rg}`,
       cpf: `${user.cpf}`,
       telefone: `${user.telefone}`,
       data_nascimento: `${user.data_nascimento}`,
-      senha: `${user.senha}`,
-      foto: `${user.img}`,
+      senha: `${user.nova_senha}`,
+      foto: `${user.foto}`,
       cep: `${user.cep}`,
-      status_usuario: user.status_usuario,
+      status_usuario: 1,
     })
     .then((response) => {
-      setResponseError(response);
-    })
-    .catch((err) => {
-      setResponseError(err);
+      setStatusCode(response.status);
     });
 };

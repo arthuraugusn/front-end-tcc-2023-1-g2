@@ -7,7 +7,11 @@ export const loginCliente = (setClient, cliente) => {
       senha: cliente.uid,
     })
     .then((response) => {
-      setClient(response);
+      setClient({
+        data: response.data,
+        code: response.status,
+        status_user_driver: 2,
+      });
     })
     .catch((err) => {
       console.log("Erro: " + err);
