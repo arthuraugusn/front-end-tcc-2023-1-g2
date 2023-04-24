@@ -5,26 +5,22 @@ import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 
-export const FormFirstInfos = () => {
+export const FormFirstInfos = ({ props }) => {
   const propsSalvarUsuario = {
     key: "button-save-client",
     label: "Salvar",
     nav: "#",
   };
 
-  let userJson = {};
-
-  const [responseError, setResponseError] = useState("");
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(responseError);
+    console.log(props.responseError);
 
-    if (responseError.status == 201) {
+    if (props.responseError.status == 201) {
       navigate("/login");
     }
-  }, [responseError]);
+  }, [props.responseError]);
 
   const location = useLocation();
 
@@ -35,7 +31,14 @@ export const FormFirstInfos = () => {
           <div className="container-rg-cpf">
             <div
               onChange={(e) => {
-                userJson.rg = e.target.value;
+                props.setUser({
+                  img: props.user.img,
+                  rg: e.target.value,
+                  cpf: props.user.cpf,
+                  data_nascimento: props.user.data_nascimento,
+                  cep: props.user.cep,
+                  telefone: props.user.telefone,
+                });
               }}
             >
               <InputContainer
@@ -48,7 +51,14 @@ export const FormFirstInfos = () => {
             </div>
             <div
               onChange={(e) => {
-                userJson.cpf = e.target.value;
+                props.setUser({
+                  img: props.user.img,
+                  rg: props.user.rg,
+                  cpf: e.target.value,
+                  data_nascimento: props.user.data_nascimento,
+                  cep: props.user.cep,
+                  telefone: props.user.telefone,
+                });
               }}
             >
               <InputContainer
@@ -63,7 +73,15 @@ export const FormFirstInfos = () => {
           <div className="container-datanasc-cep">
             <div
               onChange={(e) => {
-                userJson.data_nascimento = e.target.value;
+                console.log(e.target.value);
+                props.setUser({
+                  img: props.user.img,
+                  rg: props.user.rg,
+                  cpf: props.user.cpf,
+                  data_nascimento: e.target.value,
+                  cep: props.user.cep,
+                  telefone: props.user.telefone,
+                });
               }}
             >
               <InputContainer
@@ -76,7 +94,14 @@ export const FormFirstInfos = () => {
             </div>
             <div
               onChange={(e) => {
-                userJson.cep = e.target.value;
+                props.setUser({
+                  img: props.user.img,
+                  rg: props.user.rg,
+                  cpf: props.user.cpf,
+                  data_nascimento: props.user.data_nascimento,
+                  cep: e.target.value,
+                  telefone: props.user.telefone,
+                });
               }}
             >
               <InputContainer
@@ -92,7 +117,14 @@ export const FormFirstInfos = () => {
         <div
           className="container-telefone"
           onChange={(e) => {
-            userJson.telefone = e.target.value;
+            props.setUser({
+              img: props.user.img,
+              rg: props.user.rg,
+              cpf: props.user.cpf,
+              data_nascimento: props.user.data_nascimento,
+              cep: props.user.cep,
+              telefone: e.target.value,
+            });
           }}
         >
           <InputContainer
@@ -107,14 +139,19 @@ export const FormFirstInfos = () => {
       <div
         className="button-save-client"
         onClick={() => {
-          userJson.nome = location.state.name;
-          userJson.email = location.state.email;
-          userJson.senha = location.state.uid;
-          userJson.foto = document.querySelector(".img-preview").id;
-          userJson.status_usuario = 1;
-          if (userJson) {
-            registerUserClient(userJson, setResponseError);
-          }
+          props.setUser({
+            img: props.user.img,
+            rg: props.user.rg,
+            cpf: props.user.cpf,
+            data_nascimento: props.user.data_nascimento,
+            cep: props.user.cep,
+            telefone: props.user.telefone,
+            nome: location.state.name,
+            email: location.state.email,
+            senha: location.state.uid,
+            status_usuario: 1,
+            status_finalizado: 1,
+          });
         }}
       >
         <ButtonSalvarUsuario props={propsSalvarUsuario}></ButtonSalvarUsuario>

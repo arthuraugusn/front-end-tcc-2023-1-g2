@@ -35,10 +35,15 @@ export const LeftSide = ({ prop }) => {
 
   useEffect(() => {
     if (userDriverInfosLogin.code == 200) {
-      navigate("/");
-      console.log(userDriverInfosLogin);
-      localStorage.setItem("idUsuario", userDriverInfosLogin.data.id);
+      localStorage.setItem(
+        "status_user_driver",
+        userDriverInfosLogin.status_user_driver
+      );
+      localStorage.setItem("id", userDriverInfosLogin.data.id);
+
       localStorage.setItem("tokenJwt", userDriverInfosLogin.data.token);
+
+      navigate("/");
     }
   }, [userDriverInfosLogin]);
 
