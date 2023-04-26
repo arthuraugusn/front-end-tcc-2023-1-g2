@@ -14,6 +14,8 @@ export const MenuBurguer = ({ props }) => {
 
   const [idIcon, setIdIcon] = useState("");
 
+  const [statusLogout, setStatusLogout] = useState(0);
+
   useEffect(() => {
     if ((idUsuario != undefined && idUsuario != "") || idUsuario != null) {
       setItensHeader({ statusButton: "none", statusIcons: "true" });
@@ -21,6 +23,14 @@ export const MenuBurguer = ({ props }) => {
       setIdIcon(idUsuario.toString());
     }
   }, [idUsuario]);
+
+  useEffect(() => {
+    if (statusLogout == 1) {
+      console.log(1);
+      localStorage.clear();
+      window.location.reload();
+    }
+  }, [statusLogout]);
 
   const navigate = useNavigate();
 
@@ -73,12 +83,12 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               /* navigate("/perfil"); */
             }}
-            className={`nav-itens ${props} dropdown ${itensHeader.statusIcons}`}
+            className={`dropdown nav-itens ${props}  ${itensHeader.statusIcons}`}
           >
-            <div className="dropbtn">
+            <div className={`dropbtn ${props}`}>
               <FontAwesomeIcon icon={faUser} />
             </div>
-            <div class="dropdown-content">
+            <div className="dropdown-content-perfil">
               <p
                 onClick={() => {
                   navigate("/perfil");
@@ -86,7 +96,13 @@ export const MenuBurguer = ({ props }) => {
               >
                 Perfil
               </p>
-              <p>Logout</p>
+              <p
+                onClick={() => {
+                  setStatusLogout(1);
+                }}
+              >
+                Logout
+              </p>
             </div>
           </li>
         </nav>

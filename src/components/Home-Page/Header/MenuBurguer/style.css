@@ -110,7 +110,6 @@
 
 /* Estilo para o botão do menu */
 .dropbtn {
-  color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -124,7 +123,7 @@
 }
 
 /* Estilo para o conteúdo do menu dropdown */
-.dropdown-content {
+.dropdown-content-perfil {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -133,7 +132,7 @@
 }
 
 /* Estilo para os links do menu dropdown */
-.dropdown-content a {
+.dropdown-content-perfil p {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -141,17 +140,17 @@
 }
 
 /* Estilo para o link do menu dropdown quando o mouse passa por cima */
-.dropdown-content a:hover {
+.dropdown-content-perfil p:hover {
   background-color: #f1f1f1;
 }
 
 /* Estilo para mostrar o menu dropdown quando o botão é clicado */
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content-perfil {
   display: block;
 }
 
 /* Estilo para a animação do menu dropdown */
-.dropdown-content {
+.dropdown-content-perfil {
   animation-name: slide-down;
   animation-duration: 0.5s;
 }
