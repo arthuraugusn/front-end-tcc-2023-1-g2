@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { deleteUser } from "../../../api/client/deleteUser";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import { updateUser } from "../../../api/client/updateUser";
+import { loadDriverById } from "../../../api/driver/loadDriverById";
 import { ButtonsSaveDeletePerfil } from "./Button";
 import { FotoPerfilPage } from "./Inputs/FotoPerfil";
 import { InputInfosPerfil } from "./Inputs/InputInfos";
@@ -26,6 +27,9 @@ export const MainPerfilPage = () => {
 
     if (statusUserDriver == 2) {
       loadUserbyId(id, setPerfil);
+    }
+    if (statusUserDriver == 1) {
+      loadDriverById(id, setPerfil);
     }
   }, [perfil]);
 
@@ -301,6 +305,8 @@ export const MainPerfilPage = () => {
           onClick={() => {
             if (statusUserDriver == 2) {
               deleteUser(perfil, setStatusCode);
+            }
+            if (statusUserDriver == 1) {
             }
           }}
         >

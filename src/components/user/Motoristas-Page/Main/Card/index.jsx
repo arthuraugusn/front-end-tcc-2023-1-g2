@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import "./style.css";
 
 export const Card = ({ driver }) => {
@@ -13,10 +13,7 @@ export const Card = ({ driver }) => {
           className="card-driver"
         >
           <div className="container-image">
-            <img
-              src={drivers.foto}
-              /* trocar url por foto */ alt="Foto motorista"
-            />
+            <img src={drivers.foto} alt="Foto motorista" />
           </div>
           <div className="container-all-infos">
             <div className="nome-score">

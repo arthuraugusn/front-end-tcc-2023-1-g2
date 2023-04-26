@@ -5,6 +5,8 @@ import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 export const MenuBurguer = ({ props }) => {
+  const navigate = useNavigate();
+
   const idUsuario = localStorage.getItem("id");
 
   const [itensHeader, setItensHeader] = useState({
@@ -28,11 +30,10 @@ export const MenuBurguer = ({ props }) => {
     if (statusLogout == 1) {
       console.log(1);
       localStorage.clear();
+      navigate("/");
       window.location.reload();
     }
   }, [statusLogout]);
-
-  const navigate = useNavigate();
 
   const Menu = () => {
     const menu = document.querySelector(".menu-burguer-container");
