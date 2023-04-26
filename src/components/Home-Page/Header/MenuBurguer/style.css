@@ -107,3 +107,61 @@
     transform: translate(0);
   }
 }
+
+/* Estilo para o botão do menu */
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilo para o menu dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo para o conteúdo do menu dropdown */
+.dropdown-content-perfil {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Estilo para os links do menu dropdown */
+.dropdown-content-perfil p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Estilo para o link do menu dropdown quando o mouse passa por cima */
+.dropdown-content-perfil p:hover {
+  background-color: #f1f1f1;
+}
+
+/* Estilo para mostrar o menu dropdown quando o botão é clicado */
+.dropdown:hover .dropdown-content-perfil {
+  display: block;
+}
+
+/* Estilo para a animação do menu dropdown */
+.dropdown-content-perfil {
+  animation-name: slide-down;
+  animation-duration: 0.5s;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
