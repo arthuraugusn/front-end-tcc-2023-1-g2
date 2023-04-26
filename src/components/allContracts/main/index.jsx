@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import "Style.css"
+import "./style.css"
 
-exports const ContractsPage = () =>{
+export const ContractsPage = () =>{
   return
     
 }
