@@ -1,15 +1,13 @@
-import { FooterContractPage } from '../../components/Contract-Page/Footer'
+import { FooterContractPage } from "../../components/Contract-Page/Footer";
 
-
- const ContractsPage = () =>{
-  return(
+const AllContractsPage = () => {
+  return (
     <>
-    <div className="container-main-footer-allContracts">
-      <ContractsPage></ContractsPage>
-      <FooterContractPage></FooterContractPage> 
-    </div>
-  </>
-  )
-}
+      <div className="container-main-footer-allContracts">
+        <FooterContractPage></FooterContractPage>
+      </div>
+    </>
+  );
+};
 
-export default ContractsPage
+export default AllContractsPage;
