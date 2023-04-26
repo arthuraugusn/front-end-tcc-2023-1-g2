@@ -9,9 +9,16 @@ export const MenuBurguer = ({ props }) => {
 
   const idUsuario = localStorage.getItem("id");
 
+  const statusUserDriver = localStorage.getItem("status_user_driver");
+
   const [itensHeader, setItensHeader] = useState({
     statusButton: "flex",
     statusIcons: "none",
+  });
+
+  const [statusHeaderDriverUser, setStatusHeaderDriverUser] = useState({
+    status_motorista: "none",
+    status_user: "none",
   });
 
   const [idIcon, setIdIcon] = useState("");
@@ -24,7 +31,19 @@ export const MenuBurguer = ({ props }) => {
 
       setIdIcon(idUsuario.toString());
     }
-  }, [idUsuario]);
+
+    if (statusUserDriver == 1) {
+      setStatusHeaderDriverUser({
+        status_motorista: "true",
+        status_user: "none",
+      });
+    } else if (statusUserDriver == 2) {
+      setStatusHeaderDriverUser({
+        status_motorista: "none",
+        status_user: "true",
+      });
+    }
+  }, [idUsuario, statusUserDriver]);
 
   useEffect(() => {
     if (statusLogout == 1) {
@@ -56,7 +75,34 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               navigate("/motoristas", { state: props });
             }}
-            className={"nav-itens " + props}
+            className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
+          >
+            Seus Contratos
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/motoristas", { state: props });
+            }}
+            className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
+          >
+            Suas Vans
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/motoristas", { state: props });
+            }}
+            className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
+          >
+            Suas Escolas
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/motoristas", { state: props });
+            }}
+            className={`nav-itens ${props} ${statusHeaderDriverUser.status_user}`}
           >
             Motoristas
           </li>
@@ -65,7 +111,7 @@ export const MenuBurguer = ({ props }) => {
             onClick={() => {
               navigate("/contracts", { state: props });
             }}
-            className={"nav-itens " + props}
+            className={`nav-itens ${props} ${statusHeaderDriverUser.status_user}`}
           >
             Seus Contratos
           </li>

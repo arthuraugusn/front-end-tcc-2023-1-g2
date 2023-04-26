@@ -73,7 +73,6 @@ export const FormFirstInfos = ({ props }) => {
           <div className="container-datanasc-cep">
             <div
               onChange={(e) => {
-                console.log(e.target.value);
                 props.setUser({
                   img: props.user.img,
                   rg: props.user.rg,
@@ -86,6 +85,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
+                  type: "date",
                   classNameLabel: "placeholder",
                   nameInput: "Data de nascimento:",
                   classNameInput: "inputs-more-infos",

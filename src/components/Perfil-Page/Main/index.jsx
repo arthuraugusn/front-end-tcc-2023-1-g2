@@ -16,6 +16,8 @@ export const MainPerfilPage = () => {
 
   const [perfil, setPerfil] = useState({});
 
+  const [data, setData] = useState({ ano: "", mes: "", dia: "" });
+
   const [user, setUser] = useState({});
 
   const [statusCode, setStatusCode] = useState(0);
@@ -34,7 +36,18 @@ export const MainPerfilPage = () => {
   }, [perfil]);
 
   useEffect(() => {
-    console.log(statusCode);
+    const dataNascimentoUsuario = perfil.data_nascimento;
+
+    if (dataNascimentoUsuario != undefined) {
+      setData({
+        ano: dataNascimentoUsuario.split("/")[2],
+        mes: dataNascimentoUsuario.split("/")[1],
+        dia: dataNascimentoUsuario.split("/")[0],
+      });
+    }
+  }, [perfil]);
+
+  useEffect(() => {
     if (statusCode == 200) {
       navigate("/");
       localStorage.clear();
@@ -152,7 +165,8 @@ export const MainPerfilPage = () => {
               >
                 <InputInfosPerfil
                   props={{
-                    placeholder: perfil.data_nascimento,
+                    type: "date",
+                    placeholder: `${data.ano}-${data.mes}-${data.dia}`,
                     classNameLabel: "placeholder",
                     nameInput: "Data de nascimento:",
                     classNameInput: "inputs-more-infos",
@@ -294,7 +308,8 @@ export const MainPerfilPage = () => {
       <div className="container-buttons-perfil">
         <div
           onClick={() => {
-            updateUser(user, perfil.id, setStatusCode);
+            console.log(user);
+            /* updateUser(user, perfil.id, setStatusCode); */
           }}
         >
           <ButtonsSaveDeletePerfil

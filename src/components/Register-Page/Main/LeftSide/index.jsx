@@ -22,7 +22,7 @@ export const LeftSide = () => {
       <span className="entry-text">
         Cadastre-se e conheça a nossa plataforma
       </span>
-      <button
+      {/* <button
         type="button"
         className="google-register"
         id="button-register-google"
@@ -32,7 +32,7 @@ export const LeftSide = () => {
       >
         <FontAwesomeIcon icon={faG} />
         Continuar com Google
-      </button>
+      </button> */}
 
       <div className="bottom-text">
         <span className="thin-text">Já tem uma conta?</span>

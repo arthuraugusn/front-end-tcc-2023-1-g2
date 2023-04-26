@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import "./style.css";
 
 export const InputContainer = ({ props }) => {
@@ -10,6 +12,7 @@ export const InputContainer = ({ props }) => {
         type={props.type}
         placeholder={props.placeholder}
         className={props.classNameInput}
+        value={props.value}
       />
     </div>
   );

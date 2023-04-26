@@ -11,7 +11,7 @@ export const RightSide = ({ props }) => {
       <span className="entry-text">
         Faça o login e conheça a nossa plataforma
       </span>
-      <button
+      {/*       <button
         onClick={() => {
           console.log(props);
         }}
@@ -20,7 +20,7 @@ export const RightSide = ({ props }) => {
       >
         <FontAwesomeIcon icon={faG} />
         Continuar com Google
-      </button>
+      </button> */}
       <div className="bottom-text">
         <span className="thin-text">Não tem uma conta?</span>
         <Link to="/register">
