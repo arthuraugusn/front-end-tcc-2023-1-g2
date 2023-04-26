@@ -1,8 +1,15 @@
-import { FooterContractPage } from "../../../components/Contract-Page/Footer";
+import { FooterContractPage } from '../../components/Contract-Page/Footer'
 
-export default const contractsPage = () =>{
+
+ const ContractsPage = () =>{
   return(
-    
-    
+    <>
+    <div className="container-main-footer-allContracts">
+      <ContractsPage></ContractsPage>
+      <FooterContractPage></FooterContractPage> 
+    </div>
+  </>
   )
 }
+
+export default ContractsPage
