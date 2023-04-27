@@ -9,7 +9,7 @@ import ContractPage from "../templates/user/Contract-page";
 import { DadosAdicionaisDriverPage } from "../templates/driver/DadosAdicionaisDriver";
 import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
 import { PerfilPage } from "../templates/PerfilPage";
-import AllContracts from "../templates/All-Contracts";
+import AllContracts from "../templates/All-Contracts/body";
 
 function RoutesApp() {
   return (
