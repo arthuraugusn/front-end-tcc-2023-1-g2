@@ -42,10 +42,6 @@ h1{
   border-radius: 15px;
 }
 
-.box-motoristas-card::-webkit-scrollbar-thumb {
-  background-color: var(--button-contract-yellow);
-  border-radius: 15px;
-}
 
 #select-filter-container {
   display: flex;
