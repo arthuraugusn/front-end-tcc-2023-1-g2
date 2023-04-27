@@ -4,3 +4,8 @@
   align-items: center;
   height: 100%;
 }
+
+.allContracts-container::-webkit-scrollbar-thumb {
+  background-color: var(--button-contract-yellow);
+  border-radius: 15px;
+}
