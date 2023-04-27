@@ -16,8 +16,6 @@ export const MainDadosAdicionaisUser = () => {
 
   useEffect(() => {
     if (user.status_finalizado == 1) {
-      console.log(user);
-
       if (
         user.img == undefined ||
         user.img == "" ||
@@ -63,7 +61,6 @@ export const MainDadosAdicionaisUser = () => {
             props={{
               folder: "users-profile-picture",
               setUrlImg: setUserInfos,
-              user: user,
             }}
           ></FotoPerfilRegistro>
           <FormFirstInfos

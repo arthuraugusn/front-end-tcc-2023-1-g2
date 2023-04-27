@@ -5,26 +5,15 @@ import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarMotorista, ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 
-export const FormsInfosDriver = () => {
+export const FormsInfosDriver = ({ props }) => {
   const propsSalvarMotorista = {
     key: "button-save-client",
     label: "Avançar",
   };
 
-  let driverJson = {};
-
   const [responseError, setResponseError] = useState("");
 
-  const [cpfNavigate, setCpfNavigate] = useState("");
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(responseError);
-    if (responseError.status == 201) {
-      navigate("/cadastro-van", { state: cpfNavigate });
-    }
-  }, [responseError]);
 
   const location = useLocation();
 
@@ -36,11 +25,23 @@ export const FormsInfosDriver = () => {
             <div className="container-rg-cpf-telefone-driver">
               <div
                 onChange={(e) => {
-                  driverJson.rg = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: e.target.value,
+                    cpf: props.driver.cpf,
+                    telefone: props.driver.telefone,
+                    data_nascimento: props.driver.data_nascimento,
+                    cnh: props.driver.cnh,
+                    inicio_carreira: props.driver.inicio_carreira,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     classNameLabel: "placeholder",
                     nameInput: "RG:",
                     classNameInput: "inputs-more-infos",
@@ -49,11 +50,23 @@ export const FormsInfosDriver = () => {
               </div>
               <div
                 onChange={(e) => {
-                  driverJson.cpf = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: props.driver.rg,
+                    cpf: e.target.value,
+                    telefone: props.driver.telefone,
+                    data_nascimento: props.driver.data_nascimento,
+                    cnh: props.driver.cnh,
+                    inicio_carreira: props.driver.inicio_carreira,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     classNameLabel: "placeholder",
                     nameInput: "CPF:",
                     classNameInput: "inputs-more-infos",
@@ -62,11 +75,23 @@ export const FormsInfosDriver = () => {
               </div>
               <div
                 onChange={(e) => {
-                  driverJson.telefone = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: props.driver.rg,
+                    cpf: props.driver.cpf,
+                    telefone: e.target.value,
+                    data_nascimento: props.driver.data_nascimento,
+                    cnh: props.driver.cnh,
+                    inicio_carreira: props.driver.inicio_carreira,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     classNameLabel: "placeholder",
                     nameInput: "Telefone:",
                     classNameInput: "inputs-more-infos",
@@ -77,11 +102,23 @@ export const FormsInfosDriver = () => {
             <div className="container-datanasc-cnh-datainic-driver">
               <div
                 onChange={(e) => {
-                  driverJson.data_nascimento = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: props.driver.rg,
+                    cpf: props.driver.cpf,
+                    telefone: props.driver.telefone,
+                    data_nascimento: e.target.value,
+                    cnh: props.driver.cnh,
+                    inicio_carreira: props.driver.inicio_carreira,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     type: "date",
                     classNameLabel: "placeholder",
                     nameInput: "Data de nascimento:",
@@ -91,11 +128,23 @@ export const FormsInfosDriver = () => {
               </div>
               <div
                 onChange={(e) => {
-                  driverJson.cnh = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: props.driver.rg,
+                    cpf: props.driver.cpf,
+                    telefone: props.driver.telefone,
+                    data_nascimento: props.driver.data_nascimento,
+                    cnh: e.target.value,
+                    inicio_carreira: props.driver.inicio_carreira,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     classNameLabel: "placeholder",
                     nameInput: "CNH:",
                     classNameInput: "inputs-more-infos",
@@ -104,11 +153,23 @@ export const FormsInfosDriver = () => {
               </div>
               <div
                 onChange={(e) => {
-                  driverJson.inicio_carreira = e.target.value;
+                  props.setDriverInfos({
+                    nome: location.state.nome,
+                    email: location.state.email,
+                    senha: location.state.senha,
+                    img: props.driver.img,
+                    rg: props.driver.rg,
+                    cpf: props.driver.cpf,
+                    telefone: props.driver.telefone,
+                    data_nascimento: props.driver.data_nascimento,
+                    cnh: props.driver.cnh,
+                    inicio_carreira: e.target.value,
+                  });
                 }}
               >
                 <InputContainer
                   props={{
+                    status: props.statusInput,
                     type: "date",
                     classNameLabel: "placeholder",
                     nameInput: "Data de início de carreira",
@@ -121,17 +182,22 @@ export const FormsInfosDriver = () => {
           <div
             className="button-save-driver"
             onClick={() => {
-              driverJson.nome = location.state.name;
-              driverJson.email = location.state.email;
-              driverJson.senha = location.state.uid;
-              driverJson.foto = document.querySelector(".img-preview").id;
-              driverJson.descricao = "";
-              driverJson.status_motorista = 1;
-              driverJson.avaliacao = 10;
-              if (driverJson) {
-                registerDriverClient(driverJson, setResponseError);
-                setCpfNavigate(driverJson.cpf);
-              }
+              props.setDriverInfos({
+                nome: location.state.nome,
+                email: location.state.email,
+                senha: location.state.senha,
+                img: props.driver.img,
+                rg: props.driver.rg,
+                cpf: props.driver.cpf,
+                telefone: props.driver.telefone,
+                data_nascimento: props.driver.data_nascimento,
+                cnh: props.driver.cnh,
+                inicio_carreira: props.driver.inicio_carreira,
+                descricao: "",
+                status_motorista: 1,
+                avaliacao: 10,
+                status_finalizado: 1,
+              });
             }}
           >
             <ButtonSalvarMotorista props={propsSalvarMotorista} />

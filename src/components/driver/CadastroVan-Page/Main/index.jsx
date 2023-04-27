@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverByCpf } from "../../../../api/driver/loadDriverByCpf";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import { registerVanDriver } from "../../../../api/driver/van/registerVanDriver";
@@ -10,18 +10,16 @@ import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
 
 export const MainDadosVan = () => {
-  const fotoInfosVan = {
-    folder: "vans-profile-picture",
-  };
-
   const propsSalvarVan = {
     key: "button-save-van",
     label: "Salvar",
   };
 
+  const navigate = useNavigate();
+
   const locate = useLocation();
 
-  let vanJson = {};
+  const [van, setVan] = useState({});
 
   const [responseError, setResponseError] = useState("");
 
@@ -32,7 +30,31 @@ export const MainDadosVan = () => {
   }, []);
 
   useEffect(() => {
-    console.log(responseError);
+    if (van.status_finalizado == 1) {
+      if (
+        van.quantidade_vagas == undefined ||
+        van.quantidade_vagas == null ||
+        van.quantidade_vagas == "" ||
+        van.placa == undefined ||
+        van.placa == null ||
+        van.placa == "" ||
+        van.img == undefined ||
+        van.img == null ||
+        van.img == ""
+      ) {
+        alert("Você não preencheu os dados corretamente, tente de novo");
+        window.location.reload();
+      } else {
+        registerVanDriver(van, setResponseError);
+      }
+    }
+  }, [van]);
+
+  useEffect(() => {
+    if (responseError.status == 201) {
+      alert("Você foi cadastrado com sucesso");
+      navigate("/login");
+    }
   }, [responseError]);
 
   return (
@@ -40,12 +62,22 @@ export const MainDadosVan = () => {
       <main className="container-main-dados-van">
         <div className="container-foto-inputs-van">
           <div className="container-foto-perfil-van">
-            <FotoVan props={fotoInfosVan} />
+            <FotoVan
+              props={{
+                folder: "vans-profile-picture",
+                setUrlImg: setVan,
+              }}
+            />
           </div>
           <div className="container-van-vagas-placa-modelo">
             <div
               onChange={(e) => {
-                vanJson.quantidade_vagas = parseInt(e.target.value);
+                setVan({
+                  quantidade_vagas: parseInt(e.target.value),
+                  placa: van.placa,
+                  img: van.img,
+                  id_motorista: parseInt(idDriver),
+                });
               }}
             >
               <InputContainerVan
@@ -58,7 +90,12 @@ export const MainDadosVan = () => {
             </div>
             <div
               onChange={(e) => {
-                vanJson.placa = e.target.value;
+                setVan({
+                  quantidade_vagas: van.quantidade_vagas,
+                  placa: e.target.value,
+                  img: van.img,
+                  id_motorista: parseInt(idDriver),
+                });
               }}
             >
               <InputContainerVan
@@ -82,12 +119,14 @@ export const MainDadosVan = () => {
         </div>
         <div
           onClick={() => {
-            vanJson.foto = document.querySelector(".img-preview").id;
-            vanJson.id_motorista = parseInt(idDriver);
-
-            if (vanJson) {
-              registerVanDriver(vanJson, setResponseError);
-            }
+            setVan({
+              quantidade_vagas: van.quantidade_vagas,
+              placa: van.placa,
+              img: van.img,
+              id_motorista: parseInt(idDriver),
+              status_finalizado: 1,
+              status_van: 1,
+            });
           }}
           className="container-button-save-van"
         >

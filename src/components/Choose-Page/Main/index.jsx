@@ -25,8 +25,6 @@ export const MainChoosePage = () => {
     }
   });
 
-  console.log(location.state);
-
   return (
     <main className="container-main-choose-page">
       <div className="text-container-choose-page">

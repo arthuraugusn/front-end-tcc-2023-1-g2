@@ -75,6 +75,8 @@ const OnChangeFunction = async (
     url: urlImage,
   };
 
+  console.log(photo);
+
   previewPhoto.id = photo.url;
 
   setUrlImg({ img: photo.url, statusImg: true });
