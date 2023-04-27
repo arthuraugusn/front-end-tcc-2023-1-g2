@@ -109,6 +109,7 @@ export const FormsInfosDriver = () => {
               >
                 <InputContainer
                   props={{
+                    type: "date",
                     classNameLabel: "placeholder",
                     nameInput: "Data de início de carreira",
                     classNameInput: "inputs-more-infos",
