@@ -110,7 +110,6 @@
 
 /* Estilo para o botão do menu */
 .dropbtn {
-  padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -127,8 +126,7 @@
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
-  z-index: 1;
+  min-width: auto;
 }
 
 /* Estilo para os links do menu dropdown */
@@ -152,7 +150,7 @@
 /* Estilo para a animação do menu dropdown */
 .dropdown-content-perfil {
   animation-name: slide-down;
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
 }
 
 @keyframes slide-down {

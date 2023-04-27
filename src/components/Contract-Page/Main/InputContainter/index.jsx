@@ -13,6 +13,7 @@ export const InputContainer = ({ props }) => {
         placeholder={props.placeholder}
         className={props.classNameInput}
         value={props.value}
+        disabled={props.status}
       />
     </div>
   );

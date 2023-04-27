@@ -10,6 +10,7 @@ import { DadosAdicionaisDriverPage } from "../templates/driver/DadosAdicionaisDr
 import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
 import { PerfilPage } from "../templates/PerfilPage";
 import AllContracts from "../templates/All-Contracts";
+import { SuasVansPage } from "../templates/driver/SuasVansPage";
 
 function RoutesApp() {
   return (
@@ -32,6 +33,7 @@ function RoutesApp() {
         <Route Component={AllContracts} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
         <Route Component={PerfilPage} path="/perfil" />
+        <Route element={<SuasVansPage props={true} />} path="/suas-vans" />
       </Routes>
     </HashRouter>
   );

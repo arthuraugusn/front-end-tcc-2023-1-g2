@@ -15,8 +15,6 @@ export const FormFirstInfos = ({ props }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(props.responseError);
-
     if (props.responseError.status == 201) {
       navigate("/login");
     }
@@ -43,6 +41,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
+                  status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "RG:",
                   classNameInput: "inputs-more-infos",
@@ -63,6 +62,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
+                  status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "CPF:",
                   classNameInput: "inputs-more-infos",
@@ -85,6 +85,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
+                  status: props.statusInput,
                   type: "date",
                   classNameLabel: "placeholder",
                   nameInput: "Data de nascimento:",
@@ -106,6 +107,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
+                  status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "CEP:",
                   classNameInput: "inputs-more-infos",
@@ -129,6 +131,7 @@ export const FormFirstInfos = ({ props }) => {
         >
           <InputContainer
             props={{
+              status: props.statusInput,
               classNameLabel: "placeholder",
               nameInput: "Telefone:",
               classNameInput: "inputs-more-infos",
@@ -146,9 +149,9 @@ export const FormFirstInfos = ({ props }) => {
             data_nascimento: props.user.data_nascimento,
             cep: props.user.cep,
             telefone: props.user.telefone,
-            nome: location.state.name,
+            nome: location.state.nome,
             email: location.state.email,
-            senha: location.state.uid,
+            senha: location.state.senha,
             status_usuario: 1,
             status_finalizado: 1,
           });
