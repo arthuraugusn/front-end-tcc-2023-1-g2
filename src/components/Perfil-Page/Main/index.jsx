@@ -18,24 +18,64 @@ export const MainPerfilPage = () => {
 
   const [data, setData] = useState({ ano: "", mes: "", dia: "" });
 
-  const [user, setUser] = useState({});
+  const [perfilDriverUser, setPerfilDriverUser] = useState({
+    status_motorista: "none",
+    status_responsavel: "true",
+  });
+
+  const [infosInput, setInfosInput] = useState({});
+
+  const [userEdit, setUserEdit] = useState({});
 
   const [statusCode, setStatusCode] = useState(0);
+
+  const [responseError, setResponseError] = useState({});
+
+  const id = localStorage.getItem("id");
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const id = localStorage.getItem("id");
-
     if (statusUserDriver == 2) {
-      loadUserbyId(id, setPerfil);
+      loadUserbyId(id, setResponseError);
+    } else if (statusUserDriver == 1) {
+      loadDriverById(id, setResponseError);
     }
-    if (statusUserDriver == 1) {
-      loadDriverById(id, setPerfil);
-    }
-  }, [perfil]);
+  }, []);
 
   useEffect(() => {
+    if (responseError) {
+      setPerfil(responseError);
+    }
+  }, [responseError]);
+
+  useEffect(() => {
+    /* const id = localStorage.getItem("id");
+
+    if (statusUserDriver == 2) {
+      loadUserbyId(id, setResponseError);
+      setPerfilDriverUser({
+        status_motorista: "none",
+        status_responsavel: "true",
+      });
+      setInfosInput({
+        cefCnhInput: "CEP:",
+        cefCnhValue: perfil.cep,
+        status_visibility: "none",
+      });
+    }
+    if (statusUserDriver == 1) {
+      loadDriverById(id,  setPerfil,  setResponseError);
+      setPerfilDriverUser({
+        status_motorista: "true",
+        status_responsavel: "none",
+      });
+      setInfosInput({
+        cefCnhInput: "CNH:",
+        cefCnhValue: perfil.cnh,
+        status_visibility: "true",
+      });
+    } */
     const dataNascimentoUsuario = perfil.data_nascimento;
 
     if (dataNascimentoUsuario != undefined) {
@@ -45,7 +85,7 @@ export const MainPerfilPage = () => {
         dia: dataNascimentoUsuario.split("/")[0],
       });
     }
-  }, [perfil]);
+  }, []);
 
   useEffect(() => {
     if (statusCode == 200) {
@@ -56,6 +96,16 @@ export const MainPerfilPage = () => {
       window.location.reload();
     }
   }, [statusCode]);
+
+  const [inputValue, setInputValue] = useState({});
+
+  useEffect(() => {
+    setInputValue({
+      type: "date",
+      status: true,
+      data: `${data.ano}-${data.mes}-${data.dia}`,
+    });
+  }, [data]);
 
   return (
     <main className="container-main-perfil">
@@ -72,18 +122,37 @@ export const MainPerfilPage = () => {
             <div className="inputs-perfil">
               <div
                 onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: e.target.value,
-                    cpf: user.cpf,
-                    nome: user.nome,
-                    data_nascimento: user.data_nascimento,
-                    telefone: user.telefone,
-                    cep: user.cep,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
-                  });
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: e.target.value,
+                      cpf: userEdit.cpf,
+                      nome: userEdit.nome,
+                      data_nascimento: userEdit.data_nascimento,
+                      telefone: userEdit.telefone,
+                      cep: userEdit.cep,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: userEdit.nome,
+                      rg: e.target.value,
+                      cpf: userEdit.cpf,
+                      avaliacao: perfil.avaliacao,
+                      cnh: userEdit.cnh,
+                      data_nascimento: userEdit.data_nascimento,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: userEdit.telefone,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
@@ -97,18 +166,37 @@ export const MainPerfilPage = () => {
               </div>
               <div
                 onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: user.rg,
-                    cpf: e.target.value,
-                    nome: user.nome,
-                    data_nascimento: user.data_nascimento,
-                    telefone: user.telefone,
-                    cep: user.cep,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
-                  });
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: userEdit.rg,
+                      cpf: e.target.value,
+                      nome: userEdit.nome,
+                      data_nascimento: userEdit.data_nascimento,
+                      telefone: userEdit.telefone,
+                      cep: userEdit.cep,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: userEdit.nome,
+                      rg: userEdit.rg,
+                      cpf: e.target.value,
+                      avaliacao: perfil.avaliacao,
+                      cnh: userEdit.cnh,
+                      data_nascimento: userEdit.data_nascimento,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: userEdit.telefone,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
@@ -122,18 +210,37 @@ export const MainPerfilPage = () => {
               </div>
               <div
                 onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: user.rg,
-                    cpf: user.cpf,
-                    nome: e.target.value,
-                    data_nascimento: user.data_nascimento,
-                    telefone: user.telefone,
-                    cep: user.cep,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
-                  });
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      nome: e.target.value,
+                      data_nascimento: userEdit.data_nascimento,
+                      telefone: userEdit.telefone,
+                      cep: userEdit.cep,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: e.target.value,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      avaliacao: perfil.avaliacao,
+                      cnh: userEdit.cnh,
+                      data_nascimento: userEdit.data_nascimento,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: userEdit.telefone,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
@@ -148,25 +255,53 @@ export const MainPerfilPage = () => {
             </div>
             <div className="inputs-perfil">
               <div
-                onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: user.rg,
-                    cpf: user.cpf,
-                    nome: user.nome,
-                    data_nascimento: e.target.value,
-                    telefone: user.telefone,
-                    cep: user.cep,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
+                onClick={() => {
+                  console.log("aa");
+                  setInputValue({
+                    status: false,
+                    data: "",
+                    type: "date",
                   });
+                }}
+                onChange={(e) => {
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      nome: userEdit.nome,
+                      data_nascimento: e.target.value,
+                      telefone: userEdit.telefone,
+                      cep: userEdit.cep,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: userEdit.nome,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      avaliacao: perfil.avaliacao,
+                      cnh: userEdit.cnh,
+                      data_nascimento: e.target.value,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: userEdit.telefone,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
                   props={{
-                    type: "date",
-                    placeholder: `${data.ano}-${data.mes}-${data.dia}`,
+                    status: inputValue.status,
+                    type: inputValue.type,
+                    value: inputValue.data,
                     classNameLabel: "placeholder",
                     nameInput: "Data de nascimento:",
                     classNameInput: "inputs-more-infos",
@@ -175,18 +310,37 @@ export const MainPerfilPage = () => {
               </div>
               <div
                 onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: user.rg,
-                    cpf: user.cpf,
-                    nome: user.nome,
-                    data_nascimento: user.data_nascimento,
-                    telefone: e.target.value,
-                    cep: user.cep,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
-                  });
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      nome: userEdit.nome,
+                      data_nascimento: userEdit.data_nascimento,
+                      telefone: e.target.value,
+                      cep: userEdit.cep,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: userEdit.nome,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      avaliacao: perfil.avaliacao,
+                      cnh: userEdit.cnh,
+                      data_nascimento: userEdit.data_nascimento,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: e.target.value,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
@@ -200,72 +354,161 @@ export const MainPerfilPage = () => {
               </div>
               <div
                 onChange={(e) => {
-                  setUser({
-                    foto: perfil.foto,
-                    rg: user.rg,
-                    cpf: user.cpf,
-                    nome: user.nome,
-                    data_nascimento: user.data_nascimento,
-                    telefone: user.telefone,
-                    cep: e.target.value,
-                    email: user.email,
-                    senha_atual: user.senha_atual,
-                    nova_senha: user.nova_senha,
-                  });
+                  if (statusUserDriver == 2) {
+                    setUserEdit({
+                      foto: perfil.foto,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      nome: userEdit.nome,
+                      data_nascimento: userEdit.data_nascimento,
+                      telefone: userEdit.telefone,
+                      cep: e.target.value,
+                      email: userEdit.email,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                    });
+                  } else if (statusUserDriver == 1) {
+                    setUserEdit({
+                      email: userEdit.email,
+                      nome: userEdit.nome,
+                      rg: userEdit.rg,
+                      cpf: userEdit.cpf,
+                      avaliacao: perfil.avaliacao,
+                      cnh: e.target.value,
+                      data_nascimento: userEdit.data_nascimento,
+                      descricao: userEdit.descricao,
+                      foto: userEdit.foto,
+                      inicio_carreira: userEdit.inicio_carreira,
+                      senha_atual: userEdit.senha_atual,
+                      nova_senha: userEdit.nova_senha,
+                      status_motorista: 1,
+                      telefone: userEdit.telefone,
+                    });
+                  }
                 }}
               >
                 <InputInfosPerfil
                   props={{
-                    placeholder: perfil.cep,
+                    placeholder: infosInput.cefCnhValue,
                     classNameLabel: "placeholder",
-                    nameInput: "CEP:",
+                    nameInput: infosInput.cefCnhInput,
                     classNameInput: "inputs-more-infos",
                   }}
                 />
               </div>
             </div>
           </div>
-          <div
-            onChange={(e) => {
-              setUser({
-                foto: perfil.foto,
-                rg: user.rg,
-                cpf: user.cpf,
-                nome: user.nome,
-                data_nascimento: user.data_nascimento,
-                telefone: user.telefone,
-                cep: user.cep,
-                email: e.target.value,
-                senha_atual: user.senha_atual,
-                nova_senha: user.nova_senha,
-              });
-            }}
-            className="input-perfil-email"
-          >
-            <InputInfosPerfil
-              props={{
-                placeholder: perfil.email,
-                classNameLabel: "placeholder",
-                nameInput: "Email:",
-                classNameInput: "inputs-more-infos",
+          <div className="input-perfil-email">
+            <div
+              onChange={(e) => {
+                if (statusUserDriver == 2) {
+                  setUserEdit({
+                    foto: perfil.foto,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    nome: userEdit.nome,
+                    data_nascimento: userEdit.data_nascimento,
+                    telefone: userEdit.telefone,
+                    cep: userEdit.cep,
+                    email: e.target.value,
+                    senha_atual: userEdit.senha_atual,
+                    nova_senha: userEdit.nova_senha,
+                  });
+                } else if (statusUserDriver == 1) {
+                  setUserEdit({
+                    email: e.target.value,
+                    nome: userEdit.nome,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    avaliacao: perfil.avaliacao,
+                    cnh: userEdit.cnh,
+                    data_nascimento: userEdit.data_nascimento,
+                    descricao: userEdit.descricao,
+                    foto: userEdit.foto,
+                    inicio_carreira: userEdit.inicio_carreira,
+                    senha_atual: userEdit.senha_atual,
+                    nova_senha: userEdit.nova_senha,
+                    status_motorista: 1,
+                    telefone: userEdit.telefone,
+                  });
+                }
               }}
-            />
+            >
+              <InputInfosPerfil
+                props={{
+                  placeholder: perfil.email,
+                  classNameLabel: "placeholder",
+                  nameInput: "Email:",
+                  classNameInput: "inputs-more-infos",
+                }}
+              />
+            </div>
+            <div
+              onChange={(e) => {
+                setUserEdit({
+                  email: userEdit.email,
+                  nome: userEdit.nome,
+                  rg: userEdit.rg,
+                  cpf: userEdit.cpf,
+                  avaliacao: perfil.avaliacao,
+                  cnh: userEdit.cnh,
+                  data_nascimento: userEdit.data_nascimento,
+                  descricao: userEdit.descricao,
+                  foto: userEdit.foto,
+                  inicio_carreira: e.target.value,
+                  senha_atual: userEdit.senha_atual,
+                  nova_senha: userEdit.nova_senha,
+                  status_motorista: 1,
+                  telefone: userEdit.telefone,
+                });
+              }}
+            >
+              <InputInfosPerfil
+                props={{
+                  status_visibility: infosInput.status_visibility,
+                  placeholder: perfil.email,
+                  classNameLabel: "placeholder",
+                  nameInput: "Data de inicio de carreira:",
+                  type: "date",
+                  classNameInput: "inputs-more-infos",
+                }}
+              />
+            </div>
           </div>
           <div className="container-inputs-perfil-passwords">
             <div
               onChange={(e) => {
-                setUser({
-                  foto: perfil.foto,
-                  rg: user.rg,
-                  cpf: user.cpf,
-                  nome: user.nome,
-                  data_nascimento: user.data_nascimento,
-                  telefone: user.telefone,
-                  cep: user.cep,
-                  email: user.email,
-                  senha_atual: e.target.value,
-                  nova_senha: user.nova_senha,
-                });
+                if (statusUserDriver == 2) {
+                  setUserEdit({
+                    foto: perfil.foto,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    nome: userEdit.nome,
+                    data_nascimento: userEdit.data_nascimento,
+                    telefone: userEdit.telefone,
+                    cep: userEdit.cep,
+                    email: userEdit.email,
+                    senha_atual: e.target.value,
+                    nova_senha: userEdit.nova_senha,
+                  });
+                } else if (statusUserDriver == 1) {
+                  setUserEdit({
+                    email: userEdit.email,
+                    nome: userEdit.nome,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    avaliacao: perfil.avaliacao,
+                    cnh: userEdit.cnh,
+                    data_nascimento: userEdit.data_nascimento,
+                    descricao: userEdit.descricao,
+                    foto: userEdit.foto,
+                    inicio_carreira: userEdit.inicio_carreira,
+                    senha_atual: e.target.value,
+                    nova_senha: userEdit.nova_senha,
+                    status_motorista: 1,
+                    telefone: userEdit.telefone,
+                  });
+                }
               }}
             >
               <InputInfosPerfil
@@ -279,18 +522,37 @@ export const MainPerfilPage = () => {
             </div>
             <div
               onChange={(e) => {
-                setUser({
-                  foto: perfil.foto,
-                  rg: user.rg,
-                  cpf: user.cpf,
-                  nome: user.nome,
-                  data_nascimento: user.data_nascimento,
-                  telefone: user.telefone,
-                  cep: user.cep,
-                  email: user.email,
-                  senha_atual: user.senha_atual,
-                  nova_senha: e.target.value,
-                });
+                if (statusUserDriver == 2) {
+                  setUserEdit({
+                    foto: perfil.foto,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    nome: userEdit.nome,
+                    data_nascimento: userEdit.data_nascimento,
+                    telefone: userEdit.telefone,
+                    cep: userEdit.cep,
+                    email: userEdit.email,
+                    senha_atual: userEdit.senha_atual,
+                    nova_senha: e.target.value,
+                  });
+                } else if (statusUserDriver == 1) {
+                  setUserEdit({
+                    email: userEdit.email,
+                    nome: userEdit.nome,
+                    rg: userEdit.rg,
+                    cpf: userEdit.cpf,
+                    avaliacao: perfil.avaliacao,
+                    cnh: userEdit.cnh,
+                    data_nascimento: userEdit.data_nascimento,
+                    descricao: userEdit.descricao,
+                    foto: userEdit.foto,
+                    inicio_carreira: userEdit.inicio_carreira,
+                    senha_atual: userEdit.senha_atual,
+                    nova_senha: e.target.value,
+                    status_motorista: 1,
+                    telefone: userEdit.telefone,
+                  });
+                }
               }}
             >
               <InputInfosPerfil
@@ -303,12 +565,42 @@ export const MainPerfilPage = () => {
               />
             </div>
           </div>
+          <div
+            onChange={(e) => {
+              setUserEdit({
+                email: userEdit.email,
+                nome: userEdit.nome,
+                rg: userEdit.rg,
+                cpf: userEdit.cpf,
+                avaliacao: perfil.avaliacao,
+                cnh: userEdit.cnh,
+                data_nascimento: userEdit.data_nascimento,
+                descricao: e.target.value,
+                foto: userEdit.foto,
+                inicio_carreira: userEdit.inicio_carreira,
+                senha_atual: userEdit.senha_atual,
+                nova_senha: userEdit.nova_senha,
+                status_motorista: 1,
+                telefone: userEdit.telefone,
+              });
+            }}
+            className="container-input-desc-driver"
+          >
+            <InputInfosPerfil
+              props={{
+                status_visibility: infosInput.status_visibility,
+                classNameLabel: "placeholder",
+                nameInput: "Descrição",
+                classNameInput: "inputs-more-infos",
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="container-buttons-perfil">
         <div
           onClick={() => {
-            console.log(user);
+            console.log(userEdit);
             /* updateUser(user, perfil.id, setStatusCode); */
           }}
         >

@@ -25,9 +25,17 @@ export const MainDadosVan = () => {
 
   const [idDriver, setIdDriver] = useState(0);
 
+  const [statusInput, setStatusInput] = useState(true);
+
   useEffect(() => {
     loadDriverByCpf(locate.state, setIdDriver);
   }, []);
+
+  useEffect(() => {
+    if (van.statusImg == true) {
+      setStatusInput(false);
+    }
+  }, [van.statusImg]);
 
   useEffect(() => {
     if (van.status_finalizado == 1) {
@@ -82,6 +90,7 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
+                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Número de vagas:",
                   classNameInput: "inputs-more-infos",
@@ -100,6 +109,7 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
+                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Placa da van:",
                   classNameInput: "inputs-more-infos",
@@ -109,6 +119,7 @@ export const MainDadosVan = () => {
             <div>
               <InputContainerVan
                 props={{
+                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Modelo da van:",
                   classNameInput: "inputs-more-infos",

@@ -4,7 +4,7 @@ import "./style.css";
 
 export const InputContainer = ({ props }) => {
   return (
-    <div className="input-container">
+    <div className={`input-container ${props.status_visibility}`}>
       <label htmlFor="password" className={props.classNameLabel}>
         {props.nameInput}
       </label>
