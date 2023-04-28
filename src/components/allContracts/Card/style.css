@@ -1,0 +1,125 @@
+
+.card-contracts {
+  display: flex;
+  align-items: center;
+  width: 55vw;
+  height: 28vh;
+  background-color: white;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+.container-image {
+  display: flex;
+  height: 100%;
+  padding: 30px;
+}
+
+.container-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+}
+
+.container-all-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.nome-container{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.nome-motorista {
+  font-weight: 800;
+}
+.infos-contratar {
+  display: flex;
+  height: 100%;
+  width: 100%;
+justify-content: inherit;
+  align-items: flex-end;
+}
+.info-endereco{
+  font-weight: 700;
+  font-size: larger;
+}
+
+.infos-motorista {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.infos{
+  font-size: larger;
+}
+
+.infos-endereco-container{
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+
+.deletar-button-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.button-deletar {
+  display: flex;
+  justify-content: center;
+  width: 260px;
+}
+
+.button-deletar button {
+  display: flex;
+  width: 5.938rem;
+  height: 5.5rem;
+  padding:5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #D40000;
+  font-size: xx-large;
+  border: none;
+}
+
+
+@media (max-width: 1404px) {
+  .card-driver {
+    width: 800px;
+  }
+}
+
+@media (max-width: 870px) {
+  .card-driver {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .infos-contratar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .container-image {
+    height: 350px;
+  }
+}
