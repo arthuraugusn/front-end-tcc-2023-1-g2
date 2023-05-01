@@ -23,6 +23,10 @@ export const MainPerfilPage = () => {
     status_responsavel: "true",
   });
 
+  const [inputValueInicioCarreira, setInputValueInicioCarreira] = useState({});
+
+  const [inputValueDataNascimento, setInputValueDataNascimento] = useState({});
+
   const [infosInput, setInfosInput] = useState({});
 
   const [userEdit, setUserEdit] = useState({});
@@ -31,14 +35,20 @@ export const MainPerfilPage = () => {
 
   const [responseError, setResponseError] = useState({});
 
+  const [cepCnhValue, setCepCnhValue] = useState({});
+
+  const [justifyContent, setJustifyContent] = useState("");
+
   const id = localStorage.getItem("id");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (statusUserDriver == 2) {
+      setJustifyContent("center");
       loadUserbyId(id, setResponseError);
     } else if (statusUserDriver == 1) {
+      setJustifyContent("space-around");
       loadDriverById(id, setResponseError);
     }
   }, []);
@@ -50,42 +60,36 @@ export const MainPerfilPage = () => {
   }, [responseError]);
 
   useEffect(() => {
-    /* const id = localStorage.getItem("id");
+    if (perfil.data_nascimento != undefined) {
+      setInputValueDataNascimento({
+        status: true,
+        type: "text",
+        placeholder: perfil.data_nascimento,
+      });
+    }
+
+    if (perfil.inicio_carreira != undefined) {
+      setInputValueInicioCarreira({
+        status: true,
+        type: "text",
+        placeholder: perfil.inicio_carreira,
+      });
+    }
 
     if (statusUserDriver == 2) {
-      loadUserbyId(id, setResponseError);
-      setPerfilDriverUser({
-        status_motorista: "none",
-        status_responsavel: "true",
-      });
       setInfosInput({
-        cefCnhInput: "CEP:",
-        cefCnhValue: perfil.cep,
+        cepCnhValue: perfil.cep,
+        name: "CEP:",
         status_visibility: "none",
       });
-    }
-    if (statusUserDriver == 1) {
-      loadDriverById(id,  setPerfil,  setResponseError);
-      setPerfilDriverUser({
-        status_motorista: "true",
-        status_responsavel: "none",
-      });
+    } else if (statusUserDriver == 1) {
       setInfosInput({
-        cefCnhInput: "CNH:",
-        cefCnhValue: perfil.cnh,
+        cepCnhValue: perfil.cnh,
+        name: "CNH:",
         status_visibility: "true",
       });
-    } */
-    const dataNascimentoUsuario = perfil.data_nascimento;
-
-    if (dataNascimentoUsuario != undefined) {
-      setData({
-        ano: dataNascimentoUsuario.split("/")[2],
-        mes: dataNascimentoUsuario.split("/")[1],
-        dia: dataNascimentoUsuario.split("/")[0],
-      });
     }
-  }, []);
+  }, [perfil]);
 
   useEffect(() => {
     if (statusCode == 200) {
@@ -96,16 +100,6 @@ export const MainPerfilPage = () => {
       window.location.reload();
     }
   }, [statusCode]);
-
-  const [inputValue, setInputValue] = useState({});
-
-  useEffect(() => {
-    setInputValue({
-      type: "date",
-      status: true,
-      data: `${data.ano}-${data.mes}-${data.dia}`,
-    });
-  }, [data]);
 
   return (
     <main className="container-main-perfil">
@@ -256,8 +250,7 @@ export const MainPerfilPage = () => {
             <div className="inputs-perfil">
               <div
                 onClick={() => {
-                  console.log("aa");
-                  setInputValue({
+                  setInputValueDataNascimento({
                     status: false,
                     data: "",
                     type: "date",
@@ -299,9 +292,9 @@ export const MainPerfilPage = () => {
               >
                 <InputInfosPerfil
                   props={{
-                    status: inputValue.status,
-                    type: inputValue.type,
-                    value: inputValue.data,
+                    status: inputValueDataNascimento.status,
+                    type: inputValueDataNascimento.type,
+                    placeholder: inputValueDataNascimento.placeholder,
                     classNameLabel: "placeholder",
                     nameInput: "Data de nascimento:",
                     classNameInput: "inputs-more-infos",
@@ -389,16 +382,16 @@ export const MainPerfilPage = () => {
               >
                 <InputInfosPerfil
                   props={{
-                    placeholder: infosInput.cefCnhValue,
+                    placeholder: infosInput.cepCnhValue,
                     classNameLabel: "placeholder",
-                    nameInput: infosInput.cefCnhInput,
+                    nameInput: infosInput.name,
                     classNameInput: "inputs-more-infos",
                   }}
                 />
               </div>
             </div>
           </div>
-          <div className="input-perfil-email">
+          <div className={`input-perfil-email ${justifyContent}`}>
             <div
               onChange={(e) => {
                 if (statusUserDriver == 2) {
@@ -444,6 +437,13 @@ export const MainPerfilPage = () => {
               />
             </div>
             <div
+              onClick={() => {
+                setInputValueInicioCarreira({
+                  status: false,
+                  data: "",
+                  type: "date",
+                });
+              }}
               onChange={(e) => {
                 setUserEdit({
                   email: userEdit.email,
@@ -466,10 +466,11 @@ export const MainPerfilPage = () => {
               <InputInfosPerfil
                 props={{
                   status_visibility: infosInput.status_visibility,
-                  placeholder: perfil.email,
+                  placeholder: inputValueInicioCarreira.placeholder,
                   classNameLabel: "placeholder",
+                  status: inputValueInicioCarreira.status,
                   nameInput: "Data de inicio de carreira:",
-                  type: "date",
+                  type: inputValueInicioCarreira.type,
                   classNameInput: "inputs-more-infos",
                 }}
               />
@@ -584,11 +585,10 @@ export const MainPerfilPage = () => {
                 telefone: userEdit.telefone,
               });
             }}
-            className="container-input-desc-driver"
+            className={`${infosInput.status_visibility} input-container-descri-driver`}
           >
             <InputInfosPerfil
               props={{
-                status_visibility: infosInput.status_visibility,
                 classNameLabel: "placeholder",
                 nameInput: "Descrição",
                 classNameInput: "inputs-more-infos",

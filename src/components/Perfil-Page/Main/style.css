@@ -48,8 +48,15 @@
 .input-perfil-email {
   display: flex;
   width: 100%;
-  justify-content: space-around;
   padding-bottom: 30px;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.center {
+  justify-content: center;
 }
 
 .container-inputs-perfil-passwords {
@@ -103,4 +110,14 @@
 .container-picture-perfil img {
   max-width: 400px;
   min-width: 200px;
+}
+
+.input-container-descri-driver {
+  width: 1000px;
+}
+
+.input-container-descri-driver div,
+.input-container-descri-driver div input {
+  width: 100%;
+  height: 500px;
 }
