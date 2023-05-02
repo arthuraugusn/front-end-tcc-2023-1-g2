@@ -1,10 +1,10 @@
-import api from "../api"
+import api from "../api";
 
-export const loadUserContract = (id, setAllUserContracts) =>{
-  api 
-  .get(`contracts/${id}`)
+export const loadUserContract = (id, setAllUserContracts) => {
+  api
+    .get(`contracts/${1}`)
     .then((response) => console.log(response.data))
-  .catch((err)=>{
-    console.log("Erro" + err);
-  })
-}
+    .catch((err) => {
+      console.log("Erro" + err);
+    });
+};
