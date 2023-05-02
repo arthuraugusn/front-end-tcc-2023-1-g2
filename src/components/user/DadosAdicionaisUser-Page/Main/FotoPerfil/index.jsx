@@ -42,7 +42,7 @@ export const FotoPerfilRegistro = ({ props }) => {
   );
 };
 
-const OnChangeFunction = async (
+export const OnChangeFunction = async (
   e,
   setCardFile,
   setClassForImage,
@@ -74,8 +74,6 @@ const OnChangeFunction = async (
     photo: namePicture,
     url: urlImage,
   };
-
-  console.log(photo);
 
   previewPhoto.id = photo.url;
 
