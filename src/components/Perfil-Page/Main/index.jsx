@@ -81,6 +81,13 @@ export const MainPerfilPage = () => {
           updateDriver(userEdit, perfil.id, setStatusCode);
         }
       }
+      if (statusUserDriver == 2) {
+        if (userEdit.senha_atual != userEdit.nova_senha) {
+          alert("Você inseriu a senha errada");
+        } else {
+          updateUser(userEdit, perfil.id, setStatusCode);
+        }
+      }
     }
   }, [statusEdit]);
 
@@ -228,7 +235,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: e.target.value,
                       cpf: userEdit.cpf,
                       nome: userEdit.nome,
@@ -272,7 +279,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: userEdit.rg,
                       cpf: e.target.value,
                       nome: userEdit.nome,
@@ -316,7 +323,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: userEdit.rg,
                       cpf: userEdit.cpf,
                       nome: e.target.value,
@@ -369,7 +376,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: userEdit.rg,
                       cpf: userEdit.cpf,
                       nome: userEdit.nome,
@@ -415,7 +422,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: userEdit.rg,
                       cpf: userEdit.cpf,
                       nome: userEdit.nome,
@@ -459,7 +466,7 @@ export const MainPerfilPage = () => {
                 onChange={(e) => {
                   if (statusUserDriver == 2) {
                     setUserEdit({
-                      foto: perfil.foto,
+                      foto: userEdit.foto,
                       rg: userEdit.rg,
                       cpf: userEdit.cpf,
                       nome: userEdit.nome,
@@ -506,7 +513,7 @@ export const MainPerfilPage = () => {
               onChange={(e) => {
                 if (statusUserDriver == 2) {
                   setUserEdit({
-                    foto: perfil.foto,
+                    foto: userEdit.foto,
                     rg: userEdit.rg,
                     cpf: userEdit.cpf,
                     nome: userEdit.nome,
@@ -591,7 +598,7 @@ export const MainPerfilPage = () => {
               onChange={(e) => {
                 if (statusUserDriver == 2) {
                   setUserEdit({
-                    foto: perfil.foto,
+                    foto: userEdit.foto,
                     rg: userEdit.rg,
                     cpf: userEdit.cpf,
                     nome: userEdit.nome,
@@ -636,7 +643,7 @@ export const MainPerfilPage = () => {
               onChange={(e) => {
                 if (statusUserDriver == 2) {
                   setUserEdit({
-                    foto: perfil.foto,
+                    foto: userEdit.foto,
                     rg: userEdit.rg,
                     cpf: userEdit.cpf,
                     nome: userEdit.nome,
@@ -730,22 +737,25 @@ export const MainPerfilPage = () => {
                 userEdit.telefone == "" ||
                 userEdit.telefone == undefined ||
                 userEdit.telefone == null ||
-                userEdit.cnh == "" ||
-                userEdit.cnh == undefined ||
-                userEdit.cnh == null ||
-                userEdit.inicio_carreira == "" ||
-                userEdit.inicio_carreira == undefined ||
-                userEdit.inicio_carreira == null ||
-                userEdit.data_nascimento == "" ||
-                userEdit.data_nascimento == undefined ||
-                userEdit.data_nascimento == null
+                userEdit.cep == "" ||
+                userEdit.cep == undefined ||
+                userEdit.cep == null ||
+                userEdit.nova_senha == "" ||
+                userEdit.nova_senha == undefined ||
+                userEdit.nova_senha == null ||
+                userEdit.senha_atual == "" ||
+                userEdit.senha_atual == undefined ||
+                userEdit.senha_atual == null ||
+                userEdit.email == "" ||
+                userEdit.email == undefined ||
+                userEdit.email == null
               ) {
                 alert(
                   "Você não preencheu todos os dados corretamente, tente novamente"
                 );
                 window.location.reload();
               } else {
-                console.log(userEdit);
+                setStatusEdit(true);
               }
             }
             if (statusUserDriver == 1) {
