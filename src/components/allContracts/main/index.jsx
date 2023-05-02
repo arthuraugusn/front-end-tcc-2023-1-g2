@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
 import { loadUserContract } from '../../../api/client/loadUserContract';
-
-import './style.css'
+import "./style.css"
+import { CardContract } from '../Card';
 
 export const ContractsPage = () => {
 
-  const [setAllUserContracts] = useState([]);
+  const [contracts, setAllUserContracts] = useState([]);
 
   useEffect(() => {
-    loadUserContract(setAllUserContracts)
+    loadUserContract(1, setAllUserContracts)
   })
   return (
     <main className='main-container-allcontracts'>
       <div className="name-container">
         <h1>Seus Contratos</h1>
       </div>
-      <div className="allContracts-container"></div>
+      <div className="allContracts-container">
+        <CardContract contracts={contracts}/>
+      </div>
     </main>
   )
 
