@@ -3,7 +3,7 @@ import { MainSuasVans } from "../../../components/driver/SuasVans-Page/Main";
 import "../../reset/reset.css";
 import "./body.css";
 
-export const SuasVansPage = () => {
+export default function SuasVansPage() {
   return (
     <>
       <div className="container-body-suas-vans">
@@ -12,4 +12,4 @@ export const SuasVansPage = () => {
       </div>
     </>
   );
-};
+}

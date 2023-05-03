@@ -9,8 +9,8 @@ import ContractPage from "../templates/user/Contract-page";
 import { DadosAdicionaisDriverPage } from "../templates/driver/DadosAdicionaisDriver";
 import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
 import { PerfilPage } from "../templates/PerfilPage";
-import AllContracts from "../templates/All-Contracts";
-import { SuasVansPage } from "../templates/driver/SuasVansPage";
+import ALlContractsPage from "../templates/All-Contracts/body";
+import SuasVansPage from "../templates/driver/SuasVansPage";
 
 function RoutesApp() {
   return (
@@ -30,7 +30,7 @@ function RoutesApp() {
         <Route Component={CadastrarVanPage} path="/cadastro-van" />
         <Route element={<HomePage props={true} />} path="/" />
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
-        <Route Component={AllContracts} props={true} path="/contracts" />
+        <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
         <Route Component={PerfilPage} path="/perfil" />
         <Route element={<SuasVansPage props={true} />} path="/suas-vans" />
