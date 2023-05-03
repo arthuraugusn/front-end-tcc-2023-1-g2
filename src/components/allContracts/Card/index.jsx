@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+import { Modal } from '../../../templates/Modal';
 import "./style.css"
 
 export const CardContract = ({ contracts }) => {
@@ -40,7 +41,7 @@ export const CardContract = ({ contracts }) => {
               <div className="deletar-button-container">
                 <div>
                   <div className="button-deletar">
-                    <button>x</button>
+                    <button onClick={openPopupDelete()}>x</button>
                   </div>
                 </div>
               </div>
