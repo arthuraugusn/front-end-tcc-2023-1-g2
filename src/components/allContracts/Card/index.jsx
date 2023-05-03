@@ -20,17 +20,17 @@ export const CardContract = ({ contracts }) => {
             </div>
             <div className="infos-contratar">
               <div className="infos-motorista">
-                <p className="infos">Tipo de contrato: ida e volta</p>
+                <p className="infos">Tipo de contrato: {contract.tipo_contrato.tipo_contrato}</p>
                 <p className="infos">
-                  Escola: Sesi-Osasco
+                  Escola: {contract.escola.nome}
             </p>
-                <p className="infos">Passageiro: Zé da manga</p>
+                <p className="infos">Passageiro: {contract.nome_passageiro}</p>
               </div>
               <div className="infos-endereco-container">
                 <div className="infos-endereco-content">
                   <p className="info-endereco">Endereço:</p>
                   <p className="Rua-e-numero">Rua Jatoba, n 120</p>
-                  <p className="cep">06184240</p>
+                  <p className="cep">{contract.usuario.cep}</p>
                   <p className="municipio">babueri</p>
                   <p className="bairro">Itapevi- jardim sao carlos</p>
                 </div>
