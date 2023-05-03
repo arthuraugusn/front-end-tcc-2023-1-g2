@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 30px;
+  padding: 3.125rem;
   width: 100%;
   height: 100%;
 }
@@ -52,12 +52,17 @@ justify-content: inherit;
   font-weight: 700;
   font-size: larger;
 }
+.infos-motorista-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
-.infos-motorista {
+.infos-motorista-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: space-evenly;
+  gap: 2rem;
 }
 
 .infos{
@@ -67,7 +72,9 @@ justify-content: inherit;
 .infos-endereco-container{
   display: flex;
   height: 100%;
-  align-items: center;
+}
+.infos-endereco-content{
+  font-size: 1.50rem;
 }
 
 
@@ -81,7 +88,6 @@ justify-content: inherit;
 .button-deletar {
   display: flex;
   justify-content: center;
-  width: 260px;
 }
 
 .button-deletar button {

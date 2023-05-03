@@ -19,20 +19,22 @@ export const CardContract = ({ contracts }) => {
               <span className="nome-motorista">{contract.motorista.nome}</span>
             </div>
             <div className="infos-contratar">
-              <div className="infos-motorista">
-                <p className="infos">Tipo de contrato: {contract.tipo_contrato.tipo_contrato}</p>
-                <p className="infos">
-                  Escola: {contract.escola.nome}
-            </p>
-                <p className="infos">Passageiro: {contract.nome_passageiro}</p>
+              <div className="infos-motorista-container">
+                <div className="infos-motorista-content">
+                  <p className="infos">Tipo de contrato: {contract.tipo_contrato.tipo_contrato}</p>
+                  <p className="infos">
+                    Escola: {contract.escola.nome}
+                  </p>
+                  <p className="infos">Passageiro: {contract.nome_passageiro}</p>
+                </div>
               </div>
               <div className="infos-endereco-container">
                 <div className="infos-endereco-content">
                   <p className="info-endereco">Endereço:</p>
-                  <p className="Rua-e-numero">Rua Jatoba, n 120</p>
-                  <p className="cep">{contract.usuario.cep}</p>
-                  <p className="municipio">babueri</p>
-                  <p className="bairro">Itapevi- jardim sao carlos</p>
+                  <p className="info-adds">Rua Jatoba, n 120</p>
+                  <p className="info-adds">{contract.usuario.cep}</p>
+                  <p className="info-adds">babueri</p>
+                  <p className="info-adds">Itapevi- jardim sao carlos</p>
                 </div>
               </div>
               <div className="deletar-button-container">
