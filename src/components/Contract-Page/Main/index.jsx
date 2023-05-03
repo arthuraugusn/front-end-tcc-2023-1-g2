@@ -7,6 +7,7 @@ import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { loadContracts } from "../../../api/client/loadConcracts";
+import { loadSchoolsDrivers } from "../../../api/client/loadSchools";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -17,7 +18,7 @@ export const MainContractPage = ({ props }) => {
 
   const [itensContract, setItensContract] = useState({});
 
-  const [school, setSchoolDriver] = useState([]);
+  const [school, setSchoolDriver] = useState({});
 
   const [typesPayment, setTypeofPay] = useState([]);
 
@@ -30,7 +31,7 @@ export const MainContractPage = ({ props }) => {
   const [contracts, setContracts] = useState([]);
 
   useEffect(() => {
-    // loadSchools(setSchool);
+    loadSchoolsDrivers(setSchoolDriver, setResponseError);
     loadTypetransport(setTypesContracts, setResponseError);
     loadTypeofPay(setTypeofPay, setResponseError);
     loadContracts(setContracts);
@@ -42,12 +43,28 @@ export const MainContractPage = ({ props }) => {
         tipo_contrato: typesContracts.map((e) => {
           return e.tipo_contrato;
         }),
+        id_tipo_contrato: typesContracts.map((e) => {
+          return e.id;
+        }),
         tipo_pagamento: typesPayment.map((e) => {
           return e.tipo_pagamento;
+        }),
+        id_tipo_pagamento: typesPayment.map((e) => {
+          return e.id;
+        }),
+        escolas: school.map((e) => {
+          return e.nome;
+        }),
+        id_escolas: school.map((e) => {
+          return e.id;
         }),
       });
     }
   }, [typesContracts]);
+
+  useEffect(() => {
+    console.log(itensContract);
+  }, [itensContract]);
 
   const Nomes = contracts.map((contract) => {
     const nomePassageiro = contract.nome_passageiro;
@@ -69,6 +86,10 @@ export const MainContractPage = ({ props }) => {
 
   // })
 
+  {
+    /*  */
+  }
+
   return (
     <main className="container-all-main-contract">
       <header>
@@ -85,10 +106,15 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-contract-type"
             >
-              {/* 
+              {
+                <option id={itensContract.id_escolas}>
+                  {itensContract.escolas}
+                </option>
+                /* 
               {school.map((school) => {
                 return <option value={school.id}>{school.nome}</option>;
-              })} */}
+              })} */
+              }
             </select>
           </div>
           <div className="dropdown-content">
@@ -100,7 +126,11 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-school"
             >
-              {<option>{itensContract.tipo_contrato}</option>}
+              {
+                <option id={itensContract.id_tipo_contrato}>
+                  {itensContract.tipo_contrato}
+                </option>
+              }
             </select>
           </div>
         </div>
@@ -148,7 +178,11 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-school"
             >
-              {<option>{itensContract.tipo_pagamento}</option>}
+              {
+                <option id={itensContract.id_tipo_pagamento}>
+                  {itensContract.tipo_pagamento}
+                </option>
+              }
             </select>
           </div>
         </div>

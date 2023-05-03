@@ -8,6 +8,7 @@ import { ButtonSalvarVan } from "./Button";
 import { FotoVan } from "./FotoVan";
 import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
+import { loadModelVan } from "../../../../api/driver/van/loadModels";
 
 export const MainDadosVan = () => {
   const propsSalvarVan = {
@@ -27,9 +28,19 @@ export const MainDadosVan = () => {
 
   const [statusInput, setStatusInput] = useState(true);
 
+  const [response, setResponse] = useState("");
+
   useEffect(() => {
     loadDriverByCpf(locate.state, setIdDriver);
   }, []);
+
+  useEffect(() => {
+    loadModelVan(setResponse);
+  }, []);
+
+  useEffect(() => {
+    console.log(response);
+  }, [response]);
 
   useEffect(() => {
     if (van.statusImg == true) {

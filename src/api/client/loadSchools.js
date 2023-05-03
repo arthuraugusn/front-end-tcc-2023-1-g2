@@ -1,6 +1,6 @@
 import api from "../api";
 
-export const loadSchoolsDrivers = (setSchoolsDriver) => {
+export const loadSchoolsDrivers = (setSchoolsDriver, setResponseError) => {
   api
     .get("schools")
     .then((response) => {
