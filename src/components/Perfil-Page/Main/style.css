@@ -124,8 +124,7 @@
   height: auto;
 }
 .form-picture-label img {
-  min-width: 400px;
-  min-height: 400px;
+  width: 25 0px;
   border-radius: 20px;
 }
 

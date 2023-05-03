@@ -33,7 +33,7 @@ function RoutesApp() {
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
         <Route Component={PerfilPage} path="/perfil" />
-        <Route element={<SuasVansPage props={true} />} path="/suas-vans" />
+        <Route Component={SuasVansPage} path="/suas-vans" />
       </Routes>
     </HashRouter>
   );
