@@ -32,3 +32,11 @@
 .placeholder {
   font-weight: 600;
 }
+
+.true {
+  display: flex;
+}
+
+.none {
+  display: none;
+}

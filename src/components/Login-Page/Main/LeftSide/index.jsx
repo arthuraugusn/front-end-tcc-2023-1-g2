@@ -72,6 +72,7 @@ export const LeftSide = ({ prop }) => {
         >
           <InputContainerLogin
             props={{
+              type: "password",
               classNameLabel: "placeholder",
               nameInput: "Senha:",
               classNameInput: "input-login",

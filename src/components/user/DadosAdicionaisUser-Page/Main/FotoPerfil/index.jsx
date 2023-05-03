@@ -11,8 +11,6 @@ export const FotoPerfilRegistro = ({ props }) => {
   const [classIcon, setClassIcon] = useState("true");
   const [imgFirebase, setImageFirebase] = useState("");
 
-  useEffect(() => {}, [imgFirebase]);
-
   return (
     <div className="container-foto-perfil">
       <label className="form-picture-label">
@@ -44,7 +42,7 @@ export const FotoPerfilRegistro = ({ props }) => {
   );
 };
 
-const OnChangeFunction = async (
+export const OnChangeFunction = async (
   e,
   setCardFile,
   setClassForImage,
@@ -79,5 +77,5 @@ const OnChangeFunction = async (
 
   previewPhoto.id = photo.url;
 
-  setUrlImg({ img: photo.url });
+  setUrlImg({ img: photo.url, statusImg: true });
 };

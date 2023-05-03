@@ -15,23 +15,40 @@ export const MainContractPage = ({ props }) => {
     nav: "/",
   };
 
-  let contractJson = {};
+  const [itensContract, setItensContract] = useState({});
 
   const [school, setSchoolDriver] = useState([]);
 
   const [typesPayment, setTypeofPay] = useState([]);
 
-  const [typesContracts, setTypesContracts] = useState([]);
+  const [typesContracts, setTypesContracts] = useState({});
+
+  const [contract, setInfosContract] = useState({});
+
+  const [responseError, setResponseError] = useState(0);
+
   const [contracts, setContracts] = useState([]);
 
   useEffect(() => {
     // loadSchools(setSchool);
-    loadTypetransport(setTypesContracts);
-    loadTypeofPay(setTypeofPay);
+    loadTypetransport(setTypesContracts, setResponseError);
+    loadTypeofPay(setTypeofPay, setResponseError);
     loadContracts(setContracts);
   }, []);
 
-  console.log(contracts);
+  useEffect(() => {
+    if (responseError == 200) {
+      setItensContract({
+        tipo_contrato: typesContracts.map((e) => {
+          return e.tipo_contrato;
+        }),
+        tipo_pagamento: typesPayment.map((e) => {
+          return e.tipo_pagamento;
+        }),
+      });
+    }
+  }, [typesContracts]);
+
   const Nomes = contracts.map((contract) => {
     const nomePassageiro = contract.nome_passageiro;
     const idadePassageiro = contract.idade_passageiro;
@@ -52,10 +69,6 @@ export const MainContractPage = ({ props }) => {
 
   // })
 
-  const teste = () => {
-    console.log("teste");
-  };
-
   return (
     <main className="container-all-main-contract">
       <header>
@@ -72,9 +85,10 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-contract-type"
             >
+              {/* 
               {school.map((school) => {
                 return <option value={school.id}>{school.nome}</option>;
-              })}
+              })} */}
             </select>
           </div>
           <div className="dropdown-content">
@@ -86,13 +100,7 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-school"
             >
-              {typesContracts.map((typeOftheContract) => {
-                return (
-                  <option value={typeOftheContract.id}>
-                    {typeOftheContract.tipo_contrato}
-                  </option>
-                );
-              })}
+              {<option>{itensContract.tipo_contrato}</option>}
             </select>
           </div>
         </div>
@@ -140,13 +148,7 @@ export const MainContractPage = ({ props }) => {
               name="filtros"
               id="select-filter-container-school"
             >
-              {typesPayment.map((typePayment) => {
-                return (
-                  <option value={typePayment.id}>
-                    {typePayment.tipo_pagamento}
-                  </option>
-                );
-              })}
+              {<option>{itensContract.tipo_pagamento}</option>}
             </select>
           </div>
         </div>

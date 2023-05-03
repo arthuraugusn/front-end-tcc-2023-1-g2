@@ -46,7 +46,17 @@
 }
 
 .input-perfil-email {
+  display: flex;
+  width: 100%;
   padding-bottom: 30px;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.center {
+  justify-content: center;
 }
 
 .container-inputs-perfil-passwords {
@@ -55,6 +65,24 @@
   align-items: center;
   justify-content: space-around;
   padding-bottom: 10px;
+}
+
+.container-input-desc-driver {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+}
+
+.container-input-desc-driver div {
+  height: 80%;
+  width: 50%;
+}
+.container-input-desc-driver div input {
+  display: flex;
+  height: 90%;
+  width: 100%;
 }
 
 .container-buttons-perfil {
@@ -76,10 +104,40 @@
 }
 
 .container-picture-perfil div label div {
-  display: none;
 }
 
-.container-picture-perfil img {
-  max-width: 400px;
-  min-width: 200px;
+.input-container-descri-driver {
+  width: 1000px;
+}
+
+.input-container-descri-driver div,
+.input-container-descri-driver div input {
+  width: 100%;
+  height: 500px;
+}
+.container-picture-perfil {
+  width: auto;
+  height: auto;
+}
+.container-picture-perfil label {
+  width: auto;
+  height: auto;
+}
+.form-picture-label img {
+  width: 25 0px;
+  border-radius: 20px;
+}
+
+.modal-teste {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+}
+
+.modal-teste div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }

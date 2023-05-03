@@ -1,27 +1,24 @@
 import api from "../api";
 
-export const registerDriverClient = (driver, setResponseError) => {
-  console.log(driver);
+export const updateDriver = (driver, id, setStatusCode) => {
   api
-    .post("driver", {
-      nome: `${driver.nome}`,
+    .put(`driver/${id}`, {
       email: `${driver.email}`,
+      nome: `${driver.nome}`,
       rg: `${driver.rg}`,
       cpf: `${driver.cpf}`,
-      cnh: `${driver.cnh}`,
       telefone: `${driver.telefone}`,
       data_nascimento: `${driver.data_nascimento}`,
       inicio_carreira: `${driver.inicio_carreira}`,
-      senha: `${driver.senha}`,
-      foto: `${driver.img}`,
+      senha: `${driver.nova_senha}`,
+      foto: `${driver.foto}`,
+      cnh: `${driver.cnh}`,
       avaliacao: driver.avaliacao,
       descricao: `${driver.descricao}`,
-      status_motorista: driver.status_motorista,
+      status_motorista: 1,
     })
     .then((response) => {
-      setResponseError(response);
-    })
-    .catch((err) => {
-      setResponseError(err);
+      console.log(response);
+      setStatusCode(response.status);
     });
 };
