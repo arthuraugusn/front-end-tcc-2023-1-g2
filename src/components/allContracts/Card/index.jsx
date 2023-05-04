@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import "./style.css"
 import React, { useState } from "react";
+import { Modal } from "../../../templates/Modal/index"
 
 export const CardContract = ({ contracts }) => {
 
@@ -48,8 +49,8 @@ export const CardContract = ({ contracts }) => {
               <div className="deletar-button-container">
                 <div>
                   <div className="button-deletar">
-                    <button onClick={toggleModal}
-                    >x</button>
+                    <button onClick={toggleModal}>x</button>
+                    {modal && <div className="modal-wrapper"><Modal /></div>}
                   </div>
                 </div>
               </div>
