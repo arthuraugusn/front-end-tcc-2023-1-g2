@@ -30,6 +30,7 @@ export const MainContractPage = ({ props }) => {
     id_escola: 0,
     id_tipo_contrato: 0,
     id_tipo_pagamento: 0,
+    status: 0,
   });
 
   const [responseError, setResponseError] = useState(0);
@@ -45,12 +46,7 @@ export const MainContractPage = ({ props }) => {
     loadTypetransport(setTypesContracts, setResponseError);
     loadTypeofPay(setTypeofPay, setResponseError);
     loadContracts(setContracts);
-    loadPrices(setPrice);
   }, []);
-
-  useEffect(() => {
-    console.log(price);
-  }, [price]);
 
   const locate = useLocation();
 
@@ -59,7 +55,7 @@ export const MainContractPage = ({ props }) => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
     if (status == 1) {
       if (testeDriverClient == 1) {
-        const idMotorista = locate.state.id;
+        const idMotorista = locate.state;
         setInfosContract({
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
@@ -68,25 +64,30 @@ export const MainContractPage = ({ props }) => {
           id_usuario: idUsuarioMotorista,
           id_motorista: idMotorista,
           idade_passageiro: contract.idade_passageiro,
+          status: 1,
         });
       } else if (testeDriverClient == 2) {
-        const idUsuario = locate.state.id;
+        const idUsuario = locate.state;
         setInfosContract({
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
           id_tipo_pagamento: contract.id_tipo_pagamento,
           nome_passageiro: contract.nome_passageiro,
           id_usuario: idUsuario,
-          id_motorista: idUsuarioMotorista,
+          id_motorista: parseInt(idUsuarioMotorista),
           idade_passageiro: contract.idade_passageiro,
+          status: 1,
         });
       }
     }
   }, [status]);
 
   useEffect(() => {
+    if (contract.status == 1) {
+      console.log(contract);
+    }
     /* registerContract(contract, setResponseError); */
-  }, [contract]);
+  }, [contract.status]);
 
   return (
     <main className="container-all-main-contract">

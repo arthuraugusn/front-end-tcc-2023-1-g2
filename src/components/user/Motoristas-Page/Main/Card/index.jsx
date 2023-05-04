@@ -8,12 +8,6 @@ export const Card = ({ driver }) => {
 
   const [status, setStatus] = useState(0);
 
-  useEffect(() => {
-    if (status == 1) {
-      navigate("/contract");
-    }
-  }, [status]);
-
   return (
     <>
       {driver.map((drivers) => (
@@ -42,7 +36,7 @@ export const Card = ({ driver }) => {
               <div className="button-contratar">
                 <button
                   onClick={() => {
-                    setStatus(1);
+                    navigate("/contract", { state: drivers.id });
                   }}
                 >
                   CONTRATAR
