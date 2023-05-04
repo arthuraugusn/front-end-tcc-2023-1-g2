@@ -16,7 +16,7 @@ export const ContractsPage = () => {
         <h1>Seus Contratos</h1>
       </div>
       <div className="allContracts-container">
-        <CardContract contracts={contracts}/>
+        <CardContract contracts={contracts} />
       </div>
     </main>
   )

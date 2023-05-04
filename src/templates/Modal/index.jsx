@@ -2,9 +2,11 @@ import "./style.css";
 import { ButtonModal } from "./Button";
 
 export const Modal = () => {
+
     const propsButtonYes = {
         key: "yes",
         label: "Sim",
+
     };
     const propsButtonNo = {
         key: "no",
