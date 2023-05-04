@@ -1,7 +1,19 @@
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./style.css";
 
 export const Card = ({ driver }) => {
+  const navigate = useNavigate();
+
+  const [status, setStatus] = useState(0);
+
+  useEffect(() => {
+    if (status == 1) {
+      navigate("/contract");
+    }
+  }, [status]);
+
   return (
     <>
       {driver.map((drivers) => (
@@ -28,7 +40,13 @@ export const Card = ({ driver }) => {
                 <p className="info tempo-carreira">Tempo de carreira: 3 anos</p>
               </div>
               <div className="button-contratar">
-                <button>CONTRATAR</button>
+                <button
+                  onClick={() => {
+                    setStatus(1);
+                  }}
+                >
+                  CONTRATAR
+                </button>
               </div>
             </div>
           </div>

@@ -1,4 +1,17 @@
 import api from "../api";
+
+export const registerContract = (contrato, setResponseError) => {
+  api.post("contract", {
+    valor: 100.0,
+    nome_passageiro: `${contrato.nome_passageiro}`,
+    idade_passageiro: `${contrato.idade_passageiro}`,
+    id_usuario: contrato.id_usuario,
+    id_motorista: contrato.id_motorista,
+    id_escola: contrato.id_escola,
+    id_tipo_pagamento: contrato.id_tipo_pagamento,
+    id_tipo_contrato: contrato.id_tipo_contrato,
+  });
+};
 // import { loadTypeofPay} from '../client/loadTypeofPay';
 
 // export const registerContract = (contract, ids, setResponseError) => {

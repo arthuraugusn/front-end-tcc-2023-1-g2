@@ -1,13 +1,17 @@
 import { ButtonNextContract } from "../Button";
 import { InputContainer } from "./InputContainter";
-// import { loadSchools } from "../../../api/client/loadSchools.js";
 import { loadTypetransport } from "../../../api/client/loadTypetransport.js";
 import { loadTypeofPay } from "../../../api/client/loadTypeofPay";
-// import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { loadContracts } from "../../../api/client/loadConcracts";
 import { loadSchoolsDrivers } from "../../../api/client/loadSchools";
+import { registerContract } from "../../../api/client/registerContract";
+import api from "../../../api/api";
+import { FormControl, Select } from "@mui/material";
+import { MenuItem } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { carregarPrecos, loadPrices } from "../../../api/driver/loadPrices";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -16,79 +20,73 @@ export const MainContractPage = ({ props }) => {
     nav: "/",
   };
 
-  const [itensContract, setItensContract] = useState({});
-
-  const [school, setSchoolDriver] = useState({});
+  const [school, setSchoolDriver] = useState([]);
 
   const [typesPayment, setTypeofPay] = useState([]);
 
-  const [typesContracts, setTypesContracts] = useState({});
+  const [typesContracts, setTypesContracts] = useState([]);
 
-  const [contract, setInfosContract] = useState({});
+  const [contract, setInfosContract] = useState({
+    id_escola: 0,
+    id_tipo_contrato: 0,
+    id_tipo_pagamento: 0,
+  });
 
   const [responseError, setResponseError] = useState(0);
 
   const [contracts, setContracts] = useState([]);
+
+  const [price, setPrice] = useState("");
+
+  const [status, setStatus] = useState(0);
 
   useEffect(() => {
     loadSchoolsDrivers(setSchoolDriver, setResponseError);
     loadTypetransport(setTypesContracts, setResponseError);
     loadTypeofPay(setTypeofPay, setResponseError);
     loadContracts(setContracts);
+    loadPrices(setPrice);
   }, []);
 
   useEffect(() => {
-    if (responseError == 200) {
-      setItensContract({
-        tipo_contrato: typesContracts.map((e) => {
-          return e.tipo_contrato;
-        }),
-        id_tipo_contrato: typesContracts.map((e) => {
-          return e.id;
-        }),
-        tipo_pagamento: typesPayment.map((e) => {
-          return e.tipo_pagamento;
-        }),
-        id_tipo_pagamento: typesPayment.map((e) => {
-          return e.id;
-        }),
-        escolas: school.map((e) => {
-          return e.nome;
-        }),
-        id_escolas: school.map((e) => {
-          return e.id;
-        }),
-      });
-    }
-  }, [typesContracts]);
+    console.log(price);
+  }, [price]);
+
+  const locate = useLocation();
 
   useEffect(() => {
-    console.log(itensContract);
-  }, [itensContract]);
+    const idUsuarioMotorista = localStorage.getItem("id");
+    const testeDriverClient = localStorage.getItem("status_user_driver");
+    if (status == 1) {
+      if (testeDriverClient == 1) {
+        const idMotorista = locate.state.id;
+        setInfosContract({
+          id_escola: contract.id_escola,
+          id_tipo_contrato: contract.id_tipo_contrato,
+          id_tipo_pagamento: contract.id_tipo_pagamento,
+          nome_passageiro: contract.nome_passageiro,
+          id_usuario: idUsuarioMotorista,
+          id_motorista: idMotorista,
+          idade_passageiro: contract.idade_passageiro,
+        });
+      } else if (testeDriverClient == 2) {
+        const idUsuario = locate.state.id;
+        setInfosContract({
+          id_escola: contract.id_escola,
+          id_tipo_contrato: contract.id_tipo_contrato,
+          id_tipo_pagamento: contract.id_tipo_pagamento,
+          nome_passageiro: contract.nome_passageiro,
+          id_usuario: idUsuario,
+          id_motorista: idUsuarioMotorista,
+          idade_passageiro: contract.idade_passageiro,
+        });
+      }
+    }
+  }, [status]);
 
-  const Nomes = contracts.map((contract) => {
-    const nomePassageiro = contract.nome_passageiro;
-    const idadePassageiro = contract.idade_passageiro;
-    const modelo = contract.motorista.van.map((van) => {
-      return van.modelo.map((modelo) => {
-        return modelo.modelo;
-      });
-    });
-  });
-
-  // const modeloVan = contracts.map(contract => {
-  //   const nomePassageiro =  contract.nome_passageiro
-  //   const modelo = contract.motorista.van.map(van =>{
-  //     return van.modelo.map(modelo =>{
-  //       return modelo.modelo
-  //     })
-  //   })
-
-  // })
-
-  {
-    /*  */
-  }
+  useEffect(() => {
+    /* registerContract(contract, setResponseError); */
+  }, [contract]);
 
   return (
     <main className="container-all-main-contract">
@@ -101,21 +99,32 @@ export const MainContractPage = ({ props }) => {
             <label htmlFor="password" className="placeholder">
               Escola:
             </label>
-            <select
-              className="selects"
-              name="filtros"
-              id="select-filter-container-contract-type"
-            >
-              {
-                <option id={itensContract.id_escolas}>
-                  {itensContract.escolas}
-                </option>
-                /* 
-              {school.map((school) => {
-                return <option value={school.id}>{school.nome}</option>;
-              })} */
-              }
-            </select>
+
+            {
+              <select
+                className="selects"
+                name="filtros"
+                onChange={(e) => {
+                  setInfosContract({
+                    id_escola: parseInt(
+                      e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                        .id
+                    ),
+                    id_tipo_contrato: contract.id_tipo_contrato,
+                    id_tipo_pagamento: contract.id_tipo_pagamento,
+                  });
+                }}
+              >
+                <option>Escolha a escola</option>
+                {school.map((elemento) => {
+                  return (
+                    <option id={elemento.id} key={elemento.id}>
+                      {elemento.nome}
+                    </option>
+                  );
+                })}
+              </select>
+            }
           </div>
           <div className="dropdown-content">
             <label htmlFor="password" className="placeholder">
@@ -125,12 +134,25 @@ export const MainContractPage = ({ props }) => {
               className="selects"
               name="filtros"
               id="select-filter-container-school"
+              onChange={(e) => {
+                setInfosContract({
+                  id_escola: contract.id_escola,
+                  id_tipo_contrato: parseInt(
+                    e.currentTarget.childNodes[e.currentTarget.selectedIndex].id
+                  ),
+
+                  id_tipo_pagamento: contract.id_tipo_pagamento,
+                });
+              }}
             >
-              {
-                <option id={itensContract.id_tipo_contrato}>
-                  {itensContract.tipo_contrato}
-                </option>
-              }
+              <option>Escolha o tipo de contrato</option>
+              {typesContracts.map((elemento) => {
+                return (
+                  <option id={elemento.id} key={elemento.id}>
+                    {elemento.tipo_contrato}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>
@@ -177,18 +199,35 @@ export const MainContractPage = ({ props }) => {
               className="selects"
               name="filtros"
               id="select-filter-container-school"
+              onChange={(e) => {
+                setInfosContract({
+                  id_escola: contract.id_escola,
+                  id_tipo_contrato: contract.id_tipo_contrato,
+                  id_tipo_pagamento: parseInt(
+                    e.currentTarget.childNodes[e.currentTarget.selectedIndex].id
+                  ),
+                });
+              }}
             >
-              {
-                <option id={itensContract.id_tipo_pagamento}>
-                  {itensContract.tipo_pagamento}
-                </option>
-              }
+              <option>Escolha o tipo de pagamento</option>
+              {typesPayment.map((elemento) => {
+                return (
+                  <option id={elemento.id} key={elemento.id}>
+                    {elemento.tipo_pagamento}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>
       </div>
 
-      <div className="button-container">
+      <div
+        className="button-container"
+        onClick={() => {
+          setStatus(1);
+        }}
+      >
         <ButtonNextContract props={propsNextContract}></ButtonNextContract>
       </div>
     </main>

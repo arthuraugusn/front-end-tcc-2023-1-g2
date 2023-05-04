@@ -3,6 +3,7 @@ import { ButtonProximoRegister } from "./Button";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { InputRegister } from "./Input";
+import Swal from "sweetalert2";
 
 export const RightSide = () => {
   const navigate = useNavigate();
@@ -96,11 +97,17 @@ export const RightSide = () => {
                 dadosUsuario.senha == null ||
                 dadosUsuario.senha == undefined
               ) {
-                alert(
-                  "Você não preencheu os dados corretamente, tente de novo"
-                );
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Você não preencheu os dados corretamente, tente de novo",
+                });
               } else if (dadosUsuario.email.includes("@") != true) {
-                alert("Você não preencheu o email corretamente, tente de novo");
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Você não preencheu o email corretamente, tente de novo",
+                });
               } else {
                 setStatus(1);
               }
