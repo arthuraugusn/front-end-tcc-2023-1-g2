@@ -48,6 +48,17 @@
 justify-content: inherit;
   align-items: flex-end;
 }
+.Modal, .modal-wrapper{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
 .info-endereco{
   font-weight: 700;
   font-size: larger;
