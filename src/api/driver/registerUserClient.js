@@ -15,11 +15,13 @@ export const registerDriverClient = (driver, setResponseError) => {
       foto: `${driver.img}`,
       avaliacao: driver.avaliacao,
       descricao: `${driver.descricao}`,
+      id_preco: driver.id_preco,
     })
     .then((response) => {
       setResponseError(response);
     })
     .catch((err) => {
+      console.log(err);
       setResponseError(err);
     });
 };
