@@ -49,15 +49,13 @@ export const CardContract = ({ contracts }) => {
               <div className="deletar-button-container">
                 <div>
                   <div className="button-deletar">
-                    {/* <button onClick={openPopupDelete()}>x</button> */}
                     <button onClick={toggleModal}>x</button>
-                    {modal && <div className="modal-wrapper"><Modal /></div>}
+                    {modal && <div className="modal-wrapper"><Modal toggleModal={toggleModal}/></div>}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       ))}
     </>
