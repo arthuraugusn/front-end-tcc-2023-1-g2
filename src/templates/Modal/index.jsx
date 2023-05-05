@@ -2,14 +2,23 @@ import "./style.css";
 import { ButtonModal } from "./Button";
 
 export const Modal = () => {
+
     const propsButtonYes = {
         key: "yes",
         label: "Sim",
+        // onClick: () => {
+        //     toggleModal();
+        // }
+
     };
     const propsButtonNo = {
         key: "no",
         label: "Não",
+        // onClick: () => {
+        //     toggleModal();
+        // }
     };
+
 
     return (
         <div className="modal-container">
