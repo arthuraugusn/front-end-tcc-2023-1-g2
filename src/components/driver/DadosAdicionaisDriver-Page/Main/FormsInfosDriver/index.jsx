@@ -36,6 +36,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: props.driver.data_nascimento,
                     cnh: props.driver.cnh,
                     inicio_carreira: props.driver.inicio_carreira,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -61,6 +62,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: props.driver.data_nascimento,
                     cnh: props.driver.cnh,
                     inicio_carreira: props.driver.inicio_carreira,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -86,6 +88,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: props.driver.data_nascimento,
                     cnh: props.driver.cnh,
                     inicio_carreira: props.driver.inicio_carreira,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -113,6 +116,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: e.target.value,
                     cnh: props.driver.cnh,
                     inicio_carreira: props.driver.inicio_carreira,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -139,6 +143,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: props.driver.data_nascimento,
                     cnh: e.target.value,
                     inicio_carreira: props.driver.inicio_carreira,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -164,6 +169,7 @@ export const FormsInfosDriver = ({ props }) => {
                     data_nascimento: props.driver.data_nascimento,
                     cnh: props.driver.cnh,
                     inicio_carreira: e.target.value,
+                    id_preco: props.driver.id_preco,
                   });
                 }}
               >
@@ -178,6 +184,41 @@ export const FormsInfosDriver = ({ props }) => {
                 />
               </div>
             </div>
+          </div>
+          <div className="dropdown-content">
+            <label className="placeholder">Preços:</label>
+
+            <select
+              name="filtros"
+              className="selects"
+              disabled={props.statusInput}
+              onChange={(e) => {
+                props.setDriverInfos({
+                  nome: location.state.nome,
+                  email: location.state.email,
+                  senha: location.state.senha,
+                  img: props.driver.img,
+                  rg: props.driver.rg,
+                  cpf: props.driver.cpf,
+                  telefone: props.driver.telefone,
+                  data_nascimento: props.driver.data_nascimento,
+                  cnh: props.driver.cnh,
+                  inicio_carreira: props.driver.inicio_carreira,
+                  id_preco:
+                    e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                      .id,
+                });
+              }}
+            >
+              <option>Escolha sua faixa de preços</option>
+              {props.prices.map((elemento) => {
+                return (
+                  <option key={elemento.id} id={elemento.id}>
+                    {elemento.faixa_preco}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <div
             className="button-save-driver"
@@ -195,6 +236,7 @@ export const FormsInfosDriver = ({ props }) => {
                 inicio_carreira: props.driver.inicio_carreira,
                 descricao: "",
                 avaliacao: 10,
+                id_preco: parseInt(props.driver.id_preco),
                 status_finalizado: 1,
               });
             }}

@@ -76,8 +76,13 @@ export const MainDadosVan = () => {
 
   useEffect(() => {
     if (responseError.status == 201) {
-      alert("Você foi cadastrado com sucesso");
-      navigate("/login");
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu contrato foi feito com sucesso",
+      }).then(() => {
+        navigate("/login");
+      });
     }
   }, [responseError]);
 
@@ -101,6 +106,7 @@ export const MainDadosVan = () => {
                   placa: van.placa,
                   img: van.img,
                   id_motorista: parseInt(idDriver),
+                  id_modelo: van.id_modelo,
                 });
               }}
             >
@@ -120,6 +126,7 @@ export const MainDadosVan = () => {
                   placa: e.target.value,
                   img: van.img,
                   id_motorista: parseInt(idDriver),
+                  id_modelo: van.id_modelo,
                 });
               }}
             >
@@ -132,15 +139,34 @@ export const MainDadosVan = () => {
                 }}
               />
             </div>
-            <div>
-              <InputContainerVan
-                props={{
-                  status: statusInput,
-                  classNameLabel: "placeholder",
-                  nameInput: "Modelo da van:",
-                  classNameInput: "inputs-more-infos",
+            <div className="input-container">
+              <label className="placeholder">Modelo da Van:</label>
+              <select
+                name="filtros"
+                className="selects"
+                disabled={statusInput}
+                onChange={(e) => {
+                  setVan({
+                    quantidade_vagas: van.quantidade_vagas,
+                    placa: van.placa,
+                    img: van.img,
+                    id_motorista: parseInt(idDriver),
+                    id_modelo: parseInt(
+                      e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                        .id
+                    ),
+                  });
                 }}
-              />
+              >
+                <option>Escolha o modelo da sua van</option>
+                {modelsVan.map((elemento) => {
+                  return (
+                    <option key={elemento.id} id={elemento.id}>
+                      {elemento.modelo}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
           </div>
         </div>
@@ -152,7 +178,7 @@ export const MainDadosVan = () => {
               img: van.img,
               id_motorista: parseInt(idDriver),
               status_finalizado: 1,
-              status_van: 1,
+              id_modelo: parseInt(van.id_modelo),
             });
           }}
           className="container-button-save-van"
