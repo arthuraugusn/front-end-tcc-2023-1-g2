@@ -8,8 +8,8 @@ import { ButtonSalvarVan } from "./Button";
 import { FotoVan } from "./FotoVan";
 import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
-import { loadModelVan } from "../../../../api/driver/van/loadModels";
 import Swal from "sweetalert2";
+import { loadModelVan } from "../../../../api/driver/van/loadModels";
 
 export const MainDadosVan = () => {
   const propsSalvarVan = {
@@ -31,12 +31,11 @@ export const MainDadosVan = () => {
 
   const [response, setResponse] = useState("");
 
-  useEffect(() => {
-    loadDriverByCpf(locate.state, setIdDriver);
-  }, []);
+  const [modelsVan, setModels] = useState([]);
 
   useEffect(() => {
-    loadModelVan(setResponse);
+    loadDriverByCpf(locate.state, setIdDriver);
+    loadModelVan(setModels);
   }, []);
 
   useEffect(() => {
