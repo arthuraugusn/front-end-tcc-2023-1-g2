@@ -118,7 +118,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/");
+              navigate("/notifications");
             }}
             className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >
