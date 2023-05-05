@@ -41,7 +41,7 @@ export const CardContract = ({ contracts }) => {
               <div className="deletar-button-container">
                 <div>
                   <div className="button-deletar">
-                    <button onClick={openPopupDelete()}>x</button>
+                    {/* <button onClick={openPopupDelete()}>x</button> */}
                   </div>
                 </div>
               </div>
