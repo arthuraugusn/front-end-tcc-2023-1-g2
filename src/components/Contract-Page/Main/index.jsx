@@ -11,7 +11,6 @@ import api from "../../../api/api";
 import { FormControl, Select } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
-import { carregarPrecos, loadPrices } from "../../../api/driver/loadPrices";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import Swal from "sweetalert2";
 
@@ -21,6 +20,8 @@ export const MainContractPage = ({ props }) => {
     label: "Próximo",
     nav: "/",
   };
+
+  const navigate = useNavigate();
 
   const [school, setSchoolDriver] = useState([]);
 
@@ -44,6 +45,8 @@ export const MainContractPage = ({ props }) => {
     idade_passageiro: "",
   });
 
+  const [responseErrorGet, setResponseErrorGet] = useState(0);
+
   const [status, setStatus] = useState(0);
 
   const idUsuarioMotorista = localStorage.getItem("id");
@@ -51,9 +54,9 @@ export const MainContractPage = ({ props }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    loadSchoolsDrivers(setSchoolDriver, setResponseError);
-    loadTypetransport(setTypesContracts, setResponseError);
-    loadTypeofPay(setTypeofPay, setResponseError);
+    loadSchoolsDrivers(setSchoolDriver, setResponseErrorGet);
+    loadTypetransport(setTypesContracts, setResponseErrorGet);
+    loadTypeofPay(setTypeofPay, setResponseErrorGet);
     loadContracts(setContracts);
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
@@ -124,20 +127,22 @@ export const MainContractPage = ({ props }) => {
           window.location.reload();
         });
       } else {
-        Swal.fire({
-          icon: "success",
-          title: "Tudo certo",
-          text: "Seu contrato foi feito com sucesso",
-        }).then(() => {
-          registerContract(contract, setResponseError);
-        });
+        registerContract(contract, setResponseError);
       }
     }
   }, [contract.status]);
 
   useEffect(() => {
-    console.log(clientInfos);
-  }, [clientInfos]);
+    if (responseError.code == 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu contrato foi feito com sucesso",
+      }).then(() => {
+        console.log(responseError.result);
+      });
+    }
+  }, [responseError]);
 
   return (
     <main className="container-all-main-contract">
