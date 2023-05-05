@@ -14,9 +14,10 @@ import { loginDriver } from "../../../../api/driver/loginDriver";
 import { ButtonEntrar } from "./Button";
 import { InputContainerLogin } from "./Input";
 import "./style.css";
+import Swal from "sweetalert2";
 
 export const LeftSide = ({ prop }) => {
-  const [userDriverInfosLogin, setInfosLoginUserDriver] = useState([]);
+  const [userDriverInfosLogin, setInfosLoginUserDriver] = useState({});
 
   const navigate = useNavigate();
 
@@ -44,6 +45,14 @@ export const LeftSide = ({ prop }) => {
       localStorage.setItem("tokenJwt", userDriverInfosLogin.data.token);
 
       navigate("/");
+    } else if (userDriverInfosLogin.code == 404) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Não foi posível fazer o login. Tente novamente",
+      }).then(() => {
+        window.location.reload();
+      });
     }
   }, [userDriverInfosLogin]);
 

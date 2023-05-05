@@ -12,6 +12,8 @@ import { FormControl, Select } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { carregarPrecos, loadPrices } from "../../../api/driver/loadPrices";
+import { loadUserbyId } from "../../../api/client/loadUserbyId";
+import Swal from "sweetalert2";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -37,21 +39,28 @@ export const MainContractPage = ({ props }) => {
 
   const [contracts, setContracts] = useState([]);
 
-  const [price, setPrice] = useState("");
+  const [clientInfos, setClientInfos] = useState({
+    nome_passageiro: "",
+    idade_passageiro: "",
+  });
 
   const [status, setStatus] = useState(0);
+
+  const idUsuarioMotorista = localStorage.getItem("id");
+
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     loadSchoolsDrivers(setSchoolDriver, setResponseError);
     loadTypetransport(setTypesContracts, setResponseError);
     loadTypeofPay(setTypeofPay, setResponseError);
     loadContracts(setContracts);
+    loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
 
   const locate = useLocation();
 
   useEffect(() => {
-    const idUsuarioMotorista = localStorage.getItem("id");
     const testeDriverClient = localStorage.getItem("status_user_driver");
     if (status == 1) {
       if (testeDriverClient == 1) {
@@ -60,10 +69,10 @@ export const MainContractPage = ({ props }) => {
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
           id_tipo_pagamento: contract.id_tipo_pagamento,
-          nome_passageiro: contract.nome_passageiro,
+          nome_passageiro: clientInfos.nome_passageiro,
           id_usuario: idUsuarioMotorista,
           id_motorista: idMotorista,
-          idade_passageiro: contract.idade_passageiro,
+          idade_passageiro: clientInfos.idade_passageiro,
           status: 1,
         });
       } else if (testeDriverClient == 2) {
@@ -72,10 +81,10 @@ export const MainContractPage = ({ props }) => {
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
           id_tipo_pagamento: contract.id_tipo_pagamento,
-          nome_passageiro: contract.nome_passageiro,
+          nome_passageiro: clientInfos.nome_passageiro,
           id_usuario: idUsuario,
           id_motorista: parseInt(idUsuarioMotorista),
-          idade_passageiro: contract.idade_passageiro,
+          idade_passageiro: clientInfos.idade_passageiro,
           status: 1,
         });
       }
@@ -84,10 +93,51 @@ export const MainContractPage = ({ props }) => {
 
   useEffect(() => {
     if (contract.status == 1) {
-      console.log(contract);
+      if (
+        contract.id_escola == null ||
+        contract.id_escola == undefined ||
+        contract.id_escola == "" ||
+        contract.id_tipo_contrato == null ||
+        contract.id_tipo_contrato == undefined ||
+        contract.id_tipo_contrato == "" ||
+        contract.id_tipo_pagamento == null ||
+        contract.id_tipo_pagamento == undefined ||
+        contract.id_tipo_pagamento == "" ||
+        contract.id_usuario == null ||
+        contract.id_usuario == undefined ||
+        contract.id_usuario == "" ||
+        contract.id_motorista == null ||
+        contract.id_motorista == undefined ||
+        contract.id_motorista == "" ||
+        contract.nome_passageiro == null ||
+        contract.nome_passageiro == undefined ||
+        contract.nome_passageiro == "" ||
+        contract.idade_passageiro == null ||
+        contract.idade_passageiro == undefined ||
+        contract.idade_passageiro == ""
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Não foi posível concluir o contrato. Tente novamente",
+        }).then(() => {
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Tudo certo",
+          text: "Seu contrato foi feito com sucesso",
+        }).then(() => {
+          registerContract(contract, setResponseError);
+        });
+      }
     }
-    /* registerContract(contract, setResponseError); */
   }, [contract.status]);
+
+  useEffect(() => {
+    console.log(clientInfos);
+  }, [clientInfos]);
 
   return (
     <main className="container-all-main-contract">
@@ -160,17 +210,24 @@ export const MainContractPage = ({ props }) => {
 
         <div className="input-container-geral">
           <div>
-            {/* {(onChange = (e) => {})} */}
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
                 nameInput: "Nome do responsável",
                 classNameInput: "input-contract",
+                placeholder: user.nome,
+                status: true,
               }}
             />
           </div>
-          <div>
-            {/* {(onChange = (e) => {})} */}
+          <div
+            onChange={(e) => {
+              setClientInfos({
+                nome_passageiro: e.target.value,
+                idade_passageiro: clientInfos.idade_passageiro,
+              });
+            }}
+          >
             <InputContainer
               props={{
                 classNameLabel: "placeholder",
@@ -179,8 +236,14 @@ export const MainContractPage = ({ props }) => {
               }}
             />
           </div>
-          <div>
-            {/* {(onChange = (e) => {})} */}
+          <div
+            onChange={(e) => {
+              setClientInfos({
+                nome_passageiro: clientInfos.nome_passageiro,
+                idade_passageiro: e.target.value,
+              });
+            }}
+          >
             <InputContainer
               props={{
                 classNameLabel: "placeholder",

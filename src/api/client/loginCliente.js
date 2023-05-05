@@ -7,13 +7,21 @@ export const loginCliente = (setClient, cliente) => {
       senha: cliente.uid,
     })
     .then((response) => {
-      setClient({
-        data: response.data,
-        code: response.status,
-        status_user_driver: 2,
-      });
+      if (response.status != 200) {
+        setClient({
+          code: 404,
+        });
+      } else if (response.status == 200) {
+        setClient({
+          data: response.data,
+          code: response.status,
+          status_user_driver: 2,
+        });
+      }
     })
     .catch((err) => {
-      console.log("Erro: " + err);
+      setClient({
+        code: 404,
+      });
     });
 };

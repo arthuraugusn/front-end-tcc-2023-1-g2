@@ -141,6 +141,7 @@ export const MainPerfilPage = () => {
         status_visibility: "true",
       });
     }
+    console.log(perfil);
   }, [perfil]);
 
   useEffect(() => {
