@@ -4,6 +4,7 @@ import { FotoPerfilRegistroDriver } from "./FotoPerfil";
 import "./style.css";
 import { registerDriverClient } from "../../../../api/driver/registerUserClient";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const MainDadosAdicionaisDriver = () => {
   const navigate = useNavigate();
@@ -41,8 +42,13 @@ export const MainDadosAdicionaisDriver = () => {
         driverInfos.telefone == "" ||
         driverInfos.telefone == null
       ) {
-        alert("Você não preencheu os dados corretamente, tente de novo");
-        window.location.reload();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Você não preencheu os dados corretamente, tente de novo",
+        }).then(() => {
+          window.location.reload();
+        });
       } else {
         registerDriverClient(driverInfos, setResponseError);
         setCpfNavigate(driverInfos.cpf);

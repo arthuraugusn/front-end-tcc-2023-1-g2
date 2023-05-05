@@ -17,6 +17,7 @@ import { FotoPerfilPage } from "./Inputs/FotoPerfil";
 import { InputInfosPerfil } from "./Inputs/InputInfos";
 import { ModalPadrao } from "./Modal";
 import "./style.css";
+import Swal from "sweetalert2";
 
 export const MainPerfilPage = () => {
   const statusUserDriver = localStorage.getItem("status_user_driver");
@@ -76,14 +77,22 @@ export const MainPerfilPage = () => {
     if (statusEdit == true) {
       if (statusUserDriver == 1) {
         if (userEdit.senha_atual != userEdit.nova_senha) {
-          alert("Você inseriu a senha errada");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Você inseriu a senha errada",
+          });
         } else {
           updateDriver(userEdit, perfil.id, setStatusCode);
         }
       }
       if (statusUserDriver == 2) {
         if (userEdit.senha_atual != userEdit.nova_senha) {
-          alert("Você inseriu a senha errada");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Você inseriu a senha errada",
+          });
         } else {
           updateUser(userEdit, perfil.id, setStatusCode);
         }
@@ -799,10 +808,13 @@ export const MainPerfilPage = () => {
                 userEdit.descricao == null
               ) {
                 console.log(userEdit);
-                alert(
-                  "Você não preencheu todos os dados corretamente, tente novamente "
-                );
-                window.location.reload();
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Você não preencheu todos os dados corretamente, tente novamente",
+                }).then(() => {
+                  window.location.reload();
+                });
               } else {
                 setStatusEdit(true);
               }

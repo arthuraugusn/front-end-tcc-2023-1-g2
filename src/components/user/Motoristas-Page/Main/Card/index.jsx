@@ -5,8 +5,10 @@ import "./style.css";
 
 export const Card = ({ driver }) => {
   const navigate = useNavigate();
-
+  console.log(driver);
   const [status, setStatus] = useState(0);
+
+  const dataAtual = new Date().getFullYear();
 
   return (
     <>
@@ -27,7 +29,9 @@ export const Card = ({ driver }) => {
             </div>
             <div className="infos-contratar">
               <div className="infos-motorista">
-                <p className="info idade">Idade: 47 anos</p>
+                <p className="info idade">
+                  {dataAtual - drivers.data_nascimento.split("/")[2]}
+                </p>
                 <p className="info vagas">
                   Vagas disponíveis: {drivers.van[0].quantidade_vagas}
                 </p>

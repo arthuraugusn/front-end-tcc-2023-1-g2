@@ -194,7 +194,6 @@ export const FormsInfosDriver = ({ props }) => {
                 cnh: props.driver.cnh,
                 inicio_carreira: props.driver.inicio_carreira,
                 descricao: "",
-                status_motorista: 1,
                 avaliacao: 10,
                 status_finalizado: 1,
               });

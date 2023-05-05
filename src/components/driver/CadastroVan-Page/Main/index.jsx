@@ -9,6 +9,7 @@ import { FotoVan } from "./FotoVan";
 import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
 import { loadModelVan } from "../../../../api/driver/van/loadModels";
+import Swal from "sweetalert2";
 
 export const MainDadosVan = () => {
   const propsSalvarVan = {
@@ -61,8 +62,13 @@ export const MainDadosVan = () => {
         van.img == null ||
         van.img == ""
       ) {
-        alert("Você não preencheu os dados corretamente, tente de novo");
-        window.location.reload();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Você não preencheu os dados corretamente, tente de novo",
+        }).then(() => {
+          window.location.reload();
+        });
       } else {
         registerVanDriver(van, setResponseError);
       }

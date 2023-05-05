@@ -4,6 +4,7 @@ import { registerUserClient } from "../../../../api/client/registerUserClient";
 import { FormFirstInfos } from "./FormFirstInfos";
 import { FotoPerfilRegistro } from "./FotoPerfil";
 import "./style.css";
+import Swal from "sweetalert2";
 
 export const MainDadosAdicionaisUser = () => {
   const [user, setUserInfos] = useState({});
@@ -39,8 +40,13 @@ export const MainDadosAdicionaisUser = () => {
         user.telefone == "" ||
         user.telefone == null
       ) {
-        alert("Você não preencheu os dados corretamente, tente de novo");
-        window.location.reload();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Você não preencheu os dados corretamente, tente de novo",
+        }).then(() => {
+          window.location.reload();
+        });
       } else {
         registerUserClient(user, setResponseError);
       }

@@ -1,7 +1,6 @@
 import api from "../api";
 
 export const registerDriverClient = (driver, setResponseError) => {
-  console.log(driver);
   api
     .post("driver", {
       nome: `${driver.nome}`,
@@ -16,7 +15,6 @@ export const registerDriverClient = (driver, setResponseError) => {
       foto: `${driver.img}`,
       avaliacao: driver.avaliacao,
       descricao: `${driver.descricao}`,
-      status_motorista: driver.status_motorista,
     })
     .then((response) => {
       setResponseError(response);
