@@ -1,15 +1,25 @@
 import "./style.css";
 import { ButtonModal } from "./Button";
+import {deleteContractUser } from "../../api/client/deleteUserContract"
 
-export const Modal = () => {
+export const Modal = ({toggleModal}) => {
+
     const propsButtonYes = {
         key: "yes",
         label: "Sim",
+        onClick: () => {
+            deleteContractUser();
+        }
+
     };
     const propsButtonNo = {
         key: "no",
         label: "Não",
+        onClick: () => {
+            toggleModal();
+        }
     };
+
 
     return (
         <div className="modal-container">
