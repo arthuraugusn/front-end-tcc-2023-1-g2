@@ -32,6 +32,7 @@ function RoutesApp() {
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
+        <Route Component= {AllNotifications} props ={true} path="/notifications"/>
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
       </Routes>
