@@ -127,7 +127,8 @@ export const MainContractPage = ({ props }) => {
           window.location.reload();
         });
       } else {
-        registerContract(contract, setResponseError);
+        navigate("/contract/finish", { state: contract });
+        /* registerContract(contract, setResponseError); */
       }
     }
   }, [contract.status]);

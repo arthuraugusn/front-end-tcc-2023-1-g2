@@ -30,12 +30,16 @@ export const Card = ({ driver }) => {
             <div className="infos-contratar">
               <div className="infos-motorista">
                 <p className="info idade">
-                  {dataAtual - drivers.data_nascimento.split("/")[2]}
+                  Idade: {dataAtual - drivers.data_nascimento.split("/")[2]}{" "}
+                  anos
                 </p>
                 <p className="info vagas">
                   Vagas disponíveis: {drivers.van[0].quantidade_vagas}
                 </p>
-                <p className="info tempo-carreira">Tempo de carreira: 3 anos</p>
+                <p className="info tempo-carreira">
+                  Tempo de carreira:{" "}
+                  {dataAtual - drivers.inicio_carreira.split("/")[2]} anos
+                </p>
               </div>
               <div className="button-contratar">
                 <button

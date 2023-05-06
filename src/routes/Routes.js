@@ -11,6 +11,7 @@ import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
 import { PerfilPage } from "../templates/PerfilPage";
 import ALlContractsPage from "../templates/All-Contracts/body";
 import SuasVansPage from "../templates/driver/SuasVansPage";
+import FinishContractPage from "../templates/user/FinishContractPage";
 
 function RoutesApp() {
   return (
@@ -28,10 +29,19 @@ function RoutesApp() {
           path="/dados-adicionais-driver"
         />
         <Route Component={CadastrarVanPage} path="/cadastro-van" />
+
         <Route element={<HomePage props={true} />} path="/" />
+
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
+
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
+        <Route
+          Component={FinishContractPage}
+          props={true}
+          path="/contract/finish"
+        />
+
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
       </Routes>
