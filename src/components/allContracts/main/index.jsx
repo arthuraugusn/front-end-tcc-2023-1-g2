@@ -4,9 +4,13 @@ import "./style.css";
 import { CardContract } from "../Card";
 import { ModalExcluirPerfil } from "../../Perfil-Page/Main/Modal/Excluir";
 import { deleteContractUser } from "../../../api/client/deleteUserContract";
+import Swal from "sweetalert2";
 
 export const ContractsPage = () => {
   const [contracts, setAllUserContracts] = useState([]);
+
+  const [idContract, setIdContract] = useState(0);
+
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
     value: "",
@@ -18,16 +22,21 @@ export const ContractsPage = () => {
   useEffect(() => {
     loadUserContract(id, setAllUserContracts);
   });
-
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
-      deleteContractUser(id, setStatusCode);
+      deleteContractUser(idContract, setStatusCode);
     }
   }, [openCloseModal]);
 
   useEffect(() => {
-    if (statusCode != 0) {
-      console.log(statusCode);
+    if (statusCode.status == 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu contrato foi excluído com sucesso",
+      }).then(() => {
+        window.location.reload();
+      });
     }
   }, [statusCode]);
 
@@ -42,6 +51,7 @@ export const ContractsPage = () => {
             contracts: contracts,
             setOpenCloseModal: setOpenCloseModal,
             openCloseModal: openCloseModal,
+            setIdContract: setIdContract,
           }}
         />
         <ModalExcluirPerfil

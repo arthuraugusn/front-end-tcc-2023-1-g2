@@ -9,13 +9,13 @@ export const CardContract = ({ props }) => {
       {props.contracts.map((contract) => (
         <div
           onClick={() => {
-            console.log(contract.id);
+            console.log(contract);
           }}
           key={contract.id}
           className="card-contracts"
         >
           <div className="container-image">
-            <img src={contract.foto} alt="Foto motorista" />
+            <img src={contract.motorista.foto} alt="Foto motorista" />
           </div>
           <div className="container-all-infos">
             <div className="nome-container">
@@ -51,6 +51,7 @@ export const CardContract = ({ props }) => {
                           status: true,
                           value: props.openCloseModal.value,
                         });
+                        props.setIdContract(contract.id);
                       }}
                     >
                       x

@@ -79,14 +79,14 @@ export const MainContractPage = ({ props }) => {
           status: 1,
         });
       } else if (testeDriverClient == 2) {
-        const idUsuario = locate.state;
+        const idMotorista = locate.state;
         setInfosContract({
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
           id_tipo_pagamento: contract.id_tipo_pagamento,
           nome_passageiro: clientInfos.nome_passageiro,
-          id_usuario: idUsuario,
-          id_motorista: parseInt(idUsuarioMotorista),
+          id_usuario: parseInt(idUsuarioMotorista),
+          id_motorista: idMotorista,
           idade_passageiro: clientInfos.idade_passageiro,
           status: 1,
         });
@@ -133,13 +133,13 @@ export const MainContractPage = ({ props }) => {
   }, [contract.status]);
 
   useEffect(() => {
-    if (responseError.code == 200) {
+    if (responseError.code == 201) {
       Swal.fire({
         icon: "success",
         title: "Tudo certo",
         text: "Seu contrato foi feito com sucesso",
       }).then(() => {
-        console.log(responseError.result);
+        navigate("/contracts");
       });
     }
   }, [responseError]);
