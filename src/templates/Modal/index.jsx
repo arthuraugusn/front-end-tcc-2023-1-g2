@@ -2,7 +2,7 @@ import "./style.css";
 import { ButtonModal } from "./Button";
 import {deleteContractUser } from "../../api/client/deleteUserContract"
 
-export const Modal = ({toggleModal, }) => {
+export const Modal = ({toggleModal}) => {
 
     const propsButtonYes = {
         key: "yes",
