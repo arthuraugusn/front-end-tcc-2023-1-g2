@@ -64,14 +64,14 @@ export const ContractsPage = ({ props }) => {
             setIdContract: setIdContract,
           }}
         />
-        <ModalExcluirPerfil
-          props={{
-            message: "Você realmente deseja excluir seu contrato ?",
-            openCloseModal: openCloseModal,
-            setOpenCloseModal: setOpenCloseModal,
-          }}
-        />
       </div>
+      <ModalExcluirPerfil
+        props={{
+          message: "Você realmente deseja excluir seu contrato ?",
+          openCloseModal: openCloseModal,
+          setOpenCloseModal: setOpenCloseModal,
+        }}
+      />
     </main>
   );
 };
