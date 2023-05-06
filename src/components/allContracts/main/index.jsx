@@ -6,10 +6,12 @@ import { ModalExcluirPerfil } from "../../Perfil-Page/Main/Modal/Excluir";
 import { deleteContractUser } from "../../../api/client/deleteUserContract";
 import Swal from "sweetalert2";
 
-export const ContractsPage = () => {
+export const ContractsPage = ({ props }) => {
   const [contracts, setAllUserContracts] = useState([]);
 
   const [idContract, setIdContract] = useState(0);
+
+  const [mainStyle, setMainStyle] = useState("height-percent");
 
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
@@ -40,8 +42,16 @@ export const ContractsPage = () => {
     }
   }, [statusCode]);
 
+  useEffect(() => {
+    console.log(contracts);
+    if (contracts.length != 0) {
+      setMainStyle("height-auto");
+      props.setStyleBody("height-auto");
+    }
+  }, [contracts]);
+
   return (
-    <main className="main-container-allcontracts">
+    <main className={`main-container-allcontracts ${mainStyle}`}>
       <div className="name-container">
         <h1>Seus Contratos</h1>
       </div>

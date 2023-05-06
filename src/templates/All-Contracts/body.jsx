@@ -3,13 +3,19 @@ import { HeaderAllContracts } from "../../components/allContracts/header";
 import { ContractsPage } from "../../components/allContracts/main";
 import "./style.css";
 import "../../templates/reset/reset.css";
+import { useState } from "react";
 
 export default function ALlContractsPage() {
+  const [styleBody, setStyleBody] = useState("height-vh");
   return (
     <>
-      <div className="container-main-footer-allContracts">
+      <div className={`container-main-footer-allContracts ${styleBody}`}>
         <HeaderAllContracts />
-        <ContractsPage />
+        <ContractsPage
+          props={{
+            setStyleBody: setStyleBody,
+          }}
+        />
         <FooterContractPage />
       </div>
     </>
