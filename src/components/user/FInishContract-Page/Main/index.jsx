@@ -5,11 +5,22 @@ import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import { loadTypePaymentId } from "../../../../api/driver/loadTypePaymentId";
 import { loadTypeTransportId } from "../../../../api/driver/loadTypeTransportId";
 import { loadSchoolId } from "../../../../api/driver/loadSchoolId,";
+import { loadUserbyId } from "../../../../api/client/loadUserbyId";
 
 export const MainFinishContractPage = () => {
   const location = useLocation();
 
-  const [driver, setDriver] = useState({});
+  const [driver, setDriver] = useState({
+    data_nascimento: "",
+    van: [
+      {
+        placa: "",
+      },
+    ],
+    id_preco: {
+      faixa_preco: "",
+    },
+  });
 
   const [tipoPagamento, setTipoPagamento] = useState({
     data: { tipo_pagamento: "" },
@@ -21,18 +32,18 @@ export const MainFinishContractPage = () => {
     nome: "",
   });
 
+  const [user, setUser] = useState({});
+
   useEffect(() => {
     loadDriverById(location.state.id_motorista, setDriver);
     loadTypePaymentId(location.state.id_tipo_pagamento, setTipoPagamento);
     loadTypeTransportId(location.state.id_tipo_contrato, setTipoTransporte);
     loadSchoolId(location.state.id_escola, setEscola);
+    loadUserbyId(localStorage.getItem("id"), setUser);
   }, []);
 
-  useEffect(() => {
-    /* console.log(tipoTransporte); */
-  }, [tipoTransporte]);
+  const dataAtual = new Date().getFullYear();
 
-  console.log(location.state);
   return (
     <main className="container-main-finish-contract">
       <div className="container-finish-contract">
@@ -41,14 +52,41 @@ export const MainFinishContractPage = () => {
         </div>
         <div className="container-infos-contract">
           <div>
-            <p>Nome do responsável: {driver.nome}</p>
-            <p>Nome do passageiro: {location.state.nome_passageiro}</p>
-            <p>Idade do passageiro: {location.state.idade_passageiro} anos</p>
-            <p>Tipo de pagamento: {tipoPagamento.data.tipo_pagamento}</p>
-            <p>Tipo de transporte: {tipoTransporte.data.tipo_contrato}</p>
-            <p>Escola: {escola.nome}</p>
+            <p>
+              Nome do responsável: <p>{user.nome}</p>
+            </p>
+            <p>
+              Nome do passageiro: <p>{location.state.nome_passageiro}</p>
+            </p>
+            <p>
+              Idade do passageiro: <p>{location.state.idade_passageiro} anos</p>
+            </p>
+            <p>
+              Tipo de pagamento: <p>{tipoPagamento.data.tipo_pagamento}</p>
+            </p>
+            <p>
+              Tipo de transporte: <p>{tipoTransporte.data.tipo_contrato}</p>
+            </p>
+            <p>
+              Escola: <p>{escola.nome}</p>
+            </p>
+            <p>Endereço gigante aqui</p>
           </div>
-          <div></div>
+          <div>
+            <p>
+              Nome do motorista: <p>{driver.nome}</p>
+            </p>
+            <p>
+              Idade do motorista:{" "}
+              <p>{dataAtual - driver.data_nascimento.split("/")[2]}</p>
+            </p>
+            <p>
+              Placa da van: <p>{driver.van[0].placa}</p>
+            </p>
+            <p>
+              Preço do serviço: <p>{driver.id_preco.faixa_preco}</p>
+            </p>
+          </div>
         </div>
         <div className="container-button-envi-canc"></div>
       </div>
