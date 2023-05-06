@@ -128,22 +128,9 @@ export const MainContractPage = ({ props }) => {
         });
       } else {
         navigate("/contract/finish", { state: contract });
-        /* registerContract(contract, setResponseError); */
       }
     }
   }, [contract.status]);
-
-  useEffect(() => {
-    if (responseError.code == 201) {
-      Swal.fire({
-        icon: "success",
-        title: "Tudo certo",
-        text: "Seu contrato foi feito com sucesso",
-      }).then(() => {
-        navigate("/contracts");
-      });
-    }
-  }, [responseError]);
 
   return (
     <main className="container-all-main-contract">

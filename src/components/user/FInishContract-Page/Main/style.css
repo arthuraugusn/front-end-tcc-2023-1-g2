@@ -13,7 +13,9 @@
   flex-direction: column;
   width: 100%;
   padding: 40px;
-  height: 100%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.363);
+  height: auto;
   background-color: var(--main-yellow);
 }
 
@@ -24,23 +26,36 @@
 .container-infos-contract {
   display: flex;
   width: 100%;
-  align-items: center;
+  height: auto;
   justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
 }
 
 .container-infos-contract div {
   display: flex;
+  text-align: inherit;
   align-items: center;
   flex-direction: column;
-  height: 60vh;
-  padding: 40px;
-  width: 30vw;
-  justify-content: space-evenly;
-  border-radius: 20px;
+  height: 100%;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
   background-color: var(--contract-infos-yellow);
 }
 
-.container-infos-contract div p {
-  gap: 10px;
+.container-infos-contract div div {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.name-content-contract {
+  padding-left: 60px;
+
+  font-weight: 900;
 }
