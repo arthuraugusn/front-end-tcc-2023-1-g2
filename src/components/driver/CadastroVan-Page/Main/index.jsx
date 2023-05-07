@@ -79,7 +79,7 @@ export const MainDadosVan = () => {
       Swal.fire({
         icon: "success",
         title: "Tudo certo",
-        text: "Seu contrato foi feito com sucesso",
+        text: "Seu cadastro foi feito com sucesso",
       }).then(() => {
         navigate("/login");
       });

@@ -12,6 +12,7 @@ export const registerUserClient = (user, setResponseError) => {
       senha: `${user.senha}`,
       foto: `${user.img}`,
       cep: `${user.cep}`,
+      numero: parseInt(user.numero),
       status_usuario: user.status_usuario,
     })
     .then((response) => {

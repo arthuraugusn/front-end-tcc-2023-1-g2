@@ -16,6 +16,7 @@ export const updateDriver = (driver, id, setStatusCode) => {
       avaliacao: driver.avaliacao,
       descricao: `${driver.descricao}`,
       status_motorista: 1,
+      id_preco: parseInt(driver.id_preco),
     })
     .then((response) => {
       console.log(response);

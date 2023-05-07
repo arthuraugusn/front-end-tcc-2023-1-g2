@@ -38,7 +38,10 @@ export const MainDadosAdicionaisUser = () => {
         user.senha == null ||
         user.telefone == undefined ||
         user.telefone == "" ||
-        user.telefone == null
+        user.telefone == null ||
+        user.numero == undefined ||
+        user.numero == "" ||
+        user.numero == null
       ) {
         Swal.fire({
           icon: "error",

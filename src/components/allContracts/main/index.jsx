@@ -5,6 +5,7 @@ import { CardContract } from "../Card";
 import { ModalExcluirPerfil } from "../../Perfil-Page/Main/Modal/Excluir";
 import { deleteContractUser } from "../../../api/client/deleteUserContract";
 import Swal from "sweetalert2";
+import { loadDriverContract } from "../../../api/driver/loadDriverContract";
 
 export const ContractsPage = ({ props }) => {
   const [contracts, setAllUserContracts] = useState([]);
@@ -22,7 +23,11 @@ export const ContractsPage = ({ props }) => {
   const [statusCode, setStatusCode] = useState(0);
 
   useEffect(() => {
-    loadUserContract(id, setAllUserContracts);
+    if (localStorage.getItem("status_user_driver") == 2) {
+      loadUserContract(id, setAllUserContracts);
+    } else if (localStorage.getItem("status_user_driver") == 1) {
+      loadDriverContract(id, setAllUserContracts);
+    }
   });
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
@@ -43,7 +48,6 @@ export const ContractsPage = ({ props }) => {
   }, [statusCode]);
 
   useEffect(() => {
-    console.log(contracts);
     if (contracts.length != 0) {
       setMainStyle("height-auto");
       props.setStyleBody("height-auto");

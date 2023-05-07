@@ -4,6 +4,7 @@ import { registerUserClient } from "../../../../../api/client/registerUserClient
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
+import Swal from "sweetalert2";
 
 export const FormFirstInfos = ({ props }) => {
   const propsSalvarUsuario = {
@@ -16,7 +17,13 @@ export const FormFirstInfos = ({ props }) => {
 
   useEffect(() => {
     if (props.responseError.status == 201) {
-      navigate("/login");
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu cadastro foi feito com sucesso",
+      }).then(() => {
+        navigate("/login");
+      });
     }
   }, [props.responseError]);
 
@@ -36,6 +43,7 @@ export const FormFirstInfos = ({ props }) => {
                   data_nascimento: props.user.data_nascimento,
                   cep: props.user.cep,
                   telefone: props.user.telefone,
+                  numero: props.user.numero,
                 });
               }}
             >
@@ -57,6 +65,7 @@ export const FormFirstInfos = ({ props }) => {
                   data_nascimento: props.user.data_nascimento,
                   cep: props.user.cep,
                   telefone: props.user.telefone,
+                  numero: props.user.numero,
                 });
               }}
             >
@@ -65,6 +74,28 @@ export const FormFirstInfos = ({ props }) => {
                   status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "CPF:",
+                  classNameInput: "inputs-more-infos",
+                }}
+              />
+            </div>
+            <div
+              onChange={(e) => {
+                props.setUser({
+                  img: props.user.img,
+                  rg: props.user.rg,
+                  cpf: props.user.cpf,
+                  data_nascimento: props.user.data_nascimento,
+                  cep: props.user.cep,
+                  telefone: e.target.value,
+                  numero: props.user.numero,
+                });
+              }}
+            >
+              <InputContainer
+                props={{
+                  status: props.statusInput,
+                  classNameLabel: "placeholder",
+                  nameInput: "Telefone:",
                   classNameInput: "inputs-more-infos",
                 }}
               />
@@ -80,6 +111,7 @@ export const FormFirstInfos = ({ props }) => {
                   data_nascimento: e.target.value,
                   cep: props.user.cep,
                   telefone: props.user.telefone,
+                  numero: props.user.numero,
                 });
               }}
             >
@@ -102,6 +134,7 @@ export const FormFirstInfos = ({ props }) => {
                   data_nascimento: props.user.data_nascimento,
                   cep: e.target.value,
                   telefone: props.user.telefone,
+                  numero: props.user.numero,
                 });
               }}
             >
@@ -114,29 +147,29 @@ export const FormFirstInfos = ({ props }) => {
                 }}
               />
             </div>
+            <div
+              onChange={(e) => {
+                props.setUser({
+                  img: props.user.img,
+                  rg: props.user.rg,
+                  cpf: props.user.cpf,
+                  data_nascimento: props.user.data_nascimento,
+                  cep: props.user.cep,
+                  telefone: props.user.telefone,
+                  numero: e.target.value,
+                });
+              }}
+            >
+              <InputContainer
+                props={{
+                  status: props.statusInput,
+                  classNameLabel: "placeholder",
+                  nameInput: "Número da casa:",
+                  classNameInput: "inputs-more-infos",
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          className="container-telefone"
-          onChange={(e) => {
-            props.setUser({
-              img: props.user.img,
-              rg: props.user.rg,
-              cpf: props.user.cpf,
-              data_nascimento: props.user.data_nascimento,
-              cep: props.user.cep,
-              telefone: e.target.value,
-            });
-          }}
-        >
-          <InputContainer
-            props={{
-              status: props.statusInput,
-              classNameLabel: "placeholder",
-              nameInput: "Telefone:",
-              classNameInput: "inputs-more-infos",
-            }}
-          />
         </div>
       </div>
       <div
@@ -152,6 +185,7 @@ export const FormFirstInfos = ({ props }) => {
             nome: location.state.nome,
             email: location.state.email,
             senha: location.state.senha,
+            numero: props.user.numero,
             status_usuario: 1,
             status_finalizado: 1,
           });
