@@ -104,7 +104,6 @@ export const MainPerfilPage = () => {
             text: "Você inseriu a senha errada",
           });
         } else {
-          console.log(userEdit);
           updateDriver(userEdit, perfil.id, setStatusCode);
         }
       }
