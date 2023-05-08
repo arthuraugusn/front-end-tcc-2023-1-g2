@@ -48,7 +48,7 @@ export const ContractsPage = ({ props }) => {
   }, [statusCode]);
 
   useEffect(() => {
-    if (contracts.length != 0) {
+    if (contracts.length > 2) {
       setMainStyle("height-auto");
       props.setStyleBody("height-auto");
     }

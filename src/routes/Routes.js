@@ -12,6 +12,7 @@ import { PerfilPage } from "../templates/PerfilPage";
 import ALlContractsPage from "../templates/All-Contracts/body";
 import SuasVansPage from "../templates/driver/SuasVansPage";
 import FinishContractPage from "../templates/user/FinishContractPage";
+import { VanPage } from "../templates/driver/VanPage";
 
 function RoutesApp() {
   return (
@@ -44,6 +45,7 @@ function RoutesApp() {
 
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
+        <Route Component={VanPage} path="/sua-van" />
       </Routes>
     </HashRouter>
   );

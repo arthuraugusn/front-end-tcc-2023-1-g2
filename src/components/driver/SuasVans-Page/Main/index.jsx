@@ -3,8 +3,11 @@ import "./style.css";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import { ButtonRemoverVan } from "./Button";
 import { ModalExcluirVan } from "./Modal";
+import { useNavigate } from "react-router-dom";
 
 export const MainSuasVans = ({ props }) => {
+  const navigate = useNavigate();
+
   const [driver, setDriver] = useState({
     van: [
       {
@@ -37,6 +40,8 @@ export const MainSuasVans = ({ props }) => {
 
   const [requisition, setRequisitions] = useState(1);
 
+  const [mainStyle, setMainStyle] = useState("");
+
   const idDriver = localStorage.getItem("id");
 
   useEffect(() => {
@@ -50,8 +55,10 @@ export const MainSuasVans = ({ props }) => {
 
     if (driver.van.length < 1) {
       props.setStyleBody("height-vh");
+      setMainStyle("height-vh");
     } else if (driver.van.length > 1) {
       props.setStyleBody("height-auto");
+      setMainStyle("height-auto");
     }
   }, [driver.van]);
 
@@ -62,14 +69,22 @@ export const MainSuasVans = ({ props }) => {
   }, [openCloseModal]);
 
   return (
-    <main className="container-main-suas-vans">
+    <main className={`container-main-suas-vans ${mainStyle}`}>
       <div className="box-name-h1">
         <h1>Suas Vans</h1>
       </div>
       <div className="container-suas-vans-card">
         {driver.van.map((e) => {
           return (
-            <div className="card-driver van" key={`key: ${e.id}`}>
+            <div
+              className="card-driver van"
+              key={`key: ${e.id}`}
+              onClick={() => {
+                navigate("/sua-van", {
+                  state: { id_motorista: driver.id, id_van: e.id },
+                });
+              }}
+            >
               <img className="container-image-van" src={e.foto} alt="" />
               <div className="container-infos-van">
                 <p>Número de Vagas: {e.quantidade_vagas}</p>

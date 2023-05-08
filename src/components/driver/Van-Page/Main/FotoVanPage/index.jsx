@@ -1,21 +1,20 @@
 import { uploadImage } from "../../../../../firebase/UploadProfilePictures/firebaseUploadProfilePictures";
 
-export const FotoPerfilPage = ({ props }) => {
+export const FotoPerfilVan = ({ props }) => {
   return (
     <label className="form-picture-label">
-      <p>Foto de perfil:</p>
+      <p>Foto da van:</p>
       <input
         type="file"
         className="input-picture"
         onChange={async (e) => {
           var file = new FileReader();
-
           const product = {
             product: e.target.files[0],
             namePicture: e.target.files[0].name,
           };
           const url = await uploadImage(
-            "drivers-profile-picture",
+            "vans-profile-picture",
             product.product,
             product.namePicture
           );

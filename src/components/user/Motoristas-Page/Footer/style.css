@@ -6,13 +6,13 @@ footer {
   border-top-left-radius: 30px;
   height: auto;
   border-top-right-radius: 30px;
+  padding: 30px;
 }
 
 .contact-us {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 5%;
 }
 
 .icon-contact {
@@ -29,8 +29,6 @@ footer {
   width: 100%;
   height: 100%;
   justify-content: space-around;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .logo-footer {
@@ -41,9 +39,6 @@ footer {
 }
 
 .localization-company {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;

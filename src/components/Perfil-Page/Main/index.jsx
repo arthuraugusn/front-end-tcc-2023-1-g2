@@ -28,6 +28,7 @@ import { FormsUserFour } from "./Forms/FormsUser/ContainerInpusFour";
 import { FormsDriverFour } from "./Forms/FormsDriver/ContainerInpusFour";
 import { FormsDriverFive } from "./Forms/FormsDriver/ContainerInputsFive";
 import { loadPrices } from "../../../api/driver/loadPrices";
+import { updateUserEndereco } from "../../../api/client/updateUserEndereco";
 
 export const MainPerfilPage = () => {
   const statusUserDriver = localStorage.getItem("status_user_driver");
@@ -50,6 +51,7 @@ export const MainPerfilPage = () => {
   const [userEdit, setUserEdit] = useState({});
 
   const [statusCode, setStatusCode] = useState(0);
+  const [statusCodeCep, setStatusCodeUpdateCep] = useState(0);
 
   const [responseError, setResponseError] = useState({});
 
@@ -116,6 +118,7 @@ export const MainPerfilPage = () => {
           });
         } else {
           updateUser(userEdit, perfil.id, setStatusCode);
+          updateUserEndereco(userEdit, perfil.id, setStatusCodeUpdateCep);
         }
       }
     }
@@ -187,6 +190,7 @@ export const MainPerfilPage = () => {
       navigate("/");
       localStorage.clear();
     } else if (statusCode == 201) {
+      console.log(statusCodeCep);
       alert("Seu perfil foi atualizado com sucesso");
       window.location.reload();
     }
@@ -194,7 +198,7 @@ export const MainPerfilPage = () => {
     if (statusFoto.t == true) {
       setFoto(statusFoto.img);
     }
-  }, [statusCode, statusFoto]);
+  }, [statusCode, statusFoto, statusCodeCep]);
 
   useEffect(() => {
     if (statusUserDriver == 2) {

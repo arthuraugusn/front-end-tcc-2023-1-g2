@@ -24,6 +24,14 @@ export const FormFirstInfos = ({ props }) => {
       }).then(() => {
         navigate("/login");
       });
+    } else if (props.responseError.code == "ERR_NETWORK") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Este email já foi cadastrado, use um email diferente",
+      }).then(() => {
+        navigate("/register");
+      });
     }
   }, [props.responseError]);
 
