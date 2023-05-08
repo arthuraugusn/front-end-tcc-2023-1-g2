@@ -65,6 +65,15 @@ export const MainSuaVanPage = () => {
     }
   }, [van, statusFoto]);
 
+  useEffect(() => {
+    setUpdateVan({
+      foto: foto,
+      quantidade_vagas: updateVan.quantidade_vagas,
+      placa: updateVan.placa,
+      id_modelo: updateVan.id_modelo,
+    });
+  }, [foto]);
+
   return (
     <main className="container-main-sua-van">
       <div className="container-title-sua-van">
@@ -126,16 +135,6 @@ export const MainSuaVanPage = () => {
                   input: "none",
                 });
               }}
-              onChange={(e) => {
-                setUpdateVan({
-                  foto: updateVan.foto,
-                  quantidade_vagas: updateVan.quantidade_vagas,
-                  placa: updateVan.placa,
-                  id_modelo:
-                    e.currentTarget.childNodes[e.currentTarget.selectedIndex]
-                      .id,
-                });
-              }}
             >
               <InputSuaVanPage
                 props={{
@@ -148,7 +147,21 @@ export const MainSuaVanPage = () => {
               />
             </div>
 
-            <div className={`dropdown-content ${status.dropdown}`}>
+            <div
+              className={`dropdown-content ${status.dropdown}`}
+              onChange={(e) => {
+                console.log(e.currentTarget.id);
+                setUpdateVan({
+                  foto: updateVan.foto,
+                  quantidade_vagas: updateVan.quantidade_vagas,
+                  placa: updateVan.placa,
+                  id_modelo:
+                    e.currentTarget.childNodes[e.currentTarget.selectend],
+                  /* e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                      .id, */
+                });
+              }}
+            >
               <label className="placeholder">Modelo da van:</label>
 
               <select name="filtro" className="selects">
@@ -176,7 +189,11 @@ export const MainSuaVanPage = () => {
           </div>
         </div>
       </div>
-      <div onClick={() => {}}>
+      <div
+        onClick={() => {
+          console.log(updateVan);
+        }}
+      >
         <ButtonUpdateVan
           props={{
             key: "van",
