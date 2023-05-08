@@ -1,5 +1,23 @@
 .container-main-suas-vans {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+
+.van {
+  align-items: center;
+  justify-content: space-around;
+}
+
+.van img {
+  display: flex;
+  border-radius: 20px;
+  height: 80%;
+}
+
+.container-infos-van {
+  display: flex;
+  flex-direction: column;
 }

@@ -3,7 +3,6 @@ import api from "../api";
 export const registerContract = (contrato, setResponseError) => {
   api
     .post("contract", {
-      valor: 100.0,
       nome_passageiro: `${contrato.nome_passageiro}`,
       idade_passageiro: parseInt(contrato.idade_passageiro),
       id_usuario: contrato.id_usuario,

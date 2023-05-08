@@ -30,7 +30,6 @@
   width: 100%;
   height: 100%;
   align-items: center;
-
   justify-content: center;
 }
 
@@ -43,6 +42,7 @@
 
 .inputs-perfil {
   padding-bottom: 30px;
+  flex-direction: column;
 }
 
 .input-perfil-email {
@@ -52,6 +52,7 @@
 }
 
 .space-around {
+  width: 100%;
   justify-content: space-around;
 }
 
@@ -140,4 +141,15 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
+}
+
+.coment {
+  padding: 40px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
 }

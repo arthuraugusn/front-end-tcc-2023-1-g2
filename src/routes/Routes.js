@@ -14,6 +14,8 @@ import SuasVansPage from "../templates/driver/SuasVansPage";
 import FinishContractPage from "../templates/user/FinishContractPage";
 import { NotificationsPage } from "../templates/NotificationsPage/body";
 
+import { VanPage } from "../templates/driver/VanPage";
+
 function RoutesApp() {
   return (
     <HashRouter>
@@ -48,6 +50,7 @@ function RoutesApp() {
 
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
+        <Route Component={VanPage} path="/sua-van" />
       </Routes>
     </HashRouter>
   );

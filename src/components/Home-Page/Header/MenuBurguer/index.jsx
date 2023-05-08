@@ -73,7 +73,7 @@ export const MenuBurguer = ({ props }) => {
         <nav className="nav-container">
           <li
             onClick={() => {
-              navigate("/motoristas", { state: props });
+              navigate("/contracts", { state: props });
             }}
             className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
           >
