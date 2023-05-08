@@ -1,10 +1,7 @@
-.container-main-footer-allContracts {
+.body-motorista {
   display: flex;
   flex-direction: column;
   background-color: var(--body-yellow);
   gap: 40px;
-}
-
-.height-vh {
   height: 100vh;
 }
