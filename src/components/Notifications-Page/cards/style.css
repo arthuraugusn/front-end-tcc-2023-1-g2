@@ -1,0 +1,14 @@
+.card-notifications {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  background-color: white;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+}
+
+.AcceptWait-button-content {
+  display: flex;
+  flex-direction: column;
+}

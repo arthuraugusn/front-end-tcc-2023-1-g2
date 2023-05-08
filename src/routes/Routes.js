@@ -12,6 +12,7 @@ import { PerfilPage } from "../templates/PerfilPage";
 import ALlContractsPage from "../templates/All-Contracts/body";
 import SuasVansPage from "../templates/driver/SuasVansPage";
 import FinishContractPage from "../templates/user/FinishContractPage";
+import { NotificationsPage } from "../templates/NotificationsPage/body";
 
 function RoutesApp() {
   return (
@@ -33,7 +34,10 @@ function RoutesApp() {
         <Route element={<HomePage props={true} />} path="/" />
 
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
-
+        <Route
+          element={<NotificationsPage props={true} />}
+          path="/notifications"
+        />
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
         <Route

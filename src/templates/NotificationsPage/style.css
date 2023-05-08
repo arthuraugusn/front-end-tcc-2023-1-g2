@@ -1,0 +1,7 @@
+.body-notifications-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--body-yellow);
+  gap: 40px;
+}

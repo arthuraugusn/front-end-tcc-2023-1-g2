@@ -1,0 +1,30 @@
+.main {
+  height: 100vh;
+}
+
+.main-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-container-part {
+  display: flex;
+  justify-content: center;
+}
+
+.cards-notifications-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  height: auto;
+  width: 80vw;
+  padding: 1.5rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.cards-notifications-container::-webkit-scrollbar {
+  background-color: var(--button-contract-yellow);
+  border-radius: 15px;
+}
