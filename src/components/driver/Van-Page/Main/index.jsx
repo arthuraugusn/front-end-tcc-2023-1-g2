@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import { loadModeloById } from "../../../../api/driver/van/loadModeloById";
 import { loadModelVan } from "../../../../api/driver/van/loadModels";
 import { loadVanById } from "../../../../api/driver/van/loadVanById";
+import { updateVan } from "../../../../api/driver/van/updateVan";
 import { ButtonUpdateVan } from "./Button";
 import { FotoPerfilVan } from "./FotoVanPage";
 import { InputSuaVanPage } from "./Inputs";
@@ -12,6 +14,8 @@ import "./style.css";
 
 export const MainSuaVanPage = () => {
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   const [van, setVan] = useState({
     quantidade_vagas: "",
@@ -44,7 +48,19 @@ export const MainSuaVanPage = () => {
 
   const [foto, setFoto] = useState("");
 
-  const [updateVan, setUpdateVan] = useState({});
+  const [updateVanJson, setUpdateVan] = useState({
+    status_requisition: 0,
+    id_modelo: 0,
+    id_motorista: 0,
+    placa: "",
+    foto: "",
+    quantidade_vagas: 0,
+  });
+
+  const [responseError, setResponseError] = useState({
+    status: 0,
+    data: "",
+  });
 
   useEffect(() => {
     loadVanById(location.state.id_van, setVan);
@@ -65,6 +81,58 @@ export const MainSuaVanPage = () => {
     }
   }, [van, statusFoto]);
 
+  useEffect(() => {
+    setUpdateVan({
+      foto: foto,
+      quantidade_vagas: updateVanJson.quantidade_vagas,
+      placa: updateVanJson.placa,
+      id_modelo: updateVanJson.id_modelo,
+      id_motorista: updateVanJson.id_motorista,
+    });
+  }, [foto]);
+
+  useEffect(() => {
+    if (updateVanJson.status_requisition == 1) {
+      if (
+        updateVanJson.foto == undefined ||
+        updateVanJson.foto == "" ||
+        updateVanJson.foto == null ||
+        updateVanJson.placa == undefined ||
+        updateVanJson.placa == "" ||
+        updateVanJson.placa == null ||
+        updateVanJson.id_modelo == undefined ||
+        updateVanJson.id_modelo == "" ||
+        updateVanJson.id_modelo == null ||
+        updateVanJson.id_motorista == undefined ||
+        updateVanJson.id_motorista == "" ||
+        updateVanJson.id_motorista == null ||
+        updateVanJson.quantidade_vagas == undefined ||
+        updateVanJson.quantidade_vagas == "" ||
+        updateVanJson.quantidade_vagas == null
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Você não inseriu todas as informações para atualizar sua van",
+        });
+      } else {
+        updateVan(location.state.id_van, updateVanJson, setResponseError);
+      }
+    }
+  }, [updateVanJson]);
+
+  useEffect(() => {
+    if (responseError.status == 201) {
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Sua van foi atualizada com sucesso",
+      }).then(() => {
+        navigate("/suas-vans");
+      });
+    }
+  }, [responseError]);
+
   return (
     <main className="container-main-sua-van">
       <div className="container-title-sua-van">
@@ -79,10 +147,10 @@ export const MainSuaVanPage = () => {
             className="inputs-for-van"
             onChange={(e) => {
               setUpdateVan({
-                foto: updateVan.foto,
-                quantidade_vagas: e.target.value,
-                placa: updateVan.placa,
-                id_modelo: updateVan.id_modelo,
+                foto: updateVanJson.foto,
+                quantidade_vagas: parseInt(e.target.value),
+                placa: updateVanJson.placa,
+                id_modelo: updateVanJson.id_modelo,
               });
             }}
           >
@@ -99,10 +167,10 @@ export const MainSuaVanPage = () => {
             className="inputs-for-van"
             onChange={(e) => {
               setUpdateVan({
-                foto: updateVan.foto,
-                quantidade_vagas: updateVan.quantidade_vagas,
+                foto: updateVanJson.foto,
+                quantidade_vagas: updateVanJson.quantidade_vagas,
                 placa: e.target.value,
-                id_modelo: updateVan.id_modelo,
+                id_modelo: updateVanJson.id_modelo,
               });
             }}
           >
@@ -126,16 +194,6 @@ export const MainSuaVanPage = () => {
                   input: "none",
                 });
               }}
-              onChange={(e) => {
-                setUpdateVan({
-                  foto: updateVan.foto,
-                  quantidade_vagas: updateVan.quantidade_vagas,
-                  placa: updateVan.placa,
-                  id_modelo:
-                    e.currentTarget.childNodes[e.currentTarget.selectedIndex]
-                      .id,
-                });
-              }}
             >
               <InputSuaVanPage
                 props={{
@@ -151,7 +209,20 @@ export const MainSuaVanPage = () => {
             <div className={`dropdown-content ${status.dropdown}`}>
               <label className="placeholder">Modelo da van:</label>
 
-              <select name="filtro" className="selects">
+              <select
+                name="filtro"
+                className="selects"
+                onChange={(e) => {
+                  setUpdateVan({
+                    foto: updateVanJson.foto,
+                    quantidade_vagas: updateVanJson.quantidade_vagas,
+                    placa: updateVanJson.placa,
+                    id_modelo:
+                      e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                        .id,
+                  });
+                }}
+              >
                 <option>Escolha seu modelo</option>
                 {modelos.map((e) => {
                   return (
@@ -163,7 +234,7 @@ export const MainSuaVanPage = () => {
               </select>
             </div>
           </div>
-          <div className="inputs-for-van">
+          <div className="inputs-for-van faixa_preco_van">
             <InputSuaVanPage
               props={{
                 status: true,
@@ -176,7 +247,19 @@ export const MainSuaVanPage = () => {
           </div>
         </div>
       </div>
-      <div onClick={() => {}}>
+      <div
+        className="button-update-van"
+        onClick={() => {
+          setUpdateVan({
+            foto: updateVanJson.foto,
+            quantidade_vagas: updateVanJson.quantidade_vagas,
+            placa: updateVanJson.placa,
+            id_modelo: updateVanJson.id_modelo,
+            status_requisition: 1,
+            id_motorista: parseInt(location.state.id_motorista),
+          });
+        }}
+      >
         <ButtonUpdateVan
           props={{
             key: "van",

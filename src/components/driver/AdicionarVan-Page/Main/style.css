@@ -1,0 +1,22 @@
+.salvar-van-input {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.container-inputs-button-save-button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-save-van {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+}

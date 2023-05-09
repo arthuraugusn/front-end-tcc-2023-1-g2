@@ -15,6 +15,7 @@ import FinishContractPage from "../templates/user/FinishContractPage";
 import { NotificationsPage } from "../templates/NotificationsPage/body";
 
 import { VanPage } from "../templates/driver/VanPage";
+import { AdicionarVanPage } from "../templates/driver/AdicionarVanPage";
 
 function RoutesApp() {
   return (
@@ -51,6 +52,7 @@ function RoutesApp() {
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
         <Route Component={VanPage} path="/sua-van" />
+        <Route Component={AdicionarVanPage} path="/add-van" />
       </Routes>
     </HashRouter>
   );
