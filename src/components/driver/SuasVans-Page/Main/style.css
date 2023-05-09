@@ -3,12 +3,19 @@
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  height: 100%;
 }
 
 .van {
   align-items: center;
   justify-content: space-around;
+}
+
+.van div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
 }
 
 .van img {
@@ -20,4 +27,18 @@
 .container-infos-van {
   display: flex;
   flex-direction: column;
+  padding-left: 60px;
+}
+
+.container-suas-vans-card {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.height-auto {
+  gap: 50px;
 }

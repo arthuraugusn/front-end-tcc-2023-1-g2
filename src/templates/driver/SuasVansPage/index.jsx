@@ -14,6 +14,7 @@ export default function SuasVansPage() {
         <MainSuasVans
           props={{
             setStyleBody: setStyleBody,
+            styleBody: styleBody,
           }}
         />
         <FooterAllVansPage />

@@ -1,10 +1,9 @@
 import { Button } from "@mui/material";
 
-export const ButtonRemoverVan = ({ props }) => {
+export const ButtonRemoverAdicionarVan = ({ props }) => {
   return (
     <Button
       sx={{
-        width: 120,
         height: 60,
         borderRadius: 3,
         fontWeight: 900,
@@ -20,7 +19,7 @@ export const ButtonRemoverVan = ({ props }) => {
         });
       }}
     >
-      Remover
+      {props.message}
     </Button>
   );
 };
