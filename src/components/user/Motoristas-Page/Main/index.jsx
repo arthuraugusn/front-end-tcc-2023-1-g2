@@ -3,6 +3,7 @@ import { carregarMotoristas } from "../../../../api/client/loadDrivers.js";
 import { Card } from "./Card";
 import InputSearchItens from "./Input/index.jsx";
 import "./style.css";
+import { Navigate } from "react-router-dom";
 
 export const MainMotoristasPage = ({ props }) => {
   const itensInput = {
@@ -31,7 +32,7 @@ export const MainMotoristasPage = ({ props }) => {
         </select>
       </div>
       <div className="box-motoristas-card">
-        <Card driver={driver}></Card>
+        <Card  driver={driver}></Card>
       </div>
     </main>
   );

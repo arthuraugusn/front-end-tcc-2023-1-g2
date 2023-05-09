@@ -13,7 +13,6 @@ import ALlContractsPage from "../templates/All-Contracts/body";
 import SuasVansPage from "../templates/driver/SuasVansPage";
 import FinishContractPage from "../templates/user/FinishContractPage";
 import { NotificationsPage } from "../templates/NotificationsPage/body";
-
 import { VanPage } from "../templates/driver/VanPage";
 import { AdicionarVanPage } from "../templates/driver/AdicionarVanPage";
 
