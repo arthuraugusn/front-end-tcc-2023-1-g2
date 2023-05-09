@@ -1,4 +1,4 @@
-.body-motorista {
+.container-main-footer-allContracts {
   display: flex;
   flex-direction: column;
   background-color: var(--body-yellow);
