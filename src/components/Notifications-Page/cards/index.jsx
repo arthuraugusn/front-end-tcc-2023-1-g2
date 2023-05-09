@@ -1,7 +1,6 @@
 import { Navigate } from "react-router-dom"
 import React, { useState } from "react";
 import "./style.css"
-
 export const CardsNotifications = ({props}) =>{
   return(
     <>
@@ -13,6 +12,7 @@ export const CardsNotifications = ({props}) =>{
           <div className="infos-contratar">
             <div className="infos-motorista-container">
               <div className="infos-motorista-content">
+              <p className="infos">Tipo de contrato: ida e volta</p>
                 <p className="infos">Escola: dr.Romildo feijó</p>
                 <p className="infos">
                   Passageiro: manuel
@@ -31,8 +31,12 @@ export const CardsNotifications = ({props}) =>{
             <div className="AcceptWait-button-container">
               <div>
                 <div className="AcceptWait-content">
+                  <div className="button-AcceptWait">
                   <button>Contrato em espera</button>
+                  </div>
+                  <div className="cancel-button">
                   <button>Cancelar Contrato</button>
+                  </div>
                 </div>
               </div>
             </div>

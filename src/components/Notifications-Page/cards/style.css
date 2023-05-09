@@ -7,8 +7,43 @@
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
   border-radius: 50px;
 }
-
-.AcceptWait-button-content {
+.AcceptWait-button-container{
+  height: 22vh;
   display: flex;
+}
+.AcceptWait-content {
+  height: 10vh;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  gap: 2rem;
+}
+
+.button-AcceptWait button{
+  width: 21.375rem;
+  height: 4.188rem;
+  border-radius: 30px;
+  background-color: #FFDA29;
+  font-size: x-large;
+  border: none;
+}
+.cancel-button button{
+  width: 21.375rem;
+  height: 4.188rem;
+  border-radius: 30px;
+  background-color: #d40000;
+  font-size: x-large;
+  border: none;
+}
+.infos-motorista-content{
+  
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+
+}
+
+.infos-endereco-content {
+  font-size: 1.3rem;
+  height: 22vh;
 }
