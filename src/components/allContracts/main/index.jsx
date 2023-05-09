@@ -12,7 +12,7 @@ export const ContractsPage = ({ props }) => {
 
   const [idContract, setIdContract] = useState(0);
 
-  const [mainStyle, setMainStyle] = useState("height-percent");
+  const [mainStyle, setMainStyle] = useState("height-vh");
 
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
