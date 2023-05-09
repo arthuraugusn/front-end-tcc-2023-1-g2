@@ -37,7 +37,7 @@ export const CardsNotifications = ({props}) =>{
                   <div className="cancel-button">
                   <button>Cancelar Contrato</button>
                   </div>
-                </div>
+                 </div>
               </div>
             </div>
           </div>
