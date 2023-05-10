@@ -3,6 +3,6 @@
   flex-direction: column;
   background-color: var(--body-yellow);
   gap: 40px;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100vh;
 }

@@ -62,7 +62,7 @@ export const MainSuasVans = ({ props }) => {
       quantidade_vagas: driver.van,
     });
 
-    if (driver.van.length < 1) {
+    if (driver.van.length < 2) {
       props.setStyleBody("height-vh");
       setMainStyle("height-vh");
     } else if (driver.van.length > 0) {

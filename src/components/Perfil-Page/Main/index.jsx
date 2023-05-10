@@ -118,7 +118,7 @@ export const MainPerfilPage = () => {
           });
         } else {
           updateUser(userEdit, perfil.id, setStatusCode);
-          updateUserEndereco(userEdit, perfil.id, setStatusCodeUpdateCep);
+          /* updateUserEndereco(userEdit, perfil.id, setStatusCodeUpdateCep); */
         }
       }
     }
@@ -209,7 +209,7 @@ export const MainPerfilPage = () => {
         nome: userEdit.nome,
         data_nascimento: userEdit.data_nascimento,
         telefone: userEdit.telefone,
-        numero: userEdit.numero,
+        /* numero: userEdit.numero, */
         cep: userEdit.cep,
         email: userEdit.email,
         senha_atual: userEdit.senha_atual,
@@ -370,9 +370,9 @@ export const MainPerfilPage = () => {
                 userEdit.telefone == "" ||
                 userEdit.telefone == undefined ||
                 userEdit.telefone == null ||
-                userEdit.numero == "" ||
+                /* userEdit.numero == "" ||
                 userEdit.numero == undefined ||
-                userEdit.numero == null ||
+                userEdit.numero == null || */
                 userEdit.cep == "" ||
                 userEdit.cep == undefined ||
                 userEdit.cep == null ||
@@ -389,7 +389,8 @@ export const MainPerfilPage = () => {
                 alert(
                   "Você não preencheu todos os dados corretamente, tente novamente"
                 );
-                window.location.reload();
+                console.log(userEdit);
+                /* window.location.reload(); */
               } else {
                 setStatusEdit(true);
               }

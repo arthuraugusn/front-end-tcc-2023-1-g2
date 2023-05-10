@@ -5,7 +5,7 @@ import "./style.css";
 
 export const Card = ({ driver }) => {
   const navigate = useNavigate();
-  console.log(driver);
+
   const [status, setStatus] = useState(0);
 
   const dataAtual = new Date().getFullYear();
