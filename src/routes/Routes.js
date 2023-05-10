@@ -16,6 +16,7 @@ import { NotificationsPage } from "../templates/NotificationsPage/body";
 
 import { VanPage } from "../templates/driver/VanPage";
 import { AdicionarVanPage } from "../templates/driver/AdicionarVanPage";
+import { SuasEscolasPage } from "../templates/driver/SuasEscolasPage";
 
 function RoutesApp() {
   return (
@@ -48,6 +49,7 @@ function RoutesApp() {
           props={true}
           path="/contract/finish"
         />
+        <Route Component={SuasEscolasPage} path="/suas-escolas" />
 
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
