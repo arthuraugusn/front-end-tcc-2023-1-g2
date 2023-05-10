@@ -8,7 +8,7 @@
   border-radius: 50px;
 }
 
-.container-image {
+.container-image-contracts {
   display: flex;
   height: 100%;
   align-items: center;
@@ -16,7 +16,7 @@
   padding: 30px;
 }
 
-.container-image img {
+.container-image-contracts img {
   height: 300px;
   border-radius: 20px;
 }

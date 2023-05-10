@@ -15,6 +15,7 @@ import FinishContractPage from "../templates/user/FinishContractPage";
 import { NotificationsPage } from "../templates/NotificationsPage/body";
 import { VanPage } from "../templates/driver/VanPage";
 import { AdicionarVanPage } from "../templates/driver/AdicionarVanPage";
+import { MoreAboutDriversPage } from "../templates/user/MoreAboutDriverPage/index";
 
 function RoutesApp() {
   return (
@@ -36,6 +37,11 @@ function RoutesApp() {
         <Route element={<HomePage props={true} />} path="/" />
 
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
+        <Route
+          Component={MoreAboutDriversPage}
+          props={true}
+          path="/more-about-the-driver"
+        />
         <Route
           element={<NotificationsPage props={true} />}
           path="/notifications"
