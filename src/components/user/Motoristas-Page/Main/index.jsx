@@ -32,7 +32,7 @@ export const MainMotoristasPage = ({ props }) => {
         </select>
       </div>
       <div className="box-motoristas-card">
-        <Card  driver={driver}></Card>
+        <Card driver={driver}></Card>
       </div>
     </main>
   );

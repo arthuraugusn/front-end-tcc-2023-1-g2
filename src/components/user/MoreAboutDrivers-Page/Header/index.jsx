@@ -1,9 +1,5 @@
-import "./style.css"
+import { HeaderHomePage } from "../../../Home-Page/Header/index";
 
-export const HeaderMoreAboutDrivers = () =>{
-  return (
-    <header className="teste-header">
-      
-    </header>
-  )
+export const HeaderMoreAboutDrivers = ({ props }) => {
+  return <HeaderHomePage props={props}></HeaderHomePage>;
 }

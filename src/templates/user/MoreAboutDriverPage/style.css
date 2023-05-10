@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   background-color: var(--body-yellow);
-  gap: 30rem;
+  gap: 10rem;
   justify-content: space-between;
 }

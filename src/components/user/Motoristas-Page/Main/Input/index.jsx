@@ -1,6 +1,6 @@
 import "./style.css";
 
-const InputSearchItens = ({ props }) => {
+export const InputSearchItens = ({ props }) => {
   return (
     <div className="inputs">
       <label

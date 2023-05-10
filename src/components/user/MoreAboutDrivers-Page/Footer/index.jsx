@@ -1,10 +1,8 @@
-import "./style.css";
+import { FooterMotoristas } from "../../../../components/user/Motoristas-Page/Footer/index"
 
-export const FooterMoreAboutDrivers = () =>{
-  return(
-    <footer className="teste-footer">
-
-    </footer>
+export const FooterMoreAboutDrivers = ({ props }) => {
+  return (
+    <FooterMotoristas props={props}></FooterMotoristas>
   )
-  
+
 }

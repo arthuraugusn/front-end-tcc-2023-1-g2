@@ -1,9 +1,6 @@
 .main-MoreAboutDrivers {
   height: 100vh;
 }
-.show-part-container:nth-child(1) {
-  margin-bottom: 5rem;
-}
 .show-part-container:nth-child(2) {
   margin: 2rem;
 }
@@ -34,6 +31,10 @@
   align-items: center;
 }
 
+.photo-describe-informations{
+  margin: 6rem;
+}
+
 .lil-card-describing-infos-content {
   font-size: 2rem;
   flex-direction: column;
@@ -51,7 +52,7 @@
 }
 
 .more-about-driver-card {
-  width: 50rem;
+  width: 60rem;
   height: 20rem;
   background-color: #ffdd7b;
   border-radius: 10px;
@@ -73,4 +74,10 @@
   display: flex;
   flex-direction: row;
   gap: 7.5rem;
+}
+
+.input-comment-something{
+  width: 40.063rem;
+  height:4rem;
+  border-radius: 30px;
 }
