@@ -76,8 +76,32 @@
   gap: 7.5rem;
 }
 
+.filter-container-part{
+  gap: 2rem;
+}
+
 .input-comment-something{
   width: 40.063rem;
   height:4rem;
   border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Poppins";
+  padding: 1.5rem 4rem;
+  outline-color: var(--main-yellow);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.363);
+}
+
+.button-send-comment{
+  width:11.375rem ;
+  height:4rem;
+  border-radius: 20px;
+  background-color: var(--button-contract-yellow);
+  border: none;
+  font-size: 2rem;
+}
+
+.container-comment-part{
+  display: flex;
+  align-items: center;
 }
