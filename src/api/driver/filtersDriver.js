@@ -21,7 +21,8 @@ export const getDriverByFilters = (
           school: idEscola,
         })}&${qs.stringify({ driverName: nomeMotorista })}`
       )
-      .then((response) => [setFilter(response)]);
+      .then((response) => [setFilter(response)])
+      .catch((err) => setFilter(err));
   } else if (
     idPreco != "" &&
     idPreco != undefined &&
@@ -36,7 +37,8 @@ export const getDriverByFilters = (
       )
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   } else if (
     idPreco != "" &&
     idPreco != undefined &&
@@ -51,7 +53,8 @@ export const getDriverByFilters = (
       )
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   } else if (
     idEscola != undefined &&
     idEscola != "" &&
@@ -66,7 +69,8 @@ export const getDriverByFilters = (
       )
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   } else if (
     idEscola != undefined &&
     idEscola != "" &&
@@ -81,26 +85,29 @@ export const getDriverByFilters = (
       )
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   } else if (idEscola != undefined && idEscola != "") {
     api
       .post(`filter-drivers/?${qs.stringify({ school: idEscola })}`)
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   } else if (idPreco != "" && idPreco != undefined) {
     api
       .post(`filter-drivers/?${qs.stringify({ price: idPreco })}`)
       .then((response) => {
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   }
   if (nomeMotorista != "" && nomeMotorista != undefined) {
     api
       .post(`filter-drivers/?${qs.stringify({ driverName: nomeMotorista })}`)
       .then((response) => {
-        console.log(response);
         setFilter(response);
-      });
+      })
+      .catch((err) => setFilter(err));
   }
 };

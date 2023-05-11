@@ -4,5 +4,5 @@
   background-color: var(--body-yellow);
   gap: 40px;
   justify-content: space-around;
-  height: 100vh;
+  height: auto;
 }

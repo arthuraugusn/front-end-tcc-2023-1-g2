@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { carregarMotoristas } from "../../../../api/client/loadDrivers.js";
 import { getDriverByFilters } from "../../../../api/driver/filtersDriver.js";
 import { Card } from "./Card";
+import { FiltersMotoristas } from "./Filters/index.jsx";
 import InputSearchItens from "./Input/index.jsx";
 import "./style.css";
 
@@ -12,17 +14,53 @@ export const MainMotoristasPage = ({ props }) => {
     class: "search-driver-input",
   };
 
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({
+    status: 0,
+    response: {
+      status: 0,
+    },
+  });
+
+  const [valueFilters, setValueFilters] = useState({
+    driverName: "",
+    price: "",
+    school: "",
+    status_filtrar: 0,
+  });
 
   const [driver, setDriver] = useState([]);
 
   useEffect(() => {
-    carregarMotoristas(setDriver);
-    getDriverByFilters("", "", "ademir", setFilters);
+    if (valueFilters.status_filtrar === 0) {
+      carregarMotoristas(setDriver);
+    }
   }, []);
 
   useEffect(() => {
-    console.log(filters);
+    if (valueFilters.status_filtrar === 1) {
+      getDriverByFilters(
+        valueFilters.price,
+        valueFilters.school,
+        valueFilters.driverName,
+        setFilters
+      );
+    }
+  }, [valueFilters]);
+
+  useEffect(() => {
+    if (filters.status === 200) {
+      setDriver(filters.data.drivers);
+    } else if (filters.response.status === 500) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Não temos motoristas relacionados com este filtro",
+      }).then(() => {
+        carregarMotoristas(setDriver);
+      });
+    } else {
+      carregarMotoristas(setDriver);
+    }
   }, [filters]);
 
   return (
@@ -31,17 +69,23 @@ export const MainMotoristasPage = ({ props }) => {
         <h1>Motoristas</h1>
       </div>
       <div className="box-input-filter">
-        <InputSearchItens props={itensInput}></InputSearchItens>
-        <select name="filtros" id="select-filter-container">
-          <option value="">a</option>
-          <option value="">b</option>
-          <option value="">c</option>
-        </select>
-        <select name="filtros" id="select-filter-container">
-          <option value="">a</option>
-          <option value="">b</option>
-          <option value="">c</option>
-        </select>
+        <div
+          onChange={(e) => [
+            setValueFilters({
+              driverName: e.target.value,
+              price: valueFilters.price,
+              school: valueFilters.school,
+            }),
+          ]}
+        >
+          <InputSearchItens props={itensInput} />
+        </div>
+        <FiltersMotoristas
+          props={{
+            setValueFilters: setValueFilters,
+            valueFilters: valueFilters,
+          }}
+        />
       </div>
       <div className="box-motoristas-card">
         <Card driver={driver}></Card>

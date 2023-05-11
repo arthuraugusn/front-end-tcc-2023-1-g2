@@ -91,7 +91,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/motoristas", { state: props });
+              navigate("/suas-escolas", { state: props });
             }}
             className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
           >
