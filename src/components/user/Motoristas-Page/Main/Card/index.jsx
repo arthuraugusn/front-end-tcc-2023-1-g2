@@ -16,6 +16,7 @@ export const Card = ({ driver }) => {
         <div
           onClick={() => {
             console.log(drivers.id);
+            navigate("/more-about-the-driver", {state:drivers.id})
           }}
           key={drivers.id}
           className="card-driver"

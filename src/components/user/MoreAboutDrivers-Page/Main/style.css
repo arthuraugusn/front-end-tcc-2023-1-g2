@@ -1,0 +1,148 @@
+
+.show-part-container:nth-child(2) {
+  margin: 2rem;
+}
+.show-part-container:nth-child(2)::before {
+  content: "";
+  display: inline-block;
+  background-color: #e0b441;
+  width: 100vw;
+  height: 5px;
+  margin: 0 -2rem;
+}
+.lil-card-describing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10rem;
+}
+
+.lil-card-descring-infos-container {
+  width: 40rem;
+  height: 20rem;
+  background-color: #ffdd7b;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-describe-informations{
+  margin: 6rem;
+}
+
+.lil-card-describing-infos-content {
+  font-size: 2rem;
+  flex-direction: column;
+  width: 20vw;
+}
+.photo-container {
+  display: flex;
+  height: 100%;
+  padding: 30px;
+}
+.photo-container img {
+  width: 24rem;
+  height: 21rem;
+  border-radius: 20px;
+}
+
+.more-about-driver-card {
+  width: 60rem;
+  height: 20rem;
+  background-color: #ffdd7b;
+  border-radius: 10px;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: row;
+  gap: 7.5rem;
+}
+
+.filter-container-part{
+  gap: 2rem;
+}
+.infos-part-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-comment-something{
+  width: 40.063rem;
+  height:4rem;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Poppins";
+  padding: 1.5rem 4rem;
+  outline-color: var(--main-yellow);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.363);
+}
+
+.button-send-comment{
+  width:11.375rem ;
+  height:4rem;
+  border-radius: 20px;
+  background-color: var(--button-contract-yellow);
+  border: none;
+  font-size: 2rem;
+}
+
+.container-comment-part{
+  display: flex;
+  align-items: center;
+}
+
+.comments-part{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  height: 50vh;
+  width: 60vw;
+  padding: 1.5rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.comments-part::-webkit-scrollbar{
+  width: 7px;
+  background-color: var(--main-yellow);
+  border-radius: 15px;
+}
+.filter-container-part{
+  margin-top: 2rem;
+}
+
+.container-button-contratar{
+ position: relative;
+}
+.container-button-contratar button{
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container-button-contratar::after {
+  content: "";
+  display: inline-block;
+  background-color: #e0b441;
+  width: 100vw;
+  height: 5px;
+  margin: 0 -2rem;
+}

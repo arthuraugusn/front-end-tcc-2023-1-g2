@@ -6,6 +6,7 @@ import { Card } from "./Card";
 import { FiltersMotoristas } from "./Filters/index.jsx";
 import InputSearchItens from "./Input/index.jsx";
 import "./style.css";
+import { Navigate } from "react-router-dom";
 
 export const MainMotoristasPage = ({ props }) => {
   const itensInput = {

@@ -8,8 +8,8 @@ export const MainNotifications = () => {
     class: "search-driver-input",
   };
   return (
-    <main className="container-main-notifications">
-      <div className="main-name-container">
+    <main className="main-notifications">
+      <div className="name-container-notifications">
         <h1>Notificações</h1>
       </div>
       <div className="filter-container-part">

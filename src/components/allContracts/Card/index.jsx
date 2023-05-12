@@ -14,7 +14,7 @@ export const CardContract = ({ props }) => {
           key={contract.id}
           className="card-contracts"
         >
-          <div className="container-image">
+          <div className="container-image-contracts">
             <img src={contract.motorista.foto} alt="Foto motorista" />
           </div>
           <div className="container-all-infos">
