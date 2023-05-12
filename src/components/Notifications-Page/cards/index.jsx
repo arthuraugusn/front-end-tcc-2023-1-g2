@@ -7,7 +7,7 @@ export const CardsNotifications = ({ props }) => {
       <div className="card-notifications">
         <div className="container-all-infos">
           <div className="nome-container">
-            <span className="nome-motorista">Ronaldo</span>
+            <span className="nome-motorista-notifications">Ronaldo</span>
           </div>
           <div className="infos-contratar-geral">
             <div className="infos-motorista-geral-container">

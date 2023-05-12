@@ -1,10 +1,7 @@
-.main-MoreAboutDrivers {
-  height: 100vh;
-}
+
 .show-part-container:nth-child(2) {
   margin: 2rem;
 }
-.show-part-container:nth-child(2)::after,
 .show-part-container:nth-child(2)::before {
   content: "";
   display: inline-block;
@@ -79,6 +76,11 @@
 .filter-container-part{
   gap: 2rem;
 }
+.infos-part-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
 .input-comment-something{
   width: 40.063rem;
@@ -104,4 +106,43 @@
 .container-comment-part{
   display: flex;
   align-items: center;
+}
+
+.comments-part{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  height: 50vh;
+  width: 60vw;
+  padding: 1.5rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.comments-part::-webkit-scrollbar{
+  width: 7px;
+  background-color: var(--main-yellow);
+  border-radius: 15px;
+}
+.filter-container-part{
+  margin-top: 2rem;
+}
+
+.container-button-contratar{
+ position: relative;
+}
+.container-button-contratar button{
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container-button-contratar::after {
+  content: "";
+  display: inline-block;
+  background-color: #e0b441;
+  width: 100vw;
+  height: 5px;
+  margin: 0 -2rem;
 }

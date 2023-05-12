@@ -6,13 +6,13 @@ import { FooterMoreAboutDrivers } from "../../../components/user/MoreAboutDriver
 
 
 export const MoreAboutDriversPage = () => {
-  return(
+  return (
     <div className="body-MoreAboutDrivers">
-      
-    <HeaderMoreAboutDrivers></HeaderMoreAboutDrivers>
-    <MainMoreAboutDrivers></MainMoreAboutDrivers>
-    <FooterMoreAboutDrivers></FooterMoreAboutDrivers>
-  
+
+      <HeaderMoreAboutDrivers></HeaderMoreAboutDrivers>
+      <MainMoreAboutDrivers></MainMoreAboutDrivers>
+      <FooterMoreAboutDrivers></FooterMoreAboutDrivers>
+
     </div>
   )
 }

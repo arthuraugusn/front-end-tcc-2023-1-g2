@@ -25,6 +25,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
         </div>
 
       </div>
+
       <div className="show-part-container">
 
         <div className="photo-describe-informations">
@@ -43,7 +44,9 @@ export const MainMoreAboutDrivers = ({ props }) => {
           </div>
 
         </div>
-
+        <div className="container-button-contratar">
+          <button className='Contratar-button-perfil'> CONTRATAR</button>
+        </div>
       </div>
       <div className="infos-part-container">
 
@@ -66,8 +69,9 @@ export const MainMoreAboutDrivers = ({ props }) => {
           </div>
           <button className='button-send-comment'>ENVIAR</button>
         </div>
+        <div className="comments-part">
 
-        .
+        </div>
       </div>
 
     </main>
