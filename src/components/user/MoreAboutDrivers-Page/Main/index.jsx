@@ -64,7 +64,6 @@ export const MainMoreAboutDrivers = ({ props }) => {
         </div>
         <div className="filter-container-part">
           <div className="container-comment-part">
-            {/* <i class="fa-regular fa-message-dots" style="color: #f1dd04;"></i> */}
             <input className='input-comment-something' type="text" placeholder='Insira um comentario' />
           </div>
           <button className='button-send-comment'>ENVIAR</button>
