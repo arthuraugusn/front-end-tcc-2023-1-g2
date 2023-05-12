@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { loadSchoolsDrivers } from "../../../../../api/client/loadSchools";
 import { loadPrices } from "../../../../../api/driver/loadPrices";
 import "./style.css";
+import { ButtonRemoverAdicionarFiltro } from "../Button";
 
 export const FiltersMotoristas = ({ props }) => {
   const [schools, setSchools] = useState([{}]);
@@ -10,6 +11,8 @@ export const FiltersMotoristas = ({ props }) => {
   const [responseError, setResponseError] = useState({});
 
   const [prices, setPrices] = useState([{}]);
+
+  const [openCloseModal, setOpenCloseModal] = useState({});
 
   useEffect(() => {
     loadSchoolsDrivers(setSchools, setResponseError);
@@ -67,7 +70,7 @@ export const FiltersMotoristas = ({ props }) => {
         </select>
       </div>
       <div className="button-search-filter">
-        <button
+        <div
           onClick={() => {
             props.setValueFilters({
               driverName: props.valueFilters.driverName,
@@ -77,8 +80,14 @@ export const FiltersMotoristas = ({ props }) => {
             });
           }}
         >
-          Filtrar
-        </button>
+          <ButtonRemoverAdicionarFiltro
+            props={{
+              message: "Filtrar",
+              openCloseModal: openCloseModal,
+              setOpenCloseModal: setOpenCloseModal,
+            }}
+          />
+        </div>
       </div>
     </>
   );
