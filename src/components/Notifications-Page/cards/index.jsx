@@ -2,12 +2,23 @@ import { Navigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./style.css";
 import { useEffect } from "react";
+import { updateContract } from "../../../api/client/updateContract";
 export const CardsNotifications = ({ props }) => {
   console.log(localStorage.getItem("status_user_driver"));
 
   const [buttonStyleMessage, setButtonStyleMessage] = useState({
     message: "",
     status: 0,
+  });
+
+  const [requisition, setRequisitions] = useState({
+    status: 0,
+    contrato: {},
+  });
+
+  const [responseError, setResponseError] = useState({
+    code: 0,
+    result: "",
   });
 
   useEffect(() => {
@@ -22,6 +33,24 @@ export const CardsNotifications = ({ props }) => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (requisition.status === 1) {
+      if (requisition.contrato !== {}) {
+        updateContract(
+          requisition.contrato.id,
+          requisition.contrato,
+          setResponseError
+        );
+      }
+    }
+  }, [requisition]);
+
+  useEffect(() => {
+    if (responseError.code === 201) {
+      console.log(responseError);
+    }
+  }, [responseError]);
 
   return props.userContracts.map((contract) => {
     if (contract.status_contrato == 0) {
@@ -61,7 +90,10 @@ export const CardsNotifications = ({ props }) => {
                       <button
                         onClick={() => {
                           if (buttonStyleMessage.status == 200) {
-                            console.log("kkk");
+                            setRequisitions({
+                              status: 1,
+                              contrato: contract,
+                            });
                           }
                         }}
                       >
