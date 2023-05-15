@@ -131,10 +131,11 @@
 
 .container-button-contratar{
  position: relative;
+ margin-bottom: 10rem;
 }
 .container-button-contratar button{
   position: absolute;
-  top: calc(50% - 10px);
+  top: calc(50% - 50px);
   left: 50%;
   transform: translateX(-50%);
 }
@@ -145,4 +146,13 @@
   width: 100vw;
   height: 5px;
   margin: 0 -2rem;
+}
+
+.Contratar-button-perfil{
+  width:20.375rem ;
+  height:7rem;
+  border-radius: 20px;
+  background-color: var(--button-contract-yellow);
+  border: none;
+  font-size: 2.5rem;
 }
