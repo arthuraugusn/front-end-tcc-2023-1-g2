@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import Swal from "sweetalert2";
 import { loadDriverContract } from "../../../api/driver/loadDriverContract";
+import { loadSchoolsDriverById } from "../../../api/driver/loadSchoolsDriverById";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -48,13 +49,20 @@ export const MainContractPage = ({ props }) => {
 
   const [responseErrorGet, setResponseErrorGet] = useState(0);
 
+  const [schools, setSchools] = useState({
+    data: { schools: [{}] },
+  });
+
   const [status, setStatus] = useState(0);
 
   const idUsuarioMotorista = localStorage.getItem("id");
 
   const [user, setUser] = useState({});
 
+  const locate = useLocation();
+
   useEffect(() => {
+    loadSchoolsDriverById(locate.state, setSchools);
     loadSchoolsDrivers(setSchoolDriver, setResponseErrorGet);
     loadTypetransport(setTypesContracts, setResponseErrorGet);
     loadTypeofPay(setTypeofPay, setResponseErrorGet);
@@ -62,7 +70,7 @@ export const MainContractPage = ({ props }) => {
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
 
-  const locate = useLocation();
+  console.log(schools);
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
@@ -161,10 +169,10 @@ export const MainContractPage = ({ props }) => {
                 }}
               >
                 <option>Escolha a escola</option>
-                {school.map((elemento) => {
+                {schools.data.schools.map((elemento) => {
                   return (
-                    <option id={elemento.id} key={elemento.id}>
-                      {elemento.nome}
+                    <option id={elemento.id_escola} key={elemento.id}>
+                      {elemento.nome_escola}
                     </option>
                   );
                 })}

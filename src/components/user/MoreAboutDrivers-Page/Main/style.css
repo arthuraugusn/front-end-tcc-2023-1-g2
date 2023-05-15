@@ -1,4 +1,3 @@
-
 .show-part-container:nth-child(2) {
   margin: 2rem;
 }
@@ -28,7 +27,7 @@
   align-items: center;
 }
 
-.photo-describe-informations{
+.photo-describe-informations {
   margin: 6rem;
 }
 
@@ -73,18 +72,18 @@
   gap: 7.5rem;
 }
 
-.filter-container-part{
+.filter-container-part {
   gap: 2rem;
 }
-.infos-part-container{
+.infos-part-container {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.input-comment-something{
+.input-comment-something {
   width: 40.063rem;
-  height:4rem;
+  height: 4rem;
   border-radius: 30px;
   border: none;
   font-size: 1.2rem;
@@ -94,21 +93,21 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.363);
 }
 
-.button-send-comment{
-  width:11.375rem ;
-  height:4rem;
+.button-send-comment {
+  width: 11.375rem;
+  height: 4rem;
   border-radius: 20px;
   background-color: var(--button-contract-yellow);
   border: none;
   font-size: 2rem;
 }
 
-.container-comment-part{
+.container-comment-part {
   display: flex;
   align-items: center;
 }
 
-.comments-part{
+.comments-part {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,20 +119,20 @@
   overflow-x: hidden;
 }
 
-.comments-part::-webkit-scrollbar{
+.comments-part::-webkit-scrollbar {
   width: 7px;
   background-color: var(--main-yellow);
   border-radius: 15px;
 }
-.filter-container-part{
+.filter-container-part {
   margin-top: 2rem;
 }
 
-.container-button-contratar{
- position: relative;
- margin-bottom: 10rem;
+.container-button-contratar {
+  position: relative;
+  margin-bottom: 10rem;
 }
-.container-button-contratar button{
+.container-button-contratar button {
   position: absolute;
   top: calc(50% - 50px);
   left: 50%;
@@ -148,11 +147,17 @@
   margin: 0 -2rem;
 }
 
-.Contratar-button-perfil{
-  width:20.375rem ;
-  height:7rem;
+.Contratar-button-perfil {
+  width: 20.375rem;
+  height: 7rem;
   border-radius: 20px;
   background-color: var(--button-contract-yellow);
   border: none;
   font-size: 2.5rem;
+}
+.container-carousel-van {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }

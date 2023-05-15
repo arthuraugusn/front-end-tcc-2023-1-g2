@@ -15,8 +15,7 @@ export const Card = ({ driver }) => {
       {driver.map((drivers) => (
         <div
           onClick={() => {
-            console.log(drivers.id);
-            navigate("/more-about-the-driver", {state:drivers.id})
+            navigate("/more-about-the-driver", { state: drivers.id });
           }}
           key={drivers.id}
           className="card-driver"
@@ -43,13 +42,7 @@ export const Card = ({ driver }) => {
                 </p>
               </div>
               <div className="button-contratar">
-                <button
-                  onClick={() => {
-                    navigate("/contract", { state: drivers.id });
-                  }}
-                >
-                  CONTRATAR
-                </button>
+                <button>Ver Perfil</button>
               </div>
             </div>
           </div>

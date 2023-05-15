@@ -14,7 +14,9 @@ export const MainNotifications = () => {
     } else if (localStorage.getItem("status_user_driver") == 1) {
       loadDriverContract(localStorage.getItem("id"), setAllUserContracts);
     }
-  }, []);
+  });
+
+  console.log(userContracts);
 
   return (
     <main className="main-notifications">
