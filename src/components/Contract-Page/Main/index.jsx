@@ -13,7 +13,6 @@ import { MenuItem } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import Swal from "sweetalert2";
-import { loadDriverContract } from "../../../api/driver/loadDriverContract";
 import { loadSchoolsDriverById } from "../../../api/driver/loadSchoolsDriverById";
 
 export const MainContractPage = ({ props }) => {
