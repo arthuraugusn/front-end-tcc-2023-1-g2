@@ -7,6 +7,7 @@ import { registerSchoolDriver } from "../../../../api/driver/registerSchoolDrive
 import { loadSchoolsDrivers } from "../../../../api/client/loadSchools";
 import { loadSchoolsDriverById } from "../../../../api/driver/loadSchoolsDriverById";
 import Swal from "sweetalert2";
+import { ListOfSchoolsDriver } from "./P";
 
 export const MainSuasEscolas = () => {
   const [nomeEscola, setNomeEscola] = useState({
@@ -20,19 +21,33 @@ export const MainSuasEscolas = () => {
 
   const [resposnseErrorSchool, setResponseErrorSchool] = useState({});
 
+  const [responseErrorGet, setResponseErrorGet] = useState({
+    response: "",
+    code: 0,
+  });
+
   const [schoolDriver, setSchoolDriver] = useState({
-    data: {
-      schools: [
-        {
-          nome_escola: "",
-        },
-      ],
-    },
+    schools: [
+      {
+        nome_escola: "",
+      },
+    ],
+  });
+
+  const [visibilityOnDisable, setVisibilityOnDisable] = useState({
+    status: "",
   });
 
   useEffect(() => {
-    loadSchoolsDriverById(localStorage.getItem("id"), setSchoolDriver);
+    loadSchoolsDriverById(localStorage.getItem("id"), setResponseErrorGet);
   }, []);
+
+  useEffect(() => {
+    if (responseErrorGet.code === 404) {
+    } else if (responseErrorGet.code === 200) {
+      setSchoolDriver(responseErrorGet.response);
+    }
+  }, [responseErrorGet]);
 
   useEffect(() => {
     if (nomeEscola.status_click === 1) {
@@ -43,7 +58,6 @@ export const MainSuasEscolas = () => {
   }, [nomeEscola]);
 
   useEffect(() => {
-    console.log(responseError);
     if (responseError.status === 201) {
     } else if (responseError.status === 401) {
       Swal.fire({
@@ -68,14 +82,13 @@ export const MainSuasEscolas = () => {
           <h1>Suas Escolas</h1>
         </div>
         <div className="container-suas-escolas">
-          <div className="container-nome-escolas">
-            {schoolDriver.data.schools.map((e) => {
-              return (
-                <>
-                  <p>{e.nome_escola}</p>
-                </>
-              );
-            })}
+          <div className={`container-nome-escolas`}>
+            <ListOfSchoolsDriver
+              props={{
+                responseErrorGet: responseErrorGet,
+                schoolDriver: schoolDriver,
+              }}
+            />
           </div>
           <div
             className="container-input-escola"

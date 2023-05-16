@@ -50,7 +50,16 @@ export const MainContractPage = ({ props }) => {
   const [responseErrorGet, setResponseErrorGet] = useState(0);
 
   const [schools, setSchools] = useState({
-    data: { schools: [{}] },
+    response: {
+      schools: [
+        {
+          id_escola: 0,
+          id: 0,
+          nome_escola: "",
+        },
+      ],
+    },
+    code: 0,
   });
 
   const [status, setStatus] = useState(0);
@@ -69,8 +78,6 @@ export const MainContractPage = ({ props }) => {
     loadContracts(setContracts);
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
-
-  console.log(schools);
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
@@ -169,7 +176,7 @@ export const MainContractPage = ({ props }) => {
                 }}
               >
                 <option>Escolha a escola</option>
-                {schools.data.schools.map((elemento) => {
+                {schools.response.schools.map((elemento) => {
                   return (
                     <option id={elemento.id_escola} key={elemento.id}>
                       {elemento.nome_escola}
