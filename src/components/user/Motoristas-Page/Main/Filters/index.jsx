@@ -10,19 +10,16 @@ export const FiltersMotoristas = ({ props }) => {
 
   const [responseError, setResponseError] = useState({});
 
-  const [prices, setPrices] = useState([{}]);
-
   const [openCloseModal, setOpenCloseModal] = useState({});
 
   useEffect(() => {
     loadSchoolsDrivers(setSchools, setResponseError);
-    loadPrices(setPrices);
   }, []);
 
   return (
     <>
       <div className="filters-drivers">
-        <select
+        {/* <select
           name="filtros"
           className="selects"
           onChange={(e) => {
@@ -44,7 +41,7 @@ export const FiltersMotoristas = ({ props }) => {
               </>
             );
           })}
-        </select>
+        </select> */}
         <select
           name="filtros"
           className="selects"
@@ -52,12 +49,12 @@ export const FiltersMotoristas = ({ props }) => {
             props.setValueFilters({
               driverName: props.valueFilters.driverName,
               price:
-                e.currentTarget.childNodes[e.currentTarget.selectedIndex].id,
+                e.currentTarget.childNodes[e.currentTarget.selectedIndex].value,
               school: props.valueFilters.school,
             });
           }}
         >
-          <option>Escolha uma faixa de preços</option>
+          {/* <option>Escolha uma faixa de preços</option>
           {prices.map((e) => {
             return (
               <>
@@ -66,7 +63,7 @@ export const FiltersMotoristas = ({ props }) => {
                 </option>
               </>
             );
-          })}
+          })} */}
         </select>
       </div>
       <div className="button-search-filter">

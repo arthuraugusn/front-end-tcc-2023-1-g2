@@ -3,11 +3,6 @@ h1 {
   font-size: 7rem;
   color: var(--main-yellow);
 }
-.inputs {
-  display: flex;
-  align-items: center;
-  width: 40vw;
-}
 
 .container-main-motoristas {
   display: flex;
@@ -22,6 +17,15 @@ h1 {
   align-items: center;
   height: auto;
   gap: 60px;
+}
+
+.inputs-filters-motoristas {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-right: 200px;
+  gap: 100px;
 }
 
 .box-motoristas-card {
@@ -40,6 +44,16 @@ h1 {
   width: 7px;
   background-color: var(--main-yellow);
   border-radius: 15px;
+}
+
+.input-search-filter-driver {
+  display: flex;
+  width: 100%;
+  padding-left: 200px;
+  align-items: center;
+}
+.input-search-filter-driver div {
+  width: 100%;
 }
 
 @media (max-width: 1350px) {
