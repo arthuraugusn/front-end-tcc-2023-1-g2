@@ -51,7 +51,6 @@ export const MainMotoristasPage = ({ props }) => {
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 1) {
-      console.log(valueFilters);
       if (chooseFilter !== "" || choosePrice !== "") {
         getDriverByFilters(
           valueFilters.price,
@@ -59,13 +58,22 @@ export const MainMotoristasPage = ({ props }) => {
           valueFilters.driverName,
           setFilters
         );
+        document.querySelector("input").value = "";
+        setStatusInput(true);
       }
     }
+    console.log(valueFilters);
   }, [valueFilters]);
 
   useEffect(() => {
     if (filters.status === 200) {
       setDriver(filters.data.drivers);
+      setValueFilters({
+        driverName: "",
+        school: "",
+        price: "",
+        status_filtrar: 0,
+      });
     } else if (filters.response.status === 500) {
       Swal.fire({
         icon: "error",
@@ -93,9 +101,11 @@ export const MainMotoristasPage = ({ props }) => {
                   setValueFilters({
                     driverName: e.target.value,
                     price: valueFilters.price,
+                    school: "",
                   });
                 } else if (chooseFilter === "escola") {
                   setValueFilters({
+                    driverName: "",
                     school: e.target.value,
                     price: valueFilters.price,
                   });

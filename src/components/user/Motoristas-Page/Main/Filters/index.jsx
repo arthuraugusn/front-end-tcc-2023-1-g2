@@ -22,6 +22,8 @@ export const FiltersMotoristas = ({ props }) => {
   }, []);
 
   useEffect(() => {
+    console.log(openCloseModal);
+    console.log(props.valueFilters);
     if (openCloseModal.value.toLowerCase() === "sim") {
       if (props.chooseFilter !== "" || props.choosePrice !== "") {
         props.setValueFilters({
@@ -40,7 +42,7 @@ export const FiltersMotoristas = ({ props }) => {
         });
       }
     }
-  }, [openCloseModal.value]);
+  }, [openCloseModal]);
 
   return (
     <>
@@ -51,7 +53,6 @@ export const FiltersMotoristas = ({ props }) => {
               driverName: props.valueFilters.driverName,
               price: props.valueFilters.price,
               school: props.valueFilters.school,
-              /* status_filtrar: 1, */
             });
             setOpenCloseModal({ status: true, value: openCloseModal.value });
           }}
