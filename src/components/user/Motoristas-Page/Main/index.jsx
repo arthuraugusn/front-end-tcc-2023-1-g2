@@ -62,7 +62,6 @@ export const MainMotoristasPage = ({ props }) => {
         setStatusInput(true);
       }
     }
-    console.log(valueFilters);
   }, [valueFilters]);
 
   useEffect(() => {

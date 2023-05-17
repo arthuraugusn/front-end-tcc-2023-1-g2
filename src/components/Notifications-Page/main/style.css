@@ -1,6 +1,6 @@
 .main-notifications {
   height: 100vh;
-  justify-content: center;
+  justify-content: space-evenly;
   display: flex;
   align-items: center;
   flex-direction: column;

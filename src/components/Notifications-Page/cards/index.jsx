@@ -105,17 +105,7 @@ export const CardsNotifications = ({ props }) => {
                   <div className="AcceptWait-button-container">
                     <div className="AcceptWait-content">
                       <div className={`button-AcceptWait`}>
-                        <button
-                          className={buttonStyleMessage.color}
-                          /*                           onClick={() => {
-                            if (buttonStyleMessage.status == 200) {
-                              setRequisitions({
-                                status: 1,
-                                contrato: contract,
-                              });
-                            }
-                          }} */
-                        >
+                        <button className={buttonStyleMessage.color}>
                           {buttonStyleMessage.message}
                         </button>
                       </div>
