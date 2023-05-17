@@ -126,4 +126,12 @@
   .container-image {
     height: 350px;
   }
+  .nome-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  /* .menu-burguer-container{
+    display: none;
+  } */
 }

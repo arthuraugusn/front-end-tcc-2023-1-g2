@@ -46,4 +46,25 @@ h1 {
   .box-motoristas-card {
     width: 90vw;
   }
+
+}
+
+@media (max-width: 375px) {
+  h1{
+    font-size: 4rem;
+  }
+  .box-input-filter{
+    align-items: center;
+    justify-content: center;
+  }
+  .input{
+    margin-top: 1rem;
+    height: 0.5rem;
+    width: 30rem;
+  }
+  .filters-drivers{
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }

@@ -46,3 +46,13 @@ footer {
   width: 20%;
   height: auto;
 }
+
+@media (max-width: 375px) {
+  span{
+    font-size: 1rem;
+  }
+  footer{
+    flex-direction: column;
+  }
+
+}
