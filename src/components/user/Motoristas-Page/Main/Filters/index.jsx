@@ -4,68 +4,46 @@ import { loadSchoolsDrivers } from "../../../../../api/client/loadSchools";
 import { loadPrices } from "../../../../../api/driver/loadPrices";
 import "./style.css";
 import { ButtonRemoverAdicionarFiltro } from "../Button";
+import { ModalFiltroMotoristas } from "../Modal";
+import Swal from "sweetalert2";
 
 export const FiltersMotoristas = ({ props }) => {
   const [schools, setSchools] = useState([{}]);
 
   const [responseError, setResponseError] = useState({});
 
-  const [openCloseModal, setOpenCloseModal] = useState({});
+  const [openCloseModal, setOpenCloseModal] = useState({
+    status: false,
+    value: "",
+  });
 
   useEffect(() => {
     loadSchoolsDrivers(setSchools, setResponseError);
   }, []);
 
+  useEffect(() => {
+    if (openCloseModal.value.toLowerCase() === "sim") {
+      if (props.chooseFilter !== "" || props.choosePrice !== "") {
+        props.setValueFilters({
+          driverName: props.valueFilters.driverName,
+          price: props.valueFilters.price,
+          school: props.valueFilters.school,
+          status_filtrar: 1,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Você não inseriu informações corretas para o filtro",
+        }).then(() => {
+          window.location.reload();
+        });
+      }
+    }
+  }, [openCloseModal.value]);
+
   return (
     <>
-      <div className="filters-drivers">
-        {/* <select
-          name="filtros"
-          className="selects"
-          onChange={(e) => {
-            props.setValueFilters({
-              driverName: props.valueFilters.driverName,
-              price: props.valueFilters.price,
-              school:
-                e.currentTarget.childNodes[e.currentTarget.selectedIndex].id,
-            });
-          }}
-        >
-          <option>Escolha uma escola</option>
-          {schools.map((e) => {
-            return (
-              <>
-                <option id={e.id} key={e.id}>
-                  {e.nome}
-                </option>
-              </>
-            );
-          })}
-        </select> */}
-        <select
-          name="filtros"
-          className="selects"
-          onChange={(e) => {
-            props.setValueFilters({
-              driverName: props.valueFilters.driverName,
-              price:
-                e.currentTarget.childNodes[e.currentTarget.selectedIndex].value,
-              school: props.valueFilters.school,
-            });
-          }}
-        >
-          {/* <option>Escolha uma faixa de preços</option>
-          {prices.map((e) => {
-            return (
-              <>
-                <option id={e.id} key={e.id}>
-                  {e.faixa_preco}
-                </option>
-              </>
-            );
-          })} */}
-        </select>
-      </div>
       <div className="button-search-filter">
         <div
           onClick={() => {
@@ -73,8 +51,9 @@ export const FiltersMotoristas = ({ props }) => {
               driverName: props.valueFilters.driverName,
               price: props.valueFilters.price,
               school: props.valueFilters.school,
-              status_filtrar: 1,
+              /* status_filtrar: 1, */
             });
+            setOpenCloseModal({ status: true, value: openCloseModal.value });
           }}
         >
           <ButtonRemoverAdicionarFiltro
@@ -86,6 +65,13 @@ export const FiltersMotoristas = ({ props }) => {
           />
         </div>
       </div>
+      <ModalFiltroMotoristas
+        props={{
+          message: "Você deseja filtrar ?",
+          setOpenCloseModal: setOpenCloseModal,
+          openCloseModal: openCloseModal,
+        }}
+      />
     </>
   );
 };

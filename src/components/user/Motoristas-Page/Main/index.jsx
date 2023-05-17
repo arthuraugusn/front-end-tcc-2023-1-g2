@@ -11,11 +11,7 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import { loadPrices } from "../../../../api/driver/loadPrices.js";
 
 export const MainMotoristasPage = ({ props }) => {
-  const itensInput = {
-    placeHolder: "Search...",
-    id: "search-driver",
-    class: "search-driver-input",
-  };
+  const itensInput = {};
 
   const [filters, setFilters] = useState({
     status: 0,
@@ -39,6 +35,13 @@ export const MainMotoristasPage = ({ props }) => {
 
   const [prices, setPrices] = useState([{}]);
 
+  const [openCloseModal, setOpenCloseModal] = useState({
+    status: false,
+    value: "",
+  });
+
+  const [statusInput, setStatusInput] = useState(true);
+
   useEffect(() => {
     if (valueFilters.status_filtrar === 0) {
       carregarMotoristas(setDriver);
@@ -48,7 +51,8 @@ export const MainMotoristasPage = ({ props }) => {
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 1) {
-      if (chooseFilter !== "") {
+      console.log(valueFilters);
+      if (chooseFilter !== "" || choosePrice !== "") {
         getDriverByFilters(
           valueFilters.price,
           valueFilters.school,
@@ -68,7 +72,7 @@ export const MainMotoristasPage = ({ props }) => {
         title: "Oops...",
         text: "Não temos motoristas relacionados com este filtro",
       }).then(() => {
-        carregarMotoristas(setDriver);
+        window.location.reload();
       });
     } else {
       carregarMotoristas(setDriver);
@@ -90,7 +94,7 @@ export const MainMotoristasPage = ({ props }) => {
                     driverName: e.target.value,
                     price: valueFilters.price,
                   });
-                } else if (chooseFilter == "escola") {
+                } else if (chooseFilter === "escola") {
                   setValueFilters({
                     school: e.target.value,
                     price: valueFilters.price,
@@ -100,9 +104,16 @@ export const MainMotoristasPage = ({ props }) => {
             }}
             className="input-search-filter-driver"
           >
-            <InputSearchItens props={itensInput} />
+            <InputSearchItens
+              props={{
+                placeHolder: "Search...",
+                id: "search-driver",
+                class: "search-driver-input",
+                status: statusInput,
+              }}
+            />
           </div>
-          <div>
+          <div className="container-filters-dropdown">
             <div
               onChange={(e) => {
                 setValueFilters({
@@ -127,8 +138,15 @@ export const MainMotoristasPage = ({ props }) => {
                   displayEmpty
                   onChange={(e) => {
                     setChooseFilter(e.target.value);
+                    setStatusInput(false);
                   }}
                   value={chooseFilter}
+                  sx={{
+                    backgroundColor: "white",
+                    height: 80,
+                    borderRadius: 20,
+                    boxShadow: "5px 5px 5px rgba(0, 0, 0, 0.363)",
+                  }}
                 >
                   <MenuItem value="">
                     <em>Escolha uma opção</em>
@@ -154,9 +172,15 @@ export const MainMotoristasPage = ({ props }) => {
                     setChoosePrice(e.target.value);
                   }}
                   value={choosePrice}
+                  sx={{
+                    backgroundColor: "white",
+                    height: 80,
+                    borderRadius: 20,
+                    boxShadow: "5px 5px 5px rgba(0, 0, 0, 0.363)",
+                  }}
                 >
-                  <MenuItem>
-                    <em value="">Escolha uma opção</em>
+                  <MenuItem value="">
+                    <em>Escolha uma opção</em>
                   </MenuItem>
                   {prices.map((e) => {
                     return (
@@ -174,6 +198,8 @@ export const MainMotoristasPage = ({ props }) => {
           props={{
             setValueFilters: setValueFilters,
             valueFilters: valueFilters,
+            chooseFilter: chooseFilter,
+            choosePrice: choosePrice,
           }}
         />
       </div>

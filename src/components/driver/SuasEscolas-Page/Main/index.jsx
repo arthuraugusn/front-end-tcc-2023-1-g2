@@ -8,6 +8,9 @@ import { loadSchoolsDrivers } from "../../../../api/client/loadSchools";
 import { loadSchoolsDriverById } from "../../../../api/driver/loadSchoolsDriverById";
 import Swal from "sweetalert2";
 import { ListOfSchoolsDriver } from "./P";
+import { CheckBox } from "@mui/icons-material";
+import { ModalSuasEscolasPage } from "./Modal";
+import { loadDriverContract } from "../../../../api/driver/loadDriverContract";
 
 export const MainSuasEscolas = () => {
   const [nomeEscola, setNomeEscola] = useState({
@@ -38,6 +41,18 @@ export const MainSuasEscolas = () => {
     status: "",
   });
 
+  const [idEscolaMotorista, setIdEscolaMotorista] = useState("");
+
+  const [openCloseModal, setOpenCloseModal] = useState({
+    status: false,
+    value: "",
+  });
+
+  useEffect(() => {
+    if (idEscolaMotorista !== "") {
+    }
+  }, [idEscolaMotorista]);
+
   useEffect(() => {
     loadSchoolsDriverById(localStorage.getItem("id"), setResponseErrorGet);
   }, []);
@@ -54,8 +69,15 @@ export const MainSuasEscolas = () => {
       if (nomeEscola.nome !== "") {
         registerSchool(nomeEscola.nome, setResponseError);
       }
+    } else if (nomeEscola.status_click === 2) {
+      if (idEscolaMotorista !== "") {
+      }
     }
-  }, [nomeEscola]);
+
+    if (openCloseModal.value.toLowerCase() === "sim") {
+    }
+    console.log(openCloseModal.value);
+  }, [nomeEscola, openCloseModal.value]);
 
   useEffect(() => {
     if (responseError.status === 201) {
@@ -87,6 +109,7 @@ export const MainSuasEscolas = () => {
               props={{
                 responseErrorGet: responseErrorGet,
                 schoolDriver: schoolDriver,
+                setIdEscolaMotorista: setIdEscolaMotorista,
               }}
             />
           </div>
@@ -107,22 +130,45 @@ export const MainSuasEscolas = () => {
             />
           </div>
         </div>
-        <div
-          className="container-buttons-save-escola"
-          onClick={() => {
-            setNomeEscola({
-              nome: nomeEscola.nome,
-              status_click: 1,
-            });
-          }}
-        >
-          <ButtonSalvarEscola
-            props={{
-              key: "button-form",
-              label: "Salvar",
+        <div className="container-buttons-save-escola">
+          <div
+            onClick={() => {
+              setNomeEscola({
+                nome: nomeEscola.nome,
+                status_click: 1,
+              });
             }}
-          />
+          >
+            <ButtonSalvarEscola
+              props={{
+                key: "button-form",
+                label: "Salvar",
+              }}
+            />
+          </div>
+          <div
+            onClick={() => {
+              setNomeEscola({
+                status_click: 2,
+              });
+              setOpenCloseModal({ status: true, value: openCloseModal.value });
+            }}
+          >
+            <ButtonSalvarEscola
+              props={{
+                key: "button-form",
+                label: "Excluir",
+              }}
+            />
+          </div>
         </div>
+        <ModalSuasEscolasPage
+          props={{
+            openCloseModal: openCloseModal,
+            setOpenCloseModal: setOpenCloseModal,
+            message: "Você deseja se desvincular com essa escola ?",
+          }}
+        />
       </main>
     </>
   );
