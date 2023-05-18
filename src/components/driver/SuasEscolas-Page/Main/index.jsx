@@ -11,6 +11,7 @@ import { ListOfSchoolsDriver } from "./P";
 import { CheckBox } from "@mui/icons-material";
 import { ModalSuasEscolasPage } from "./Modal";
 import { loadDriverContract } from "../../../../api/driver/loadDriverContract";
+import { deleteSchoolDriverById } from "../../../../api/driver/deleteSchoolDriverById";
 
 export const MainSuasEscolas = () => {
   const [nomeEscola, setNomeEscola] = useState({
@@ -48,6 +49,10 @@ export const MainSuasEscolas = () => {
     value: "",
   });
 
+  const [responseErrorSchoolDelete, setResponseErrorSchoolDelete] = useState({
+    status: 0,
+  });
+
   useEffect(() => {
     if (idEscolaMotorista !== "") {
     }
@@ -71,12 +76,15 @@ export const MainSuasEscolas = () => {
       }
     } else if (nomeEscola.status_click === 2) {
       if (idEscolaMotorista !== "") {
+        if (openCloseModal.value.toLowerCase() === "sim") {
+          deleteSchoolDriverById(
+            idEscolaMotorista,
+            localStorage.getItem("id"),
+            setResponseErrorSchoolDelete
+          );
+        }
       }
     }
-
-    if (openCloseModal.value.toLowerCase() === "sim") {
-    }
-    console.log(openCloseModal.value);
   }, [nomeEscola, openCloseModal.value]);
 
   useEffect(() => {
@@ -95,7 +103,17 @@ export const MainSuasEscolas = () => {
         window.location.reload();
       });
     }
-  }, [responseError]);
+
+    if (responseErrorSchoolDelete.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Esta escola foi excluída do seu perfil",
+      }).then((response) => {
+        window.location.reload();
+      });
+    }
+  }, [responseError, responseErrorSchoolDelete]);
 
   return (
     <>
