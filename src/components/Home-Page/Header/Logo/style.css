@@ -37,3 +37,10 @@
 .material-symbols-outlined {
   color: white;
 }
+
+@media (max-width: 375px) {
+  .logo-container{
+    display: none;
+  }
+
+}

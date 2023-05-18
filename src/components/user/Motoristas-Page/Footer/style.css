@@ -53,6 +53,15 @@ footer {
   }
   footer{
     flex-direction: column;
+    gap: 2rem;
+  }
+
+  .localization-company{
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .div{
+    flex-direction: row;
   }
 
 }
