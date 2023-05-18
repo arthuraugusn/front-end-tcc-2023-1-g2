@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   width: auto;
+  gap: 50px;
   height: auto;
   background-color: white;
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
@@ -10,7 +11,7 @@
 
 .container-image-contracts {
   display: flex;
-  height: 100%;
+  height: auto;
   align-items: center;
   justify-content: center;
   padding: 30px;
@@ -21,37 +22,32 @@
   border-radius: 20px;
 }
 
-.container-all-infos {
+.container-all-infos-all-contracts {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  height: 100%;
 }
 
-.nome-container {
-  width: 100%;
-  align-items: center;
+.nome-container,
+.infos-endereco-content {
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
-.nome-motorista {
+.container-h2-endereco {
   font-weight: 800;
 }
 .infos-contratar {
   display: flex;
-  gap: 40px;
-  justify-content: inherit;
+  gap: 80px;
+  padding: 20px;
+  height: 100%;
 }
 
-.info-endereco {
-  font-weight: 700;
-  font-size: larger;
-}
-.infos-motorista-container {
+.infos-motorista-container,
+.infos-endereco-container-contract {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -68,9 +64,6 @@
 .infos-endereco-container {
   display: flex;
   height: 100%;
-}
-.infos-endereco-content {
-  font-size: 1.5rem;
 }
 
 .info-adds {
@@ -105,6 +98,20 @@
 @media (max-width: 1404px) {
   .card-driver {
     width: 800px;
+  }
+}
+
+@media (max-width: 1330px) {
+  .container-image-contracts img {
+    height: 200px;
+  }
+  .infos-contratar {
+    gap: 30px;
+  }
+
+  .nome-container,
+  .infos-endereco-content {
+    font-size: 1.2rem;
   }
 }
 

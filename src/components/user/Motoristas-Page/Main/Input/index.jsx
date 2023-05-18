@@ -16,6 +16,7 @@ export const InputSearchItens = ({ props }) => {
         name={props.name}
         id={props.id}
         key={props.id}
+        disabled={props.status}
       />
     </div>
   );

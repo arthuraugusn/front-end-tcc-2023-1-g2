@@ -49,17 +49,16 @@ function RoutesApp() {
         />
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
+        <Route Component={PerfilPage} path="/perfil" />
+        <Route Component={SuasVansPage} path="/suas-vans" />
+        <Route Component={VanPage} path="/sua-van" />
+        <Route Component={AdicionarVanPage} path="/add-van" />
         <Route
           Component={FinishContractPage}
           props={true}
           path="/contract/finish"
         />
         <Route Component={SuasEscolasPage} path="/suas-escolas" />
-
-        <Route Component={PerfilPage} path="/perfil" />
-        <Route Component={SuasVansPage} path="/suas-vans" />
-        <Route Component={VanPage} path="/sua-van" />
-        <Route Component={AdicionarVanPage} path="/add-van" />
       </Routes>
     </HashRouter>
   );

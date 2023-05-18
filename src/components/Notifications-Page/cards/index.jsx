@@ -70,7 +70,7 @@ export const CardsNotifications = ({ props }) => {
 
   return props.userContracts.map((contract) => {
     if (contract.status_contrato == 0) {
-      console.log(statusUser);
+      console.log(contract);
       if (statusUser == 2) {
         return (
           <>
@@ -105,17 +105,7 @@ export const CardsNotifications = ({ props }) => {
                   <div className="AcceptWait-button-container">
                     <div className="AcceptWait-content">
                       <div className={`button-AcceptWait`}>
-                        <button
-                          className={buttonStyleMessage.color}
-                          /*                           onClick={() => {
-                            if (buttonStyleMessage.status == 200) {
-                              setRequisitions({
-                                status: 1,
-                                contrato: contract,
-                              });
-                            }
-                          }} */
-                        >
+                        <button className={buttonStyleMessage.color}>
                           {buttonStyleMessage.message}
                         </button>
                       </div>

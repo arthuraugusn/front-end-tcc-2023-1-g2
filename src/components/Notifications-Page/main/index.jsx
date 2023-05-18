@@ -23,15 +23,6 @@ export const MainNotifications = () => {
       <div className="name-container-notifications">
         <h1>Notificações</h1>
       </div>
-      <div className="filter-container-part">
-        <InputSearchItens
-          props={{
-            placeHolder: "Search...",
-            id: "search-driver",
-            class: "search-driver-input",
-          }}
-        ></InputSearchItens>
-      </div>
       <div className="cards-notifications-container">
         <CardsNotifications
           props={{
