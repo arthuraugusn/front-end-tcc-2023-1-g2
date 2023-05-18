@@ -13,6 +13,7 @@ import { MenuItem } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import Swal from "sweetalert2";
+import { loadSchoolsDriverById } from "../../../api/driver/loadSchoolsDriverById";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -47,21 +48,35 @@ export const MainContractPage = ({ props }) => {
 
   const [responseErrorGet, setResponseErrorGet] = useState(0);
 
+  const [schools, setSchools] = useState({
+    response: {
+      schools: [
+        {
+          id_escola: 0,
+          id: 0,
+          nome_escola: "",
+        },
+      ],
+    },
+    code: 0,
+  });
+
   const [status, setStatus] = useState(0);
 
   const idUsuarioMotorista = localStorage.getItem("id");
 
   const [user, setUser] = useState({});
 
+  const locate = useLocation();
+
   useEffect(() => {
+    loadSchoolsDriverById(locate.state, setSchools);
     loadSchoolsDrivers(setSchoolDriver, setResponseErrorGet);
     loadTypetransport(setTypesContracts, setResponseErrorGet);
     loadTypeofPay(setTypeofPay, setResponseErrorGet);
     loadContracts(setContracts);
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
-
-  const locate = useLocation();
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
@@ -79,14 +94,14 @@ export const MainContractPage = ({ props }) => {
           status: 1,
         });
       } else if (testeDriverClient == 2) {
-        const idUsuario = locate.state;
+        const idMotorista = locate.state;
         setInfosContract({
           id_escola: contract.id_escola,
           id_tipo_contrato: contract.id_tipo_contrato,
           id_tipo_pagamento: contract.id_tipo_pagamento,
           nome_passageiro: clientInfos.nome_passageiro,
-          id_usuario: idUsuario,
-          id_motorista: parseInt(idUsuarioMotorista),
+          id_usuario: parseInt(idUsuarioMotorista),
+          id_motorista: idMotorista,
           idade_passageiro: clientInfos.idade_passageiro,
           status: 1,
         });
@@ -127,22 +142,10 @@ export const MainContractPage = ({ props }) => {
           window.location.reload();
         });
       } else {
-        registerContract(contract, setResponseError);
+        navigate("/contract/finish", { state: contract });
       }
     }
   }, [contract.status]);
-
-  useEffect(() => {
-    if (responseError.code == 200) {
-      Swal.fire({
-        icon: "success",
-        title: "Tudo certo",
-        text: "Seu contrato foi feito com sucesso",
-      }).then(() => {
-        console.log(responseError.result);
-      });
-    }
-  }, [responseError]);
 
   return (
     <main className="container-all-main-contract">
@@ -172,10 +175,10 @@ export const MainContractPage = ({ props }) => {
                 }}
               >
                 <option>Escolha a escola</option>
-                {school.map((elemento) => {
+                {schools.response.schools.map((elemento) => {
                   return (
-                    <option id={elemento.id} key={elemento.id}>
-                      {elemento.nome}
+                    <option id={elemento.id_escola} key={elemento.id}>
+                      {elemento.nome_escola}
                     </option>
                   );
                 })}

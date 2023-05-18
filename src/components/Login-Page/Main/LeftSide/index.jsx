@@ -36,15 +36,23 @@ export const LeftSide = ({ prop }) => {
 
   useEffect(() => {
     if (userDriverInfosLogin.code == 200) {
-      localStorage.setItem(
-        "status_user_driver",
-        userDriverInfosLogin.status_user_driver
-      );
-      localStorage.setItem("id", userDriverInfosLogin.data.id);
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu login foi feito com sucesso",
+      }).then((response) => {
+        if (response.value == true) {
+          localStorage.setItem(
+            "status_user_driver",
+            userDriverInfosLogin.status_user_driver
+          );
+          localStorage.setItem("id", userDriverInfosLogin.data.id);
 
-      localStorage.setItem("tokenJwt", userDriverInfosLogin.data.token);
+          localStorage.setItem("tokenJwt", userDriverInfosLogin.data.token);
 
-      navigate("/");
+          navigate("/");
+        }
+      });
     } else if (userDriverInfosLogin.code == 404) {
       Swal.fire({
         icon: "error",
@@ -91,7 +99,7 @@ export const LeftSide = ({ prop }) => {
 
         <div className="radio-group-login">
           <div className="container-password">
-            <p>Esqueci minha senha</p>
+            {/* <p>Esqueci minha senha</p> */}
           </div>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">

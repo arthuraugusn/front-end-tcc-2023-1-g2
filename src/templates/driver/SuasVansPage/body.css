@@ -3,6 +3,9 @@
   flex-direction: column;
   background-color: var(--body-yellow);
   gap: 40px;
+  justify-content: space-between;
+}
 
+.height-vh {
   height: 100vh;
 }

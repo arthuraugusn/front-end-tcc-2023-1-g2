@@ -1,27 +1,31 @@
-h1{
+h1 {
   font-family: "Mansalva", cursive;
   font-size: 7rem;
-  color: var(--main-yellow);;
-}
-.inputs {
-  display: flex;
-  align-items: center;
-  width: 40vw;
+  color: var(--main-yellow);
 }
 
 .container-main-motoristas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
 }
 
 .box-input-filter {
   display: flex;
-  height: 130px;
-  padding: 30px;
-  gap: 20px;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: auto;
+  gap: 60px;
+}
+
+.inputs-filters-motoristas {
+  display: flex;
+  width: 100%;
   justify-content: space-evenly;
+  align-items: center;
+  padding-right: 200px;
+  gap: 100px;
 }
 
 .box-motoristas-card {
@@ -42,23 +46,20 @@ h1{
   border-radius: 15px;
 }
 
-
-#select-filter-container {
+.input-search-filter-driver {
   display: flex;
-  height: 100%;
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(33, 33, 33, 0.25);
-  border-radius: 35px;
-  border: none;
-  text-decoration: none;
-  outline-color: var(--main-yellow);
-  width: 300px;
-  font-size: 1.5rem;
-  justify-content: center;
+  width: 100%;
+  padding-left: 200px;
   align-items: center;
-  text-align: center;
+}
+.input-search-filter-driver div {
+  width: 100%;
 }
 
+.container-filters-dropdown {
+  display: flex;
+  gap: 40px;
+}
 
 @media (max-width: 1350px) {
   .box-motoristas-card {

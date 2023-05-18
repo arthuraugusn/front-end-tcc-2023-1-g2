@@ -5,7 +5,7 @@ import "./style.css";
 
 export const Card = ({ driver }) => {
   const navigate = useNavigate();
-  console.log(driver);
+
   const [status, setStatus] = useState(0);
 
   const dataAtual = new Date().getFullYear();
@@ -15,7 +15,7 @@ export const Card = ({ driver }) => {
       {driver.map((drivers) => (
         <div
           onClick={() => {
-            console.log(drivers.id);
+            navigate("/more-about-the-driver", { state: drivers.id });
           }}
           key={drivers.id}
           className="card-driver"
@@ -30,21 +30,19 @@ export const Card = ({ driver }) => {
             <div className="infos-contratar">
               <div className="infos-motorista">
                 <p className="info idade">
-                  {dataAtual - drivers.data_nascimento.split("/")[2]}
+                  Idade: {dataAtual - drivers.data_nascimento.split("/")[2]}{" "}
+                  anos
                 </p>
                 <p className="info vagas">
                   Vagas disponíveis: {drivers.van[0].quantidade_vagas}
                 </p>
-                <p className="info tempo-carreira">Tempo de carreira: 3 anos</p>
+                <p className="info tempo-carreira">
+                  Tempo de carreira:{" "}
+                  {dataAtual - drivers.inicio_carreira.split("/")[2]} anos
+                </p>
               </div>
               <div className="button-contratar">
-                <button
-                  onClick={() => {
-                    navigate("/contract", { state: drivers.id });
-                  }}
-                >
-                  CONTRATAR
-                </button>
+                <button>Ver Perfil</button>
               </div>
             </div>
           </div>

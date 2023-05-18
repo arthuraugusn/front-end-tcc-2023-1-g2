@@ -1,12 +1,10 @@
 import api from "../api";
 
-export const loadDriverById = async (id, setDriver) => {
-  await api
+export const loadDriverById = (id, setDriver) => {
+  api
     .get(`driver/${id}`)
     .then((response) => {
-      if (response.status == 200) {
-        setDriver(response.data);
-      }
+      setDriver(response.data);
     })
     .catch((err) => {
       console.log("Erro: " + err);

@@ -6,9 +6,8 @@ export const registerVanDriver = (van, setResponseError) => {
       placa: `${van.placa}`,
       foto: `${van.img}`,
       quantidade_vagas: van.quantidade_vagas,
-      id_modelo: 1,
       id_motorista: van.id_motorista,
-      status_van: van.status_van,
+      id_modelo: van.id_modelo,
     })
     .then((response) => {
       setResponseError(response);

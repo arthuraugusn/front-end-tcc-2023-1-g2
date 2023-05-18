@@ -5,6 +5,7 @@ import "./style.css";
 import { registerDriverClient } from "../../../../api/driver/registerUserClient";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { loadPrices } from "../../../../api/driver/loadPrices";
 
 export const MainDadosAdicionaisDriver = () => {
   const navigate = useNavigate();
@@ -16,6 +17,12 @@ export const MainDadosAdicionaisDriver = () => {
   const [statusInput, setStatusInput] = useState(true);
 
   const [cpfNavigate, setCpfNavigate] = useState("");
+
+  const [prices, setPrices] = useState([]);
+
+  useEffect(() => {
+    loadPrices(setPrices);
+  }, []);
 
   useEffect(() => {
     if (driverInfos.status_finalizado == 1) {
@@ -40,7 +47,10 @@ export const MainDadosAdicionaisDriver = () => {
         driverInfos.senha == null ||
         driverInfos.telefone == undefined ||
         driverInfos.telefone == "" ||
-        driverInfos.telefone == null
+        driverInfos.telefone == null ||
+        driverInfos.id_preco == undefined ||
+        driverInfos.id_preco == "" ||
+        driverInfos.id_preco == null
       ) {
         Swal.fire({
           icon: "error",
@@ -80,6 +90,7 @@ export const MainDadosAdicionaisDriver = () => {
           statusInput: statusInput,
           driver: driverInfos,
           setCpfNavigate: setCpfNavigate,
+          prices: prices,
         }}
       ></FormsInfosDriver>
     </main>

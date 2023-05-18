@@ -11,6 +11,12 @@ import { CadastrarVanPage } from "../templates/driver/CadastroVanPage";
 import { PerfilPage } from "../templates/PerfilPage";
 import ALlContractsPage from "../templates/All-Contracts/body";
 import SuasVansPage from "../templates/driver/SuasVansPage";
+import FinishContractPage from "../templates/user/FinishContractPage";
+import { NotificationsPage } from "../templates/NotificationsPage/body";
+import { VanPage } from "../templates/driver/VanPage";
+import { AdicionarVanPage } from "../templates/driver/AdicionarVanPage";
+import { MoreAboutDriversPage } from "../templates/user/MoreAboutDriverPage/index";
+import { SuasEscolasPage } from "../templates/driver/SuasEscolasPage";
 
 function RoutesApp() {
   return (
@@ -28,13 +34,32 @@ function RoutesApp() {
           path="/dados-adicionais-driver"
         />
         <Route Component={CadastrarVanPage} path="/cadastro-van" />
+
         <Route element={<HomePage props={true} />} path="/" />
+
         <Route element={<MotoristasPage props={true} />} path="/motoristas" />
+        <Route
+          Component={MoreAboutDriversPage}
+          props={true}
+          path="/more-about-the-driver"
+        />
+        <Route
+          element={<NotificationsPage props={true} />}
+          path="/notifications"
+        />
         <Route Component={ALlContractsPage} props={true} path="/contracts" />
         <Route Component={ContractPage} props={true} path="/contract" />
-        <Route Component= {AllNotifications} props ={true} path="/notifications"/>
         <Route Component={PerfilPage} path="/perfil" />
         <Route Component={SuasVansPage} path="/suas-vans" />
+        <Route Component={VanPage} path="/sua-van" />
+        <Route Component={AdicionarVanPage} path="/add-van" />
+        <Route
+          Component={FinishContractPage}
+          props={true}
+          path="/contract/finish"
+        />
+        <Route Component={SuasEscolasPage} path="/suas-escolas" />
+        <Route Component= {AllNotifications} props ={true} path="/notifications"/>
       </Routes>
     </HashRouter>
   );

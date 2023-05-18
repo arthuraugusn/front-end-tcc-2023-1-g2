@@ -1,0 +1,58 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--main-yellow);
+  border-top-left-radius: 30px;
+  width: 100%;
+  height: 20%;
+  border-top-right-radius: 30px;
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+.icon-contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2rem;
+}
+
+.icon-contact span {
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.footer-localization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.logo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.localization-company {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+}

@@ -73,7 +73,7 @@ export const MenuBurguer = ({ props }) => {
         <nav className="nav-container">
           <li
             onClick={() => {
-              navigate("/motoristas", { state: props });
+              navigate("/contracts", { state: props });
             }}
             className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
           >
@@ -91,7 +91,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/motoristas", { state: props });
+              navigate("/suas-escolas", { state: props });
             }}
             className={`nav-itens ${props} ${statusHeaderDriverUser.status_motorista}`}
           >
@@ -118,7 +118,7 @@ export const MenuBurguer = ({ props }) => {
 
           <li
             onClick={() => {
-              navigate("/");
+              navigate("/notifications");
             }}
             className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >

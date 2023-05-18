@@ -4,9 +4,16 @@ import "./style.css";
 import { CardContract } from "../Card";
 import { ModalExcluirPerfil } from "../../Perfil-Page/Main/Modal/Excluir";
 import { deleteContractUser } from "../../../api/client/deleteUserContract";
+import Swal from "sweetalert2";
+import { loadDriverContract } from "../../../api/driver/loadDriverContract";
 
-export const ContractsPage = () => {
+export const ContractsPage = ({ props }) => {
   const [contracts, setAllUserContracts] = useState([]);
+
+  const [idContract, setIdContract] = useState(0);
+
+  const [mainStyle, setMainStyle] = useState("height-vh");
+
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
     value: "",
@@ -16,23 +23,39 @@ export const ContractsPage = () => {
   const [statusCode, setStatusCode] = useState(0);
 
   useEffect(() => {
-    loadUserContract(id, setAllUserContracts);
+    if (localStorage.getItem("status_user_driver") == 2) {
+      loadUserContract(id, setAllUserContracts);
+    } else if (localStorage.getItem("status_user_driver") == 1) {
+      loadDriverContract(id, setAllUserContracts);
+    }
   });
-
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
-      deleteContractUser(id, setStatusCode);
+      deleteContractUser(idContract, setStatusCode);
     }
   }, [openCloseModal]);
 
   useEffect(() => {
-    if (statusCode != 0) {
-      console.log(statusCode);
+    if (statusCode.status == 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Tudo certo",
+        text: "Seu contrato foi excluído com sucesso",
+      }).then(() => {
+        window.location.reload();
+      });
     }
   }, [statusCode]);
 
+  useEffect(() => {
+    if (contracts.length > 2) {
+      setMainStyle("height-auto");
+      props.setStyleBody("height-auto");
+    }
+  }, [contracts]);
+
   return (
-    <main className="main-container-allcontracts">
+    <main className={`main-container-allcontracts ${mainStyle}`}>
       <div className="name-container">
         <h1>Seus Contratos</h1>
       </div>
@@ -42,16 +65,17 @@ export const ContractsPage = () => {
             contracts: contracts,
             setOpenCloseModal: setOpenCloseModal,
             openCloseModal: openCloseModal,
-          }}
-        />
-        <ModalExcluirPerfil
-          props={{
-            message: "Você realmente deseja excluir seu contrato ?",
-            openCloseModal: openCloseModal,
-            setOpenCloseModal: setOpenCloseModal,
+            setIdContract: setIdContract,
           }}
         />
       </div>
+      <ModalExcluirPerfil
+        props={{
+          message: "Você realmente deseja excluir seu contrato ?",
+          openCloseModal: openCloseModal,
+          setOpenCloseModal: setOpenCloseModal,
+        }}
+      />
     </main>
   );
 };

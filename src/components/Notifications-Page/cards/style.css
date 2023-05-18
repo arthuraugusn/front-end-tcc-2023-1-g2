@@ -1,0 +1,65 @@
+.card-notifications {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  background-color: white;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+}
+.AcceptWait-button-container {
+  display: flex;
+}
+.AcceptWait-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.button-AcceptWait button {
+  width: 21.375rem;
+  height: 4.188rem;
+  border-radius: 30px;
+  font-size: x-large;
+  border: none;
+}
+.cancel-button button {
+  width: 21.375rem;
+  height: 4.188rem;
+  border-radius: 30px;
+  background-color: #d40000;
+  font-size: x-large;
+  border: none;
+  color: white;
+}
+.infos-motorista-geral-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.7em;
+  gap: 3.5rem;
+  margin-top: 2rem;
+}
+
+.infos-endereco-geral-content {
+  font-size: 1.7rem;
+}
+.infos-contratar-geral {
+  display: flex;
+  gap: 10rem;
+  justify-content: inherit;
+}
+
+.nome-motorista-notifications {
+  font-weight: 800;
+  font-size: 4rem;
+}
+
+.yellow {
+  background-color: #ffda29;
+}
+
+.green {
+  color: white;
+  background-color: rgb(87, 151, 87);
+}

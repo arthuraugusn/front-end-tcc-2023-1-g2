@@ -2,7 +2,7 @@ import api from "../api";
 
 export const loadPrices = (setPrices) => {
   api
-    .get("/prices")
+    .get("prices")
     .then((response) => {
       setPrices(response.data.prices);
     })

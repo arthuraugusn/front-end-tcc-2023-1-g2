@@ -1,6 +1,6 @@
 import "./style.css";
 
-const InputSearchItens = ({ props }) => {
+export const InputSearchItens = ({ props }) => {
   return (
     <div className="inputs">
       <label
@@ -16,6 +16,7 @@ const InputSearchItens = ({ props }) => {
         name={props.name}
         id={props.id}
         key={props.id}
+        disabled={props.status}
       />
     </div>
   );

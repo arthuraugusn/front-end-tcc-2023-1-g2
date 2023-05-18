@@ -1,0 +1,7 @@
+.body-MoreAboutDrivers {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--body-yellow);
+  gap: 10rem;
+  justify-content: space-between;
+}

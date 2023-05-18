@@ -1,0 +1,35 @@
+.container-main-sua-van {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container-title-sua-van h1 {
+  color: white;
+}
+
+.inputs-container-infos-sua-van {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.inputs-for-van {
+  padding-bottom: 50px;
+}
+
+.none {
+  display: none;
+}
+
+.true {
+  display: flex;
+}
+
+.button-update-van {
+  padding-bottom: 50px;
+}
