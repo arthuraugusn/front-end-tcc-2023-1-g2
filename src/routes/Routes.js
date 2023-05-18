@@ -59,7 +59,6 @@ function RoutesApp() {
           path="/contract/finish"
         />
         <Route Component={SuasEscolasPage} path="/suas-escolas" />
-        <Route Component= {AllNotifications} props ={true} path="/notifications"/>
       </Routes>
     </HashRouter>
   );
