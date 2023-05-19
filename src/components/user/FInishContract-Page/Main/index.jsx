@@ -83,6 +83,7 @@ export const MainFinishContractPage = () => {
         </div>
         <div className="container-infos-contract">
           <div>
+            <h2>Suas Informações</h2>
             <div>
               <p className="name-content-contract">Nome do responsável:</p>
               <p>{user.nome}</p>
@@ -112,6 +113,7 @@ export const MainFinishContractPage = () => {
             </div>
           </div>
           <div>
+            <h2>Informações Motorista</h2>
             <div>
               <p className="name-content-contract">Nome do motorista:</p>
               <p>{driver.nome}</p>
@@ -128,7 +130,7 @@ export const MainFinishContractPage = () => {
 
             <div>
               <p className="name-content-contract">Preço do serviço:</p>
-              <p>{driver.id_preco.faixa_preco}</p>
+              <p>R$ {driver.id_preco.faixa_preco}</p>
             </div>
           </div>
         </div>

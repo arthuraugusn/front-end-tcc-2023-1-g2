@@ -69,7 +69,11 @@ export const MainContractPage = ({ props }) => {
 
   const [user, setUser] = useState({});
 
-  const [priceDriver, setPriceDriver] = useState({});
+  const [priceDriver, setPriceDriver] = useState({
+    id_preco: {
+      faixa_preco: "",
+    },
+  });
 
   const locate = useLocation();
 
@@ -82,8 +86,6 @@ export const MainContractPage = ({ props }) => {
     loadContracts(setContracts);
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
-
-  console.log(priceDriver);
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
