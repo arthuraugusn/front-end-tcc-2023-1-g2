@@ -37,7 +37,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
   useEffect(() => {
     loadDriverById(location.state, setDriver);
   }, []);
-  useEffect(() => {}, [driver]);
+  useEffect(() => { }, [driver]);
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -118,17 +118,19 @@ export const MainMoreAboutDrivers = ({ props }) => {
             <p>{driver.email}</p>
           </div>
         </div>
-        <div className="filter-container-part">
-          <div className="container-comment-part">
-            <input
-              className="input-comment-something"
-              type="text"
-              placeholder="Insira um comentario"
-            />
+        <div className='Comment-area'>
+          <div className="filter-container-part">
+            <div className="container-comment-part">
+              <input
+                className="input-comment-something"
+                type="text"
+                placeholder="Insira um comentario"
+              />
+            </div>
+            <button className="button-send-comment">ENVIAR</button>
           </div>
-          <button className="button-send-comment">ENVIAR</button>
+          <div className="comments-part"></div>
         </div>
-        <div className="comments-part"></div>
       </div>
     </main>
   );

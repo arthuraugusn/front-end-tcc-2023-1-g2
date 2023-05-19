@@ -118,6 +118,10 @@
   overflow: scroll;
   overflow-x: hidden;
 }
+.Comment-area{
+  display: flex;
+  flex-direction: column;
+}
 
 .comments-part::-webkit-scrollbar {
   width: 7px;

@@ -48,7 +48,7 @@ footer {
   height: auto;
 }
 
-/* @media (max-width: 375px) {
+@media (max-width: 375px) {
   span{
     font-size: 1rem;
   }
@@ -65,4 +65,4 @@ footer {
     flex-direction: row;
   }
 
-} */
+}
