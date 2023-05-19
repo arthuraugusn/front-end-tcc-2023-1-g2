@@ -39,6 +39,26 @@ export const MainMoreAboutDrivers = ({ props }) => {
   }, []);
   useEffect(() => { }, [driver]);
 
+  const comments = {
+    itens: [
+      {
+        id: 34,
+        name: "he's a good driver",
+        itens: [
+          {
+            id: 35,
+            name: "I agree with you"
+            itens:
+          }
+        ]
+      }
+    ]
+  }
+
+  const sendComment = () => {
+
+  }
+
   return (
     <main className="main-MoreAboutDrivers">
       <div className="show-part-container">
@@ -127,7 +147,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
                 placeholder="Insira um comentario"
               />
             </div>
-            <button className="button-send-comment">ENVIAR</button>
+            <button onClick={sendComment} className="button-send-comment">ENVIAR</button>
           </div>
           <div className="comments-part"></div>
         </div>
