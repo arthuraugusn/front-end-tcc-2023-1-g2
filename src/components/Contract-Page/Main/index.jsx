@@ -14,6 +14,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { loadUserbyId } from "../../../api/client/loadUserbyId";
 import Swal from "sweetalert2";
 import { loadSchoolsDriverById } from "../../../api/driver/loadSchoolsDriverById";
+import { loadPrices } from "../../../api/driver/loadPrices";
+import { loadDriverById } from "../../../api/driver/loadDriverById";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -67,6 +69,8 @@ export const MainContractPage = ({ props }) => {
 
   const [user, setUser] = useState({});
 
+  const [priceDriver, setPriceDriver] = useState({});
+
   const locate = useLocation();
 
   useEffect(() => {
@@ -74,9 +78,12 @@ export const MainContractPage = ({ props }) => {
     loadSchoolsDrivers(setSchoolDriver, setResponseErrorGet);
     loadTypetransport(setTypesContracts, setResponseErrorGet);
     loadTypeofPay(setTypeofPay, setResponseErrorGet);
+    loadDriverById(locate.state, setPriceDriver);
     loadContracts(setContracts);
     loadUserbyId(idUsuarioMotorista, setUser);
   }, []);
+
+  console.log(priceDriver);
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");
@@ -290,6 +297,17 @@ export const MainContractPage = ({ props }) => {
                 );
               })}
             </select>
+          </div>
+          <div>
+            <InputContainer
+              props={{
+                classNameLabel: "placeholder",
+                nameInput: "Preço do serviço:",
+                classNameInput: "input-contract",
+                placeholder: `R$ ${priceDriver.id_preco.faixa_preco}`,
+                status: true,
+              }}
+            />
           </div>
         </div>
       </div>

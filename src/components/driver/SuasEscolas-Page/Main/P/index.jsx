@@ -21,7 +21,7 @@ export const ListOfSchoolsDriver = ({ props }) => {
             <FormControlLabel
               control={
                 <Checkbox
-                  id={`${element.id}`}
+                  id={`${element.id_escola}`}
                   onChange={(e) => {
                     setOptionChecked(e.target.checked);
                     props.setIdEscolaMotorista(e.target.id);

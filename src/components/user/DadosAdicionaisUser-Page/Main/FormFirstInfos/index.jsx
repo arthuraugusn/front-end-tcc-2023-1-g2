@@ -5,6 +5,8 @@ import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 import Swal from "sweetalert2";
+import ReactInputMask from "react-input-mask";
+import { IMaskInput } from "react-imask";
 
 export const FormFirstInfos = ({ props }) => {
   const propsSalvarUsuario = {
@@ -66,10 +68,11 @@ export const FormFirstInfos = ({ props }) => {
             </div>
             <div
               onChange={(e) => {
+                let cpf = e.target.value.replaceAll(".", "");
                 props.setUser({
                   img: props.user.img,
                   rg: props.user.rg,
-                  cpf: e.target.value,
+                  cpf: cpf.replaceAll("-", ""),
                   data_nascimento: props.user.data_nascimento,
                   cep: props.user.cep,
                   telefone: props.user.telefone,
@@ -77,14 +80,14 @@ export const FormFirstInfos = ({ props }) => {
                 });
               }}
             >
-              <InputContainer
-                props={{
-                  status: props.statusInput,
-                  classNameLabel: "placeholder",
-                  nameInput: "CPF:",
-                  classNameInput: "inputs-more-infos",
-                }}
-              />
+              <div className="input-container">
+                <label className="placeholder">CPF:</label>
+                <IMaskInput
+                  disabled={props.statusInput}
+                  mask="000.000.000-00"
+                  className="inputs-more-infos"
+                />
+              </div>
             </div>
             <div
               onChange={(e) => {
@@ -99,14 +102,22 @@ export const FormFirstInfos = ({ props }) => {
                 });
               }}
             >
-              <InputContainer
+              <div className="input-container">
+                <label className="placeholder">Telefone:</label>
+                <IMaskInput
+                  disabled={props.statusInput}
+                  mask="(00) 00000-0000"
+                  className="inputs-more-infos"
+                />
+              </div>
+              {/* <InputContainer
                 props={{
                   status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Telefone:",
                   classNameInput: "inputs-more-infos",
                 }}
-              />
+              /> */}
             </div>
           </div>
           <div className="container-datanasc-cep">
@@ -140,20 +151,20 @@ export const FormFirstInfos = ({ props }) => {
                   rg: props.user.rg,
                   cpf: props.user.cpf,
                   data_nascimento: props.user.data_nascimento,
-                  cep: e.target.value,
+                  cep: e.target.value.replaceAll("-", ""),
                   telefone: props.user.telefone,
                   numero: props.user.numero,
                 });
               }}
             >
-              <InputContainer
-                props={{
-                  status: props.statusInput,
-                  classNameLabel: "placeholder",
-                  nameInput: "CEP:",
-                  classNameInput: "inputs-more-infos",
-                }}
-              />
+              <div className="input-container">
+                <label className="placeholder">CEP:</label>
+                <IMaskInput
+                  disabled={props.statusInput}
+                  mask="00000-000"
+                  className="inputs-more-infos"
+                />
+              </div>
             </div>
             <div
               onChange={(e) => {
