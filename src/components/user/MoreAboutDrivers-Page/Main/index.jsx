@@ -3,6 +3,7 @@ import { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
+import { Comment } from '../CommentsArea/Comment';
 import "./style.css";
 
 export const MainMoreAboutDrivers = ({ props }) => {
@@ -39,25 +40,12 @@ export const MainMoreAboutDrivers = ({ props }) => {
   }, []);
   useEffect(() => { }, [driver]);
 
+
   const comments = {
-    itens: [
-      {
-        id: 34,
-        name: "he's a good driver",
-        itens: [
-          {
-            id: 35,
-            name: "I agree with you"
-            itens:
-          }
-        ]
-      }
-    ]
+    id: 1,
+    items: []
   }
-
-  const sendComment = () => {
-
-  }
+  const [commentsData, setCommentsData] = useState(comments)
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -139,17 +127,10 @@ export const MainMoreAboutDrivers = ({ props }) => {
           </div>
         </div>
         <div className='Comment-area'>
-          <div className="filter-container-part">
-            <div className="container-comment-part">
-              <input
-                className="input-comment-something"
-                type="text"
-                placeholder="Insira um comentario"
-              />
-            </div>
-            <button onClick={sendComment} className="button-send-comment">ENVIAR</button>
+          <Comment comment={commentsData} />
+          <div className="comments-part">
+
           </div>
-          <div className="comments-part"></div>
         </div>
       </div>
     </main>
