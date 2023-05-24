@@ -3,9 +3,8 @@ import { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
-import { Comment } from '../CommentsArea/Comment';
 import "./style.css";
-
+import { Comment } from "../comment/index"
 export const MainMoreAboutDrivers = ({ props }) => {
   const location = useLocation();
 
@@ -41,25 +40,6 @@ export const MainMoreAboutDrivers = ({ props }) => {
   useEffect(() => { }, [driver]);
 
 
-  const comments = {
-    itens: [
-      {
-        id: 34,
-        name: "he's a good driver",
-        itens: [
-          {
-            id: 35,
-            name: "I agree with you"
-            itens:
-          }
-        ]
-      }
-    ]
-  }
-
-  const sendComment = () => {
-
-  }
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -131,7 +111,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
       </div>
       <div className="infos-part-container">
         <div className="more-about-driver-card">
-          <p>Preço de Serviço: R${driver.id_preco.faixa_preco}</p>
+          <p className='Average-price-driver'>Preço de Serviço: R${driver.id_preco.faixa_preco}</p>
           <div className="message-content">
             <p>{driver.descricao}</p>
           </div>
@@ -152,24 +132,10 @@ export const MainMoreAboutDrivers = ({ props }) => {
             <button className="button-send-comment">ENVIAR</button>
           </div>
           <div className="comments-part">
-            <div className="container-comment">
-              <div className="comment-img-container">
-                <img src="" alt="" />
-              </div>
-              <div className="container-comment-text">
-                <div className="content-comment-text">
-                  <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati magni explicabo molestiae minima dolore officiis dignissimos placeat optio fugit eaque.</p>
-                  <p className="resposta-text">Respostas</p>
-                </div>
-              </div>
-            </div>
-            <Comment comment={commentsData} />
-            <div className="comments-part">
-
-            </div>
+            <Comment></Comment>
           </div>
-
         </div>
+      </div>
     </main>
   );
 };
