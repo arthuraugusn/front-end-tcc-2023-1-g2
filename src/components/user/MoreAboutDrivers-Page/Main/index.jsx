@@ -42,10 +42,24 @@ export const MainMoreAboutDrivers = ({ props }) => {
 
 
   const comments = {
-    id: 1,
-    items: []
+    itens: [
+      {
+        id: 34,
+        name: "he's a good driver",
+        itens: [
+          {
+            id: 35,
+            name: "I agree with you"
+            itens:
+          }
+        ]
+      }
+    ]
   }
-  const [commentsData, setCommentsData] = useState(comments)
+
+  const sendComment = () => {
+
+  }
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -127,12 +141,35 @@ export const MainMoreAboutDrivers = ({ props }) => {
           </div>
         </div>
         <div className='Comment-area'>
-          <Comment comment={commentsData} />
-          <div className="comments-part">
-
+          <div className="filter-container-part">
+            <div className="container-comment-part">
+              <input
+                className="input-comment-something"
+                type="text"
+                placeholder="Insira um comentario"
+              />
+            </div>
+            <button className="button-send-comment">ENVIAR</button>
           </div>
+          <div className="comments-part">
+            <div className="container-comment">
+              <div className="comment-img-container">
+                <img src="" alt="" />
+              </div>
+              <div className="container-comment-text">
+                <div className="content-comment-text">
+                  <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati magni explicabo molestiae minima dolore officiis dignissimos placeat optio fugit eaque.</p>
+                  <p className="resposta-text">Respostas</p>
+                </div>
+              </div>
+            </div>
+            <Comment comment={commentsData} />
+            <div className="comments-part">
+
+            </div>
+          </div>
+
         </div>
-      </div>
     </main>
   );
 };

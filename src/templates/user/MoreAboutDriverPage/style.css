@@ -4,4 +4,5 @@
   background-color: var(--body-yellow);
   gap: 10rem;
   justify-content: space-between;
+  overflow-x: hidden;
 }

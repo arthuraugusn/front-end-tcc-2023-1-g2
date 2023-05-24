@@ -165,6 +165,28 @@
   align-items: center;
   justify-content: space-around;
 }
+.container-comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment-img-container{
+  height: 4rem;
+  width: 5rem;
+  background-color: black;
+  border-radius: 100%;
+}
+
+.content-comment-text{
+  gap: 1rem;
+}
+
+.resposta-text {
+  color: #e0b441;
+  
+}
 
 @media (max-width: 375px) {
 
