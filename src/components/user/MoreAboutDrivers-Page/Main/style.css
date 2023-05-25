@@ -118,6 +118,10 @@
   overflow: scroll;
   overflow-x: hidden;
 }
+.Comment-area{
+  display: flex;
+  flex-direction: column;
+}
 
 .comments-part::-webkit-scrollbar {
   width: 7px;
@@ -161,6 +165,28 @@
   align-items: center;
   justify-content: space-around;
 }
+.container-comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment-img-container{
+  height: 4rem;
+  width: 4rem;
+  background-color: black;
+  border-radius: 100%;
+}
+
+.content-comment-text{
+  gap: 1rem;
+}
+
+.resposta-text {
+  color: #e0b441;
+  
+}
 
 @media (max-width: 375px) {
 
@@ -171,10 +197,34 @@
     width: 250px;
     height: 250px;
   }
+  .more-about-driver-card{
+  height: 11rem;
+  width: 21rem;
+  }
+  .message-content{
+    font-size: 1rem;
+  }
+  .contact-content{
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    gap: 1px;
+  }
+  .Average-price-driver{
+    font-size: 1rem;
+  }
+  .Contratar-button-perfil {
+    width: 15rem;
+    height: 5rem;
+    font-size: 1rem;
+  }
+
+  .container-button-contratar button{
+    top: calc(50% - 40px);
+  }
 
   .lil-card-describing-infos-content{
     width: 0;
     font-size: 1rem;
-    flex-direction: row;
   }
 }

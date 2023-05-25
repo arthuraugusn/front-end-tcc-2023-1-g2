@@ -3,9 +3,8 @@ import { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
-import CommentarySystem from "../CommentarySession";
 import "./style.css";
-
+import { Comment } from "../comment/index";
 export const MainMoreAboutDrivers = ({ props }) => {
   const location = useLocation();
 
@@ -110,7 +109,9 @@ export const MainMoreAboutDrivers = ({ props }) => {
       </div>
       <div className="infos-part-container">
         <div className="more-about-driver-card">
-          <p>Preço de Serviço: R${driver.id_preco.faixa_preco}</p>
+          <p className="Average-price-driver">
+            Preço de Serviço: R${driver.id_preco.faixa_preco}
+          </p>
           <div className="message-content">
             <p>{driver.descricao}</p>
           </div>
@@ -119,18 +120,20 @@ export const MainMoreAboutDrivers = ({ props }) => {
             <p>{driver.email}</p>
           </div>
         </div>
-        <div className="filter-container-part">
-          <div className="container-comment-part">
-            <input
-              className="input-comment-something"
-              type="text"
-              placeholder="Insira um comentario"
-            />
+        <div className="Comment-area">
+          <div className="filter-container-part">
+            <div className="container-comment-part">
+              <input
+                className="input-comment-something"
+                type="text"
+                placeholder="Insira um comentario"
+              />
+            </div>
+            <button className="button-send-comment">ENVIAR</button>
           </div>
-          <button className="button-send-comment">ENVIAR</button>
-        </div>
-        <div className="comments-part">
-        <CommentarySystem />
+          <div className="comments-part">
+            <Comment></Comment>
+          </div>
         </div>
       </div>
     </main>

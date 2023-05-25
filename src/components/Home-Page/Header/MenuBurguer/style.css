@@ -163,3 +163,10 @@
     transform: translateY(0px);
   }
 }
+
+
+@media (max-width:375px) {
+  .nav-container{
+    flex-direction: column;
+  }
+}
