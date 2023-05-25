@@ -3,6 +3,7 @@ import { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
+import CommentarySystem from "../CommentarySession";
 import "./style.css";
 
 export const MainMoreAboutDrivers = ({ props }) => {
@@ -128,7 +129,9 @@ export const MainMoreAboutDrivers = ({ props }) => {
           </div>
           <button className="button-send-comment">ENVIAR</button>
         </div>
-        <div className="comments-part"></div>
+        <div className="comments-part">
+        <CommentarySystem />
+        </div>
       </div>
     </main>
   );
