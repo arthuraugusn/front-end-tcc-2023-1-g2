@@ -22,8 +22,6 @@ export const FiltersMotoristas = ({ props }) => {
   }, []);
 
   useEffect(() => {
-    console.log(openCloseModal);
-    console.log(props.valueFilters);
     if (openCloseModal.value.toLowerCase() === "sim") {
       if (props.chooseFilter !== "" || props.choosePrice !== "") {
         props.setValueFilters({

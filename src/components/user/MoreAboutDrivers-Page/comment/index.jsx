@@ -23,10 +23,6 @@ export const Comment = ({ props }) => {
     getCommentsByIdDriver(props.idDriver, setComments, setResponseError);
   });
 
-  useEffect(() => {
-    console.log(responseErrorDelete);
-  }, [responseError, comments, responseErrorDelete]);
-
   return (
     <div className="container-all-comments">
       {comments.map((comment) => {

@@ -47,10 +47,6 @@ export const MainMoreAboutDrivers = ({ props }) => {
     loadDriverById(location.state, setDriver);
   }, []);
 
-  useEffect(() => {
-    console.log(responseError);
-  }, [responseError]);
-
   return (
     <main className="main-MoreAboutDrivers">
       <div className="show-part-container">
@@ -86,7 +82,6 @@ export const MainMoreAboutDrivers = ({ props }) => {
             }}
           >
             {driver.van.map((element) => {
-              // console.log(element);
               return (
                 <>
                   <div className="container-carousel-van">
