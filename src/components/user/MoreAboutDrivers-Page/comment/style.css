@@ -1,0 +1,62 @@
+.container-all-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+}
+
+.container-comment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container-comment-text {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.container-nome-user {
+  font-size: 1.5rem;
+  color: var(--main-yellow);
+  font-weight: 900;
+}
+
+.comment-img-container {
+  display: flex;
+  width: 200px;
+}
+
+.comment-img-container img {
+  border-radius: 50%;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.content-comment-text {
+  gap: 1rem;
+}
+
+.container-excluir-text {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+}
+
+.container-excluir-text p {
+  cursor: pointer;
+  background-color: var(--main-yellow);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.container-excluir-text p:hover {
+  transition: 0.9s;
+  background-color: red;
+}

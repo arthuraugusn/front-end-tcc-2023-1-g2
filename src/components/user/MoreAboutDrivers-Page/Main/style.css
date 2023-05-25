@@ -112,15 +112,17 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  height: 50vh;
+  height: 70vh;
   width: 60vw;
   padding: 1.5rem;
   overflow: scroll;
   overflow-x: hidden;
 }
-.Comment-area{
+.Comment-area {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+  padding: 20px;
 }
 
 .comments-part::-webkit-scrollbar {
@@ -165,52 +167,29 @@
   align-items: center;
   justify-content: space-around;
 }
-.container-comment{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-}
-
-.comment-img-container{
-  height: 4rem;
-  width: 4rem;
-  background-color: black;
-  border-radius: 100%;
-}
-
-.content-comment-text{
-  gap: 1rem;
-}
-
-.resposta-text {
-  color: #e0b441;
-  
-}
 
 @media (max-width: 375px) {
-
-  .lil-card-describing-container{
+  .lil-card-describing-container {
     flex-direction: column;
   }
-  .photo-container img{
+  .photo-container img {
     width: 250px;
     height: 250px;
   }
-  .more-about-driver-card{
-  height: 11rem;
-  width: 21rem;
+  .more-about-driver-card {
+    height: 11rem;
+    width: 21rem;
   }
-  .message-content{
+  .message-content {
     font-size: 1rem;
   }
-  .contact-content{
+  .contact-content {
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
     gap: 1px;
   }
-  .Average-price-driver{
+  .Average-price-driver {
     font-size: 1rem;
   }
   .Contratar-button-perfil {
@@ -219,11 +198,11 @@
     font-size: 1rem;
   }
 
-  .container-button-contratar button{
+  .container-button-contratar button {
     top: calc(50% - 40px);
   }
 
-  .lil-card-describing-infos-content{
+  .lil-card-describing-infos-content {
     width: 0;
     font-size: 1rem;
   }

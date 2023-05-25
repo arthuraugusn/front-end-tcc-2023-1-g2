@@ -4,7 +4,8 @@ import Carousel from "react-material-ui-carousel";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import "./style.css";
-import { Comment } from "../comment/index"
+import { Comment } from "../comment/index";
+import { postComment } from "../../../../api/client/comments/postComment";
 export const MainMoreAboutDrivers = ({ props }) => {
   const location = useLocation();
 
@@ -32,14 +33,22 @@ export const MainMoreAboutDrivers = ({ props }) => {
     email: "",
   });
 
+  const [comment, setComment] = useState({
+    comentario: "",
+    id_usuario: 0,
+    id_motorista: 0,
+  });
+
+  const [responseError, setResponseError] = useState({});
+
   const dataAtual = new Date().getFullYear();
 
   useEffect(() => {
     loadDriverById(location.state, setDriver);
   }, []);
-  useEffect(() => { }, [driver]);
-
-
+  useEffect(() => {
+    console.log(responseError);
+  }, [responseError]);
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -111,7 +120,9 @@ export const MainMoreAboutDrivers = ({ props }) => {
       </div>
       <div className="infos-part-container">
         <div className="more-about-driver-card">
-          <p className='Average-price-driver'>Preço de Serviço: R${driver.id_preco.faixa_preco}</p>
+          <p className="Average-price-driver">
+            Preço de Serviço: R${driver.id_preco.faixa_preco}
+          </p>
           <div className="message-content">
             <p>{driver.descricao}</p>
           </div>
@@ -120,19 +131,45 @@ export const MainMoreAboutDrivers = ({ props }) => {
             <p>{driver.email}</p>
           </div>
         </div>
-        <div className='Comment-area'>
+        <div className="Comment-area">
           <div className="filter-container-part">
-            <div className="container-comment-part">
+            <div
+              className="container-comment-part"
+              onChange={(e) => {
+                setComment({
+                  comentario: e.target.value,
+                  id_motorista: driver.id,
+                  id_usuario: localStorage.getItem("id"),
+                });
+              }}
+            >
               <input
                 className="input-comment-something"
                 type="text"
                 placeholder="Insira um comentario"
               />
             </div>
-            <button className="button-send-comment">ENVIAR</button>
+            <button
+              className="button-send-comment"
+              onClick={() => {
+                if (
+                  comment.comentario !== "" &&
+                  comment.id_motorista !== 0 &&
+                  comment.id_usuario !== 0
+                ) {
+                  postComment(comment, setResponseError);
+                }
+              }}
+            >
+              ENVIAR
+            </button>
           </div>
           <div className="comments-part">
-            <Comment></Comment>
+            <Comment
+              props={{
+                idDriver: driver.id,
+              }}
+            ></Comment>
           </div>
         </div>
       </div>
