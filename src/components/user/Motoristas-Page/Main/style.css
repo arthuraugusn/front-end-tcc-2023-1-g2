@@ -65,38 +65,36 @@ h1 {
   .box-motoristas-card {
     width: 90vw;
   }
-
 }
 
 @media (max-width: 375px) {
-  h1{
+  h1 {
     font-size: 4rem;
   }
-  .box-input-filter{
+  .box-input-filter {
     align-items: center;
     justify-content: center;
   }
-  .input{
+  .input {
     height: 0.5rem;
     width: 30rem;
   }
-  .filters-drivers{
+  .filters-drivers {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  
-  .inputs-filters-motoristas{
+
+  .inputs-filters-motoristas {
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
     padding-right: 0;
     gap: 1rem;
   }
-  .container-filters-dropdown{
+  .container-filters-dropdown {
     flex-direction: row;
   }
-  .input-search-filter-driver{
+  .input-search-filter-driver {
     padding-left: 0;
   }
-  
 }
