@@ -16,8 +16,6 @@ export const MainNotifications = () => {
     }
   });
 
-  console.log(userContracts);
-
   return (
     <main className="main-notifications">
       <div className="name-container-notifications">

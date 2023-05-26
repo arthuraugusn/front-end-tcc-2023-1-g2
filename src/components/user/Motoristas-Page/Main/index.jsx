@@ -39,7 +39,20 @@ export const MainMotoristasPage = ({ props }) => {
 
   const [prices, setPrices] = useState([{}]);
 
-  const [driver, setDriver] = useState([]);
+  const [driver, setDriver] = useState([
+    {
+      id: 0,
+      foto: "",
+      nome: "",
+      data_nascimento: "",
+      inicio_carreira: "",
+      van: [
+        {
+          quantidade_vagas: "",
+        },
+      ],
+    },
+  ]);
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 0) {
@@ -50,6 +63,7 @@ export const MainMotoristasPage = ({ props }) => {
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 1) {
+      console.log(valueFilters);
       getDriverByFilters(
         valueFilters.price,
         valueFilters.school,
@@ -84,13 +98,21 @@ export const MainMotoristasPage = ({ props }) => {
         <div>
           <div className="inputs-filters-motoristas">
             <div
-              onChange={(e) => [
-                setValueFilters({
-                  driverName: e.target.value,
-                  price: valueFilters.price,
-                  school: valueFilters.school,
-                }),
-              ]}
+              onChange={(e) => {
+                if (chooseFilter === "motorista") {
+                  setValueFilters({
+                    driverName: e.target.value,
+                    price: valueFilters.price,
+                    school: "",
+                  });
+                } else if (chooseFilter === "escola") {
+                  setValueFilters({
+                    driverName: "",
+                    price: valueFilters.price,
+                    school: e.target.value,
+                  });
+                }
+              }}
               className="input-search-filter-driver"
             >
               <InputSearchItens
@@ -152,7 +174,12 @@ export const MainMotoristasPage = ({ props }) => {
                   <Select
                     displayEmpty
                     onChange={(e) => {
-                      setChoosePrice(e.target.value);
+                      setValueFilters({
+                        price: e.target.value,
+                        driverName: valueFilters.driverName,
+                        school: valueFilters.school,
+                        status_filtrar: valueFilters.status_filtrar,
+                      });
                     }}
                     value={choosePrice}
                     sx={{

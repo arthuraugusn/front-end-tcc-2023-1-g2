@@ -98,9 +98,7 @@ export const LeftSide = ({ prop }) => {
         </div>
 
         <div className="radio-group-login">
-          <div className="container-password">
-            {/* <p>Esqueci minha senha</p> */}
-          </div>
+          <div className="container-password"></div>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">
               <RadioGroup

@@ -60,7 +60,7 @@ export const MainSuasEscolas = () => {
 
   useEffect(() => {
     loadSchoolsDriverById(localStorage.getItem("id"), setResponseErrorGet);
-  }, []);
+  });
 
   useEffect(() => {
     if (responseErrorGet.code === 404) {

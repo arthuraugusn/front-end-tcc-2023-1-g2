@@ -36,7 +36,7 @@ export const MainDadosVan = () => {
   useEffect(() => {
     loadDriverByCpf(locate.state, setIdDriver);
     loadModelVan(setModels);
-  }, []);
+  });
 
   useEffect(() => {
     console.log(response);

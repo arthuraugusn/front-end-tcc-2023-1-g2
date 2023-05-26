@@ -78,14 +78,18 @@ export const MainContractPage = ({ props }) => {
   const locate = useLocation();
 
   useEffect(() => {
+    loadDriverById(locate.state, setPriceDriver);
+
+    loadUserbyId(idUsuarioMotorista, setUser);
+  }, []);
+  useEffect(() => {
     loadSchoolsDriverById(locate.state, setSchools);
     loadSchoolsDrivers(setSchoolDriver, setResponseErrorGet);
     loadTypetransport(setTypesContracts, setResponseErrorGet);
     loadTypeofPay(setTypeofPay, setResponseErrorGet);
-    loadDriverById(locate.state, setPriceDriver);
+
     loadContracts(setContracts);
-    loadUserbyId(idUsuarioMotorista, setUser);
-  }, []);
+  });
 
   useEffect(() => {
     const testeDriverClient = localStorage.getItem("status_user_driver");

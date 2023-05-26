@@ -1,7 +1,7 @@
-.show-part-container:nth-child(2) {
+.show-part-container:nth-child(3) {
   margin: 2rem;
 }
-.show-part-container:nth-child(2)::before {
+.show-part-container:nth-child(3)::before {
   content: "";
   display: inline-block;
   background-color: #e0b441;
@@ -206,4 +206,12 @@
     width: 0;
     font-size: 1rem;
   }
+}
+
+.container-avaliacao {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  height: auto;
 }

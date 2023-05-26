@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IMaskInput } from "react-imask";
 import { useLocation, useNavigate } from "react-router-dom";
 import { registerDriverClient } from "../../../../../api/driver/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
@@ -66,14 +67,14 @@ export const FormsInfosDriver = ({ props }) => {
                   });
                 }}
               >
-                <InputContainer
-                  props={{
-                    status: props.statusInput,
-                    classNameLabel: "placeholder",
-                    nameInput: "CPF:",
-                    classNameInput: "inputs-more-infos",
-                  }}
-                />
+                <div className="input-container">
+                  <label className="placeholder">CPF:</label>
+                  <IMaskInput
+                    disabled={props.statusInput}
+                    mask="000.000.000-00"
+                    className="inputs-more-infos"
+                  />
+                </div>
               </div>
               <div
                 onChange={(e) => {
@@ -92,14 +93,14 @@ export const FormsInfosDriver = ({ props }) => {
                   });
                 }}
               >
-                <InputContainer
-                  props={{
-                    status: props.statusInput,
-                    classNameLabel: "placeholder",
-                    nameInput: "Telefone:",
-                    classNameInput: "inputs-more-infos",
-                  }}
-                />
+                <div className="input-container">
+                  <label className="placeholder">Telefone:</label>
+                  <IMaskInput
+                    disabled={props.statusInput}
+                    mask="(00) 00000-0000"
+                    className="inputs-more-infos"
+                  />
+                </div>
               </div>
             </div>
             <div className="container-datanasc-cnh-datainic-driver">
@@ -147,14 +148,14 @@ export const FormsInfosDriver = ({ props }) => {
                   });
                 }}
               >
-                <InputContainer
-                  props={{
-                    status: props.statusInput,
-                    classNameLabel: "placeholder",
-                    nameInput: "CNH:",
-                    classNameInput: "inputs-more-infos",
-                  }}
-                />
+                <div className="input-container">
+                  <label className="placeholder">CNH:</label>
+                  <IMaskInput
+                    disabled={props.statusInput}
+                    mask="00000000000"
+                    className="inputs-more-infos"
+                  />
+                </div>
               </div>
               <div
                 onChange={(e) => {
@@ -214,7 +215,7 @@ export const FormsInfosDriver = ({ props }) => {
               {props.prices.map((elemento) => {
                 return (
                   <option key={elemento.id} id={elemento.id}>
-                    {elemento.faixa_preco}
+                    R${elemento.faixa_preco}
                   </option>
                 );
               })}

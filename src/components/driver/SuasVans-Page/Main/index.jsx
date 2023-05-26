@@ -55,7 +55,7 @@ export const MainSuasVans = ({ props }) => {
 
   useEffect(() => {
     loadDriverById(idDriver, setDriver);
-  }, []);
+  });
 
   useEffect(() => {
     setVan({

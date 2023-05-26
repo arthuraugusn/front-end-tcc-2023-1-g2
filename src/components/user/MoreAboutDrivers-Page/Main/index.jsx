@@ -6,6 +6,8 @@ import { loadDriverById } from "../../../../api/driver/loadDriverById";
 import "./style.css";
 import { Comment } from "../comment/index";
 import { postComment } from "../../../../api/client/comments/postComment";
+import { Rating } from "@mui/material";
+import { ModalAvaliacao } from "./Modal";
 
 export const MainMoreAboutDrivers = ({ props }) => {
   const location = useLocation();
@@ -42,10 +44,21 @@ export const MainMoreAboutDrivers = ({ props }) => {
 
   const [responseError, setResponseError] = useState({});
 
+  const [selectedValueAvaliacao, setSelectedValueAvaliacao] = useState({
+    value: 0,
+    id: 0,
+  });
+
   const dataAtual = new Date().getFullYear();
+
   useEffect(() => {
     loadDriverById(location.state, setDriver);
-  }, []);
+  });
+
+  useEffect(() => {
+    if (selectedValueAvaliacao.id !== 0) {
+    }
+  }, [selectedValueAvaliacao]);
 
   return (
     <main className="main-MoreAboutDrivers">
@@ -70,6 +83,13 @@ export const MainMoreAboutDrivers = ({ props }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="container-avaliacao">
+        <ModalAvaliacao
+          props={{
+            id: driver.id,
+          }}
+        />
       </div>
 
       <div className="show-part-container">
