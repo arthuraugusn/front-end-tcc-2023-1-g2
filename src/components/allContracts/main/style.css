@@ -27,6 +27,16 @@
   background-color: var(--button-contract-yellow);
   border-radius: 15px;
 }
+@media (max-width:375px) {
+  .card-contracts{
+    flex-direction: column;
+    gap: 0;
+    
+  }
+  .infos-endereco-container-contract{
+    font-size: 1rem;
+  }
+}
 
 @media (max-width: 1330px) {
   .allContracts-container {
