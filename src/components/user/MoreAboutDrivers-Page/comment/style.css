@@ -28,8 +28,8 @@
 
 .comment-img-container {
   display: flex;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .comment-img-container img {
