@@ -58,20 +58,6 @@ export const MainSuasVans = ({ props }) => {
   });
 
   useEffect(() => {
-    setVan({
-      quantidade_vagas: driver.van,
-    });
-
-    if (driver.van.length < 2) {
-      props.setStyleBody("height-vh");
-      setMainStyle("height-vh");
-    } else if (driver.van.length > 0) {
-      props.setStyleBody("height-auto");
-      setMainStyle("height-auto");
-    }
-  }, [driver.van]);
-
-  useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
       if (requisitionDelete.requisition == 1) {
         deleteVan(requisitionDelete.id_van, setResposeErrorDelete);
