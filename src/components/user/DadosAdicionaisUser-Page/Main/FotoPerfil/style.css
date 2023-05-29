@@ -10,8 +10,8 @@
 
 .img-preview {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 500px;
+  height: 500px;
   border-radius: 20px;
 }
 
@@ -19,8 +19,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 50%;
-  width: 15vw;
+  height: auto;
+  width: auto;
 }
 
 .form-picture-label p {
@@ -41,15 +41,12 @@
 }
 
 .container-icon-picture {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 20px;
   background-color: white;
-}
-
-.container-icon-picture svg {
-  height: 8rem;
-  padding: 3rem;
+  padding: 20px;
 }

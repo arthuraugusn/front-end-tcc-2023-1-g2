@@ -10,6 +10,7 @@ import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
 import Swal from "sweetalert2";
 import { loadModelVan } from "../../../../api/driver/van/loadModels";
+import { registerDriverClient } from "../../../../api/driver/registerUserClient";
 
 export const MainDadosVan = () => {
   const propsSalvarVan = {
@@ -25,6 +26,8 @@ export const MainDadosVan = () => {
 
   const [responseError, setResponseError] = useState("");
 
+  const [responseErrorPostDriver, setResponseErrorPostDriver] = useState({});
+
   const [idDriver, setIdDriver] = useState(0);
 
   const [statusInput, setStatusInput] = useState(true);
@@ -34,19 +37,27 @@ export const MainDadosVan = () => {
   const [modelsVan, setModels] = useState([]);
 
   useEffect(() => {
-    loadDriverByCpf(locate.state, setIdDriver);
     loadModelVan(setModels);
   });
 
   useEffect(() => {
-    console.log(response);
-  }, [response]);
+    if (responseErrorPostDriver === 200) {
+      loadDriverByCpf(locate.state, setIdDriver);
+    }
+  }, [responseErrorPostDriver]);
 
   useEffect(() => {
-    if (van.statusImg == true) {
-      setStatusInput(false);
+    if (idDriver !== 0) {
+      setVan({
+        quantidade_vagas: van.quantidade_vagas,
+        placa: van.placa,
+        img: van.img,
+        id_motorista: parseInt(idDriver),
+        status_finalizado: 1,
+        id_modelo: parseInt(van.id_modelo),
+      });
     }
-  }, [van.statusImg]);
+  }, [idDriver]);
 
   useEffect(() => {
     if (van.status_finalizado == 1) {
@@ -69,7 +80,13 @@ export const MainDadosVan = () => {
           window.location.reload();
         });
       } else {
-        registerVanDriver(van, setResponseError);
+        if (locate.state !== null || locate.state !== undefined) {
+          console.log(locate.state);
+          registerDriverClient(locate.state, setResponseErrorPostDriver);
+        }
+        if (van.id_motorista !== null || undefined) {
+          registerVanDriver(van, setResponseError);
+        }
       }
     }
   }, [van]);
@@ -112,7 +129,6 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
-                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Número de vagas:",
                   classNameInput: "inputs-more-infos",
@@ -132,7 +148,6 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
-                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Placa da van:",
                   classNameInput: "inputs-more-infos",
@@ -144,7 +159,6 @@ export const MainDadosVan = () => {
               <select
                 name="filtros"
                 className="selects"
-                disabled={statusInput}
                 onChange={(e) => {
                   setVan({
                     quantidade_vagas: van.quantidade_vagas,
@@ -170,19 +184,7 @@ export const MainDadosVan = () => {
             </div>
           </div>
         </div>
-        <div
-          onClick={() => {
-            setVan({
-              quantidade_vagas: van.quantidade_vagas,
-              placa: van.placa,
-              img: van.img,
-              id_motorista: parseInt(idDriver),
-              status_finalizado: 1,
-              id_modelo: parseInt(van.id_modelo),
-            });
-          }}
-          className="container-button-save-van"
-        >
+        <div onClick={() => {}} className="container-button-save-van">
           <ButtonSalvarVan props={propsSalvarVan} />
         </div>
       </main>

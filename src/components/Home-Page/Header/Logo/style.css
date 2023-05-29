@@ -39,8 +39,7 @@
 }
 
 @media (max-width: 375px) {
-  .logo-container{
+  .logo-container {
     display: none;
   }
-
 }
