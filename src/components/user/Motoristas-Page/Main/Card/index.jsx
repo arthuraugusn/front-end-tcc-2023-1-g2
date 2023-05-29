@@ -15,7 +15,11 @@ export const Card = ({ driver }) => {
       {driver.map((drivers) => (
         <div
           onClick={() => {
-            navigate("/more-about-the-driver", { state: drivers.id });
+            navigate(
+              "/more-about-the-driver",
+              { state: drivers.id },
+              localStorage.setItem("id_driver", drivers.id)
+            );
           }}
           key={drivers.id}
           className="card-driver"

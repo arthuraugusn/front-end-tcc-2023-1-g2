@@ -13,14 +13,12 @@ export const ModalAvaliacao = ({ props }) => {
 
   const [responseError, setResponseError] = useState({});
 
-  const teste = "abc";
-
   useEffect(() => {
     if (openCloseModal.value !== "") {
       postAvaliacao(
         localStorage.getItem("id"),
         props.id,
-        openCloseModal.value.replace("5", ""),
+        openCloseModal.value,
         setResponseError
       );
     }
@@ -104,17 +102,10 @@ export const ModalAvaliacao = ({ props }) => {
           </Typography>
           <Rating
             onChange={(e) => {
-              if (e.target.value.toString() === "5") {
-                setOpenCloseModal({
-                  status: false,
-                  value: "57",
-                });
-              } else {
-                setOpenCloseModal({
-                  status: false,
-                  value: e.target.value,
-                });
-              }
+              setOpenCloseModal({
+                status: false,
+                value: e.target.value,
+              });
             }}
             size="large"
           />

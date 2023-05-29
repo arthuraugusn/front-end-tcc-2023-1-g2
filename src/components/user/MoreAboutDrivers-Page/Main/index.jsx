@@ -7,6 +7,7 @@ import "./style.css";
 import { Comment } from "../comment/index";
 import { postComment } from "../../../../api/client/comments/postComment";
 import { Rating } from "@mui/material";
+import { AiFillStar } from "react-icons/ai";
 import { ModalAvaliacao } from "./Modal";
 
 export const MainMoreAboutDrivers = ({ props }) => {
@@ -34,6 +35,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
     descricao: "",
     telefone: "",
     email: "",
+    avaliacao: 0,
   });
 
   const [comment, setComment] = useState({
@@ -52,7 +54,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
   const dataAtual = new Date().getFullYear();
 
   useEffect(() => {
-    loadDriverById(location.state, setDriver);
+    loadDriverById(localStorage.getItem("id_driver"), setDriver);
   });
 
   useEffect(() => {
@@ -90,6 +92,10 @@ export const MainMoreAboutDrivers = ({ props }) => {
             id: driver.id,
           }}
         />
+        <div className="container-avaliacao-motorista">
+          <AiFillStar color="var(--main-yellow)" className="star" />
+          <p>{driver.avaliacao}</p>
+        </div>
       </div>
 
       <div className="show-part-container">
