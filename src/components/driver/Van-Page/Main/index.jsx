@@ -66,7 +66,7 @@ export const MainSuaVanPage = () => {
     loadVanById(location.state.id_van, setVan);
     loadDriverById(location.state.id_motorista, setDriver);
     loadModelVan(setModelos);
-  }, []);
+  });
 
   useEffect(() => {
     if (van.id_modelo != undefined) {

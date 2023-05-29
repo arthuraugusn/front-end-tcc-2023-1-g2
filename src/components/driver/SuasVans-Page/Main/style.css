@@ -30,6 +30,10 @@
   padding-left: 60px;
 }
 
+.container-image-van {
+  width: 300px;
+}
+
 .container-suas-vans-card {
   display: flex;
   height: auto;

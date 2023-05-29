@@ -110,14 +110,6 @@ export const FormFirstInfos = ({ props }) => {
                   className="inputs-more-infos"
                 />
               </div>
-              {/* <InputContainer
-                props={{
-                  status: props.statusInput,
-                  classNameLabel: "placeholder",
-                  nameInput: "Telefone:",
-                  classNameInput: "inputs-more-infos",
-                }}
-              /> */}
             </div>
           </div>
           <div className="container-datanasc-cep">
