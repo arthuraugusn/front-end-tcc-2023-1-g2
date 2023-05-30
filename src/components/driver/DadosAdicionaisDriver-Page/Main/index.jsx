@@ -5,11 +5,14 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { loadPrices } from "../../../../api/driver/loadPrices";
+import { registerDriverClient } from "../../../../api/driver/registerUserClient";
 
 export const MainDadosAdicionaisDriver = () => {
   const navigate = useNavigate();
 
   const [driverInfos, setDriverInfos] = useState({});
+
+  const [responseError, setResponseError] = useState({});
 
   const [prices, setPrices] = useState([]);
 
@@ -50,10 +53,16 @@ export const MainDadosAdicionaisDriver = () => {
           window.location.reload();
         });
       } else {
-        navigate("/cadastro-van", { state: driverInfos });
+        registerDriverClient(driverInfos, setResponseError);
       }
     }
   }, [driverInfos]);
+
+  useEffect(() => {
+    if (responseError.status === 201) {
+      navigate("/cadastro-van", { state: driverInfos.cpf });
+    }
+  }, [responseError]);
 
   return (
     <main className="container-main-driver">

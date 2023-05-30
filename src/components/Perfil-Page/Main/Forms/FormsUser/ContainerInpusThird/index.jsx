@@ -29,7 +29,7 @@ export const FormsUserThird = ({ props }) => {
           }}
         />
       </div>
-      <div
+      {/* <div
         onChange={(e) => {
           props.setUserEdit({
             foto: props.userEdit.foto,
@@ -54,7 +54,7 @@ export const FormsUserThird = ({ props }) => {
             classNameInput: "inputs-more-infos",
           }}
         />
-      </div>
+      </div> */}
     </>
   );
 };

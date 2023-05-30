@@ -26,7 +26,9 @@ export const MainDadosVan = () => {
 
   const [responseError, setResponseError] = useState("");
 
-  const [responseErrorPostDriver, setResponseErrorPostDriver] = useState({});
+  const [responseErrorPostDriver, setResponseErrorPostDriver] = useState({
+    status: 0,
+  });
 
   const [idDriver, setIdDriver] = useState(0);
 
@@ -41,26 +43,11 @@ export const MainDadosVan = () => {
   });
 
   useEffect(() => {
-    if (responseErrorPostDriver === 200) {
-      loadDriverByCpf(locate.state, setIdDriver);
-    }
-  }, [responseErrorPostDriver]);
+    loadDriverByCpf(locate.state, setIdDriver);
+  }, []);
 
   useEffect(() => {
-    if (idDriver !== 0) {
-      setVan({
-        quantidade_vagas: van.quantidade_vagas,
-        placa: van.placa,
-        img: van.img,
-        id_motorista: parseInt(idDriver),
-        status_finalizado: 1,
-        id_modelo: parseInt(van.id_modelo),
-      });
-    }
-  }, [idDriver]);
-
-  useEffect(() => {
-    if (van.status_finalizado == 1) {
+    if (van.status_finalizado === 1) {
       if (
         van.quantidade_vagas == undefined ||
         van.quantidade_vagas == null ||
@@ -80,11 +67,7 @@ export const MainDadosVan = () => {
           window.location.reload();
         });
       } else {
-        if (locate.state !== null || locate.state !== undefined) {
-          console.log(locate.state);
-          registerDriverClient(locate.state, setResponseErrorPostDriver);
-        }
-        if (van.id_motorista !== null || undefined) {
+        if (van.id_motorista !== null || van.id_motorista !== undefined) {
           registerVanDriver(van, setResponseError);
         }
       }
@@ -184,7 +167,19 @@ export const MainDadosVan = () => {
             </div>
           </div>
         </div>
-        <div onClick={() => {}} className="container-button-save-van">
+        <div
+          onClick={() => {
+            setVan({
+              quantidade_vagas: van.quantidade_vagas,
+              placa: van.placa,
+              img: van.img,
+              id_motorista: parseInt(idDriver),
+              id_modelo: van.id_modelo,
+              status_finalizado: 1,
+            });
+          }}
+          className="container-button-save-van"
+        >
           <ButtonSalvarVan props={propsSalvarVan} />
         </div>
       </main>

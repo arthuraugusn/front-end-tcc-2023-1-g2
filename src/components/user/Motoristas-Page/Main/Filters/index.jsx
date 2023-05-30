@@ -57,7 +57,7 @@ export const FiltersMotoristas = ({ props }) => {
         >
           <ButtonRemoverAdicionarFiltro
             props={{
-              message: "Filtrar",
+              message: "Pesquisar",
               openCloseModal: openCloseModal,
               setOpenCloseModal: setOpenCloseModal,
             }}
@@ -66,7 +66,7 @@ export const FiltersMotoristas = ({ props }) => {
       </div>
       <ModalFiltroMotoristas
         props={{
-          message: "Você deseja filtrar ?",
+          message: "Você deseja pesquisar ?",
           setOpenCloseModal: setOpenCloseModal,
           openCloseModal: openCloseModal,
         }}

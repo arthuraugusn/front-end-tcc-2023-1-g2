@@ -61,7 +61,7 @@ export const CardsNotifications = ({ props }) => {
         title: "Tudo certo",
         text: "Seu contrato foi aceito com sucesso",
       }).then((response) => {
-        if (response.value == true) {
+        if (response.value === true) {
           navigate("/contracts");
         }
       });
@@ -69,9 +69,8 @@ export const CardsNotifications = ({ props }) => {
   }, [responseError]);
 
   return props.userContracts.map((contract) => {
-    if (contract.status_contrato == 0) {
-      console.log(contract);
-      if (statusUser == 2) {
+    if (contract.status_contrato === 0) {
+      if (statusUser === 2) {
         return (
           <>
             <div className="card-notifications">

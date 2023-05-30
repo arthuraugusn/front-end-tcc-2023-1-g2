@@ -27,7 +27,7 @@ export const FotoPerfilPage = ({ props }) => {
           props.setStatusFoto({ t: true, img: photo.url });
         }}
       />
-      <img src={props.foto} alt="" />
+      <img className="img-preview" src={props.foto} alt="" />
     </label>
   );
 };

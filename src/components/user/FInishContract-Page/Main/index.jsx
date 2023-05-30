@@ -10,6 +10,7 @@ import { ButtonSaveDeleteContract } from "./Button";
 import { ModalExcluirContrato } from "../../../allContracts/main/Modal";
 import { registerContract } from "../../../../api/client/registerContract";
 import Swal from "sweetalert2";
+import { loadEnderecoUsuarioById } from "../../../../api/client/endereco/loadEnderecoUsuarioById";
 
 export const MainFinishContractPage = () => {
   const navigate = useNavigate();
@@ -40,6 +41,16 @@ export const MainFinishContractPage = () => {
 
   const [user, setUser] = useState({});
 
+  const [enderecoUsuario, setEnderecoUsuario] = useState({
+    data: {
+      endereco: {
+        numero: "",
+        bairro: "",
+        logradouro: "",
+      },
+    },
+  });
+
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
     value: "",
@@ -53,7 +64,10 @@ export const MainFinishContractPage = () => {
     loadTypeTransportId(location.state.id_tipo_contrato, setTipoTransporte);
     loadSchoolId(location.state.id_escola, setEscola);
     loadUserbyId(localStorage.getItem("id"), setUser);
+    loadEnderecoUsuarioById(localStorage.getItem("id"), setEnderecoUsuario);
   }, []);
+
+  console.log(enderecoUsuario);
 
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
@@ -109,7 +123,16 @@ export const MainFinishContractPage = () => {
               <p>{escola.nome}</p>
             </div>
             <div>
-              <p className="name-content-contract">Endereço gigante aqui</p>
+              <p className="name-content-contract">Endereço:</p>
+              <p>{enderecoUsuario.data.endereco.logradouro}</p>
+            </div>
+            <div>
+              <p className="name-content-contract">Número: </p>
+              <p>{enderecoUsuario.data.endereco.numero}</p>
+            </div>
+            <div>
+              <p className="name-content-contract">Bairro: </p>
+              <p>{enderecoUsuario.data.endereco.bairro}</p>
             </div>
           </div>
           <div>

@@ -180,6 +180,7 @@ export const MainMotoristasPage = ({ props }) => {
                         school: valueFilters.school,
                         status_filtrar: valueFilters.status_filtrar,
                       });
+                      setChoosePrice(e.target.value);
                     }}
                     value={choosePrice}
                     sx={{
