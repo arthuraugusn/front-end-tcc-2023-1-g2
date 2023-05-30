@@ -35,8 +35,12 @@
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 2rem;
+}
+.card-avaliacao-motorista p {
+  color: var(--button-contract-yellow);
+  font-size: 24px;
 }
 
 .nome-motorista {

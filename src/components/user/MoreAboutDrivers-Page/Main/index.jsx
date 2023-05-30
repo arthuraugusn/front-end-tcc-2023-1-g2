@@ -93,7 +93,7 @@ export const MainMoreAboutDrivers = ({ props }) => {
           }}
         />
         <div className="container-avaliacao-motorista">
-          <AiFillStar color="var(--main-yellow)" className="star" />
+          <AiFillStar color="var(--button-contract-yellow)" className="star" />
           <p>{driver.avaliacao}</p>
         </div>
       </div>

@@ -51,6 +51,7 @@ export const MainMotoristasPage = ({ props }) => {
           quantidade_vagas: "",
         },
       ],
+      avaliacao: "",
     },
   ]);
 

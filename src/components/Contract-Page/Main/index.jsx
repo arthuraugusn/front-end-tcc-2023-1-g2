@@ -16,6 +16,7 @@ import Swal from "sweetalert2";
 import { loadSchoolsDriverById } from "../../../api/driver/loadSchoolsDriverById";
 import { loadPrices } from "../../../api/driver/loadPrices";
 import { loadDriverById } from "../../../api/driver/loadDriverById";
+import { HeaderChoosePage } from "../../Choose-Page/Header";
 
 export const MainContractPage = ({ props }) => {
   const propsNextContract = {
@@ -161,171 +162,179 @@ export const MainContractPage = ({ props }) => {
   }, [contract.status]);
 
   return (
-    <main className="container-all-main-contract">
-      <header>
+    <>
+      <HeaderChoosePage
+        props={{
+          url: "/more-about-the-driver",
+        }}
+      />
+      <main className="container-all-main-contract">
         <span className="contrate-name">Contrato</span>
-      </header>
-      <div className="container-inputs-contrate">
-        <div className="dropdown-container">
-          <div className="dropdown-content">
-            <label htmlFor="password" className="placeholder">
-              Escola:
-            </label>
+        <div className="container-inputs-contrate">
+          <div className="dropdown-container">
+            <div className="dropdown-content">
+              <label htmlFor="password" className="placeholder">
+                Escola:
+              </label>
 
-            {
+              {
+                <select
+                  className="selects"
+                  name="filtros"
+                  onChange={(e) => {
+                    setInfosContract({
+                      id_escola: parseInt(
+                        e.currentTarget.childNodes[
+                          e.currentTarget.selectedIndex
+                        ].id
+                      ),
+                      id_tipo_contrato: contract.id_tipo_contrato,
+                      id_tipo_pagamento: contract.id_tipo_pagamento,
+                    });
+                  }}
+                >
+                  <option>Escolha a escola</option>
+                  {schools.response.schools.map((elemento) => {
+                    return (
+                      <option id={elemento.id_escola} key={elemento.id}>
+                        {elemento.nome_escola}
+                      </option>
+                    );
+                  })}
+                </select>
+              }
+            </div>
+            <div className="dropdown-content">
+              <label htmlFor="password" className="placeholder">
+                Tipo de transporte:
+              </label>
               <select
                 className="selects"
                 name="filtros"
+                id="select-filter-container-school"
                 onChange={(e) => {
                   setInfosContract({
-                    id_escola: parseInt(
+                    id_escola: contract.id_escola,
+                    id_tipo_contrato: parseInt(
                       e.currentTarget.childNodes[e.currentTarget.selectedIndex]
                         .id
                     ),
-                    id_tipo_contrato: contract.id_tipo_contrato,
+
                     id_tipo_pagamento: contract.id_tipo_pagamento,
                   });
                 }}
               >
-                <option>Escolha a escola</option>
-                {schools.response.schools.map((elemento) => {
+                <option>Escolha o tipo de contrato</option>
+                {typesContracts.map((elemento) => {
                   return (
-                    <option id={elemento.id_escola} key={elemento.id}>
-                      {elemento.nome_escola}
+                    <option id={elemento.id} key={elemento.id}>
+                      {elemento.tipo_contrato}
                     </option>
                   );
                 })}
               </select>
-            }
+            </div>
           </div>
-          <div className="dropdown-content">
-            <label htmlFor="password" className="placeholder">
-              Tipo de transporte:
-            </label>
-            <select
-              className="selects"
-              name="filtros"
-              id="select-filter-container-school"
-              onChange={(e) => {
-                setInfosContract({
-                  id_escola: contract.id_escola,
-                  id_tipo_contrato: parseInt(
-                    e.currentTarget.childNodes[e.currentTarget.selectedIndex].id
-                  ),
 
-                  id_tipo_pagamento: contract.id_tipo_pagamento,
+          <div className="input-container-geral">
+            <div>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Nome do responsável",
+                  classNameInput: "input-contract",
+                  placeholder: user.nome,
+                  status: true,
+                }}
+              />
+            </div>
+            <div
+              onChange={(e) => {
+                setClientInfos({
+                  nome_passageiro: e.target.value,
+                  idade_passageiro: clientInfos.idade_passageiro,
                 });
               }}
             >
-              <option>Escolha o tipo de contrato</option>
-              {typesContracts.map((elemento) => {
-                return (
-                  <option id={elemento.id} key={elemento.id}>
-                    {elemento.tipo_contrato}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        </div>
-
-        <div className="input-container-geral">
-          <div>
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Nome do responsável",
-                classNameInput: "input-contract",
-                placeholder: user.nome,
-                status: true,
-              }}
-            />
-          </div>
-          <div
-            onChange={(e) => {
-              setClientInfos({
-                nome_passageiro: e.target.value,
-                idade_passageiro: clientInfos.idade_passageiro,
-              });
-            }}
-          >
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Nome do passageiro",
-                classNameInput: "input-contract",
-              }}
-            />
-          </div>
-          <div
-            onChange={(e) => {
-              setClientInfos({
-                nome_passageiro: clientInfos.nome_passageiro,
-                idade_passageiro: e.target.value,
-              });
-            }}
-          >
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Idade do passageiro:",
-                classNameInput: "input-contract",
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="dropdown-container">
-          <div className="dropdown-content">
-            <label htmlFor="password" className="placeholder">
-              Tipo de pagamento:
-            </label>
-            <select
-              className="selects"
-              name="filtros"
-              id="select-filter-container-school"
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Nome do passageiro",
+                  classNameInput: "input-contract",
+                }}
+              />
+            </div>
+            <div
               onChange={(e) => {
-                setInfosContract({
-                  id_escola: contract.id_escola,
-                  id_tipo_contrato: contract.id_tipo_contrato,
-                  id_tipo_pagamento: parseInt(
-                    e.currentTarget.childNodes[e.currentTarget.selectedIndex].id
-                  ),
+                setClientInfos({
+                  nome_passageiro: clientInfos.nome_passageiro,
+                  idade_passageiro: e.target.value,
                 });
               }}
             >
-              <option>Escolha o tipo de pagamento</option>
-              {typesPayment.map((elemento) => {
-                return (
-                  <option id={elemento.id} key={elemento.id}>
-                    {elemento.tipo_pagamento}
-                  </option>
-                );
-              })}
-            </select>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Idade do passageiro:",
+                  classNameInput: "input-contract",
+                }}
+              />
+            </div>
           </div>
-          <div>
-            <InputContainer
-              props={{
-                classNameLabel: "placeholder",
-                nameInput: "Preço do serviço:",
-                classNameInput: "input-contract",
-                placeholder: `R$ ${priceDriver.id_preco.faixa_preco}`,
-                status: true,
-              }}
-            />
+
+          <div className="dropdown-container">
+            <div className="dropdown-content">
+              <label htmlFor="password" className="placeholder">
+                Tipo de pagamento:
+              </label>
+              <select
+                className="selects"
+                name="filtros"
+                id="select-filter-container-school"
+                onChange={(e) => {
+                  setInfosContract({
+                    id_escola: contract.id_escola,
+                    id_tipo_contrato: contract.id_tipo_contrato,
+                    id_tipo_pagamento: parseInt(
+                      e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                        .id
+                    ),
+                  });
+                }}
+              >
+                <option>Escolha o tipo de pagamento</option>
+                {typesPayment.map((elemento) => {
+                  return (
+                    <option id={elemento.id} key={elemento.id}>
+                      {elemento.tipo_pagamento}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div>
+              <InputContainer
+                props={{
+                  classNameLabel: "placeholder",
+                  nameInput: "Preço do serviço:",
+                  classNameInput: "input-contract",
+                  placeholder: `R$ ${priceDriver.id_preco.faixa_preco}`,
+                  status: true,
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div
-        className="button-container"
-        onClick={() => {
-          setStatus(1);
-        }}
-      >
-        <ButtonNextContract props={propsNextContract}></ButtonNextContract>
-      </div>
-    </main>
+        <div
+          className="button-container"
+          onClick={() => {
+            setStatus(1);
+          }}
+        >
+          <ButtonNextContract props={propsNextContract}></ButtonNextContract>
+        </div>
+      </main>
+    </>
   );
 };
