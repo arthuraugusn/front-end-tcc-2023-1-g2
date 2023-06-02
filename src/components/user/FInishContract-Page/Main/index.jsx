@@ -68,8 +68,6 @@ export const MainFinishContractPage = () => {
     loadEnderecoUsuarioById(localStorage.getItem("id"), setEnderecoUsuario);
   }, []);
 
-  console.log(enderecoUsuario);
-
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
       registerContract(location.state, setResponseError);
