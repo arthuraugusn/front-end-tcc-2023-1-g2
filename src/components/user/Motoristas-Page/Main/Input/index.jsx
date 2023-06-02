@@ -1,14 +1,10 @@
 import "./style.css";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const InputSearchItens = ({ props }) => {
   return (
     <div className="inputs">
-      <label
-        htmlFor={props.id}
-        className="material-symbols-outlined search-number"
-      >
-        search
-      </label>
+      <SearchIcon fontSize="large" className="search-number" />
       <input
         placeholder={props.placeholder}
         type="text"

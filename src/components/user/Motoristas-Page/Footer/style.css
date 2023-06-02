@@ -7,7 +7,7 @@ footer {
   height: auto;
   border-top-right-radius: 30px;
   padding: 30px;
-  width: inherit;
+  width: 100%;
 }
 
 .contact-us {
@@ -49,20 +49,19 @@ footer {
 }
 
 @media (max-width: 375px) {
-  span{
+  span {
     font-size: 1rem;
   }
-  footer{
+  footer {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .localization-company{
+  .localization-company {
     flex-direction: row;
     gap: 1rem;
   }
-  .div{
+  .div {
     flex-direction: row;
   }
-
 }

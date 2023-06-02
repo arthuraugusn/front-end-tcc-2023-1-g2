@@ -3,7 +3,6 @@
 .search-complement {
   position: absolute;
   padding-left: 16px;
-  font-size: 2rem;
   user-select: none;
   z-index: 1;
   color: var(--main-yellow);

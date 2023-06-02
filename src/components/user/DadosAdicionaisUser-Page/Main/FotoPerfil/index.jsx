@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { useEffect } from "react";
 import { uploadImage } from "../../../../../firebase/UploadProfilePictures/firebaseUploadProfilePictures";
 
@@ -31,10 +30,13 @@ export const FotoPerfilRegistro = ({ props }) => {
           type="file"
         />
         <div className={`${classIcon} container-icon-picture`}>
-          <FontAwesomeIcon
+          <CameraAltIcon
+            sx={{
+              color: "black",
+              fontSize: 230,
+            }}
             className={classIcon}
-            icon={faCamera}
-          ></FontAwesomeIcon>
+          />
         </div>
         <img className={`img-preview ${classImg}`} src={card} alt="teste" />
       </label>

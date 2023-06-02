@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { AiFillStar } from "react-icons/ai";
 import "./style.css";
 
 export const Card = ({ driver }) => {
@@ -30,7 +31,15 @@ export const Card = ({ driver }) => {
           <div className="container-all-infos">
             <div className="nome-score">
               <span className="nome-motorista">{drivers.nome}</span>
+              <div className="container-avaliacao-motorista card-avaliacao-motorista">
+                <AiFillStar
+                  color="var(--button-contract-yellow)"
+                  className="star container-star"
+                />
+                <p>{drivers.avaliacao}</p>
+              </div>
             </div>
+
             <div className="infos-contratar">
               <div className="infos-motorista">
                 <p className="info idade">

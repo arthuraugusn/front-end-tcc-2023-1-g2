@@ -4,6 +4,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { postAvaliacao } from "../../../../../api/client/avaliacao/postAvaliacaoMotorista";
 import { ButtonAvaliarMotorista } from "./Button";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const ModalAvaliacao = ({ props }) => {
   const [openCloseModal, setOpenCloseModal] = useState({
@@ -82,7 +83,7 @@ export const ModalAvaliacao = ({ props }) => {
             flexDirection: "column",
             alignItems: "center",
             gap: 5,
-            justifyContent: "center",
+            justifyContent: "space-around",
             bgcolor: "var(--contract-infos-yellow)",
             boxShadow: 24,
             pt: 2,
@@ -90,6 +91,24 @@ export const ModalAvaliacao = ({ props }) => {
             pb: 3,
           }}
         >
+          <Box
+            onClick={() => {
+              setOpenCloseModal({
+                status: false,
+                value: "",
+              });
+            }}
+          >
+            <CloseIcon
+              className="button-exit-close"
+              sx={{
+                fontSize: "5rem",
+                cursor: "pointer",
+              }}
+              htmlColor="red"
+            />
+          </Box>
+
           <Typography
             sx={{
               fontSize: "2rem",

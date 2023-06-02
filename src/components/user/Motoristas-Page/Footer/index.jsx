@@ -1,11 +1,7 @@
 import "./style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faWhatsapp,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
 import { Logo } from "../../../Home-Page/Header/Logo";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const FooterMotoristas = () => {
   return (
@@ -13,17 +9,12 @@ export const FooterMotoristas = () => {
       <footer>
         <div className="contact-us">
           <div className="icon-contact">
-            <FontAwesomeIcon icon={faWhatsapp} />
+            <WhatsAppIcon />
             <span>Whatsapp</span>
           </div>
           <div className="icon-contact">
-            <FontAwesomeIcon icon={faInstagram} />
+            <InstagramIcon />
             <span>Instagram</span>
-          </div>
-
-          <div className="icon-contact">
-            <FontAwesomeIcon icon={faYoutube} />
-            <span>Youtube</span>
           </div>
         </div>
         <div className="footer-localization">

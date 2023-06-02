@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faG } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,17 +20,6 @@ export const LeftSide = () => {
       <span className="entry-text">
         Cadastre-se e conheça a nossa plataforma
       </span>
-      {/* <button
-        type="button"
-        className="google-register"
-        id="button-register-google"
-        onClick={() => {
-          getInfosUser(setUserInfos, setChangePage);
-        }}
-      >
-        <FontAwesomeIcon icon={faG} />
-        Continuar com Google
-      </button> */}
 
       <div className="bottom-text">
         <span className="thin-text">Já tem uma conta?</span>
