@@ -20,6 +20,15 @@ export const CardsNotifications = ({ props }) => {
     code: 0,
     result: "",
   });
+  const [enderecoUsuario, setEnderecoUsuario] = useState({
+    data: {
+      endereco: {
+        numero: "",
+        bairro: "",
+        logradouro: "",
+      },
+    },
+  });
 
   const [statusUser, setStatusUser] = useState(0);
 
@@ -125,7 +134,7 @@ export const CardsNotifications = ({ props }) => {
               <div className="container-all-infos">
                 <div className="nome-container">
                   <span className="nome-motorista-notifications">
-                    {contract.motorista.nome}
+                    {contract.usuario.nome}
                   </span>
                 </div>
                 <div className="infos-contratar-geral">
