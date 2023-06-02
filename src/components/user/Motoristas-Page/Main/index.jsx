@@ -64,7 +64,6 @@ export const MainMotoristasPage = ({ props }) => {
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 1) {
-      console.log(valueFilters);
       getDriverByFilters(
         valueFilters.price,
         valueFilters.school,
