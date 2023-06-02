@@ -92,7 +92,7 @@ h1 {
     gap: 1rem;
   }
   .container-filters-dropdown {
-    flex-direction: row;
+    flex-direction: column;
   }
   .input-search-filter-driver {
     padding-left: 0;
