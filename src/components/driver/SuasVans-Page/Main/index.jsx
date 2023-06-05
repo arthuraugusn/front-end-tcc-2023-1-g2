@@ -47,7 +47,6 @@ export const MainSuasVans = ({ props }) => {
     requisition: 0,
   });
 
-  const [mainStyle, setMainStyle] = useState("");
 
   const [responseErrorDelete, setResposeErrorDelete] = useState({});
 
@@ -78,71 +77,30 @@ export const MainSuasVans = ({ props }) => {
   }, [responseErrorDelete]);
 
   return (
-    <main className={`container-main-suas-vans ${props.styleBody}`}>
-      <div className="box-name-h1">
-        <h1>Suas Vans</h1>
-      </div>
-      <div
-        className="container-button-redirect-add-van"
-        onClick={() => {
-          navigate("/add-van", { state: { id_motorista: driver.id } });
-        }}
-      >
-        <ButtonRemoverAdicionarVan
-          props={{
-            message: "Adicionar Van",
-            openCloseModal: openCloseModal,
-            setOpenCloseModal: setOpenCloseModal,
+    <main className="container-main-suas-vans">
+      <div className="container-nameButton">
+        <div className="box-name-h1">
+          <h1>Suas Vans</h1>
+        </div>
+        <div
+          className="container-button-redirect-add-van"
+          onClick={() => {
+            navigate("/add-van", { state: { id_motorista: driver.id } });
           }}
-        />
-      </div>
-      <div className="container-suas-vans-card">
-        {driver.van.map((e) => {
-          return (
-            <div className="card-driver van" key={`key: ${e.id}`}>
-              <div
-                onClick={() => {
-                  navigate("/sua-van", {
-                    state: { id_motorista: driver.id, id_van: e.id },
-                  });
-                }}
-              >
-                <img className="container-image-van" src={e.foto} alt="" />
-                <div className="container-infos-van">
-                  <p>Número de Vagas: {e.quantidade_vagas}</p>
-                  <p>Modelo da Van: {e.modelo[0].modelo}</p>
-                  <p>Placa da Van: {e.placa}</p>
-                </div>
-              </div>
-
-              <div
-                onClick={() => {
-                  setRequisitionDelete({
-                    id_van: e.id,
-                    requisition: 1,
-                  });
-                }}
-              >
-                <ButtonRemoverAdicionarVan
-                  props={{
-                    message: "REMOVER",
-                    openCloseModal: openCloseModal,
-                    setOpenCloseModal: setOpenCloseModal,
-                  }}
-                />
-              </div>
-            </div>
-          );
-        })}
+        >
+          <ButtonRemoverAdicionarVan
+            props={{
+              message: "Adicionar Van",
+              openCloseModal: openCloseModal,
+              setOpenCloseModal: setOpenCloseModal,
+            }}
+          />
+        </div>
       </div>
 
-      <ModalExcluirVan
-        props={{
-          message: "Você realmente deseja excluir sua van ?",
-          openCloseModal: openCloseModal,
-          setOpenCloseModal: setOpenCloseModal,
-        }}
-      />
+      <div className="container-suas-vans-card"> //DEPOIS JA VEM OS CARDS
+
+      </div> //depois vem o modal
     </main>
   );
 };

@@ -6,17 +6,11 @@ import "../../reset/reset.css";
 import "./body.css";
 
 export default function SuasVansPage() {
-  const [styleBody, setStyleBody] = useState("height-vh");
   return (
     <>
-      <div className={`container-body-suas-vans ${styleBody}`}>
+      <div className={`container-body-suas-vans`}>
         <HeaderSuasVansPage />
-        <MainSuasVans
-          props={{
-            setStyleBody: setStyleBody,
-            styleBody: styleBody,
-          }}
-        />
+        <MainSuasVans />
         <FooterAllVansPage />
       </div>
     </>

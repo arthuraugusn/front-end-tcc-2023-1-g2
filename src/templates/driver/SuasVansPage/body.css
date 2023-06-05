@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: var(--body-yellow);
   justify-content: space-between;
+  height: inherit;
 }
 
 .height-vh {

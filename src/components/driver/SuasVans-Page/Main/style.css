@@ -1,9 +1,5 @@
 .container-main-suas-vans {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  height: fit-content;
+  height: 70%;
 }
 
 .van {
@@ -15,7 +11,6 @@
   align-items: center;
   display: flex;
   justify-content: center;
-
   height: 100%;
 }
 
@@ -36,13 +31,6 @@
 }
 
 .container-suas-vans-card {
-  display: flex;
-  height: 55%;
-  width: 60%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -51,6 +39,11 @@
   width: 7px;
   background-color: var(--main-yellow);
   border-radius: 15px;
+}
+.container-nameButton{
+  display: flex;
+  flex-direction: column;
+  align-items: center
 }
 
 .height-auto {
