@@ -119,7 +119,7 @@ export const MainSuasEscolas = () => {
     <>
       <main className="container-main-suas-escolas">
         <div className="container-h1-suas-escolas">
-          <h1>Suas Escolas</h1>
+          <h1 className='tittle-escola'>Suas Escolas</h1>
         </div>
         <div className="container-suas-escolas">
           <div className={`container-nome-escolas`}>
