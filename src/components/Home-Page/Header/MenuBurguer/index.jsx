@@ -132,7 +132,7 @@ export const MenuBurguer = ({ props }) => {
             }}
             className={`dropdown nav-itens ${props}  ${itensHeader.statusIcons}`}
           >
-            <div className={`dropbtn ${props}`}>
+            <div className={`dropbtn `}>
               <PersonIcon />
             </div>
             <div className="dropdown-content-perfil">

@@ -40,15 +40,12 @@ export const MainFinishContractPage = () => {
     nome: "",
   });
 
-  const [user, setUser] = useState({});
-
-  const [enderecoUsuario, setEnderecoUsuario] = useState({
-    data: {
-      endereco: {
-        numero: "",
-        bairro: "",
-        logradouro: "",
-      },
+  const [user, setUser] = useState({
+    nome: "",
+    endereco: {
+      numero: "",
+      bairro: "",
+      logradouro: "",
     },
   });
 
@@ -65,8 +62,7 @@ export const MainFinishContractPage = () => {
     loadTypeTransportId(location.state.id_tipo_contrato, setTipoTransporte);
     loadSchoolId(location.state.id_escola, setEscola);
     loadUserbyId(localStorage.getItem("id"), setUser);
-    loadEnderecoUsuarioById(localStorage.getItem("id"), setEnderecoUsuario);
-  }, []);
+  }, [1000]);
 
   useEffect(() => {
     if (openCloseModal.value.toLowerCase() == "sim") {
@@ -124,15 +120,15 @@ export const MainFinishContractPage = () => {
               </div>
               <div>
                 <p className="name-content-contract">Endereço:</p>
-                <p>{enderecoUsuario.data.endereco.logradouro}</p>
+                <p>{user.endereco.logradouro}</p>
               </div>
               <div>
                 <p className="name-content-contract">Número: </p>
-                <p>{enderecoUsuario.data.endereco.numero}</p>
+                <p>{user.endereco.numero}</p>
               </div>
               <div>
                 <p className="name-content-contract">Bairro: </p>
-                <p>{enderecoUsuario.data.endereco.bairro}</p>
+                <p>{user.endereco.bairro}</p>
               </div>
             </div>
             <div>

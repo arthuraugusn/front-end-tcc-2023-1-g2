@@ -32,6 +32,7 @@
 .nav-itens {
   cursor: pointer;
   font-weight: 400;
+  color: var(--main-yellow);
   font-size: 1.2rem;
 }
 
@@ -63,7 +64,7 @@
   display: block;
   height: 4px;
   width: 36px;
-  background-color: #fff;
+  background-color: var(--main-yellow);
   transition: all 0.5s;
 }
 .menu-burguer::before {
@@ -88,7 +89,7 @@
     z-index: 1;
   }
   .text-container {
-    background-color: #000;
+    background-color: black;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -165,9 +166,8 @@
   }
 }
 
-
-@media (max-width:375px) {
-  .nav-container{
+@media (max-width: 375px) {
+  .nav-container {
     flex-direction: column;
   }
 }

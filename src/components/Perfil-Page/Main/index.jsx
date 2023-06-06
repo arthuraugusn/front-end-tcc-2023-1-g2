@@ -31,9 +31,13 @@ import { loadPrices } from "../../../api/driver/loadPrices";
 import { updateUserEndereco } from "../../../api/client/updateUserEndereco";
 
 export const MainPerfilPage = () => {
-  const statusUserDriver = localStorage.getItem("status_user_driver");
+  const statusUserDriver = parseInt(localStorage.getItem("status_user_driver"));
 
-  const [perfil, setPerfil] = useState({});
+  const [perfil, setPerfil] = useState({
+    id_preco: {
+      id: "",
+    },
+  });
 
   const [data, setData] = useState({ ano: "", mes: "", dia: "" });
 
@@ -99,26 +103,29 @@ export const MainPerfilPage = () => {
   useEffect(() => {
     if (statusEdit == true) {
       if (statusUserDriver == 1) {
-        if (userEdit.senha_atual != userEdit.nova_senha) {
+        if (userEdit.senha_atual !== userEdit.nova_senha) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Você inseriu a senha errada",
+          }).then(() => {
+            setStatusEdit(false);
           });
         } else {
           updateDriver(userEdit, perfil.id, setStatusCode);
         }
       }
       if (statusUserDriver == 2) {
-        if (userEdit.senha_atual != userEdit.nova_senha) {
+        if (userEdit.senha_atual !== userEdit.nova_senha) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Você inseriu a senha errada",
+          }).then(() => {
+            setStatusEdit(false);
           });
         } else {
           updateUser(userEdit, perfil.id, setStatusCode);
-          /* updateUserEndereco(userEdit, perfil.id, setStatusCodeUpdateCep); */
         }
       }
     }
@@ -176,11 +183,40 @@ export const MainPerfilPage = () => {
         name: "CEP:",
         status_visibility: "none",
       });
+      setUserEdit({
+        foto: foto,
+        rg: perfil.rg,
+        cpf: perfil.cpf,
+        nome: perfil.nome,
+        data_nascimento: perfil.data_nascimento,
+        telefone: perfil.telefone,
+        cep: perfil.cep,
+        email: perfil.email,
+        nova_senha: undefined,
+        senha_atual: undefined,
+      });
     } else if (statusUserDriver == 1) {
       setInfosInput({
         cepCnhValue: perfil.cnh,
         name: "CNH:",
         status_visibility: "true",
+      });
+      setUserEdit({
+        avaliacao: perfil.avaliacao,
+        cnh: perfil.cnh,
+        cpf: perfil.cpf,
+        data_nascimento: perfil.data_nascimento,
+        descricao: perfil.descricao,
+        email: perfil.email,
+        foto: perfil.foto,
+        id_preco: perfil.id_preco,
+        inicio_carreira: perfil.inicio_carreira,
+        nome: perfil.nome,
+        rg: perfil.rg,
+        status_motorista: perfil.status_motorista,
+        telefone: perfil.telefone,
+        nova_senha: undefined,
+        senha_atual: undefined,
       });
     }
   }, [perfil]);
@@ -209,7 +245,6 @@ export const MainPerfilPage = () => {
         nome: userEdit.nome,
         data_nascimento: userEdit.data_nascimento,
         telefone: userEdit.telefone,
-        /* numero: userEdit.numero, */
         cep: userEdit.cep,
         email: userEdit.email,
         senha_atual: userEdit.senha_atual,
@@ -353,97 +388,41 @@ export const MainPerfilPage = () => {
       <div className="container-buttons-perfil">
         <div
           onClick={() => {
-            if (statusUserDriver == 2) {
+            if (statusUserDriver === 2) {
               if (
-                userEdit.rg == "" ||
-                userEdit.rg == undefined ||
-                userEdit.rg == null ||
-                userEdit.cpf == "" ||
-                userEdit.cpf == undefined ||
-                userEdit.cpf == null ||
-                userEdit.nome == "" ||
-                userEdit.nome == undefined ||
-                userEdit.nome == null ||
-                userEdit.data_nascimento == "" ||
-                userEdit.data_nascimento == undefined ||
-                userEdit.data_nascimento == null ||
-                userEdit.telefone == "" ||
-                userEdit.telefone == undefined ||
-                userEdit.telefone == null ||
-                /* userEdit.numero == "" ||
-                userEdit.numero == undefined ||
-                userEdit.numero == null || */
-                userEdit.cep == "" ||
-                userEdit.cep == undefined ||
-                userEdit.cep == null ||
-                userEdit.nova_senha == "" ||
-                userEdit.nova_senha == undefined ||
-                userEdit.nova_senha == null ||
-                userEdit.senha_atual == "" ||
-                userEdit.senha_atual == undefined ||
-                userEdit.senha_atual == null ||
-                userEdit.email == "" ||
-                userEdit.email == undefined ||
-                userEdit.email == null
+                userEdit.nova_senha === "" ||
+                userEdit.nova_senha === undefined ||
+                userEdit.nova_senha === null ||
+                userEdit.senha_atual === "" ||
+                userEdit.senha_atual === undefined ||
+                userEdit.senha_atual === null
               ) {
-                alert(
-                  "Você não preencheu todos os dados corretamente, tente novamente"
-                );
-                console.log(userEdit);
-                /* window.location.reload(); */
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Você não preencheu a senha, tente novamente",
+                }).then(() => {
+                  setStatusEdit(false);
+                });
               } else {
                 setStatusEdit(true);
               }
             }
-            if (statusUserDriver == 1) {
+            if (statusUserDriver === 1) {
               if (
-                userEdit.rg == "" ||
-                userEdit.rg == undefined ||
-                userEdit.rg == null ||
-                userEdit.cpf == "" ||
-                userEdit.cpf == undefined ||
-                userEdit.cpf == null ||
-                userEdit.nome == "" ||
-                userEdit.nome == undefined ||
-                userEdit.nome == null ||
-                userEdit.data_nascimento == "" ||
-                userEdit.data_nascimento == undefined ||
-                userEdit.data_nascimento == null ||
-                userEdit.telefone == "" ||
-                userEdit.telefone == undefined ||
-                userEdit.telefone == null ||
-                userEdit.cnh == "" ||
-                userEdit.cnh == undefined ||
-                userEdit.cnh == null ||
-                userEdit.inicio_carreira == "" ||
-                userEdit.inicio_carreira == undefined ||
-                userEdit.inicio_carreira == null ||
-                userEdit.nova_senha == "" ||
-                userEdit.nova_senha == undefined ||
-                userEdit.nova_senha == null ||
-                userEdit.senha_atual == "" ||
-                userEdit.senha_atual == undefined ||
-                userEdit.senha_atual == null ||
-                userEdit.email == "" ||
-                userEdit.email == undefined ||
-                userEdit.email == null ||
-                userEdit.foto == "" ||
-                userEdit.foto == undefined ||
-                userEdit.foto == null ||
-                userEdit.descricao == "" ||
-                userEdit.descricao == undefined ||
-                userEdit.descricao == null ||
-                userEdit.id_preco == "" ||
-                userEdit.id_preco == undefined ||
-                userEdit.id_preco == null
+                userEdit.nova_senha === "" ||
+                userEdit.nova_senha === undefined ||
+                userEdit.nova_senha === null ||
+                userEdit.senha_atual === "" ||
+                userEdit.senha_atual === undefined ||
+                userEdit.senha_atual === null
               ) {
-                console.log(userEdit);
                 Swal.fire({
                   icon: "error",
                   title: "Oops...",
-                  text: "Você não preencheu todos os dados corretamente, tente novamente",
+                  text: "Você não preencheu a senha, tente novamente",
                 }).then(() => {
-                  window.location.reload();
+                  setStatusEdit(false);
                 });
               } else {
                 setStatusEdit(true);

@@ -5,6 +5,7 @@ export const FormsDriverFirst = ({ props }) => {
     <>
       <div
         onChange={(e) => {
+          console.log(e.target.value);
           props.setUserEdit({
             email: props.userEdit.email,
             nome: props.userEdit.nome,
