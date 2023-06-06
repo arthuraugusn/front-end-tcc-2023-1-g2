@@ -20,6 +20,15 @@ export const CardsNotifications = ({ props }) => {
     code: 0,
     result: "",
   });
+  const [enderecoUsuario, setEnderecoUsuario] = useState({
+    data: {
+      endereco: {
+        numero: "",
+        bairro: "",
+        logradouro: "",
+      },
+    },
+  });
 
   const [statusUser, setStatusUser] = useState(0);
 
@@ -61,7 +70,7 @@ export const CardsNotifications = ({ props }) => {
         title: "Tudo certo",
         text: "Seu contrato foi aceito com sucesso",
       }).then((response) => {
-        if (response.value == true) {
+        if (response.value === true) {
           navigate("/contracts");
         }
       });
@@ -69,9 +78,8 @@ export const CardsNotifications = ({ props }) => {
   }, [responseError]);
 
   return props.userContracts.map((contract) => {
-    if (contract.status_contrato == 0) {
-      console.log(contract);
-      if (statusUser == 2) {
+    if (contract.status_contrato === 0) {
+      if (statusUser === 2) {
         return (
           <>
             <div className="card-notifications">
@@ -126,7 +134,7 @@ export const CardsNotifications = ({ props }) => {
               <div className="container-all-infos">
                 <div className="nome-container">
                   <span className="nome-motorista-notifications">
-                    {contract.motorista.nome}
+                    {contract.usuario.nome}
                   </span>
                 </div>
                 <div className="infos-contratar-geral">

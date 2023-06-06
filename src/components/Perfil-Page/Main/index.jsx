@@ -242,7 +242,7 @@ export const MainPerfilPage = () => {
         <h1>Perfil</h1>
       </div>
       <div className="container-itens-perfil">
-        <div className="container-picture-perfil" onClick={(k) => {}}>
+        <div className="container-picture-perfil" onClick={(k) => { }}>
           <FotoPerfilPage
             props={{
               setStatusFoto: setStatusFoto,
@@ -461,7 +461,7 @@ export const MainPerfilPage = () => {
           }}
         >
           <ButtonsSaveDeletePerfil
-            props={{ key: "button-form", label: "Excluir" }}
+            props={{ key: "button-form", label: "Excluir Perfil" }}
           />
         </div>
         <ModalPadrao

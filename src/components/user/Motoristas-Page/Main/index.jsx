@@ -51,6 +51,7 @@ export const MainMotoristasPage = ({ props }) => {
           quantidade_vagas: "",
         },
       ],
+      avaliacao: "",
     },
   ]);
 
@@ -63,7 +64,6 @@ export const MainMotoristasPage = ({ props }) => {
 
   useEffect(() => {
     if (valueFilters.status_filtrar === 1) {
-      console.log(valueFilters);
       getDriverByFilters(
         valueFilters.price,
         valueFilters.school,
@@ -180,6 +180,7 @@ export const MainMotoristasPage = ({ props }) => {
                         school: valueFilters.school,
                         status_filtrar: valueFilters.status_filtrar,
                       });
+                      setChoosePrice(e.target.value);
                     }}
                     value={choosePrice}
                     sx={{

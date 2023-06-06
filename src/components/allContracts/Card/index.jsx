@@ -5,15 +5,11 @@ import { Modal } from "../../../templates/Modal/index";
 
 export const CardContract = ({ props }) => {
   return props.contracts.map((contract) => {
-    console.log(contract);
     if (contract.status_contrato == 1) {
       if (localStorage.getItem("status_user_driver") === "1") {
         return (
           <>
             <div
-              onClick={() => {
-                console.log(contract);
-              }}
               key={contract.id}
               className="card-contracts"
             >
@@ -81,9 +77,6 @@ export const CardContract = ({ props }) => {
         return (
           <>
             <div
-              onClick={() => {
-                console.log(contract);
-              }}
               key={contract.id}
               className="card-contracts"
             >

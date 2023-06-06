@@ -43,7 +43,6 @@ export const FormsInfosDriver = ({ props }) => {
               >
                 <InputContainer
                   props={{
-                    status: props.statusInput,
                     classNameLabel: "placeholder",
                     nameInput: "RG:",
                     classNameInput: "inputs-more-infos",
@@ -70,7 +69,6 @@ export const FormsInfosDriver = ({ props }) => {
                 <div className="input-container">
                   <label className="placeholder">CPF:</label>
                   <IMaskInput
-                    disabled={props.statusInput}
                     mask="000.000.000-00"
                     className="inputs-more-infos"
                   />
@@ -96,7 +94,6 @@ export const FormsInfosDriver = ({ props }) => {
                 <div className="input-container">
                   <label className="placeholder">Telefone:</label>
                   <IMaskInput
-                    disabled={props.statusInput}
                     mask="(00) 00000-0000"
                     className="inputs-more-infos"
                   />
@@ -123,7 +120,6 @@ export const FormsInfosDriver = ({ props }) => {
               >
                 <InputContainer
                   props={{
-                    status: props.statusInput,
                     type: "date",
                     classNameLabel: "placeholder",
                     nameInput: "Data de nascimento:",
@@ -151,7 +147,6 @@ export const FormsInfosDriver = ({ props }) => {
                 <div className="input-container">
                   <label className="placeholder">CNH:</label>
                   <IMaskInput
-                    disabled={props.statusInput}
                     mask="00000000000"
                     className="inputs-more-infos"
                   />
@@ -176,7 +171,6 @@ export const FormsInfosDriver = ({ props }) => {
               >
                 <InputContainer
                   props={{
-                    status: props.statusInput,
                     type: "date",
                     classNameLabel: "placeholder",
                     nameInput: "Data de início de carreira",
@@ -192,7 +186,6 @@ export const FormsInfosDriver = ({ props }) => {
             <select
               name="filtros"
               className="selects"
-              disabled={props.statusInput}
               onChange={(e) => {
                 props.setDriverInfos({
                   nome: location.state.nome,
@@ -224,22 +217,45 @@ export const FormsInfosDriver = ({ props }) => {
           <div
             className="button-save-driver"
             onClick={() => {
-              props.setDriverInfos({
-                nome: location.state.nome,
-                email: location.state.email,
-                senha: location.state.senha,
-                img: props.driver.img,
-                rg: props.driver.rg,
-                cpf: props.driver.cpf,
-                telefone: props.driver.telefone,
-                data_nascimento: props.driver.data_nascimento,
-                cnh: props.driver.cnh,
-                inicio_carreira: props.driver.inicio_carreira,
-                descricao: "",
-                avaliacao: 10,
-                id_preco: parseInt(props.driver.id_preco),
-                status_finalizado: 1,
-              });
+              if (
+                props.driver.img === "" ||
+                props.driver.img === undefined ||
+                props.driver.img === null
+              ) {
+                props.setDriverInfos({
+                  nome: location.state.nome,
+                  email: location.state.email,
+                  senha: location.state.senha,
+                  img: "https://firebasestorage.googleapis.com/v0/b/tcc-project-firebase.appspot.com/o/imgs%2Fdownload.png?alt=media&token=1f6e9e4f-958e-4c0e-8b19-2c757007ad3b",
+                  rg: props.driver.rg,
+                  cpf: props.driver.cpf,
+                  telefone: props.driver.telefone,
+                  data_nascimento: props.driver.data_nascimento,
+                  cnh: props.driver.cnh,
+                  inicio_carreira: props.driver.inicio_carreira,
+                  descricao: "",
+                  avaliacao: 10,
+                  id_preco: parseInt(props.driver.id_preco),
+                  status_finalizado: 1,
+                });
+              } else {
+                props.setDriverInfos({
+                  nome: location.state.nome,
+                  email: location.state.email,
+                  senha: location.state.senha,
+                  img: props.driver.img,
+                  rg: props.driver.rg,
+                  cpf: props.driver.cpf,
+                  telefone: props.driver.telefone,
+                  data_nascimento: props.driver.data_nascimento,
+                  cnh: props.driver.cnh,
+                  inicio_carreira: props.driver.inicio_carreira,
+                  descricao: "",
+                  avaliacao: 10,
+                  id_preco: parseInt(props.driver.id_preco),
+                  status_finalizado: 1,
+                });
+              }
             }}
           >
             <ButtonSalvarMotorista props={propsSalvarMotorista} />

@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { registerUserClient } from "../../../../../api/client/registerUserClient";
 import { InputContainer } from "../../../../Contract-Page/Main/InputContainter";
 import { ButtonSalvarUsuario } from "../Button";
 import "./style.css";
 import Swal from "sweetalert2";
-import ReactInputMask from "react-input-mask";
 import { IMaskInput } from "react-imask";
 
 export const FormFirstInfos = ({ props }) => {
@@ -18,7 +16,7 @@ export const FormFirstInfos = ({ props }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (props.responseError.status == 201) {
+    if (props.responseError.status === 201) {
       Swal.fire({
         icon: "success",
         title: "Tudo certo",
@@ -26,7 +24,7 @@ export const FormFirstInfos = ({ props }) => {
       }).then(() => {
         navigate("/login");
       });
-    } else if (props.responseError.code == "ERR_NETWORK") {
+    } else if (props.responseError.code === "ERR_NETWORK") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -59,7 +57,6 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
-                  status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "RG:",
                   classNameInput: "inputs-more-infos",
@@ -83,7 +80,6 @@ export const FormFirstInfos = ({ props }) => {
               <div className="input-container">
                 <label className="placeholder">CPF:</label>
                 <IMaskInput
-                  disabled={props.statusInput}
                   mask="000.000.000-00"
                   className="inputs-more-infos"
                 />
@@ -105,7 +101,6 @@ export const FormFirstInfos = ({ props }) => {
               <div className="input-container">
                 <label className="placeholder">Telefone:</label>
                 <IMaskInput
-                  disabled={props.statusInput}
                   mask="(00) 00000-0000"
                   className="inputs-more-infos"
                 />
@@ -128,7 +123,6 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
-                  status: props.statusInput,
                   type: "date",
                   classNameLabel: "placeholder",
                   nameInput: "Data de nascimento:",
@@ -151,11 +145,7 @@ export const FormFirstInfos = ({ props }) => {
             >
               <div className="input-container">
                 <label className="placeholder">CEP:</label>
-                <IMaskInput
-                  disabled={props.statusInput}
-                  mask="00000-000"
-                  className="inputs-more-infos"
-                />
+                <IMaskInput mask="00000-000" className="inputs-more-infos" />
               </div>
             </div>
             <div
@@ -173,7 +163,6 @@ export const FormFirstInfos = ({ props }) => {
             >
               <InputContainer
                 props={{
-                  status: props.statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Número da casa:",
                   classNameInput: "inputs-more-infos",

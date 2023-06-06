@@ -10,6 +10,7 @@ import { InputContainerVan } from "./InputContainerVan";
 import "./style.css";
 import Swal from "sweetalert2";
 import { loadModelVan } from "../../../../api/driver/van/loadModels";
+import { registerDriverClient } from "../../../../api/driver/registerUserClient";
 
 export const MainDadosVan = () => {
   const propsSalvarVan = {
@@ -25,6 +26,10 @@ export const MainDadosVan = () => {
 
   const [responseError, setResponseError] = useState("");
 
+  const [responseErrorPostDriver, setResponseErrorPostDriver] = useState({
+    status: 0,
+  });
+
   const [idDriver, setIdDriver] = useState(0);
 
   const [statusInput, setStatusInput] = useState(true);
@@ -34,22 +39,15 @@ export const MainDadosVan = () => {
   const [modelsVan, setModels] = useState([]);
 
   useEffect(() => {
-    loadDriverByCpf(locate.state, setIdDriver);
     loadModelVan(setModels);
   });
 
   useEffect(() => {
-    console.log(response);
-  }, [response]);
+    loadDriverByCpf(locate.state, setIdDriver);
+  }, []);
 
   useEffect(() => {
-    if (van.statusImg == true) {
-      setStatusInput(false);
-    }
-  }, [van.statusImg]);
-
-  useEffect(() => {
-    if (van.status_finalizado == 1) {
+    if (van.status_finalizado === 1) {
       if (
         van.quantidade_vagas == undefined ||
         van.quantidade_vagas == null ||
@@ -69,7 +67,9 @@ export const MainDadosVan = () => {
           window.location.reload();
         });
       } else {
-        registerVanDriver(van, setResponseError);
+        if (van.id_motorista !== null || van.id_motorista !== undefined) {
+          registerVanDriver(van, setResponseError);
+        }
       }
     }
   }, [van]);
@@ -112,7 +112,6 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
-                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Número de vagas:",
                   classNameInput: "inputs-more-infos",
@@ -132,7 +131,6 @@ export const MainDadosVan = () => {
             >
               <InputContainerVan
                 props={{
-                  status: statusInput,
                   classNameLabel: "placeholder",
                   nameInput: "Placa da van:",
                   classNameInput: "inputs-more-infos",
@@ -144,7 +142,6 @@ export const MainDadosVan = () => {
               <select
                 name="filtros"
                 className="selects"
-                disabled={statusInput}
                 onChange={(e) => {
                   setVan({
                     quantidade_vagas: van.quantidade_vagas,
@@ -177,8 +174,8 @@ export const MainDadosVan = () => {
               placa: van.placa,
               img: van.img,
               id_motorista: parseInt(idDriver),
+              id_modelo: van.id_modelo,
               status_finalizado: 1,
-              id_modelo: parseInt(van.id_modelo),
             });
           }}
           className="container-button-save-van"

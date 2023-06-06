@@ -10,6 +10,8 @@ import { ButtonSaveDeleteContract } from "./Button";
 import { ModalExcluirContrato } from "../../../allContracts/main/Modal";
 import { registerContract } from "../../../../api/client/registerContract";
 import Swal from "sweetalert2";
+import { loadEnderecoUsuarioById } from "../../../../api/client/endereco/loadEnderecoUsuarioById";
+import { HeaderChoosePage } from "../../../Choose-Page/Header";
 
 export const MainFinishContractPage = () => {
   const navigate = useNavigate();
@@ -40,6 +42,16 @@ export const MainFinishContractPage = () => {
 
   const [user, setUser] = useState({});
 
+  const [enderecoUsuario, setEnderecoUsuario] = useState({
+    data: {
+      endereco: {
+        numero: "",
+        bairro: "",
+        logradouro: "",
+      },
+    },
+  });
+
   const [openCloseModal, setOpenCloseModal] = useState({
     status: false,
     value: "",
@@ -53,6 +65,7 @@ export const MainFinishContractPage = () => {
     loadTypeTransportId(location.state.id_tipo_contrato, setTipoTransporte);
     loadSchoolId(location.state.id_escola, setEscola);
     loadUserbyId(localStorage.getItem("id"), setUser);
+    loadEnderecoUsuarioById(localStorage.getItem("id"), setEnderecoUsuario);
   }, []);
 
   useEffect(() => {
@@ -76,88 +89,99 @@ export const MainFinishContractPage = () => {
   const dataAtual = new Date().getFullYear();
 
   return (
-    <main className="container-main-finish-contract">
-      <div className="container-finish-contract">
-        <div className="container-name-button-return">
-          <h1>Contrate</h1>
-        </div>
-        <div className="container-infos-contract">
-          <div>
-            <h2>Suas Informações</h2>
-            <div>
-              <p className="name-content-contract">Nome do responsável:</p>
-              <p>{user.nome}</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Nome do passageiro:</p>
-              <p>{location.state.nome_passageiro}</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Idade do passageiro:</p>
-              <p>{location.state.idade_passageiro} anos</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Tipo de pagamento:</p>
-              <p>{tipoPagamento.data.tipo_pagamento}</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Tipo de transporte:</p>
-              <p>{tipoTransporte.data.tipo_contrato}</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Escola:</p>
-              <p>{escola.nome}</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Endereço gigante aqui</p>
-            </div>
+    <>
+      <main className="container-main-finish-contract">
+        <div className="container-finish-contract">
+          <div className="container-name-button-return">
+            <h1>Contrate</h1>
           </div>
-          <div>
-            <h2>Informações Motorista</h2>
+          <div className="container-infos-contract">
             <div>
-              <p className="name-content-contract">Nome do motorista:</p>
-              <p>{driver.nome}</p>
+              <h2>Suas Informações</h2>
+              <div>
+                <p className="name-content-contract">Nome do responsável:</p>
+                <p>{user.nome}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Nome do passageiro:</p>
+                <p>{location.state.nome_passageiro}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Idade do passageiro:</p>
+                <p>{location.state.idade_passageiro} anos</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Tipo de pagamento:</p>
+                <p>{tipoPagamento.data.tipo_pagamento}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Tipo de transporte:</p>
+                <p>{tipoTransporte.data.tipo_contrato}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Escola:</p>
+                <p>{escola.nome}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Endereço:</p>
+                <p>{enderecoUsuario.data.endereco.logradouro}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Número: </p>
+                <p>{enderecoUsuario.data.endereco.numero}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Bairro: </p>
+                <p>{enderecoUsuario.data.endereco.bairro}</p>
+              </div>
             </div>
             <div>
-              <p className="name-content-contract">Idade do motorista:</p>
-              <p>{dataAtual - driver.data_nascimento.split("/")[2]} </p>
-              <p>anos</p>
-            </div>
-            <div>
-              <p className="name-content-contract">Placa da van:</p>
-              <p>{driver.van[0].placa}</p>
-            </div>
+              <h2>Informações Motorista</h2>
+              <div>
+                <p className="name-content-contract">Nome do motorista:</p>
+                <p>{driver.nome}</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Idade do motorista:</p>
+                <p>{dataAtual - driver.data_nascimento.split("/")[2]} </p>
+                <p>anos</p>
+              </div>
+              <div>
+                <p className="name-content-contract">Placa da van:</p>
+                <p>{driver.van[0].placa}</p>
+              </div>
 
-            <div>
-              <p className="name-content-contract">Preço do serviço:</p>
-              <p>R$ {driver.id_preco.faixa_preco}</p>
+              <div>
+                <p className="name-content-contract">Preço do serviço:</p>
+                <p>R$ {driver.id_preco.faixa_preco}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className="container-button-envi-canc"
-          onClick={() => {
-            setOpenCloseModal({
-              status: true,
-              value: openCloseModal.value,
-            });
-          }}
-        >
-          <ButtonSaveDeleteContract
+          <div
+            className="container-button-envi-canc"
+            onClick={() => {
+              setOpenCloseModal({
+                status: true,
+                value: openCloseModal.value,
+              });
+            }}
+          >
+            <ButtonSaveDeleteContract
+              props={{
+                key: "button-form-contract",
+                label: "Enviar contrato",
+              }}
+            />
+          </div>
+          <ModalExcluirContrato
             props={{
-              key: "button-form-contract",
-              label: "Enviar contrato",
+              message: "Você deseja concretizar este contrato ?",
+              openCloseModal: openCloseModal,
+              setOpenCloseModal: setOpenCloseModal,
             }}
           />
         </div>
-        <ModalExcluirContrato
-          props={{
-            message: "Você deseja concretizar este contrato ?",
-            openCloseModal: openCloseModal,
-            setOpenCloseModal: setOpenCloseModal,
-          }}
-        />
-      </div>
-    </main>
+      </main>
+    </>
   );
 };

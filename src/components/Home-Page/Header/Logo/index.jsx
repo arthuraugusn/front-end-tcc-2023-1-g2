@@ -1,4 +1,4 @@
-import "material-symbols";
+import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -8,7 +8,11 @@ export const Logo = ({ props }) => {
       <Link to="/">
         <div className="logo-content">
           <div className="ball">
-            <span className="material-symbols-outlined">airport_shuttle</span>
+            <AirportShuttleIcon
+              sx={{
+                color: "white",
+              }}
+            />
           </div>
           <div className={props}>
             <span className="name">Vanbora</span>

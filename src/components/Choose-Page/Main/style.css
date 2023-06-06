@@ -21,6 +21,7 @@
 .buttons-container {
   display: flex;
   width: 80%;
+  padding-bottom: 40px;
   align-items: center;
   justify-content: space-evenly;
 }

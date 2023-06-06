@@ -1,7 +1,7 @@
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+import PersonIcon from "@mui/icons-material/Person";
+import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 import { useEffect, useState } from "react";
 
 export const MenuBurguer = ({ props }) => {
@@ -122,7 +122,7 @@ export const MenuBurguer = ({ props }) => {
             }}
             className={`nav-itens ${props} ${itensHeader.statusIcons}`}
           >
-            <FontAwesomeIcon icon={faBell} />
+            <NotificationImportantIcon />
           </li>
 
           <li
@@ -133,7 +133,7 @@ export const MenuBurguer = ({ props }) => {
             className={`dropdown nav-itens ${props}  ${itensHeader.statusIcons}`}
           >
             <div className={`dropbtn ${props}`}>
-              <FontAwesomeIcon icon={faUser} />
+              <PersonIcon />
             </div>
             <div className="dropdown-content-perfil">
               <p
