@@ -104,11 +104,8 @@
   text-align: center;
 }
 
-.container-picture-perfil div label div {
-}
-
 .input-container-descri-driver {
-  width: 1000px;
+  width: auto;
 }
 
 .input-container-descri-driver div,
@@ -144,6 +141,7 @@
 }
 
 .coment {
+  width: auto;
   padding: 40px;
   align-items: center;
   flex-direction: column;

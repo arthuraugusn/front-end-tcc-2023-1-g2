@@ -1,3 +1,4 @@
+import { TextareaAutosize } from "@mui/material";
 import { InputInfosPerfil } from "../../../Inputs/InputInfos";
 
 export const FormsDriverFive = ({ props }) => {
@@ -24,8 +25,10 @@ export const FormsDriverFive = ({ props }) => {
               nova_senha: props.userEdit.nova_senha,
               status_motorista: 1,
               telefone: props.userEdit.telefone,
-              id_preco:
-                e.currentTarget.childNodes[e.currentTarget.selectedIndex].id,
+              id_preco: {
+                id: e.currentTarget.childNodes[e.currentTarget.selectedIndex]
+                  .id,
+              },
             });
           }}
         >
@@ -62,14 +65,17 @@ export const FormsDriverFive = ({ props }) => {
         }}
         className="input-container-descri-driver"
       >
-        <InputInfosPerfil
-          props={{
-            placeholder: props.perfil.descricao,
-            classNameLabel: "placeholder",
-            nameInput: "Descrição",
-            classNameInput: "inputs-more-infos",
-          }}
-        />
+        <div className="input-container">
+          <label htmlFor="password" className="placeholder">
+            Descrição
+          </label>
+          <TextareaAutosize
+            className="inputs-more-infos"
+            maxRows={4}
+            aria-label="maximum height"
+            placeholder={props.perfil.descricao}
+          />
+        </div>
       </div>
     </>
   );

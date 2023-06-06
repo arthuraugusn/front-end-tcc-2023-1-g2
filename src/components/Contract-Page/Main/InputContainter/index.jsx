@@ -12,8 +12,8 @@ export const InputContainer = ({ props }) => {
         type={props.type}
         placeholder={props.placeholder}
         className={props.classNameInput}
-        value={props.value}
         disabled={props.status}
+        defaultValue={props.value}
       />
     </div>
   );
