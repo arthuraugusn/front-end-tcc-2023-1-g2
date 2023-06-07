@@ -53,12 +53,6 @@
 }
 
 .container-suas-vans-card::-webkit-scrollbar {
-  width: 7px;
-  background-color: var(--main-yellow);
-  border-radius: 15px;
-}
-
-.container-suas-vans-card::-webkit-scrollbar {
   width: 10px;
   background-color: var(--main-yellow);
   border-radius: 20px;

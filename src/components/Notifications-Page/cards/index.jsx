@@ -78,6 +78,7 @@ export const CardsNotifications = ({ props }) => {
   }, [responseError]);
 
   return props.userContracts.map((contract) => {
+    console.log(contract);
     if (contract.status_contrato === 0) {
       if (statusUser === 2) {
         return (
@@ -104,10 +105,17 @@ export const CardsNotifications = ({ props }) => {
                   <div className="infos-endereco-geral-container">
                     <div className="infos-endereco-geral-content">
                       <p className="info-endereco">Endereço:</p>
-                      <p className="infos-geral">Rua Jatoba, n 120</p>
-                      <p className="infos-geral">06298230</p>
-                      <p className="infos-geral">babueri</p>
-                      <p className="infos-geral">Itapevi- jardim sao carlos</p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.logradouro}, n{" "}
+                        {contract.usuario.endereco.numero}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.cep}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.estado.cidade.nome} -{" "}
+                        {contract.usuario.endereco.bairro}
+                      </p>
                     </div>
                   </div>
                   <div className="AcceptWait-button-container">
@@ -152,10 +160,17 @@ export const CardsNotifications = ({ props }) => {
                   <div className="infos-endereco-geral-container">
                     <div className="infos-endereco-geral-content">
                       <p className="info-endereco">Endereço:</p>
-                      <p className="infos-geral">Rua Jatoba, n 120</p>
-                      <p className="infos-geral">06298230</p>
-                      <p className="infos-geral">babueri</p>
-                      <p className="infos-geral">Itapevi- jardim sao carlos</p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.logradouro}, n{" "}
+                        {contract.usuario.endereco.numero}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.cep}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.estado.cidade.nome} -{" "}
+                        {contract.usuario.endereco.bairro}
+                      </p>
                     </div>
                   </div>
                   <div className="AcceptWait-button-container">
