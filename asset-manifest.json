@@ -1,18 +1,15 @@
 {
   "files": {
-    "main.css": "/front-end-tcc-2023-1-g2/static/css/main.4197408b.css",
-    "main.js": "/front-end-tcc-2023-1-g2/static/js/main.1d9644da.js",
+    "main.css": "/front-end-tcc-2023-1-g2/static/css/main.fabf093a.css",
+    "main.js": "/front-end-tcc-2023-1-g2/static/js/main.0993e7f9.js",
     "static/js/787.e324c446.chunk.js": "/front-end-tcc-2023-1-g2/static/js/787.e324c446.chunk.js",
-    "static/media/material-symbols-rounded.woff2": "/front-end-tcc-2023-1-g2/static/media/material-symbols-rounded.f13c011a619162c97456.woff2",
-    "static/media/material-symbols-outlined.woff2": "/front-end-tcc-2023-1-g2/static/media/material-symbols-outlined.2235d14f245cf0578626.woff2",
-    "static/media/material-symbols-sharp.woff2": "/front-end-tcc-2023-1-g2/static/media/material-symbols-sharp.887b376314684a54d866.woff2",
     "index.html": "/front-end-tcc-2023-1-g2/index.html",
-    "main.4197408b.css.map": "/front-end-tcc-2023-1-g2/static/css/main.4197408b.css.map",
-    "main.1d9644da.js.map": "/front-end-tcc-2023-1-g2/static/js/main.1d9644da.js.map",
+    "main.fabf093a.css.map": "/front-end-tcc-2023-1-g2/static/css/main.fabf093a.css.map",
+    "main.0993e7f9.js.map": "/front-end-tcc-2023-1-g2/static/js/main.0993e7f9.js.map",
     "787.e324c446.chunk.js.map": "/front-end-tcc-2023-1-g2/static/js/787.e324c446.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4197408b.css",
-    "static/js/main.1d9644da.js"
+    "static/css/main.fabf093a.css",
+    "static/js/main.0993e7f9.js"
   ]
 }
