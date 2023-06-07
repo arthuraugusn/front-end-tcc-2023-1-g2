@@ -1,5 +1,4 @@
 {
-  "homepage": "http://arthuraugusn.github.io/front-end-tcc-2023-1-g2",
   "name": "front-end-tcc-2023-1-g2",
   "version": "0.1.0",
   "private": true,
@@ -29,7 +28,6 @@
   "scripts": {
     "start": "react-scripts start",
     "predeplay": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
