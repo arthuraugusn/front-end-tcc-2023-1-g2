@@ -9,7 +9,7 @@ export default function ALlContractsPage() {
   const [styleBody, setStyleBody] = useState("height-vh");
   return (
     <>
-      <div className={`container-main-footer-allContracts ${styleBody}`}>
+      <div className={`container-main-footer-allContracts`}>
         <HeaderAllContracts />
         <ContractsPage
           props={{

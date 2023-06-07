@@ -14,19 +14,20 @@
 
 .allContracts-container {
   display: flex;
+  height: 47vh;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  height: auto;
-  width: 80vw;
   padding: 1.5rem;
   overflow: scroll;
   overflow-x: hidden;
+  gap: 40px;
 }
+
 .allContracts-container::-webkit-scrollbar {
-  background-color: var(--button-contract-yellow);
-  border-radius: 15px;
+  width: 10px;
+  background-color: var(--main-yellow);
+  border-radius: 20px;
 }
+
 @media (max-width:375px) {
   .card-contracts{
     flex-direction: column;
