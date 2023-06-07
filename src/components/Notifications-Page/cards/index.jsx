@@ -78,7 +78,6 @@ export const CardsNotifications = ({ props }) => {
   }, [responseError]);
 
   return props.userContracts.map((contract) => {
-    console.log(contract);
     if (contract.status_contrato === 0) {
       if (statusUser === 2) {
         return (
