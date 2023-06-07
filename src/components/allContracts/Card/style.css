@@ -18,7 +18,7 @@
 }
 
 .container-image-contracts img {
-  height: 300px;
+  height: 200px;
   border-radius: 20px;
 }
 
@@ -54,11 +54,11 @@
 .infos-motorista-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 }
 
 .infos {
-  font-size: larger;
+  font-size: 0.8rem;
 }
 
 .infos-endereco-container {
@@ -67,7 +67,7 @@
 }
 
 .info-adds {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .deletar-button-container {
