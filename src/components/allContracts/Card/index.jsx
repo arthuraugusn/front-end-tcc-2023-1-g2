@@ -9,10 +9,7 @@ export const CardContract = ({ props }) => {
       if (localStorage.getItem("status_user_driver") === "1") {
         return (
           <>
-            <div
-              key={contract.id}
-              className="card-contracts"
-            >
+            <div key={contract.id} className="card-contracts">
               <div className="container-image-contracts">
                 <img src={contract.usuario.foto} alt="Foto motorista" />
               </div>
@@ -45,10 +42,17 @@ export const CardContract = ({ props }) => {
                       <h2 className="container-h2-endereco">Endereço:</h2>
                     </div>
                     <div>
-                      <p className="info-adds">Rua Jatoba, n 120</p>
-                      <p className="info-adds">{contract.usuario.cep}</p>
-                      <p className="info-adds">babueri</p>
-                      <p className="info-adds">Itapevi- jardim sao carlos</p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.logradouro}, n{" "}
+                        {contract.usuario.endereco.numero}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.cep}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.estado.cidade.nome} -{" "}
+                        {contract.usuario.endereco.bairro}
+                      </p>
                     </div>
                   </div>
                   <div className="deletar-button-container">
@@ -76,10 +80,7 @@ export const CardContract = ({ props }) => {
       } else {
         return (
           <>
-            <div
-              key={contract.id}
-              className="card-contracts"
-            >
+            <div key={contract.id} className="card-contracts">
               <div className="container-image-contracts">
                 <img src={contract.motorista.foto} alt="Foto motorista" />
               </div>
@@ -112,10 +113,17 @@ export const CardContract = ({ props }) => {
                       <h2 className="container-h2-endereco">Endereço:</h2>
                     </div>
                     <div>
-                      <p className="info-adds">Rua Jatoba, n 120</p>
-                      <p className="info-adds">{contract.usuario.cep}</p>
-                      <p className="info-adds">babueri</p>
-                      <p className="info-adds">Itapevi- jardim sao carlos</p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.logradouro}, n{" "}
+                        {contract.usuario.endereco.numero}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.cep}
+                      </p>
+                      <p className="infos-geral">
+                        {contract.usuario.endereco.estado.cidade.nome} -{" "}
+                        {contract.usuario.endereco.bairro}
+                      </p>
                     </div>
                   </div>
                   <div className="deletar-button-container">
