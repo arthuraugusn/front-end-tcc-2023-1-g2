@@ -7,6 +7,12 @@
 }
 
 .van {
+  padding-bottom: 0;
+}
+
+.van {
+  height: auto;
+  padding: 30px;
   align-items: center;
   justify-content: space-around;
 }
@@ -22,7 +28,8 @@
 .van img {
   display: flex;
   border-radius: 20px;
-  height: 80%;
+  width: 200px;
+  height: 200px;
 }
 
 .container-infos-van {
@@ -37,20 +44,18 @@
 
 .container-suas-vans-card {
   display: flex;
-  height: 55%;
-  width: 60%;
+  height: 50vh;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  padding: 1.5rem;
   overflow: scroll;
   overflow-x: hidden;
+  gap: 40px;
 }
 
-.container-suas-vans-card::-webkit-scrollbar{
-  width: 7px;
+.container-suas-vans-card::-webkit-scrollbar {
+  width: 10px;
   background-color: var(--main-yellow);
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .height-auto {
