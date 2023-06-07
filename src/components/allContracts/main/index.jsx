@@ -55,7 +55,7 @@ export const ContractsPage = ({ props }) => {
   }, [contracts]);
 
   return (
-    <main className={`main-container-allcontracts ${mainStyle}`}>
+    <main className={`main-container-allcontracts`}>
       <div className="name-container">
         <h1>Seus Contratos</h1>
       </div>
