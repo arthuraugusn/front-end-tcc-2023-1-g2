@@ -63,10 +63,10 @@ export const MainSuaVanPage = () => {
   });
 
   useEffect(() => {
-    loadVanById(location.state.id_van, setVan);
-    loadDriverById(location.state.id_motorista, setDriver);
+    loadVanById(localStorage.getItem("id_van"), setVan);
+    loadDriverById(localStorage.getItem("id"), setDriver);
     loadModelVan(setModelos);
-  });
+  }, []);
 
   useEffect(() => {
     if (van.id_modelo != undefined) {
@@ -116,7 +116,11 @@ export const MainSuaVanPage = () => {
           text: "Você não inseriu todas as informações para atualizar sua van",
         });
       } else {
-        updateVan(location.state.id_van, updateVanJson, setResponseError);
+        updateVan(
+          localStorage.getItem("id_van"),
+          updateVanJson,
+          setResponseError
+        );
       }
     }
   }, [updateVanJson]);
@@ -256,7 +260,7 @@ export const MainSuaVanPage = () => {
             placa: updateVanJson.placa,
             id_modelo: updateVanJson.id_modelo,
             status_requisition: 1,
-            id_motorista: parseInt(location.state.id_motorista),
+            id_motorista: parseInt(localStorage.getItem("id")),
           });
         }}
       >
