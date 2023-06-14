@@ -105,6 +105,7 @@ export const MainSuasVans = ({ props }) => {
                   navigate("/sua-van", {
                     state: { id_motorista: driver.id, id_van: e.id },
                   });
+                  localStorage.setItem("id_van", e.id);
                 }}
               >
                 <img className="container-image-van" src={e.foto} alt="" />
